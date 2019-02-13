@@ -280,12 +280,17 @@ a:hover, a:active, a:focus {
 }
 
 .main-home {
-  background: url('../images/home-bg.jpg') no-repeat;
+  background: url('../images/home.jpg') no-repeat;
   height: 100vh;
 }
 
+/*
+ *	Image Credit: 
+ * 	https://en.bitcoinwiki.org/wiki/* Quantum_computing_and_Cryptocurrency
+ *
+ */
 .main-about {
-  background: url('../images/about-bg.jpg') no-repeat;
+  background: url('../images/Quantum_computing_blockchain.jpg') no-repeat;
 }
 
 .main-single-post {
@@ -297,7 +302,7 @@ a:hover, a:active, a:focus {
 }
 
 .main-contact {
-  background: url('../images/contact-bg.jpg') no-repeat;
+  background: url('../images/programming-1.jpg') no-repeat;
 }
 
 #particles-js {
@@ -342,6 +347,7 @@ a:hover, a:active, a:focus {
 #about .col-md-6 {
   padding-top: 22px;
   padding-bottom: 32px;
+  float: right;
 }
 
 #about .col-md-6 img {

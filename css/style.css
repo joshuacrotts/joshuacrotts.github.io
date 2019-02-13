@@ -110,7 +110,8 @@ a:hover, a:active, a:focus {
 .main-about,
 .main-single-post,
 .main-gallery,
-.main-contact {
+.main-contact
+.main-research {
   height: 65vh;
 }
 
@@ -291,6 +292,11 @@ a:hover, a:active, a:focus {
  */
 .main-about {
   background: url('../images/Quantum_computing_blockchain.jpg') no-repeat;
+}
+
+.main-research {
+	background: url('../images/programming-3.jpg') no-repeat;
+	height: 70vh;
 }
 
 .main-single-post {
@@ -741,7 +747,8 @@ footer .footer-copyright {
   .main-about,
   .main-single-post,
   .main-gallery,
-  .main-contact {
+  .main-contact
+	.main-research{
     height: 35vh;
   }
 

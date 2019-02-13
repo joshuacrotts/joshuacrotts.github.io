@@ -1,0 +1,33 @@
+h1{
+	text-color: green;
+}
+
+body{
+	background-color: #f4f4f4;
+	color: #ff0000;
+
+	font: normal 16px Arial, Helvetica, sans-serif;
+	line-height: 1.6em;
+	margin: 0;
+}
+
+.container{
+	width: 80%;
+	margin: auto;
+}
+
+.box-1{
+	background-color: #333;
+	color: #fff;
+
+	border: 5px red solid;
+	padding: 20px;
+
+	margin-top: 20px;
+}
+
+.box-1 h1{
+	font-family: Tahoma;
+	font-weight: 800;
+	font-style: italic;
+}

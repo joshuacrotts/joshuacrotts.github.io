@@ -309,6 +309,7 @@ a:hover, a:active, a:focus {
 
 .main-contact {
   background: url('../images/programming-1.jpg') no-repeat;
+	height: 70vh;
 }
 
 #particles-js {

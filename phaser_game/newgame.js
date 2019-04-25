@@ -22,6 +22,8 @@ const BALL_HEIGHT = BALL_WIDTH
 let multiBall
 let largePaddle
 let invincibility
+  let invincibilityTimer = 0;
+  let hasInvincibility   = false;
 
 //Score
 let score = 0
@@ -201,7 +203,6 @@ function update()
     {
       currentB.kill()
 
-
       if(balls.children.length === 1){
         alert("You lose D:")
         window.location = location
@@ -224,7 +225,16 @@ function update()
     player.body.velocity.x = 0
   }
 
-
+  //invincibility timer
+  if(hasInvincibility)
+  {
+    invincibilityTimer++;
+    console.log()
+    if(invincibilityTimer >= 100)
+    {
+      hasInvincibility = false  
+    }
+  }
 }
 
 /**
@@ -263,11 +273,11 @@ function ballHitsBrick(ball, brick)
   else if(powerUpGenerator >= 0)
   {
     large = largePaddle.create(brick.x + BRICK_WIDTH / 2, brick.y + BRICK_HEIGHT, 'large')
-    large.animations.add('large', [0, 1, 2, 3, 4, 5, 6, 7], 5, true)
+    large.animations.add('large', [0, 1, 2, 3, 4, 5, 6, 7], 10, true)
     large.body.velocity.set(0, 50)
   }
 
-  brick.kill()
+  brick.kill(BORDERS.children[3])
 }
 
 /**
@@ -293,8 +303,10 @@ function multiBallHitsPlayer(player, powerUp)
 function invincibililityHitsPlayer(player, powerUp)
 {
   powerUp.kill()
+  hasInvincibility = true
+  invincibilityTimer = 0
 
-  let wall = BORDERS.create(0, game.world.height - 30, 'border')
+  let wall = BORDERS.create(0, game.world.height - 10, 'border')
   wall.scale.setTo(2, 2)
   wall.body.immovable = true
 }

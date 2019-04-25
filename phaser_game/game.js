@@ -14,7 +14,7 @@ function preload()
   game.load.image('sky', 'assets/sky.png')
   game.load.image('ground', 'assets/platform.png')
   game.load.image('diamond', 'assets/diamond.png')
-  game.load.spritesheet('richter', 'assets/walker1.png', 64, 64)
+  game.load.spritesheet('richter', 'assets/richter.png', 24, 44)
 }
 
 function create()
@@ -36,14 +36,14 @@ function create()
   ledge = platforms.create(-75, 350, 'ground')
   ledge.body.immovable = true
 
-  player = game.add.sprite(32, game.world.height - 150, 'woof')
+  player = game.add.sprite(32, game.world.height - 150, 'richter')
   game.physics.arcade.enable(player)
   player.body.bounce.y = 0.2
   player.body.gravity.y = 800
   player.body.collideWorldBounds = true
 
-  player.animations.add('left', [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111], 10, true)
-  player.animations.add('right', [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47], 10, true)
+  //player.animations.add('left', [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111], 10, true)
+  player.animations.add('right', [0, 1, 2, 3, 4, 5, 6], 15, true)
 
   diamonds = game.add.group()
   diamonds.enableBody = true
@@ -70,7 +70,7 @@ function update()
   if(cursors.left.isDown)
   {
     player.body.velocity.x = -150
-    player.animations.play('left')
+    //player.animations.play('left')
   }else if(cursors.right.isDown)
   {
     player.body.velocity.x = 150

@@ -25,16 +25,16 @@ window.onload = function() {
   {
     BRICK_SPRITES.push(new Image());
   }
-  BRICK_SPRITES[0].src = "images/brickbreaker_images/bricks/redbrick.png";
-  BRICK_SPRITES[1].src = "images/brickbreaker_images/bricks/greenbrick.png";
+  BRICK_SPRITES[0].src = "original_code/images/brickbreaker_images/bricks/redbrick.png";
+  BRICK_SPRITES[1].src = "original_code/images/brickbreaker_images/bricks/greenbrick.png";
 
   //Loads in power ups
   for(i = 0; i < POWER_TYPES; i++)
   {
     POWER_UPS.push(new Image());
   }
-  POWER_UPS[0].src = "images/brickbreaker_images/Multi/multi0.png";
-  POWER_UPS[1].src = "images/brickbreaker_images/Large/large0.png";
+  POWER_UPS[0].src = "original_code/images/brickbreaker_images/Multi/multi0.png";
+  POWER_UPS[1].src = "original_code/images/brickbreaker_images/Large/large0.png";
 
   randomizeBallVelocity();
 }
@@ -235,7 +235,7 @@ function collisionDetection()
         {
           if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight)
           {
-            var snd=new Audio("audio/explode_1.wav");
+            var snd=new Audio("original_code/audio/explode_1.wav");
             snd.play();
             velY = -velY;
             b.status = 0;

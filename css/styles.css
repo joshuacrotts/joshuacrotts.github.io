@@ -1,0 +1,76 @@
+body{
+	background-color: 	#f5f5dc;
+}
+
+table, td {
+    border: 1px solid #333;
+	padding: 15px;
+}
+
+thead, tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+img{
+    display:block; 
+	width:85%; 
+	height: 30%;
+}
+a {
+	color: #cc0000;
+}
+
+a:visited {
+color: #701f25;
+}
+
+footer {
+    position: relative;
+    height: 5%;
+    width: 100%;
+    background-color: #333333;
+}
+
+p.copyright {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    line-height: 10px;
+    font-size: 1em;
+    text-align: center;
+    bottom:0;
+}
+
+.photograph img{
+	display:block; 
+	width:70%;
+	height: 40%;
+}
+
+.paragraph p {
+	padding: 5px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+	float: center;
+	width: 33.33%;
+	padding: 1px;
+	border: 1px solid #333;
+	display: table-cell; /* Make elements inside the container behave like table cells */
+}
+
+.row{
+	border: 1px solid #333;
+	display: block;
+	width: 90%; /* Set full-width to expand the whole page */	
+}
+
+/* Clear floats after the columns */
+.row:after {
+	float: center;
+	content: "";
+	display: table;
+	clear: both;
+}

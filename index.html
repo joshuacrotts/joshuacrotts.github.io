@@ -11,6 +11,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
       <link rel="stylesheet" href="assets/css/main.css" />
       <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico'/>
+      <script src="js/typed.js"></script>
       <noscript>
          <link rel="stylesheet" href="assets/css/noscript.css" />
       </noscript>
@@ -26,9 +27,23 @@
             <div class="content">
                <div class="inner">
                   <h1>Larry Joshua Crotts</h1>
-                  <p>Computer Scientist, Educator, Engineer, Mathematician, Theorist, Student</p>
+                  <p>I am a<span class="type"></span></p>
                   <p>"I enjoy working on great things that can improve the future for us all. We all live together, so why not make living as beneficial as possible?"</p>
                </div>
+                     <script> 
+                        var typed = new Typed('.type', {
+                           strings: ['&nbsp;Computer Scientist.',
+                                      '&nbsp;Programmer.',
+                                      'n Educator.',
+                                      '&nbsp;Theorist.',
+                                      '&nbsp;Mathematician.',
+                                      '&nbsp;Student.'],
+                           typeSpeed: 60,
+                           backSpeed: 60,
+                           loop: true,
+                           smartBackspace: true // Default value
+                        });
+                     </script>
             </div>
             <nav>
                <ul>
@@ -49,7 +64,7 @@
             	<center>
                <h2 class="major">About Me/Who I Am</h2>
            </center>
-               <span class="image main about"><img src="images/me-2.jpg" alt="" /></span>
+               <span class="image main about"><img src="img/me2.png" alt="" /></span>
                <h3>Who I Am</h3>
                <p>My name is Larry Joshua Crotts. I am a Computer Science student at the University of North Carolina at Greensboro. I have a long and driven interest in computer science, mathematics, theory, numbers, and all things technology.awesome work.
 

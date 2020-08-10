@@ -1,0 +1,20 @@
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
+.fp-prev:before {
+    color:#000;
+    content: '\f35a'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Free"; /* This is the correct font-family*/
+    font-style: normal;
+    font-weight: normal;
+    font-size:40px;
+}
+
+.proj-active {
+    color: #00aa00;
+}
+.proj-inactive {
+    color: #ff0000;
+}
+.proj-onhold {
+    color: #ff8b3d;
+}

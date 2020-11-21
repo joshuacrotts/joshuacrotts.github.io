@@ -1,219 +1,375 @@
 <!DOCTYPE html>
 <html lang="en-us">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="theme" content="hugo-academic">
-      <meta name="generator" content="Hugo 0.26" />
-      <meta name="author" content="Joshua Crotts">
-      <meta name="description" content="Computer Science Student">
-      <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
-      <link rel="stylesheet" href="./css/highlight.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-      <link rel="stylesheet" href="./css/hugo-academic.css">
-      <link rel="stylesheet" href="./css/navcolor.css">
-      <script>
-         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-         ga('create', 'UA-104968519-1', 'auto');
-         ga('require', 'eventTracker');
-         ga('require', 'outboundLinkTracker');
-         ga('require', 'urlChangeTracker');
-         ga('send', 'pageview');
-      </script>
-      <script async src="https://www.google-analytics.com/analytics.js"></script>
-      <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
-      <link rel="alternate" href="./index.xml" type="application/rss+xml" title="Jelani Nelson">
-      <link rel="feed" href="./index.xml" type="application/rss+xml" title="Jelani Nelson">
-      <link rel="icon" type="image/png" href="./img/icon.png">
-      <link rel="apple-touch-icon" type="image/png" href="./img/apple-touch-icon.png">
-      <link rel="canonical" href="./">
-      <title>Joshua Crotts</title>
-   </head>
-   <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
-      <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #0f2044;" id="navbar-main">
-         <div class="container">
-            <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                  data-target=".navbar-collapse" aria-expanded="false">
-               <span class="sr-only">Toggle navigation</span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               </button>
-               <a class="navbar-brand" href="./">Joshua Crotts</a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme" content="hugo-academic">
+    <meta name="generator" content="Hugo 0.26" />
+    <meta name="author" content="Joshua Crotts">
+    <meta name="description" content="Computer Science Student">
+    <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+    <link rel="stylesheet" href="./css/highlight.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+    <link rel="stylesheet" href="./css/hugo-academic.css">
+    <link rel="stylesheet" href="./css/navcolor.css">
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-104968519-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    <link rel="alternate" href="./index.xml" type="application/rss+xml" title="Jelani Nelson">
+    <link rel="feed" href="./index.xml" type="application/rss+xml" title="Jelani Nelson">
+    <link rel="icon" type="image/png" href="./img/icon.png">
+    <link rel="apple-touch-icon" type="image/png" href="./img/apple-touch-icon.png">
+    <link rel="canonical" href="./">
+    <title>Joshua Crotts</title>
+  </head>
+  <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #0f2044;" id="navbar-main">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+            data-target=".navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./">Joshua Crotts</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+              <a href="index.html" data-target="#about">
+              <span>Home</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./#courses/" data-target="#courses">
+              <span>Courses</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./#research" data-target="/research/">
+              <span>Research</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./#projects" data-target="/projects/">
+              <span>Projects</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./#contact" data-target="/contact/">
+              <span>Contact</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section id="about" class="home-section">
+      <div class="container">
+        <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person" itemref="person-email person-address">
+          <div class="col-xs-12 col-md-4">
+            <div id="profile">
+              <div class="portrait" style="background-image: url('img/me.png');"></div>
+              <meta itemprop="image" content="img/me.png">
+              <div class="portrait-title">
+                <h2 itemprop="name">Joshua Crotts</h2>
+                <h3 itemprop="jobTitle">Computer Scientist &amp; Software Engineer</h3>
+                <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
+                  <a href="https://cs.uncg.edu/" target="_blank" itemprop="url">
+                  <span itemprop="name">UNC Greensboro</span>
+                  </a>
+                </h3>
+              </div>
+              <link itemprop="url" href="">
+              <ul class="social-icon" aria-hidden="true">
+              </ul>
             </div>
-            <div class="collapse navbar-collapse">
-               <ul class="nav navbar-nav navbar-right">
-                  <li class="nav-item">
-                     <a href="index.html" data-target="#about">
-                     <span>Home</span>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="./#courses/" data-target="#courses">
-                     <span>Courses</span>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="./#research" data-target="/research/">
-                     <span>Research</span>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="./#projects" data-target="/projects/">
-                     <span>Projects</span>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="./#contact" data-target="/contact/">
-                     <span>Contact</span>
-                     </a>
-                  </li>
-               </ul>
-            </div>
-         </div>
-      </nav>
-      <section id="about" class="home-section">
-         <div class="container">
-            <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person" itemref="person-email person-address">
-               <div class="col-xs-12 col-md-4">
-                  <div id="profile">
-                     <div class="portrait" style="background-image: url('img/me.png');"></div>
-                     <meta itemprop="image" content="img/me.png">
-                     <div class="portrait-title">
-                        <h2 itemprop="name">Joshua Crotts</h2>
-                        <h3 itemprop="jobTitle">Computer Scientist &amp; Software Engineer</h3>
-                        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-                           <a href="https://cs.uncg.edu/" target="_blank" itemprop="url">
-                           <span itemprop="name">UNC Greensboro</span>
-                           </a>
-                        </h3>
-                     </div>
-                     <link itemprop="url" href="">
-                     <ul class="social-icon" aria-hidden="true">
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-xs-12 col-md-8" itemprop="description">
-                  <p><strong>About me:</strong> I am a teacher's assistant for CSC 130 - Intro to Computer Science and PHI 310 - Intro to Formal Logic at UNC Greensboro in the <a href="https://compsci.uncg.edu/" target="_blank">Computer Science</a> and <a href="https://philosophy.uncg.edu/" target="_blank">Philosophy</a> departments. I am also a graduate assistant for the <a href="https://learningtech.uncg.edu/?page_id=237">ITS Learning Center</a> where I assist faculty with the video-sharing application Panopto.
-                  <p>I am working on my <strong>Bachelor's of Science in Computer Science</strong> with a graduation date of <strong>Spring 2021</strong>. I am in the <a href="https://admissions.uncg.edu/academics/majors-with-accelerated-masters-degree-option/">Accelerated Master's Program (AMP)</a> which allows students to obtain their M.S. in one year compared to two.</p>
-                  <p><strong>Practical Computer Science Interests: </strong>Embedded Software Engineering, Parallel Computing, Computer Architecture/CPU Design</p>
-                  <p><strong>Theoretical Computer Science Interests: </strong>Computer Graphics (Binary Space Partitioning), Compiler Design, Programming Language Design &amp; Implementation, Theory of Computing, Algorithm Analysis, Artificial Intelligence</p>
-                  <p><strong>Programming Experience: </strong> I have been programming since I was 14 years old, where I started with basic HTML/CSS. I then moved to VS/C++ in my sophomore year of high school. Afterwards, I learned Java (which I am most proficient in) and several others such as C, Python, F#, Scheme, LISP, Prolog, and others.
-                  <p><strong>Programming Language Interests: </strong>As someone interested in low-level computing and parallel programming/computing, languages like C and Rust are on my radar to master. Other languages that focus more on HPC like Julia and even FORTRAN are also ones that I will eventually learn. There's also the functional languages like Haskell that I would (one day!) like to delve into.</p>
-                  <p>See also my <a href="assets/ljcresume.pdf"><font size="+1"><b>resume</b></font></a>.</p>
-                  <div class="row">
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <section id="courses" class="home-section">
-         <div class="container">
+          </div>
+          <div class="col-xs-12 col-md-8" itemprop="description">
+            <p><strong>About me:</strong> I am a teacher's assistant for CSC 130 - Intro to Computer Science and PHI 310 - Intro to Formal Logic at UNC Greensboro in the <a href="https://compsci.uncg.edu/" target="_blank">Computer Science</a> and <a href="https://philosophy.uncg.edu/" target="_blank">Philosophy</a> departments. I am also a graduate assistant for the <a href="https://learningtech.uncg.edu/?page_id=237">ITS Learning Center</a> where I assist faculty with the video-sharing application Panopto.
+            <p>I am working on my <strong>Bachelor's of Science in Computer Science</strong> with a graduation date of <strong>Spring 2021</strong>. I am in the <a href="https://admissions.uncg.edu/academics/majors-with-accelerated-masters-degree-option/">Accelerated Master's Program (AMP)</a> which allows students to obtain their M.S. in one year compared to two.</p>
+            <p><strong>Practical Computer Science Interests: </strong>Embedded Software Engineering, Parallel Computing, Computer Architecture/CPU Design</p>
+            <p><strong>Theoretical Computer Science Interests: </strong>Computer Graphics (Binary Space Partitioning), Compiler Design, Programming Language Design &amp; Implementation, Theory of Computing, Algorithm Analysis, Artificial Intelligence</p>
+            <p><strong>Programming Experience: </strong> I have been programming since I was 14 years old, where I started with basic HTML/CSS. I then moved to VS/C++ in my sophomore year of high school. Afterwards, I learned Java (which I am most proficient in) and several others such as C, Python, F#, Scheme, LISP, Prolog, and others.
+            <p><strong>Programming Language Interests: </strong>As someone interested in low-level computing and parallel programming/computing, languages like C and Rust are on my radar to master. Other languages that focus more on HPC like Julia and even FORTRAN are also ones that I will eventually learn. There's also the functional languages like Haskell that I would (one day!) like to delve into.</p>
+            <p>See also my <a href="assets/ljcresume.pdf"><font size="+1"><b>resume</b></font></a>.</p>
             <div class="row">
-               <div class="col-xs-12 col-md-4 section-heading">
-                  <h1>Courses</h1>
-                  <p><strong>Note: </strong>The following is a list of all the courses I have taken (or am registered for) of relevance to the CS major at UNC Greensboro. Each section is separated by a horizontal line, defined by the semester. Above these is a list of classes I have TA'd (or tutored) for. Those listed in <strong>bold</strong> are graduate courses taken as an undergraduate. As such, they require extra work (e.g. writing a paper or project) compared to their undergraduate counterparts.</p>
-                  <p>Some classes will have links associated. These will redirect to the project associated with the course, or relevant assignments.</p>
-               </div>
-               <div class="col-xs-12 col-md-8">
-                  <ul>
-                    <li>PHI 310 Introduction to Formal Logic (Section 01). Fall&rsquo;20.</li>
-                    <li>CSC 130 Introduction to Computer Science (Sections 03 &amp; 04). Fall&rsquo;20.</li>
-                    <li>CSC 130 Introduction to Computer Science (Section 03). Spring&rsquo;20.</li>
-                    <li>CSC 130 Introduction to Computer Science (Section 01). Fall&rsquo;19.</li>
-                    <hr />
-                     <li>CSC 490 Senior Capstone. Spring &rsquo;21.</li>
-                     <li>CSC 362 System Programming. Spring&rsquo;21.</li>
-                     <hr />
-                     <li><a href="https://github.com/JoshuaCrotts/LittleC-Compiler.git" target="_blank">CSC 439</a> Introduction to Compiler Design. Fall&rsquo;20.</li>
-                     <li><a href="https://github.com/JoshuaCrotts/CSC-677-Tools.git" target="_blank"><strong>CSC 677</strong></a> Principles of Computer Networks. Fall&rsquo;20.</li>
-                     <li><strong>CSC 662</strong> Principles of Operating Systems. Fall&rsquo;20.</li>
-                     <hr />
-                     <li><a href="assets/papers/bsppaper.pdf" target="_blank"><strong>CSC 654</strong></a> Algorithm Analysis &amp; Design. Spring&rsquo;20.</li>
-                     <li><a href="https://github.com/JoshuaCrotts/CSC-471-Website-Project.git" target="_blank">CSC 471</a> Principles of Database Systems. Spring&rsquo;20.</li>
-                     <li>CSC 461 Principles of Computer Architecture. Spring&rsquo;20.</li>
-                     <hr />
-                     <li><a href="https://github.com/JoshuaCrotts/CSC-652-DPDA-Parser.git" target="_blank"><strong>CSC 652</strong></a> Theory of Computation. Fall&rsquo;19.</li>
-                     <li><a href="https://github.com/JoshuaCrotts/Lock-Out-Protocol.git">CSC 340</a> Software Engineering. Fall&rsquo;19.</li>
-                     <li>CSC 339 Concepts of Programming Languages. Fall&rsquo;19.</li>
-                     <li>PHI 310 Introduction to Formal Logic. Fall&rsquo;19.</li>
-                     <hr />
-                     <li><a href="https://github.com/JoshuaCrotts/CSC-330-Assignments-Spring19.git" target="_blank">CSC 330</a> Advanced Data Structures. Spring&rsquo;19.</li>
-                     <li>CSC 350 Foundations of Computer Science II. Spring&rsquo;19.</li>
-                     <li>CSC 261 Computer Organization &amp; Assembly Language. Spring &rsquo;19.</li>
-                     <hr />
-                     <li><a href="https://github.com/JoshuaCrotts/CSC-230-Assignments-Fall18.git" target="_blank">CSC 230</a> Elementary Data Structures &amp; Algorithms. Fall&rsquo;18.</li>
-                     <li>CSC 250 Foundations of Computer Science I. Fall&rsquo;18.</li>
-                  </ul>
-               </div>
             </div>
-         </div>
-      </section>
-      <section id="research" class="home-section">
-        <div class="container">
-           <div class="row">
-              <div class="col-xs-12 col-md-4 section-heading">
-                 <h1>Research</h1>
-                 <p><strong>DISCLAIMER: </strong>The following research projects are part of my undergraduate career at the University of North Carolina at Greensboro. As such, the quality and thoroughness of the work presented is not at the caliber of a full-time researcher or graduate student. Rather, what is here is a short summary of what I have worked on primarily with <a href="https://compsci.uncg.edu/faculty/green/">Dr. Nancy L. Green.</a> Other works include those that I have completed in classes or individually (and hence are unpublishable).</p>
-              </div>
-              <div class="col-xs-12 col-md-8">
-                 <ul>
-                  <li><strong>Joshua Crotts</strong>. August 2020. <em>An Insight into Buffer Overflow Attacks and Kernel Security in Operating Systems.</em> University of North Carolina at Greensboro. <em>(Unpublished and incomplete).</em></li>
-                   <li><strong>Joshua Crotts</strong>. August 2020. <em>A Visual Improvement to the Pedagogy of Introductory Logic (Unpublished and incomplete).</em></li>
-                   <li>Dr. Nancy L. Green and <strong>Joshua Crotts</strong>. July 2020. <a href="http://ceur-ws.org/Vol-2669/paper9.pdf"><em>Towards Automatic Detection of Antithesis.</em></a> University of North Carolina at Greensboro. This paper was published and presented at <a href="http://ceur-ws.org/Vol-2669/">CMNA2020.</a></li>
-                   <li>Dr. Nancy L. Green and <strong>Joshua Crotts</strong>. July 2020. <a href="https://ceur-ws.org/Vol-2669/paper5.pdf"><em>Argument Schemes for AI Ethics Education.</em></a> University of North Carolina at Greensboro. This paper was published and presented at <a href="http://ceur-ws.org/Vol-2669/">CMNA2020.</a></li>
-                   <li><strong>Joshua Crotts</strong>. June 2020. <em>The Optimization of Largely-Populated Emitters in Particle Systems.</em>Individual Undergraduate Research. University of North Carolina at Greensboro <em>(Unpublished and incomplete)</em></li>
-                   <li><strong>Joshua Crotts</strong>. May 2020. <a href="assets/papers/bsppaper.pdf"><em>Binary Space Partitioning - A Focus on Rendering and Compression Algorithms.</em></a> University of North Carolina at Greensboro <em>(Unpublished)</em></li>
-                   <li><strong>Joshua Crotts</strong> and Dr. Nancy L. Green. April 2020. <a href="assets/papers/2020-Research.pdf"><em>Automatic Detection of Rhetorical Devices in Science Policy Articles.</em></a> University of North Carolina at Greensboro. This project was presented at the <a href="https://utlc.uncg.edu/wp-content/uploads/2020TURCE-Program.pdf">Thomas Undergraduate Research Creativity Expo 2020.</a></li>
-                 </ul>
-              </div>
-           </div>
+          </div>
         </div>
-     </section>
-      <section id="projects" class="home-section">
-        <div class="container">
-           <div class="row">
-              <div class="col-xs-12 col-md-4 section-heading">
-                 <h1>Projects</h1>
-                 <p><strong>Note: </strong>Throughout my career as a computer science student, I have worked on several extensive projects that showcase my software engineering capabilities. Many of these projects have since been archived, and most have their source code published (and publicly available) on GitHub. Some contain bugs and unfinished pieces. My intention in creating them was to further my programming horizons.</p>
-              </div>
-              <div class="col-xs-12 col-md-8">
-                 <ul>
-                   <li>... to be published here soon.
-                 </ul>
-              </div>
-           </div>
+      </div>
+    </section>
+    <section id="courses" class="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-4 section-heading">
+            <h1>Courses</h1>
+            <p><strong>Note: </strong>The following is a list of all the courses I have taken (or am registered for) of relevance to the CS major at UNC Greensboro. Each section is separated by a horizontal line, defined by the semester. Above these is a list of classes I have TA'd (or tutored) for. Those listed in <strong>bold</strong> are graduate courses taken as an undergraduate. As such, they require extra work (e.g. writing a paper or project) compared to their undergraduate counterparts.</p>
+            <p>Some classes will have links associated. These will redirect to the project associated with the course, or relevant assignments.</p>
+          </div>
+          <div class="col-xs-12 col-md-8">
+            <ul>
+              <li>PHI 310 Introduction to Formal Logic (Section 01). Fall&rsquo;20.</li>
+              <li>CSC 130 Introduction to Computer Science (Sections 03 &amp; 04). Fall&rsquo;20.</li>
+              <li>CSC 130 Introduction to Computer Science (Section 03). Spring&rsquo;20.</li>
+              <li>CSC 130 Introduction to Computer Science (Section 01). Fall&rsquo;19.</li>
+              <hr />
+              <li>CSC 490 Senior Capstone. Spring &rsquo;21.</li>
+              <li>CSC 362 System Programming. Spring&rsquo;21.</li>
+              <hr />
+              <li><a href="https://github.com/JoshuaCrotts/LittleC-Compiler.git" target="_blank">CSC 439</a> Introduction to Compiler Design. Fall&rsquo;20.</li>
+              <li><a href="https://github.com/JoshuaCrotts/CSC-677-Tools.git" target="_blank"><strong>CSC 677</strong></a> Principles of Computer Networks. Fall&rsquo;20.</li>
+              <li><strong>CSC 662</strong> Principles of Operating Systems. Fall&rsquo;20.</li>
+              <hr />
+              <li><a href="assets/papers/bsppaper.pdf" target="_blank"><strong>CSC 654</strong></a> Algorithm Analysis &amp; Design. Spring&rsquo;20.</li>
+              <li><a href="https://github.com/JoshuaCrotts/CSC-471-Website-Project.git" target="_blank">CSC 471</a> Principles of Database Systems. Spring&rsquo;20.</li>
+              <li>CSC 461 Principles of Computer Architecture. Spring&rsquo;20.</li>
+              <hr />
+              <li><a href="https://github.com/JoshuaCrotts/CSC-652-DPDA-Parser.git" target="_blank"><strong>CSC 652</strong></a> Theory of Computation. Fall&rsquo;19.</li>
+              <li><a href="https://github.com/JoshuaCrotts/Lock-Out-Protocol.git">CSC 340</a> Software Engineering. Fall&rsquo;19.</li>
+              <li>CSC 339 Concepts of Programming Languages. Fall&rsquo;19.</li>
+              <li>PHI 310 Introduction to Formal Logic. Fall&rsquo;19.</li>
+              <hr />
+              <li><a href="https://github.com/JoshuaCrotts/CSC-330-Assignments-Spring19.git" target="_blank">CSC 330</a> Advanced Data Structures. Spring&rsquo;19.</li>
+              <li>CSC 350 Foundations of Computer Science II. Spring&rsquo;19.</li>
+              <li>CSC 261 Computer Organization &amp; Assembly Language. Spring &rsquo;19.</li>
+              <hr />
+              <li><a href="https://github.com/JoshuaCrotts/CSC-230-Assignments-Fall18.git" target="_blank">CSC 230</a> Elementary Data Structures &amp; Algorithms. Fall&rsquo;18.</li>
+              <li>CSC 250 Foundations of Computer Science I. Fall&rsquo;18.</li>
+            </ul>
+          </div>
         </div>
-     </section>
-      <footer class="site-footer">
-         <div class="container">
-            <p class="powered-by">
-               &copy; 2020 Joshua Crotts &middot; 
-               Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
-               theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a> &middot; Photo by Yaphet Teklu
-               <span class="pull-right" aria-hidden="true">
-               <a href="#" id="back_to_top">
-               <span class="button_icon">
-               <i class="fa fa-chevron-up fa-2x"></i>
-               </span>
-               </a>
-               </span>
-            </p>
-         </div>
-      </footer>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
-      <script src="./js/hugo-academic.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script>
-   </body>
+      </div>
+    </section>
+    <section id="research" class="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-4 section-heading">
+            <h1>Research</h1>
+            <p><strong>DISCLAIMER: </strong>The following research projects are part of my undergraduate career at the University of North Carolina at Greensboro. As such, the quality and thoroughness of the work presented is not at the caliber of a full-time researcher or graduate student. Rather, what is here is a short summary of what I have worked on primarily with <a href="https://compsci.uncg.edu/faculty/green/">Dr. Nancy L. Green.</a> Other works include those that I have completed in classes or individually (and hence are unpublishable).</p>
+          </div>
+          <div class="col-xs-12 col-md-8">
+            <ul>
+              <li><strong>Joshua Crotts</strong>. August 2020. <em>An Insight into Buffer Overflow Attacks and Kernel Security in Operating Systems.</em> University of North Carolina at Greensboro. <em>(Unpublished and incomplete).</em></li>
+              <li><strong>Joshua Crotts</strong>. August 2020. <em>A Visual Improvement to the Pedagogy of Introductory Logic (Unpublished and incomplete).</em></li>
+              <li>Dr. Nancy L. Green and <strong>Joshua Crotts</strong>. July 2020. <a href="http://ceur-ws.org/Vol-2669/paper9.pdf"><em>Towards Automatic Detection of Antithesis.</em></a> University of North Carolina at Greensboro. This paper was published and presented at <a href="http://ceur-ws.org/Vol-2669/">CMNA2020.</a></li>
+              <li>Dr. Nancy L. Green and <strong>Joshua Crotts</strong>. July 2020. <a href="https://ceur-ws.org/Vol-2669/paper5.pdf"><em>Argument Schemes for AI Ethics Education.</em></a> University of North Carolina at Greensboro. This paper was published and presented at <a href="http://ceur-ws.org/Vol-2669/">CMNA2020.</a></li>
+              <li><strong>Joshua Crotts</strong>. June 2020. <em>The Optimization of Largely-Populated Emitters in Particle Systems.</em>Individual Undergraduate Research. University of North Carolina at Greensboro <em>(Unpublished and incomplete)</em></li>
+              <li><strong>Joshua Crotts</strong>. May 2020. <a href="assets/papers/bsppaper.pdf"><em>Binary Space Partitioning - A Focus on Rendering and Compression Algorithms.</em></a> University of North Carolina at Greensboro <em>(Unpublished)</em></li>
+              <li><strong>Joshua Crotts</strong> and Dr. Nancy L. Green. April 2020. <a href="assets/papers/2020-Research.pdf"><em>Automatic Detection of Rhetorical Devices in Science Policy Articles.</em></a> University of North Carolina at Greensboro. This project was presented at the <a href="https://utlc.uncg.edu/wp-content/uploads/2020TURCE-Program.pdf">Thomas Undergraduate Research Creativity Expo 2020.</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-4 section-heading">
+            <h1>Projects</h1>
+            <p><strong>Note: </strong>Throughout my career as a computer science student, I have worked on several extensive projects that showcase my software engineering capabilities. Many of these projects have since been archived, and most have their source code published (and publicly available) on GitHub. Some contain bugs and unfinished pieces. My intention in creating them was to further my programming horizons.</p>
+          </div>
+          <div class="col-xs-12 col-md-8">
+            <ul>
+               <li><em>Principles of Computer Networks Tools and Calculators (Sep. 2020 - Nov. 2020)</em></li>
+              <UL>
+                <LI>Information: For my graduate computer networks course, we had to do an extra project or component in addition to the other course material and assignments. Since a large portion of the class focused around formulas and IP address calculations that are typically computed by hand, I decided to automate some of that cumbersome labor. This is the culmination of several smaller programs that all perform different but related network calculations.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): C</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/CSC-677-Tools.git">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Network Simulator (Aug. 2020 - Nov. 2020)</em></li>
+              <UL>
+                <LI>Information: For my Principles of Computer Networks course, we have to design a Java GUI that traces a packet through the OSI model, showing the different abstractions and algorithms used in the transport protocol.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="">Source Code (Unavailable at this time)</a></LI>
+              </UL>
+              <br>
+              <li><em>Website With Database Interface (Feb. 2020 - May 2020)</em></li>
+              <UL>
+                <LI>Information: For the first time ever, I had to write in PHP. For my database class, we were required to write a website that interfaces with a SQL database. I chose MySQL and PHP because they were the most relevant choices. As I said, before this project, I had never written a single line of PHP, and I was very inexperienced in SQL. After this, while I don't enjoy web development or front-end any more than I previously did, I learned a lot about remote connections to databases, and how to establish said connection between the front-end HTML and the back-end MySQL/PHP code.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): PHP, MySQL, HTML, CSS</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/CSC-471-Website-Project">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Rhetorical Devices Detector (Jan. 2020 - Apr. 2020)</em></li>
+              <UL>
+                <LI>Information: For my undergraduate research project in the 2019-2020 school year, I worked with Dr. Nancy L. Green to develop an application that allows for detection of several rhetorical devices in science policy articles (loaded in via XML). We used Python, and the Natural Language Toolkit to build a GUI for an pleasant user-experience.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b>, Dr. Nancy L. Green</LI>
+                <LI>Programming Language(s): Python</LI>
+                <LI>Github: Private</LI>
+              </UL>
+              <br>
+              <li><em>Lock Out Protocol (Aug. 2019 - Dec. 2019)</em></li>
+              <UL>
+                <LI>Information: A top-down 2D zombie-esque shooter game! Zombies have taken over, and you must stop them!</LI>
+                <LI>Author(s): <a href="https://github.com/rgabrams">Ronald Abrams</a>, <a href="https://www.linkedin.com/in/rinty-chowdhury-064b4a162/">Rinty Chowdhury</a>, <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Lock-Out-Protocol">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Deterministic Pushdown Automata Parser (Oct. 2019)</em></li>
+              <UL>
+                <LI>Information: A GUI program that lets users create their own DPDA schema, input a string, and follow it through the diagram. This is primarily useful for Theory of Computation courses, and was my graduate project for CSC-652 at UNCG.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/CSC-652-DPDA-Parser">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>SWED: Software Engineering Ethics Debater (May 2019 - Aug. 2019)</em></li>
+              <UL>
+                <LI>Information: Dr. Green wanted a way for users to create argument trees with a supplied argument scheme, case study and ethical evidence. This application lets users easily do that.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b>, Dr. Nancy L. Green</LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Software-Engineering-Ethics-Debater">Source Code</a></LI>
+              </UL>
+              <hr />
+              <li><em>Fractal Generator (Sep. 2020)</em></li>
+              <UL>
+                <LI>Information: This is a small fractal generator that I built out of curiosity. It features zooming, undo-ing a zoom, and inputting any complex equation, as well as the amount of zoom iterations.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Fractal-Generator">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>C-Standards Game Library (Jul. 2020)</em></li>
+              <UL>
+                <LI>Information: C - Standards is the continuation of the Standards game library, originally written in Java.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): C</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/C-Standards">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Brick Breaker (Jul. 2020)</em></li>
+              <UL>
+                <LI>Information: Brick-Breaker is a remake of the original Brick Breaker arcade game, acting somewhat as the successor to my AP Computer Science Principles Performance Task project.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): C</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Brick-Breaker">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>MySQL Graphical User Interface (Oct. 2019)</em></li>
+              <UL>
+                <LI>Information: For my Lock Out Protocol project, I always had to log in to the Google Cloud suite to alter the database. I created a way to easily manipulate tables and data in a presentable format.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/SQL-Graphical-User-Interface">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Standards Game Library (Jan. 2020 - Dec. 2020)</em></li>
+              <UL>
+                <LI>Information: Standards is the new (and revived) version of the former Standards 1.0/2.0 library. It is based in Java, and includes all the basic materials and code necessary to create a basic game.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b>, <a href="https://www.linkedin.com/in/andrew-matzureff-51a335a8/">Andrew Matzureff</a></LI>
+                <LI>Date: Jan. 2020 - Dec. 2020</LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Standards">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Hash Table Implementation (Jun. 2019)</em></li>
+              <UL>
+                <LI>Information: This is a small project following a tutorial on implementing the hash table data structure in C. Most of the code is admittedly from the tutorial, but the basis of doing this project was to learn more about the underlying implementation of a hash table (despite knowing it in Java), and to gain further exposure to the C language.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Date: Jun. 2019</LI>
+                <LI>Programming Language(s): C</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Hash-Table-C">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Database Implementation (Jun. 2019)</em></li>
+              <UL>
+                <LI>Information: Learning SQL is fun and all, but it's even more fun to go down to the level where everything happens, and rebuild it from the ground up.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): C</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/C-Database">Source Code</a></LI>
+                <LI>Status: <span class="proj-inactive">Inactive</span></LI>
+              </UL>
+              <br>
+              <li><em>Elementary Virtual Machine (Jun. 2019)</em></li>
+              <UL>
+                <LI>Information: Assembly is one of my favorite languages for a couple of reasons. One is because I love working as close to the hardware as possible. The second is because I'm absolutely insane.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): C</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Virtual-Machine-C">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>iOS Calculator (Nov. 2017)</em></li>
+              <UL>
+                <LI>Information: A simple calculator app written in XCode. It is based on a queue data structure for parsing input and output.</LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): Swift</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/SimpleiOSCalculator">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Castlevania Legion (Apr. 2017 - May 2017)</em></li>
+              <UL>
+                <LI>Information: A remake of my original Castlevania game, back better than ever with new monsters, weapons and physics!
+                </LI>
+                <LI>Author(s): <b>Joshua Crotts</b>, <a href="https://www.linkedin.com/in/andrew-matzureff-51a335a8/">Andrew Matzureff</a></LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Castlevania-Legion">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Breakout (Apr. 2017)</em></li>
+              <UL>
+                <LI>Information: Recall Breakout from the original arcade machines? This is a remake of that. Fun, addictive, with colorful graphics and exciting, bubbly music! <em>(Edited Aug. 10, 2020, this version of Breakout was for my AP CS Principles project).</em>
+                </LI>
+                <LI>Author(s): <b>Joshua Crotts</b></LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Breakout">Source Code</a></LI>
+              </UL>
+              <br>
+              <li><em>Castlevania (Apr. 2016 - May 2016)</em></li>
+              <UL>
+                <LI>Information: My first game written in Java. I love the Castlevania games, and this is a poor representation of that.</em>
+                </LI>
+                <LI>Author(s): <b>Joshua Crotts</b>, <a href="https://www.linkedin.com/in/brandon-willis-10/">Brandon Willis</a></LI>
+                <LI>Programming Language(s): Java</LI>
+                <LI><a href="https://github.com/JoshuaCrotts/Castlevania">Source Code</a></LI>
+              </UL>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="container">
+        <p class="powered-by">
+          &copy; 2020 Joshua Crotts &middot; 
+          Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+          theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a> &middot; Photo by Yaphet Teklu
+          <span class="pull-right" aria-hidden="true">
+          <a href="#" id="back_to_top">
+          <span class="button_icon">
+          <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+          </a>
+          </span>
+        </p>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="./js/hugo-academic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
 </html>

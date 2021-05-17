@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.26" />
+  <meta name="author" content="Joshua Crotts">
+  <meta name="description" content="Computer Science Student">
+  <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+  <link rel="stylesheet" href="./css/highlight.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw=="
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css"
+    integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ=="
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link href="../../css/prism.css" rel="stylesheet" />
+  <script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-104968519-1', 'auto');
+    ga('require', 'eventTracker');
+    ga('require', 'outboundLinkTracker');
+    ga('require', 'urlChangeTracker');
+    ga('send', 'pageview');
+  </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"
+    integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g=="
+    crossorigin="anonymous"></script>
+  <script src="../../js/prism.js"></script>
+  <link rel="alternate" href="./index.xml" type="application/rss+xml" title="Joshua Crotts">
+  <link rel="feed" href="./index.xml" type="application/rss+xml" title="Joshua Crotts">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
+  <link rel="canonical" href="./">
+  <title>Joshua Crotts</title>
+</head>
+
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #0f2044;" id="navbar-main">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./">Joshua Crotts</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item">
+            <a href="../../index.html" data-target="#about">
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../../courses.html" alt="Courses">
+              <span>Courses</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../../research.html" alt="Research">
+              <span>Research</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../../projects.html" alt="Projects">
+              <span>Projects</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../../tutorials.html" alt="Tutorials">
+              <span>Tutorials</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../../contact.html" , alt="Contact">
+              <span>Contact</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section id="courses" class="home-section">
+    <div class="container">
+      <div class="row" style="text-align: justify;">
+        <h1>Multithreaded Chat Server in C and Java!</h1>
+        <p>Getting Started - Part 0</p>
+        <p class="author">Author: Joshua Crotts</p>
+        <p class="author">Date: 2021/05/16</p>
+        <p>Howdy! I decided to take on the difficult journey of writing a tutorial for of all things, a multi-threaded chat server. Not only will we build this from scratch, we’ll also use C as the back end with Java as the front end. Realistically, you could probably use anything for the front end, but just for experimentation, we’ll do it this way.</p>
+        <br />
+        <p>Before we get started, I’ll first explain a couple of thing that we’re not doing, either out of simplicity or just because it’s too complex for what I want to demonstrate in this tutorial:</p>
+        <ul>
+          <li><b>Secure Authentication:</b> HTTPS is a complex protocol that takes some time to not only learn but also implement. As such, we won’t be using it. To complement, while we will use a database, we will not be implementing the world’s best security measures.</li>
+        </ul>
+        <br />
+        <p>So, what <i>will</i> we do?</p>
+        <br />
+        <ul>
+          <li><b>Writing the front end in Java:</b> Some people will critique the decision to write the front end of the application in Java, and that’s completely understandable — Java Swing is very outdated, but I believe it’s good for what I want to accomplish. Plus, as stated earlier, if you want to write a different front end, that’s totally up to you!</li>
+          <li><b>Back end development in C:</b> Another interesting decision is to write our server in C. In my opinion, the C implementation of pthreads is really easy to understand and work with, so I think it’s a good choice. Plus, using sockets in C is also relatively straightforward. Perhaps not as much as, say, Python or another higher-level language, but hey, it works.</li>
+          <li><b>Conversations, friends, rooms, private messages:</b> Much like every chatroom from 2004, we will have private message support, [private] rooms, a friends list, and broadcast messages (to everyone in a room).</li>
+          <li><b>Command support:</b> Suppose the user wants to, say, clear their current screen or change their text color. It would be nice to add support for this and other commands as well.</li>
+          <li><b>API integration:</b> There are some interesting APIs to experiment with, such as quotes of the day and things to that effect. Querying the server for things like this is an awesome and rather trivial inclusion once we get boilerplate code inserted, especially since we’re going to be using multiple threads to handle such requests!</li>
+        </ul>
+        <br />
+        <p>Now that that’s out of the way, let’s discuss what I expect of you (i.e., what you should know coming into this):</p>
+        <ul>
+          <li>You should be comfortable with Java. I’m not expecting you to be an expert, but methods, classes, objects, arrays, iteration, and sequential statements should be familiar terms.</li>
+          <li>You should also know some C. Typedefs, structs, unions, functions, C-strings, headers, preprocessor definitions, and pointers should be recognizable as well.</li>
+          <li>Preferably, familiarity with networking protocols such as TCP, Makefiles, and how threads work at a basic level would be helpful, but it’s not required.</li>
+        </ul>
+        <br />
+        <p>So, before we start programming, we have to set up a few preliminary things, namely our development environment(s) for the respective languages.</p>
+        <br />
+        <p>First off, you need MacOS or a Linux environment. I’m going to use two: both a MacBook Pro 2017 and a copy of Xubuntu 20.04 for experimentation. As long as it’s not a Windows environment (since we’re working with pthreads), it should work fine. You can use a virtual machine with VirtualBox, VMWare, Hyper-V, or something else (possibly even WSL…) if you don’t want to install Linux on your own hardware.</p>
+        <p>Additionally, you need an environment and compiler for C. I’ll be using VSCode since it has become sort of the de-facto standard for programming on Linux. For a compiler, if you’re on Linux, then gcc is the way to go. On Mac, I recommend either that or clang.</p>
+        <p>Regarding Java, I will be using OpenJDK 15 and the IntelliJ IDE. Any IDE should work for this, though (Eclipse, NetBeans, BlueJ…).</p>
+        <p>Setting everything up is relatively straightforward, I’ll leave that to you since it’s irrelevant to actually designing the server. There are plenty of resources available to get you started with it. I’ll take care of everything else.</p>
+        <br />
+        <p>One other thing that I’ll emphasize with this project is that I’m going to actively encourage good programming practices and paradigms. While I’m obviously not a programming prodigy in C nor Java, there are certain things we can do to make our code easy to maintain and debug. So, we’ll be using GitHub for our version control software, Valgrindfor memory leaks/dynamic memory, and gdb for debugging in C.</p>
+        <br />
+        <p>With that out of the way, let's write us a chat server!</p>
+      </div>
+    </div>
+    </div>
+  </section>
+</body>
+
+</html>

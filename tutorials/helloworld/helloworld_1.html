@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +21,9 @@
     integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="./css/hugo-academic.css">
-  <link rel="stylesheet" href="./css/navcolor.css">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link href="../../css/prism.css" rel="stylesheet" />
   <script>
     window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
     ga('create', 'UA-104968519-1', 'auto');
@@ -34,13 +36,15 @@
   <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"
     integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g=="
     crossorigin="anonymous"></script>
+  <script src="../../js/prism.js"></script>
   <link rel="alternate" href="./index.xml" type="application/rss+xml" title="Joshua Crotts">
   <link rel="feed" href="./index.xml" type="application/rss+xml" title="Joshua Crotts">
-  <link rel="icon" type="image/png" href="./img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="./img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
   <link rel="canonical" href="./">
   <title>Joshua Crotts</title>
 </head>
+
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
   <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #0f2044;" id="navbar-main">
     <div class="container">
@@ -57,32 +61,32 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item">
-            <a href="index.html" data-target="#about">
+            <a href="../../index.html" data-target="#about">
               <span>Home</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="courses.html" alt="Courses">
+            <a href="../../courses.html" alt="Courses">
               <span>Courses</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="research.html" alt="Research">
+            <a href="../../research.html" alt="Research">
               <span>Research</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="projects.html" alt="Projects">
+            <a href="../../projects.html" alt="Projects">
               <span>Projects</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="tutorials.html" alt="Tutorials">
+            <a href="../../tutorials.html" alt="Tutorials">
               <span>Tutorials</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="contact.html" , alt="Contact">
+            <a href="../../contact.html" , alt="Contact">
               <span>Contact</span>
             </a>
           </li>
@@ -90,20 +94,31 @@
       </div>
     </div>
   </nav>
-  <section id="projects" class="home-section">
+  <section id="courses" class="home-section">
     <div class="container">
-       <div class="row">
-          <div class="col-xs-12 col-md-4 section-heading" style="text-align: justify;">
-             <h1>Tutorials</h1>
-             <p>This section lists tutorials that I have created on programming projects. Click on a tutorial to go to that page.</p>
-          </div>
-          <div class="col-xs-12 col-md-8">
-             <ul>
-               <li><a href="tutorials/helloworld/helloworld_home.html">Hello World in C Tutorial</a>
-             </ul>
-          </div>
-       </div>
+      <div class="row" style="text-align: justify;">
+        <h1>Hello World in C Tutorial</h1>
+        <p class="author">Author: Joshua Crotts</p>
+        <p class="author">Date: 2021/05/16</p>
+        <p>Rather than delving into the specifics of how to download <code>gcc</code>, <code>make</code>, and all that,
+          I'm just going to write the bare minimum necessary for displaying <code>Hello, World!</code> to the screen in
+          the C programming language.</p>
+        <p>This page is primarily dedicated to setting up boiler-plate, copy-and-paste templates for writing future
+          tutorials. Anyways, here is the code:</p>
+        <pre class="line-numbers">
+          <code class="language-clike">
+              #include
+              int main(int argc, char *argv[]) {
+                printf("Hello, World!\n");
+                return 0;
+              }
+              </code>
+            </pre>
+      </div>
+      <p>...and that's it! That's the generic hello world program that all introductory programmers make when trying a new language. Go forth!</p>
     </div>
- </section>
- </body>
- </html>
+    </div>
+  </section>
+</body>
+
+</html>

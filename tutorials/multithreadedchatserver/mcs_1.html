@@ -101,39 +101,31 @@
         <p>Getting Started - Part 0</p>
         <p class="author">Author: Joshua Crotts</p>
         <p class="author">Date: 2021/05/16</p>
-        <p>Howdy! I decided to take on the difficult journey of writing a tutorial for of all things, a multi-threaded chat server. Not only will we build this from scratch, we’ll also use C as the back end with Java as the front end. Realistically, you could probably use anything for the front end, but just for experimentation, we’ll do it this way.</p>
-        <br />
+        <p>Howdy! I decided to take on the difficult journey of writing a tutorial for of all things, a multi-threaded chat server. Not only will we build this from scratch, we’ll also use C as the back end with Java as the front end. Realistically, you could probably use <i>anything</i> for the front end, but just for experimentation, we’ll do it this way.</p>
         <p>Before we get started, I’ll first explain a couple of thing that we’re not doing, either out of simplicity or just because it’s too complex for what I want to demonstrate in this tutorial:</p>
         <ul>
           <li><b>Secure Authentication:</b> HTTPS is a complex protocol that takes some time to not only learn but also implement. As such, we won’t be using it. To complement, while we will use a database, we will not be implementing the world’s best security measures.</li>
         </ul>
-        <br />
         <p>So, what <i>will</i> we do?</p>
-        <br />
         <ul>
           <li><b>Writing the front end in Java:</b> Some people will critique the decision to write the front end of the application in Java, and that’s completely understandable — Java Swing is very outdated, but I believe it’s good for what I want to accomplish. Plus, as stated earlier, if you want to write a different front end, that’s totally up to you!</li>
-          <li><b>Back end development in C:</b> Another interesting decision is to write our server in C. In my opinion, the C implementation of pthreads is really easy to understand and work with, so I think it’s a good choice. Plus, using sockets in C is also relatively straightforward. Perhaps not as much as, say, Python or another higher-level language, but hey, it works.</li>
+          <li><b>Back end development in C:</b> Another interesting decision is to write our server in C. In my opinion, the C implementation of <code>pthreads</code> is really easy to understand and work with, so I think it’s a good choice. Plus, using sockets in C is also relatively straightforward. Perhaps not as much as, say, Python or another higher-level language, but hey, it works.</li>
           <li><b>Conversations, friends, rooms, private messages:</b> Much like every chatroom from 2004, we will have private message support, [private] rooms, a friends list, and broadcast messages (to everyone in a room).</li>
           <li><b>Command support:</b> Suppose the user wants to, say, clear their current screen or change their text color. It would be nice to add support for this and other commands as well.</li>
           <li><b>API integration:</b> There are some interesting APIs to experiment with, such as quotes of the day and things to that effect. Querying the server for things like this is an awesome and rather trivial inclusion once we get boilerplate code inserted, especially since we’re going to be using multiple threads to handle such requests!</li>
         </ul>
-        <br />
-        <p>Now that that’s out of the way, let’s discuss what I expect of you (i.e., what you should know coming into this):</p>
+        <p>Now that that’s out of the way, let’s discuss what I expect of <i>you</i> (i.e., what you should know coming into this):</p>
         <ul>
           <li>You should be comfortable with Java. I’m not expecting you to be an expert, but methods, classes, objects, arrays, iteration, and sequential statements should be familiar terms.</li>
           <li>You should also know some C. Typedefs, structs, unions, functions, C-strings, headers, preprocessor definitions, and pointers should be recognizable as well.</li>
           <li>Preferably, familiarity with networking protocols such as TCP, Makefiles, and how threads work at a basic level would be helpful, but it’s not required.</li>
         </ul>
-        <br />
         <p>So, before we start programming, we have to set up a few preliminary things, namely our development environment(s) for the respective languages.</p>
-        <br />
-        <p>First off, you need MacOS or a Linux environment. I’m going to use two: both a MacBook Pro 2017 and a copy of Xubuntu 20.04 for experimentation. As long as it’s not a Windows environment (since we’re working with pthreads), it should work fine. You can use a virtual machine with VirtualBox, VMWare, Hyper-V, or something else (possibly even WSL…) if you don’t want to install Linux on your own hardware.</p>
-        <p>Additionally, you need an environment and compiler for C. I’ll be using VSCode since it has become sort of the de-facto standard for programming on Linux. For a compiler, if you’re on Linux, then gcc is the way to go. On Mac, I recommend either that or clang.</p>
+        <p>First off, you need MacOS or a Linux environment. I’m going to use two: both a MacBook Pro 2017 and a copy of Xubuntu 20.04 for experimentation. As long as it’s not a Windows environment (since we’re working with <code>pthreads</code>), it should work fine. You can use a virtual machine with VirtualBox, VMWare, Hyper-V, or something else (possibly even WSL…) if you don’t want to install Linux on your own hardware.</p>
+        <p>Additionally, you need an environment and compiler for C. I’ll be using VSCode since it has become sort of the de-facto standard for programming on Linux. For a compiler, if you’re on Linux, then <code>gcc</code> is the way to go. On Mac, I recommend either that or <code>clang</code>.</p>
         <p>Regarding Java, I will be using OpenJDK 15 and the IntelliJ IDE. Any IDE should work for this, though (Eclipse, NetBeans, BlueJ…).</p>
-        <p>Setting everything up is relatively straightforward, I’ll leave that to you since it’s irrelevant to actually designing the server. There are plenty of resources available to get you started with it. I’ll take care of everything else.</p>
-        <br />
-        <p>One other thing that I’ll emphasize with this project is that I’m going to actively encourage good programming practices and paradigms. While I’m obviously not a programming prodigy in C nor Java, there are certain things we can do to make our code easy to maintain and debug. So, we’ll be using GitHub for our version control software, Valgrindfor memory leaks/dynamic memory, and gdb for debugging in C.</p>
-        <br />
+        <p>Setting everything up is relatively straightforward, I’ll leave that to you since it’s irrelevant to actually designing the server. There are <i>plenty</i> of resources available to get you started with it. I’ll take care of everything else.</p>
+        <p>One other thing that I’ll emphasize with this project is that I’m going to actively encourage <i>good</i> programming practices and paradigms. While I’m obviously not a programming prodigy in C nor Java, there are certain things we can do to make our code easy to maintain and debug. So, we’ll be using GitHub for our version control software, <code>Valgrind</code> for memory leaks/dynamic memory, and <code>gdb</code> for debugging in C.</p>
         <p>With that out of the way, let's write us a chat server!</p>
       </div>
     </div>

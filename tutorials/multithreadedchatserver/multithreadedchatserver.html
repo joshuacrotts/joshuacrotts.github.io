@@ -10,7 +10,7 @@
   <meta name="author" content="Joshua Crotts">
   <meta name="description" content="Computer Science Student">
   <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
-  <link rel="stylesheet" href="./css/highlight.min.css">
+  <link rel="stylesheet" href="../../css/highlight.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw=="
     crossorigin="anonymous">
@@ -22,8 +22,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
   <link rel="stylesheet" href="../../css/hugo-academic.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <link href="../../css/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/navcolor.css">
   <script>
     window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
     ga('create', 'UA-104968519-1', 'auto');
@@ -36,11 +35,10 @@
   <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"
     integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g=="
     crossorigin="anonymous"></script>
-  <script src="../../js/prism.js"></script>
   <link rel="alternate" href="./index.xml" type="application/rss+xml" title="Joshua Crotts">
   <link rel="feed" href="./index.xml" type="application/rss+xml" title="Joshua Crotts">
-  <link rel="icon" type="image/png" href="../../img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="./img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="./img/apple-touch-icon.png">
   <link rel="canonical" href="./">
   <title>Joshua Crotts</title>
 </head>
@@ -96,27 +94,17 @@
   </nav>
   <section id="courses" class="home-section">
     <div class="container">
-      <div class="row" style="text-align: justify;">
-        <h1>Hello World in C Tutorial</h1>
-        <p class="author">Author: Joshua Crotts</p>
-        <p class="author">Date: 2021/05/16</p>
-        <p>Rather than delving into the specifics of how to download <code>gcc</code>, <code>make</code>, and all that,
-          I'm just going to write the bare minimum necessary for displaying <code>Hello, World!</code> to the screen in
-          the C programming language.</p>
-        <p>This page is primarily dedicated to setting up boiler-plate, copy-and-paste templates for writing future
-          tutorials. Anyways, here is the code:</p>
-        <pre class="line-numbers">
-          <code class="language-clike">
-              #include &lt;stdio.h&gt;
-              int main(int argc, char *argv[]) {
-                printf("Hello, World!\n");
-                return 0;
-              }
-              </code>
-            </pre>
+      <div class="row">
+        <div class="col-xs-12 col-md-4 section-heading" style="text-align: justify;"></div>
+          <h1>Multithreaded Chat Server in C and Java!</h1>
+          <p>In this series, we're going to build a multithreaded chat server in C and Java (as the title suggests!). Our backend (the actual server component) will be written in C, with the front-end being done in Java. More details to come...</p>
+        </div>
+        <div class="col-xs-12 col-md-8">
+          <ul>
+            <li><a href="mcs_1.html">Coming soon...</a>
+          </ul>
+        </div>
       </div>
-      <p>...and that's it! That's the generic hello world program that all introductory programmers make when trying a new language. Go forth!</p>
-    </div>
     </div>
   </section>
 </body>

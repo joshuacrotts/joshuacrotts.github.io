@@ -98,9 +98,8 @@
     <div class="container">
       <div class="row" style="text-align: justify;">
         <h1>Multithreaded Chat Server in C and Java!</h1>
-        <p>Building the server - Part 1</p>
+        <p>Building the server - Part 1 IN PROGRESS</p>
         <p class="author">Author: Joshua Crotts</p>
-<<<<<<< HEAD
         <p class="author">Date: 2021/05/17</p>
         <p>To begin, we are going to create a GitHub repository for our project. You can do this on your own, but I
           called mine <code>Multithreaded-Chat-Server-Tutorial</code>. Once you do this, clone it to your computer
@@ -125,6 +124,7 @@
         <p>So, your directory should look like this:</p>
         <center><img src="mcsimages/dir1.png" /></center>
         <br />
+        <p><i>Note that the gitignore file is hidden by default (that's what the period in front of the name does!).</i></p>
         <p>Open this root folder in a developer environment (that can be Vim, Visual Studio Code (VSCode), or whatever
           else – I’ll be using VSCode). Now it’s time to start coding!</p>
 
@@ -158,36 +158,78 @@
         #endif // SERVER_H
             </code>
             </pre>
-=======
-        <p class="author">Date: 2021/05/16</p>
-        <p>Howdy! I decided to take on the difficult journey of writing a tutorial for of all things, a multi-threaded chat server. Not only will we build this from scratch, we’ll also use C as the back end with Java as the front end. Realistically, you could probably use <i>anything</i> for the front end, but just for experimentation, we’ll do it this way.</p>
-        <p>Before we get started, I’ll first explain a couple of thing that we’re not doing, either out of simplicity or just because it’s too complex for what I want to demonstrate in this tutorial:</p>
-        <ul>
-          <li><b>Secure Authentication:</b> HTTPS is a complex protocol that takes some time to not only learn but also implement. As such, we won’t be using it. To complement, while we will use a database, we will not be implementing the world’s best security measures.</li>
-        </ul>
-        <p>So, what <i>will</i> we do?</p>
-        <ul>
-          <li><b>Writing the front end in Java:</b> Some people will critique the decision to write the front end of the application in Java, and that’s completely understandable — Java Swing is very outdated, but I believe it’s good for what I want to accomplish. Plus, as stated earlier, if you want to write a different front end, that’s totally up to you!</li>
-          <li><b>Back end development in C:</b> Another interesting decision is to write our server in C. In my opinion, the C implementation of <code>pthreads</code> is really easy to understand and work with, so I think it’s a good choice. Plus, using sockets in C is also relatively straightforward. Perhaps not as much as, say, Python or another higher-level language, but hey, it works.</li>
-          <li><b>Conversations, friends, rooms, private messages:</b> Much like every chatroom from 2004, we will have private message support, [private] rooms, a friends list, and broadcast messages (to everyone in a room).</li>
-          <li><b>Command support:</b> Suppose the user wants to, say, clear their current screen or change their text color. It would be nice to add support for this and other commands as well.</li>
-          <li><b>API integration:</b> There are some interesting APIs to experiment with, such as quotes of the day and things to that effect. Querying the server for things like this is an awesome and rather trivial inclusion once we get boilerplate code inserted, especially since we’re going to be using multiple threads to handle such requests!</li>
-        </ul>
-        <p>Now that that’s out of the way, let’s discuss what I expect of <i>you</i> (i.e., what you should know coming into this):</p>
-        <ul>
-          <li>You should be comfortable with Java. I’m not expecting you to be an expert, but methods, classes, objects, arrays, iteration, and sequential statements should be familiar terms.</li>
-          <li>You should also know some C. Typedefs, structs, unions, functions, C-strings, headers, preprocessor definitions, and pointers should be recognizable as well.</li>
-          <li>Preferably, familiarity with networking protocols such as TCP, Makefiles, and how threads work at a basic level would be helpful, but it’s not required.</li>
-        </ul>
-        <p>So, before we start programming, we have to set up a few preliminary things, namely our development environment(s) for the respective languages.</p>
-        <p>First off, you need MacOS or a Linux environment. I’m going to use two: both a MacBook Pro 2017 and a copy of Xubuntu 20.04 for experimentation. As long as it’s not a Windows environment (since we’re working with <code>pthreads</code>), it should work fine. You can use a virtual machine with VirtualBox, VMWare, Hyper-V, or something else (possibly even WSL…) if you don’t want to install Linux on your own hardware.</p>
-        <p>Additionally, you need an environment and compiler for C. I’ll be using VSCode since it has become sort of the de-facto standard for programming on Linux. For a compiler, if you’re on Linux, then <code>gcc</code> is the way to go. On Mac, I recommend either that or <code>clang</code>.</p>
-        <p>Regarding Java, I will be using OpenJDK 15 and the IntelliJ IDE. Any IDE should work for this, though (Eclipse, NetBeans, BlueJ…).</p>
-        <p>Setting everything up is relatively straightforward, I’ll leave that to you since it’s irrelevant to actually designing the server. There are <i>plenty</i> of resources available to get you started with it. I’ll take care of everything else.</p>
-        <p>One other thing that I’ll emphasize with this project is that I’m going to actively encourage <i>good</i> programming practices and paradigms. While I’m obviously not a programming prodigy in C nor Java, there are certain things we can do to make our code easy to maintain and debug. So, we’ll be using GitHub for our version control software, <code>Valgrind</code> for memory leaks/dynamic memory, and <code>gdb</code> for debugging in C.</p>
-        <p>With that out of the way, let's write us a chat server!</p>
->>>>>>> f8c958a06a8a0575d12b91a831171d43de9f26ab
-      </div>
+        <p>The first thing we do is create a <code>typedef</code> for a server structure. This structure will hold a few
+          things, such as the clients that connect, the threads that handle jobs, etc. These definitions will be made
+          later, once we get there. We also include a flag variable to keep track of the status of the server. The enum
+          we define is simply for bookkeeping - we can store all flags that we want to use for the server here instead
+          of doing a bunch of <code>const int</code>'s or preprocessor <code>#define</code>'s. Also note that we have a
+          socket "fd". fd stands for <i>file descriptor</i>. A file descriptor is a handle, so to speak, meaning that
+          this integer keeps track of the socket (connection) identifier once it is established. We need this to listen
+          for clients later on.</p>
+        <p>We also create a variable of type <code>server_t</code> to reference in the <code>server.c</code> file.
+          Global references/variables are generally frowned upon, but this is, effectively, the only way to do this in
+          C. Plus, it'll be the only global we use, so it's a good compromise.</p>
+        <p><code>server_init</code> will initialize the socket listener and other miscellaneous things. Let's go define
+          that!</p>
+          <pre class="line-numbers">
+            <code class="language-clike">
+          #include &lt;arpa/inet.h&gt;
+          #include &lt;errno.h&gt;
+          #include &lt;netdb.h&gt;
+          #include &lt;netinet/in.h&gt;
+          #include &lt;signal.h&gt;
+          #include &lt;stdio.h&gt;
+          #include &lt;stdlib.h&gt;
+          #include &lt;string.h&gt;
+          #include &lt;sys/socket.h&gt;
+          #include &lt;sys/types.h&gt;
+          #include &lt;unistd.h&gt;
+          
+          #include "tcpdefs.h"
+          #include "server.h"
+          
+          static int server_create_listener( const char *server );
+          
+          void
+          server_init( void ) {
+            int socket_fd;
+            socket_fd = server_create_listener( PORT );
+            printf( "Socket fd: %d\n", socket_fd );
+          }
+          
+          static int
+          server_create_listener( const char *server ) {
+              int socket_fd;
+              if ( ( socket_fd = socket( AF_INET, SOCK_STREAM, 0 ) ) &lt; 0 ) {
+                perror( "Could not initialize socket.\n" );
+                return -1;
+              }
+              return socket_fd;
+          }
+  </code></pre>
+      <p>Now, I'm sure you're thinking: "Wow, that's a <i>lot</i> of additions!" Well, we're not even half of the way there, so don't get too excited just yet! The first thing we've done is included a bunch of C headers. Don't worry if you don't know where a lot of this stuff comes from - just include them for now.</p>
+      <p>Next, we include our <code>server.h</code> header which is nice, but what about <code>tcpdefs.h</code>? What's that, you ask? Well, we need a way of explicitly telling our server what port to start the server on. We're going to use port 8080, which is an alternate port for HTTP. The function that we need to pass this to, strangely enough, takes in the value as a string. So, since we may need to define more things for this connection (which, by the way, is TCP-based!), we're going to store these constants and other data in a header.</p>
+      <pre class="line-numbers">
+        <code class="language-clike">
+          #ifndef TCP_DEFS_H
+          #define TCP_DEFS_H
+
+          const char *PORT = "8080";
+
+          #endif // TCP_DEFS_H
+          </code>
+          </pre>
+          <p>Yep, that's all there is to that! So, just make sure to include it in your <code>server.c</code> file, and we'll get back to that.</p>
+          <br />
+          <p>Let's talk about that <code>server_create_listener</code> function for a moment. Recall that a server listens for connections, right? Well, we have to initialize how the server actually listens before we start the listening itself. We need to initialize what's called a socket, which is just a connection between two endpoints. This socket will use TCP - a connection-based protocol, meaning that each message to and from the server has guaranteed delivery, compared to UDP which fires packets and ignores dropped ones. Since this is a chat server, we don't want packets of data to be randomly lost! We also want to set this server up to use IPv4 addressing.</p>
+          <p>To do both of these, we use the <code>socket</code> function which takes three parameters: a domain, a type, and a protocol. We want the domain to be <code>AF_INET</code>, representing IPv4 addressing. The type is <code>SOCK_STREAM</code> for TCP connectivity (or connection-oriented). The last parameter is a protocol, and you may be asking: didn't we just set a protocol for the first parameter? Yes, we did. Because that's the case, this can be set to 0. For more information, check out <code>man socket(2)</code>.</p>
+          <p><i>Note: the man pages are extremely helpful for learning about Linux commands and C functions. To investigate, just type in the terminal (or google) <code>man</code> then the accompanying function.</i></p>
+          <p>The <code>socket</code> function is from the <code>&lt;sys/socket.h&gt;</code> header, so at least it's easy to remember! But, notice that we check its return value <i>inside</i> the <code>if</code> statement - this is a common and idiomatic way of checking C return values that need to be assigned. <code>socket()</code> returns an integer - that integer is the endpoint for the connection that we want to establish. However, if an error occurs, <code>-1</code> is returned. Thus, checking to see if the value is less than 0 is a good way to error check. This will be a common practice throughout development (especially when allocating dynamic memory!).</p>
+          <br />
+          <p>Let's keep going (note that I only returned/printed values in these two starter functions for demonstrative purposes).</p>
+          <br />
+          <p>TODO...</p>
+        </div>
     </div>
   </section>
 </body>

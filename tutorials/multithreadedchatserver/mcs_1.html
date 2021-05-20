@@ -98,9 +98,9 @@
     <div class="container">
       <div class="row" style="text-align: justify;">
         <h1>Multithreaded Chat Server in C and Java!</h1>
-        <p>Building the server - Part 1 IN PROGRESS</p>
+        <p>Building the server - Part 1</p>
         <p class="author">Author: Joshua Crotts</p>
-        <p class="author">Date: 2021/05/17</p>
+        <p class="author">Date: 2021/05/20</p>
         <p>To begin, we are going to create a GitHub repository for our project. You can do this on your own, but I
           called mine <code>Multithreaded-Chat-Server-Tutorial</code>. Once you do this, clone it to your computer
           wherever you would like, but preferably a location that you can access through the terminal easily (since
@@ -124,7 +124,8 @@
         <p>So, your directory should look like this:</p>
         <center><img src="mcsimages/dir1.png" /></center>
         <br />
-        <p><i>Note that the gitignore file is hidden by default (that's what the period in front of the name does!).</i></p>
+        <p><i>Note that the gitignore file is hidden by default (that's what the period in front of the name does!).</i>
+        </p>
         <p>Open this root folder in a developer environment (that can be Vim, Visual Studio Code (VSCode), or whatever
           else – I’ll be using VSCode). Now it’s time to start coding!</p>
 
@@ -168,10 +169,15 @@
           for clients later on.</p>
         <p>We also create a variable of type <code>server_t</code> to reference in the <code>server.c</code> file.
           Global references/variables are generally frowned upon, but this is, effectively, the only way to do this in
-          C. Plus, it'll be the only global we use, so it's a good compromise.</p>
+          C. Plus, it'll be the only global we use, so it's a good compromise. You may be asking: what does
+          <code>extern</code> do? Well, since we don't want to explicitly initialize a <code>server_t</code> variable in
+          the header (bad practice), we tell the header "hey, there's a reference to this variable <i>elsewhere</i>!
+          It's the same thing with the <code>server_init()</code> function. We'll call it a bit later from a different
+          file, and that file won't <i>care</i> about <i>how</i> that function is defined, only <i>if</i> it is defined.
+          :D</p>
         <p><code>server_init</code> will initialize the socket listener and other miscellaneous things. Let's go define
           that!</p>
-          <pre class="line-numbers">
+        <pre class="line-numbers">
             <code class="language-clike">
           #include &lt;arpa/inet.h&gt;
           #include &lt;errno.h&gt;
@@ -190,11 +196,12 @@
           
           static int server_create_listener( const char *server );
           
+          server_t server;
+
           void
           server_init( void ) {
-            int socket_fd;
-            socket_fd = server_create_listener( PORT );
-            printf( "Socket fd: %d\n", socket_fd );
+            server.socket_fd = server_create_listener( PORT );
+            printf( "Socket fd: %d\n", server.socket_fd );
           }
           
           static int
@@ -207,9 +214,16 @@
               return socket_fd;
           }
   </code></pre>
-      <p>Now, I'm sure you're thinking: "Wow, that's a <i>lot</i> of additions!" Well, we're not even half of the way there, so don't get too excited just yet! The first thing we've done is included a bunch of C headers. Don't worry if you don't know where a lot of this stuff comes from - just include them for now.</p>
-      <p>Next, we include our <code>server.h</code> header which is nice, but what about <code>tcpdefs.h</code>? What's that, you ask? Well, we need a way of explicitly telling our server what port to start the server on. We're going to use port 8080, which is an alternate port for HTTP. The function that we need to pass this to, strangely enough, takes in the value as a string. So, since we may need to define more things for this connection (which, by the way, is TCP-based!), we're going to store these constants and other data in a header.</p>
-      <pre class="line-numbers">
+        <p>Now, I'm sure you're thinking: "Wow, that's a <i>lot</i> of additions!" Well, we're not even half of the way
+          there, so don't get too excited just yet! The first thing we've done is included a bunch of C headers. Don't
+          worry if you don't know where a lot of this stuff comes from - just include them for now.</p>
+        <p>Next, we include our <code>server.h</code> header which is nice, but what about <code>tcpdefs.h</code>?
+          What's that, you ask? Well, we need a way of explicitly telling our server what port to start the server on.
+          We're going to use port 8080, which is an alternate port for HTTP. The function that we need to pass this to,
+          strangely enough, takes in the value as a string. So, since we may need to define more things for this
+          connection (which, by the way, is TCP-based!), we're going to store these constants and other data in a
+          header.</p>
+        <pre class="line-numbers">
         <code class="language-clike">
           #ifndef TCP_DEFS_H
           #define TCP_DEFS_H
@@ -219,44 +233,77 @@
           #endif // TCP_DEFS_H
           </code>
           </pre>
-          <p>Yep, that's all there is to that! So, just make sure to include it in your <code>server.c</code> file, and we'll get back to that.</p>
-          <br />
-          <p>Let's talk about that <code>server_create_listener</code> function for a moment. Recall that a server listens for connections, right? Well, we have to initialize how the server actually listens before we start the listening itself. We need to initialize what's called a socket, which is just a connection between two endpoints. This socket will use TCP - a connection-based protocol, meaning that each message to and from the server has guaranteed delivery, compared to UDP which fires packets and ignores dropped ones. Since this is a chat server, we don't want packets of data to be randomly lost! We also want to set this server up to use IPv4 addressing.</p>
-          <p>To do both of these, we use the <code>socket</code> function which takes three parameters: a domain, a type, and a protocol. We want the domain to be <code>AF_INET</code>, representing IPv4 addressing. The type is <code>SOCK_STREAM</code> for TCP connectivity (or connection-oriented). The last parameter is a protocol, and you may be asking: didn't we just set a protocol for the first parameter? Yes, we did. Because that's the case, this can be set to 0. For more information, check out <code>man socket(2)</code>.</p>
-          <p><i>Note: the man pages are extremely helpful for learning about Linux commands and C functions. To investigate, just type in the terminal (or google) <code>man</code> then the accompanying function.</i></p>
-          <p>The <code>socket</code> function is from the <code>&lt;sys/socket.h&gt;</code> header, so at least it's easy to remember! But, notice that we check its return value <i>inside</i> the <code>if</code> statement - this is a common and idiomatic way of checking C return values that need to be assigned. <code>socket()</code> returns an integer - that integer is the endpoint for the connection that we want to establish. However, if an error occurs, <code>-1</code> is returned. Thus, checking to see if the value is less than 0 is a good way to error check. This will be a common practice throughout development (especially when allocating dynamic memory!).</p>
-          <p>Let's keep going (note that I only returned/printed values in these two starter functions for demonstrative purposes).</p>
-          <br />
-          <p>One issue that may (and will!) arise during debugging is the need to quickly retest the server. If the server is shutdown, there may still be sockets connected to its port upon restarting and listening. To prevent this, we utilize the <code>setsockopt</code>function with its <code>SO_REUSEPORT</code> flag.</code></p>
-          <pre class="line-numbers">
+        <p>Yep, that's all there is to that! So, just make sure to include it in your <code>server.c</code> file, and
+          we'll get back to that.</p>
+        <br />
+        <p>Let's talk about that <code>server_create_listener</code> function for a moment. Recall that a server listens
+          for connections, right? Well, we have to initialize how the server actually listens before we start the
+          listening itself. We need to initialize what's called a socket, which is just a connection between two
+          endpoints. This socket will use TCP - a connection-based protocol, meaning that each message to and from the
+          server has guaranteed delivery, compared to UDP which fires packets and ignores dropped ones. Since this is a
+          chat server, we don't want packets of data to be randomly lost! We also want to set this server up to use IPv4
+          addressing.</p>
+        <p>To do both of these, we use the <code>socket</code> function which takes three parameters: a domain, a type,
+          and a protocol. We want the domain to be <code>AF_INET</code>, representing IPv4 addressing. The type is
+          <code>SOCK_STREAM</code> for TCP connectivity (or connection-oriented). The last parameter is a protocol, and
+          you may be asking: didn't we just set a protocol for the first parameter? Yes, we did. Because that's the
+          case, this can be set to 0. For more information, check out <code>man socket(2)</code>.</p>
+        <p><i>Note: the man pages are extremely helpful for learning about Linux commands and C functions. To
+            investigate, just type in the terminal (or google) <code>man</code> then the accompanying function.</i></p>
+        <p>The <code>socket</code> function is from the <code>&lt;sys/socket.h&gt;</code> header, so at least it's easy
+          to remember! But, notice that we check its return value <i>inside</i> the <code>if</code> statement - this is
+          a common and idiomatic way of checking C return values that need to be assigned. <code>socket()</code> returns
+          an integer - that integer is the endpoint for the connection that we want to establish. However, if an error
+          occurs, <code>-1</code> is returned. Thus, checking to see if the value is less than 0 is a good way to error
+          check. This will be a common practice throughout development (especially when allocating dynamic memory!).</p>
+        <p>Let's keep going (note that I only returned/printed values in these two starter functions for demonstrative
+          purposes).</p>
+        <br />
+        <p>One issue that may (and will!) arise during debugging is the need to quickly retest the server. If the server
+          is shutdown, there may still be sockets connected to its port upon restarting and listening. To prevent this,
+          we utilize the <code>setsockopt</code>function with its <code>SO_REUSEPORT</code> flag.</code></p>
+        <pre class="line-numbers">
             <code class="language-clike">
               int optval = 1;
               setsockopt( socket_fd, SOL_SOCKET, SO_REUSEPORT, &optval, sizeof( optval ) );
               </code>
             </pre>
-            <br />
-              <p>Now, we need to initialize a connection. However, we can't just accept a connection to any available IP. That's why we use what are called "hints". These hints will allow the program to find a list of possible connections, and we can choose the one we need off said list.</p>
-            <pre class="line-numbers">
+        <br />
+        <p>Now, we need to initialize a connection. However, we can't just accept a connection to any available IP.
+          That's why we use what are called "hints". These hints will allow the program to find a list of possible
+          connections, and we can choose the one we need off said list. We have to set the flags/attributes to let the
+          system know that we want an IPv4 address for TCP connections. The <code>AI_PASSIVE</code> flag is new,
+          however. It means that we plan to use this <code>result</code> in a call to <code>bind</code>.</p>
+        <pre class="line-numbers">
               <code class="language-clike">
                 struct addrinfo hints;
                 memset( &hints, 0, sizeof( hints ) );
-              hints.ai_flags = AI_PASSIVE;
-              hints.ai_family = AF_INET;
+                hints.ai_flags = AI_PASSIVE;
+                hints.ai_family = AF_INET;
                 hints.ai_socktype = SOCK_STREAM;
                 hints.ai_protocol = 0;
                     
                 struct addrinfo *result;
                 int              return_val;
-              if ( ( return_val = getaddrinfo( NULL, server, &hints, &result ) ) != 0 ) { 
-               fprintf( stderr, "Error in getaddrinfo: %s\n", gai_strerror( return_val ) );
+                if ( ( return_val = getaddrinfo( NULL, server, &hints, &result ) ) != 0 ) { 
+                  fprintf( stderr, "Error in getaddrinfo: %s\n", gai_strerror( return_val ) );
                   close( socket_fd );
                   return -1; 
+                }
               </code>
             </pre>
-            <p>The first thing is to create an <code>addrinfo</code> struct and set its necessary fields to send off to the <code>getaddrinfo</code> function. <code>getaddrinfo</code> takes in a few parameters, but the important one is the pointer to the <code>struct addrinfo *result</code>. To some, this may seem a little weird, but all this is doing is declaring a linked list. Since we're passing in a double pointer, the <code>getaddrinfo</code> function will populate (and dynamically allocate, so remember to free it later with <code>freeaddrinfo</code>!) this list. From there, we can poll the list to get our connection. Note that we should iterate down this list to find the connection, but for now, we can just remove the first one off the list (note that we haven't actually done this yet).</code></p>
-            <br />
-            <p>Next, we will bind the resulting connection returned from the result linked list (the head of it, rather) to our socket.</p>
-            <pre class="line-numbers">
+        <p>The first thing is to create an <code>addrinfo</code> struct and set its necessary fields to send off to the
+          <code>getaddrinfo</code> function. <code>getaddrinfo</code> takes in a few parameters, but the important one
+          is the pointer to the <code>struct addrinfo *result</code>. To some, this may seem a little weird, but all
+          this is doing is declaring a linked list. Since we're passing in a double pointer, the
+          <code>getaddrinfo</code> function will populate (and dynamically allocate, so remember to free it later with
+          <code>freeaddrinfo</code>!) this list. From there, we can poll the list to get our connection. Note that we
+          should iterate down this list to find the connection, but for now, we can just remove the first one off the
+          list (note that we haven't actually done this yet).</code></p>
+        <br />
+        <p>Next, we will bind the resulting connection returned from the result linked list (the head of it, rather) to
+          our socket.</p>
+        <pre class="line-numbers">
               <code class="language-clike">
                 int bind_return_val = bind( socket_fd, result->ai_addr, result->ai_addrlen );
                 if ( bind_return_val < 0 ) {
@@ -266,9 +313,14 @@
                 }
               </code>
             </pre>
-            <p>We pass in the socket file descriptor, address, and address length from the result linked list head element. Note that in this code and the previous block, we do error checking. This, again, is extremely important to do! Note that if the bind fails, we close the socket file descriptor. This is, while not <i>imperative</i> since the program is closing anyways (and hence all memory and file descriptors are freed), it is still good practice.</p>
-            <p>We're almost done with this function! The last thing to do is set up the listener with the, you guessed it, <code>listen</code> function.
-              <pre class="line-numbers">
+        <p>We pass in the socket file descriptor, address, and address length from the result linked list head element.
+          Note that in this code and the previous block, we do error checking. This, again, is extremely important to
+          do! Note that if the bind fails, we close the socket file descriptor. This is, while not <i>imperative</i>
+          since the program is closing anyways (and hence all memory and file descriptors are freed), it is still good
+          practice.</p>
+        <p>We're almost done with this function! The last thing to do is set up the listener with the, you guessed it,
+          <code>listen</code> function.
+        <pre class="line-numbers">
                 <code class="language-clike">
                   int listen_return_val = listen( socket_fd, 256 );
                   if ( listen_return_val &lt; 0 ) {
@@ -278,15 +330,145 @@
                   }
                 </code>
               </pre>
-              <p><code>listen</code> takes two parameters: the socket file descriptor that we have been using repeatedly, and the number of concurrent connections. We'll use 256, but you could set this higher in theory.</p>
-              <p>Great! The final thing to do is free the memory from the linked list that <code>getaddrinfo</code> created, and to return the socket, since we'll have to repeatedly check for connections in a different function.</p>
-              <pre class="line-numbers">
+        <p><code>listen</code> takes two parameters: the socket file descriptor that we have been using repeatedly, and
+          the number of concurrent connections. We'll use 256, but you could set this higher in theory.</p>
+        <p>Great! The final thing to do is free the memory from the linked list that <code>getaddrinfo</code> created,
+          and to return the socket, since we'll have to repeatedly check for connections in a different function.</p>
+        <pre class="line-numbers">
                 <code class="language-clike">
                   freeaddrinfo( result );
                   return socket_fd;
                 </code>
               </pre>
-        </div>
+        <br />
+        Now that we have that squared away, let's create the code that continuously listens for incoming
+        connections/clients:
+        <pre class="line-numbers">
+                <code class="language-clike">
+                  static void
+                server_listen( void ) {
+                  struct sockaddr_storage client_addr;
+                  socklen_t               client_addr_len = sizeof( client_addr );
+                  int                     comm_fd;
+
+                  // Each time we receive a new connection, we'll iterate through this loop again.
+                  while ( ( comm_fd = accept( server.socket_fd, ( struct sockaddr * ) &client_addr,
+                                              &client_addr_len ) ) >= 0 ) {
+                      // TODO
+                  }
+                }
+                </code>
+              </pre>
+        <p>Fortunately, this code is relatively straightforward. At it's core, while there's no connection to receive,
+          the program <i>blocks</i> until one is received. Blocking is a common concept in multithreaded programming,
+          and we'll revisit in greater detail once we introduce <code>pthreads</code>, but for now, just know that it
+          means that the program will wait until a connection is established with a client. But let's take a deeper look
+          at the code.</p>
+        <p>We set up a <code>sockaddr_storage</code> struct to receive client data from the <code>accept</code> function
+          call. we pass the socket file descriptor as always (called from <code>server_create_listener(...)</code>), and
+          a reference to the <code>sockaddr_storage</code> struct. This field will be populated inside the call to
+          <code>accept</code>, so once the server receives a connection, we can access information from said client
+          through that struct! Note that <code>accept</code> returns a communication file descriptor to that client.
+          This file descriptor is imperative to communicating from the server to the client, so we need to make sure we
+          save it (which is why we store it inside the while loop condition after all!).</p>
+        <br />
+        <p>Great! Now we can handle the stuff that happens <i>when</i> a client connects. Right now it's commented as
+          <code>TODO</code>, so let's fill it out. All we really want to do (at this point at least) is print out the
+          communication file descriptor and a name of the client. The client's name is their IP address. Since we're
+          setting this server up to run on the localhost, the IP address will always be the loopback (127.0.0.1), but
+          later on, we'll see that it can be any valid, public IP address (once we open the server to the "world" so to
+          speak). To do this, we need to add a line of code that looks a little weird at first glance:</p>
+        <pre class="line-numbers">
+                <code class="language-clike">
+                  char *username = inet_ntoa( ( ( struct sockaddr_in * ) &client_addr )->sin_addr );
+                </code>
+              </pre>
+        <p>Don't get intimidated by this line! Let's break it down. We make a call to the <code>inet_ntoa</code>
+          function which, when given a network address, will convert it to a string. Now, let's examine the weird
+          casting portion(s).</p>
+        <p>We first cast the <i>reference to</i> client_addr (which is just a pointer!) to a
+          <code>struct sockaddr_in *</code>. All this means is we're taking our sockaddr_info struct and converting it
+          to a struct type that has information that we need. Since these two are guaranteed to be the same size, it's
+          safe to do such a cast. Finally, we just do a standard attribute access through the <code>-></code> operator
+          to get the <code>sin_addr</code> field. <code>sin_addr</code> is of type <code>struct in_addr</code>, and
+          while this doesn't mean a whole lot for <i>us</i>, it's exactly what <code>inet_ntoa</code> wants!</p>
+        <p>Now, we can just print that information out! So, let's add a line that does that <i>inside</i> the connection
+          loop as I'll call it (where the <code>TODO</code> comment is located):</p>
+        <pre class="line-numbers">
+            <code class="language-clike">
+              printf("Received connection from %s, %d\n", username, comm_fd);
+            </code>
+          </pre>
+        <p>We just need to add one more thing to our <code>server.c</code> file: remember the <code>server_init()</code>
+          function (that we, admittedly, didn't touch too much on)? We'll actually <i>call</i> it in a moment (for real
+          this time!), but we need to add a call to <code>server_listen()</code> inside
+          it!</p>
+        <br />
+        <p>Now, we can call our <code>server_init()</code> function in a different file. Let's call it
+          <code>main.c</code> for easy reference.</p>
+        <pre class="line-numbers">
+            <code class="language-clike">
+              #include "server.h"
+ 
+              int
+              main( int argc, char *argv[] ) { 
+                server_init();
+                return 0;
+              }
+            </code>
+          </pre>
+        <p>And that's all there is to it.</p>
+        <p>Now, all we have to do is compile it. For our purposes, we're going to use a Makefile. A Makefile is a
+          collection of commands that allow for easy compilation and linking of multiple C source files, headers, and
+          libraries. It also allows us to add option flags with ease. While I won't be going into the details of the
+          Makefile, I encourage you to visit <a
+            href="https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/">Colby University's tutorial on
+            Makefiles</a>. If you want, though, you can just copy and paste this without worrying about the
+          implementation, as it's not completely necessary to understanding this project.</p>
+        <pre class="line-numbers">
+            <code class="language-make">
+              CC = gcc
+              EXES = main
+              OBJS = main.o server.o
+              CFLAGS = -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wall -Werror -Iinclude
+              LDFLAGS = -lm
+              
+              all: $(EXES)
+              
+              main: $(OBJS)
+                $(CC) $(CFLAGS) -o main $(OBJS) $(LDFLAGS)
+              
+              main.o: src/main.c
+                $(CC) -c $(CFLAGS) $< -o $@
+              
+              server.o: src/server.c
+                $(CC) -c $(CFLAGS) $< -o $@
+              
+              clean:
+                rm -rf $(OBJS) $(EXES) *.dSYM
+            </code>
+          </pre>
+        <p>This is a <i>very simple</i> Makefile, and we're going to spice it up a bit later (well, maybe not spice it
+          up, but rather add more files and targets), but this is all we need to compile and run. Type
+          <code>make</code>, then <code>./main</code>. If it worked, you should see... nothing! That's right, because it
+          enters that connection <code>while</code> loop, right? So it makes sense that nothing is printing at the
+          moment.</p>
+        <p>I hear you asking: "Well, how does a client connect?" Great question! We'll use the simple Unix command
+          <code>nc</code> standing for "netcat" to connect. Type <code>nc localhost 8080</code> into a <i>separate</i>
+          terminal, and watch what happens:</p>
+        <img src="mcsimages/conn0.png" style="max-width: 100%;" />
+        <br />
+        <br />
+        <p>Yep, it shows my connection! Let's try it with <i>another one!</i></p>
+        <img src="mcsimages/conn1.png" style="max-width: 100%;" />
+        <p>Did you expect that? You should have! It's obviously a different file descriptor since it's not the same
+          connection, but it <i>is</i> the same <i>client</i>. The connection source changed, but I didn't change
+          <i>where</i> the connection on the network started.</p>
+        <p>Awesome! Next time we'll work on setting up a structure for catching and "registering" these clients. Stay
+          tuned!</p>
+        <p><a href="https://github.com/JoshuaCrotts/Multithreaded-Chat-Server-Tutorial/releases/tag/part1">GitHub Code
+            for Part 1.</a></p>
+      </div>
     </div>
   </section>
 </body>

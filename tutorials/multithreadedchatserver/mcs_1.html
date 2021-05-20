@@ -316,7 +316,7 @@
         <p>We pass in the socket file descriptor, address, and address length from the result linked list head element.
           Note that in this code and the previous block, we do error checking. This, again, is extremely important to
           do! Note that if the bind fails, we close the socket file descriptor. This is, while not <i>imperative</i>
-          since the program is closing anyways (and hence all memory and file descriptors are freed), it is still good
+          since the program is closing anyways (and hence all memory and file descriptors are freed), still good
           practice.</p>
         <p>We're almost done with this function! The last thing to do is set up the listener with the, you guessed it,
           <code>listen</code> function.

@@ -225,10 +225,67 @@
           <p>To do both of these, we use the <code>socket</code> function which takes three parameters: a domain, a type, and a protocol. We want the domain to be <code>AF_INET</code>, representing IPv4 addressing. The type is <code>SOCK_STREAM</code> for TCP connectivity (or connection-oriented). The last parameter is a protocol, and you may be asking: didn't we just set a protocol for the first parameter? Yes, we did. Because that's the case, this can be set to 0. For more information, check out <code>man socket(2)</code>.</p>
           <p><i>Note: the man pages are extremely helpful for learning about Linux commands and C functions. To investigate, just type in the terminal (or google) <code>man</code> then the accompanying function.</i></p>
           <p>The <code>socket</code> function is from the <code>&lt;sys/socket.h&gt;</code> header, so at least it's easy to remember! But, notice that we check its return value <i>inside</i> the <code>if</code> statement - this is a common and idiomatic way of checking C return values that need to be assigned. <code>socket()</code> returns an integer - that integer is the endpoint for the connection that we want to establish. However, if an error occurs, <code>-1</code> is returned. Thus, checking to see if the value is less than 0 is a good way to error check. This will be a common practice throughout development (especially when allocating dynamic memory!).</p>
-          <br />
           <p>Let's keep going (note that I only returned/printed values in these two starter functions for demonstrative purposes).</p>
           <br />
-          <p>TODO...</p>
+          <p>One issue that may (and will!) arise during debugging is the need to quickly retest the server. If the server is shutdown, there may still be sockets connected to its port upon restarting and listening. To prevent this, we utilize the <code>setsockopt</code>function with its <code>SO_REUSEPORT</code> flag.</code></p>
+          <pre class="line-numbers">
+            <code class="language-clike">
+              int optval = 1;
+              setsockopt( socket_fd, SOL_SOCKET, SO_REUSEPORT, &optval, sizeof( optval ) );
+              </code>
+            </pre>
+            <br />
+              <p>Now, we need to initialize a connection. However, we can't just accept a connection to any available IP. That's why we use what are called "hints". These hints will allow the program to find a list of possible connections, and we can choose the one we need off said list.</p>
+            <pre class="line-numbers">
+              <code class="language-clike">
+                struct addrinfo hints;
+                memset( &hints, 0, sizeof( hints ) );
+              hints.ai_flags = AI_PASSIVE;
+              hints.ai_family = AF_INET;
+                hints.ai_socktype = SOCK_STREAM;
+                hints.ai_protocol = 0;
+                    
+                struct addrinfo *result;
+                int              return_val;
+              if ( ( return_val = getaddrinfo( NULL, server, &hints, &result ) ) != 0 ) { 
+               fprintf( stderr, "Error in getaddrinfo: %s\n", gai_strerror( return_val ) );
+                  close( socket_fd );
+                  return -1; 
+              </code>
+            </pre>
+            <p>The first thing is to create an <code>addrinfo</code> struct and set its necessary fields to send off to the <code>getaddrinfo</code> function. <code>getaddrinfo</code> takes in a few parameters, but the important one is the pointer to the <code>struct addrinfo *result</code>. To some, this may seem a little weird, but all this is doing is declaring a linked list. Since we're passing in a double pointer, the <code>getaddrinfo</code> function will populate (and dynamically allocate, so remember to free it later with <code>freeaddrinfo</code>!) this list. From there, we can poll the list to get our connection. Note that we should iterate down this list to find the connection, but for now, we can just remove the first one off the list (note that we haven't actually done this yet).</code></p>
+            <br />
+            <p>Next, we will bind the resulting connection returned from the result linked list (the head of it, rather) to our socket.</p>
+            <pre class="line-numbers">
+              <code class="language-clike">
+                int bind_return_val = bind( socket_fd, result->ai_addr, result->ai_addrlen );
+                if ( bind_return_val < 0 ) {
+                  perror( "DEBUG: Could not bind name and address to socket.\n" );
+                  close( socket_fd );
+                  return -1;
+                }
+              </code>
+            </pre>
+            <p>We pass in the socket file descriptor, address, and address length from the result linked list head element. Note that in this code and the previous block, we do error checking. This, again, is extremely important to do! Note that if the bind fails, we close the socket file descriptor. This is, while not <i>imperative</i> since the program is closing anyways (and hence all memory and file descriptors are freed), it is still good practice.</p>
+            <p>We're almost done with this function! The last thing to do is set up the listener with the, you guessed it, <code>listen</code> function.
+              <pre class="line-numbers">
+                <code class="language-clike">
+                  int listen_return_val = listen( socket_fd, 256 );
+                  if ( listen_return_val &lt; 0 ) {
+                    perror( "DEBUG: Could not initialize socket listener.\n" );
+                    close( socket_fd );
+                    return -1;
+                  }
+                </code>
+              </pre>
+              <p><code>listen</code> takes two parameters: the socket file descriptor that we have been using repeatedly, and the number of concurrent connections. We'll use 256, but you could set this higher in theory.</p>
+              <p>Great! The final thing to do is free the memory from the linked list that <code>getaddrinfo</code> created, and to return the socket, since we'll have to repeatedly check for connections in a different function.</p>
+              <pre class="line-numbers">
+                <code class="language-clike">
+                  freeaddrinfo( result );
+                  return socket_fd;
+                </code>
+              </pre>
         </div>
     </div>
   </section>

@@ -98,12 +98,14 @@
     <div class="container">
       <div class="row" style="text-align: justify;">
         <h1>Multithreaded Chat Server in C and Java!</h1>
-        <p>Storing clients - Part 2 IN PROGRESS</p>
+        <p>Creating clients - Part 2 </p>
         <p class="author">Author: Joshua Crotts</p>
-        <p class="author">Date: 2021/05/20</p>
-        <p>Welcome back! In this tutorial, we'll be making the data structure that stores each client for later lookup.
+        <p class="author">Date: 2021/05/21</p>
+        <p>Welcome back! In this tutorial, we'll make the structs and data associated with a client. However, I want to
+          introduce a topic first. See, when we create the server, we need a way of keeping track of clients. We ought
+          to store them in some type of data structure so we can traverse it and find clients for later lookup. How can
+          we do that, you ask?
         </p>
-        <br />
         <p>Normally, if you were efficient, you may want to do some sort of <code>TreeSet</code> or something like that
           to ensure that clients are ordered for quick searches down the road, but for this project where there won't be
           more than 5 clients connected, it's perfectly reasonable to go with a standard linked list.</p>
@@ -230,7 +232,91 @@
           generally what it's used for). Of course, we <i>could</i> just use the <code>read</code> and
           <code>write</code> or <code>send</code> and <code>recv</code> functions, but those are lower level, and using
           <code>FILE *</code> allows us to use high-level and string-friendly functions such as <code>fgets</code> and
-          <code>getline</code>. More to come...</p>
+          <code>getline</code>.</p>
+        <p>Alright, let's get started with <code>client.c</code>:</p>
+        <pre class="line-numbers">
+            <code class="language-clike">
+                #include &lt;string.h&gt;
+                #include &lt;stdio.h&gt;
+                #include &lt;stdlib.h&gt;
+
+                #include "client.h"
+                
+                void
+                client_create( int comm_fd ) {
+                  // Dynamically allocate struct.
+                  struct client_s *client = malloc( sizeof( struct client_s ) );
+                  if ( client == NULL ) {
+                    perror( "Could not allocate memory for client struct.\n" );
+                    exit( EXIT_FAILURE );
+                  }
+                  memset( client, 0, sizeof( struct client_s ) );
+                  // TODO...
+                }
+            </code>
+          </pre>
+        <p>When we <code>accept</code> the client request, we're going to create and dynamically allocate a client
+          struct. From here, we'll need to make a couple of modifications to the header file so <code>server.c</code>
+          can call this function.</p>
+        <p>Add the <code>extern void client_create( int comm_fd );</code> prototype to <code>client.h</code>, and
+          include <code>client.h</code> in <code>server.c</code>. Those are all the modifications for now.</p>
+        <p>Next, let's create the pipes for reading and writing to the client. Recall that the file descriptor <i>is</i>
+          a pipe for this, but because we want to read and write at the same time to and from the client, we need to
+          make use of the <code>dup()</code> function. This function returns a duplicated copy of the file descriptor.
+          Since we need two new links, we can call <code>dup</code> twice and dedicate one file descriptor for reading,
+          and one for writing. Note that, to do this, you need to include two new headers: <code>unistd.h</code>, and
+          <code>fcntl.h</code>. So, here's what I mean:</p>
+        <pre class="line-numbers">
+            <code class="language-clike">
+              // Create the read and write file descriptors.
+              client->comm_fd = comm_fd;
+              int read_fd = dup( client->comm_fd );
+              int write_fd = dup( client->comm_fd );
+            
+              // Now attach them to FILE *s.
+              client->read_fp = fdopen( read_fd, "r" );
+              client->write_fp = fdopen( write_fd, "w" );
+            </code>
+          </pre>
+        <p>Notice what we're doing here: after we create the two unique file descriptors, we attach them to
+          <code>FILE *</code> with the <code>fdopen</code> function (conveniently named "file-descriptor open"!). You
+          may have seen a variant of this called <code>fopen</code>. The difference here is that we're operating with a
+          file descriptor integer rather than a path location or filename. Again, we do this so we have access to
+          high-level functions for string processing/parsing later on - it makes our lives much easier!</p>
+        <p>For now, that's all we'll do. Let's write the client cleanup function, of course!</p>
+        <pre class="line-numbers">
+            <code class="language-clike">
+              void 
+              client_destroy( struct client_s *client ) {
+                // Free the name if it exists.
+                if ( client->username != NULL ) {
+                  free( client->username );
+                }
+
+                if ( fclose( client->read_fp ) < 0 ) {
+                  perror( "Could not close client's read file ptr.\n" );
+                  exit ( EXIT_FAILURE );
+                }
+
+                if ( fclose( client->write_fp ) < 0 ) {
+                  perror( "Could not close client's write file ptr.\n" );
+                  exit( EXIT_FAILURE );
+                }
+
+                free( client );
+              }
+            </code>
+            </pre>
+        <p>You may be wondering: what is <code>username</code>? Remember it's that <code>char *</code> in the struct! We
+          haven't done anything with it yet because 1. we're not passing the IP address from the server to the
+          <code>client_create</code> function as there's no real need to, and 2. because it's not a static char array,
+          we have to check to see if it has been <code>malloc</code>'d, and if so, free it. We'll come back to this
+          later.</p>
+        <p>The rest of the code should make sense. We're closing the file pointers and if an error occurs, we just bail
+          out. Finally, we free the memory associated with the client. Make sure to add this function to the header.</p>
+        <p>Awesome. Since I want to make these parts a bit shorter, we'll stop here for now, and next time we'll
+          actually build the doubly linked list to store clients once they connect. Check the latest part 2 release tag
+          for the latest changes, including the oh-so-slightly updated Makefile.</p>
         <p><a href="https://github.com/JoshuaCrotts/Multithreaded-Chat-Server-Tutorial/releases/tag/part2">GitHub Code
             for Part 2.</a></p>
       </div>

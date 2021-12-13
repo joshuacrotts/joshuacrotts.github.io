@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Joshua Crotts">
+    <meta name="description" content="Computer Science Student">
+    <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css"
+        integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ=="
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous">
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"
+        integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g=="
+        crossorigin="anonymous"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({ 
+       "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+   });
+   </script>
+    <title>Ray Casting Lab</title>
+    <style>
+        code {
+            white-space: pre-wrap;
+        }
+
+        span.smallcaps {
+            font-variant: small-caps;
+        }
+
+        span.underline {
+            text-decoration: underline;
+        }
+
+        div.column {
+            display: inline-block;
+            vertical-align: top;
+            width: 50%;
+        }
+
+        div.hanging-indent {
+            margin-left: 1.5em;
+            text-indent: -1.5em;
+        }
+
+        ul.task-list {
+            list-style: none;
+        }
+
+        .display.math {
+            display: block;
+            text-align: center;
+            margin: 0.5rem auto;
+        }
+
+        li {
+            margin: 0px 0px 25px 0;
+        }
+
+        img.question {
+            width: 20px;
+            height: 20px;
+        }
+
+        p.question {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="title-block-header">
+        <h1 class="title">Two-Dimensional Ray Casting</h1>
+    </header>
+    <p><i>Note: this assignment description is largely incomplete - still working on it!</i></p>
+    <!--<p><img src="../img/raymarching.png" />-->
+    <h2>Metadata</h2>
+    <table style="text-align: justify;">
+        <tr>
+            <th>Summary</th>
+            <td>Raycasting is an old rendering technique used in video games and computer graphics that allows
+                two-dimensional rendering of primitive shapes to be projected/portrayed into a three-dimensional
+                environment. </td>
+        </tr>
+        <tr>
+            <th>Audience</th>
+            <td>Students with basic-to-intermediate computer science and programming knowledge are ideal candidates for
+                this lab. Specifically, objects, methods, classes, iteration & selection statements, and variables.
+                Knowledge of trigonometry and geometry is extremely helpful.</td>
+        </tr>
+        <tr>
+            <th>Difficulty</th>
+            <td>Depending on the student's aptitude, this could easily be a one-to-two-week assignment if asked to
+                create it from scratch. With starting supplemental files, though, it should be completable in, at most,
+                one.</td>
+        </tr>
+        <tr>
+            <th>Topics</th>
+            <td>Computer graphics rendering, collision detection, pseudo-3D graphics, rays, random number generation
+            </td>
+        </tr>
+        <tr>
+            <th>Strengths</th>
+            <td>Teaches students the basics of collision detection (i.e., ray to shape). Random shape generation in an
+                environment. Shows students the connection between an overhead rendering perspective and how it
+                translates to a pseudo-3D perspective. Allows students to break down the math of how a collision between
+                a ray and a primitive shape is detected. Gives a fun and colorful environment and insight to how older
+                computer games and graphics were simulated with lower-end hardware in decades past.
+            </td>
+        </tr>
+        <tr>
+            <th>Weaknesses</th>
+            <td>Some students may struggle with the graphical components of this lab, as well as keyboard listener
+                input. The math is also less straightforward than other labs that do not focus on computer graphics,
+                particularly since we are not using calculus or linear algebra. The assignment is also linear in that
+                each piece is, ideally, constructed in succession to the final product.</td>
+        </tr>
+        <tr>
+            <th>Dependencies</th>
+            <td>The current implementation aims primarily at students learning Java. However, this could easily be
+                adapted to other languages that have a corresponding graphics library. We use Java Swing, whereas Python
+                could use Tkinter, C with SDL, C++/C# with SDL (Simple DirectMedia Layer) or SFML (Simple and Fast Media
+                Library).</td>
+        </tr>
+        <tr>
+            <th>Variants</th>
+            <td>This lab is easily expandable to add sprites, colors, lighting, shading, different shapes in the
+                environment, other entities in the world to interact with.</td>
+        </tr>
+
+    </table>
+    <h2>Resources/Downloads</h2>
+    We have included <a href="../assets/assignments/2DRaycastingLab.docx">Word</a> and <a
+        href="../assets/assignments/2DRaycastingLab.pdf">PDF</a>
+    versions of this lab for your convenience. The accompanying Java source files are <a
+        href="../assets/assignments/RaycastingLab.zip">here.</a> All instructions and information to complete the lab
+    are
+    available on this
+    website, of course. Lastly, our rubric for the assignment is available in <a
+        href="../assets/assignments/2DRaycastingLabRubric.docx">Word</a> and <a
+        href="../assets/assignments/2DRaycastingLabRubric.pdf">PDF</a>.
+    This may be customized
+    or
+    adapted to fit different courses.
+    <h2>Objective</h2>
+    <p style="text-align: justify;">By the end of this lab, students should be able to use iteration to determine the
+        distance between a point and several objects in a plane, change angle-of-view and position via keyboard input,
+        and modify graphics/shapes in a plane. Students should also understand how two-dimensional top-down rendering
+        translates to a first-person, pseudo three-dimensional perspective.</p>
+    <h2>Background</h2>
+    <p style="text-align: justify;">Raycasting is an old rendering technique used in video games and computer graphics that allows two-dimensional rendering of primitive shapes to be projected/portrayed in a pseudo-three dimensional environment. Because of the complexity of rendering three-dimensional graphics, game developers decided to only render in two-dimensions while giving the effect of the third dimension! In this lab, you will create a small program that allows a user to traverse a two-dimensional world in the third dimension.</p>
+    <h2>What To Do</h2>
+    <ol style="text-align: justify;">
+        <li>First, download the accompanying Raycaster.zip file. Inside, you will find three Java classes: RaycasterRunner, RaycasterPanel, and SwingApplication. The latter SwingApplication initializes boilerplate code for the front-end Swing components, so unless you are interested, it is not necessary to investigate this code further. There are a few methods that we use, but the underlying implementation is beyond the scope of this lab. This lab was designed with the Eclipse IDE, but it can work with or without an IDE.</li>
+        <li>After setting up the project, get accustomed to the two other classes. The main class, RaycasterRunner, as the name suggests, runs the application and initializes all GUI components. On the other hand, RaycasterPanel is where you will be doing most of the laborious work. This JComponent object is called a JPanel. In short, rendering and drawing should occur on this panel object. To test your environment, we have included a couple lines of code that draws a blue rectangle on the screen inside the paintComponent method using the Graphics2D class. Play around with this to see if you can try different colors or even different shapes. Remove these lines (except the first two) once you are done experimenting.</li>
+        <li>Since we’re going to be creating an environment for rays to collide with, we obviously need objects for the ray to collide with, right? So, let’s do that. Create a class called RectangleObject. The idea is this: we’re going to populate our world with random rectangles that serve as walls. A RectangleObject should have, at minimum, an x/y coordinate pair and dimension fields.</li>
+        <li>Now, you may be wondering: “Where do we instantiate these objects?” Well, we can populate them in the RaycasterPanel class. Create a list of RectangleObjects with random dimensions and positions. The size of the list doesn’t necessarily matter, but try to keep it lower than twenty (20) objects. Also, make sure that objects do not generate outside the world!</li>
+        <li>At this point, you should have a fully populated list of RectangleObjects. It is now time to draw them! Note that JComponents have the paintComponent(Graphics g) method for drawing. We’re going to do something similar. Since we’re going to be drawing objects besides RectangleObjects, we should create an interface that says something is “drawable”. Create an interface called Drawable with the method signature void drawObject(Graphics2D g2d). From here, implement the interface in RectangleObject and override its method in your subclasses. Now, add the functionality to draw the shapes. Finally, in your panel class, iterate over your list of objects and call drawObject on each one. When drawing the rectangles, draw them at their center! Drawing them at the top-left causes severe problems down the road. So, make sure you apply the correct math offsets to draw the shape at its center (note that I said draw at the center; not position at the center. If you position at the center then you’ve already done this part!).</li>
+        <li>We’re now ready to start our ray caster! The first thing we need is some type of “camera” or perspective to start at. The camera will be the location of the “player”, so to speak. Create a class called Camera and another called Ray. Camera should have a position and an ArrayList of Ray objects. The camera will project out several hundred individual rays that form a cone that acts as the field of view (i.e., what the camera can see).</li>
+    </ol>
+</body>
+
+</html>

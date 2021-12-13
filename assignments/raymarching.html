@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Joshua Crotts">
+  <meta name="description" content="Computer Science Student">
+  <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css"
+    integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ=="
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous">
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"
+    integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g=="
+    crossorigin="anonymous"></script>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({ 
+       "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+   });
+   </script>
+  <title>Joshua Crotts</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    .display.math {
+      display: block;
+      text-align: center;
+      margin: 0.5rem auto;
+    }
+
+    li {
+      margin: 0px 0px 25px 0;
+    }
+
+    img.question {
+      width: 20px;
+      height: 20px;
+    }
+
+    p.question {
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="title-block-header">
+    <h1 class="title">Two-Dimensional Ray Marching</h1>
+  </header>
+  <!--<p><img src="../img/raymarching.png" />-->
+  <h2>Metadata for Nifty Assignments</h2>
+  <table style="text-align: justify;">
+    <tr>
+      <th>Summary</th>
+      <td>Two-dimensional ray marcher, experiments with random shape generation, primitive collision detection,
+        object-oriented programming, mouse/keyboard input.</td>
+    </tr>
+    <tr>
+      <th>Audience</th>
+      <td>This lab is primarily aimed at students with at least a semester’s worth of programming (i.e., loops,
+        conditionals, variables, arrays), preferably in Java. The student does not need any experience with graphical
+        user interfaces or libraries - we walk the students through these components. Object-oriented programming
+        paradigm knowledge and understanding is essential (i.e., methods, classes, polymorphism, abstract classes,
+        interfaces).</td>
+    </tr>
+    <tr>
+      <th>Difficulty</th>
+      <td>A second semester (or in-progress) student should be capable of completing this lab. A strong first semester
+        student may be able to with time.</td>
+    </tr>
+    <tr>
+      <th>Topics</th>
+      <td>Ray marching, Computer graphics, collision detection, sphere tracing</td>
+    </tr>
+    <tr>
+      <th>Strengths</th>
+      <td>Allows the student to see how collision detection techniques work compared to naive approaches. Students are
+        exposed to rendering graphics, data structures, polymorphism, abstract classes, interfaces, and mouse movement
+        and input.</td>
+    </tr>
+    <tr>
+      <th>Weaknesses</th>
+      <td>This is a long lab, taking around two to three hours to do in one sitting with a fairly competent student.
+        This could serve as a one to two week homework assignment. The lab also requires knowledge of some basic
+        trigonometry. Further, it relies on the student understanding a good amount of Java (or at the very least the
+        ability to pick it up fast).</td>
+    </tr>
+    <tr>
+      <th>Dependencies</th>
+      <td>In the current iteration, this lab depends on Java Swing. Though, this could easily be ported to another
+        framework like JavaFX or an entirely different language like C or C++ with SDL and SFML. For convenience,
+        though, we include starter code using Java and Java Swing.</td>
+    </tr>
+    <tr>
+      <th>Variants</th>
+      <td>Variations include using different shapes, gradients as colors, camera panning.</td>
+    </tr>
+
+  </table>
+  <h2>Resources/Downloads</h2>
+  We have included <a href="../assets/assignments/2DRaymarchingLab.docx">Word</a> and <a
+    href="../assets/assignments/2DRaymarchingLab.pdf">PDF</a>
+  versions of this lab for your convenience. The accompanying Java source files are <a
+    href="../assets/assignments/RaymarchingLab.zip">here.</a> All instructions and information to complete the lab are
+  available on this
+  website, of course. Lastly, our rubric for the assignment is available in <a
+    href="../assets/assignments/2DRaymarchingLabRubric.docx">Word</a> and <a
+    href="../assets/assignments/2DRaymarchingLabRubric.pdf">PDF</a>.
+  This may be customized
+  or
+  adapted to fit different courses.
+  <h2>Objective</h2>
+  <p style="text-align: justify;">By the end of this lab, students should be able to use iteration to determine the
+    distance between a point and
+    several objects in a plane, change angle-of-view and position via mouse input, and modify graphics/shapes in a
+    plane. Students should also be able to understand the benefits of raymarching over other two-dimensional collision
+    detection techniques.</p>
+  <h2>Background</h2>
+  <p style="text-align: justify;">Today's world of computing is filled to the brim with colorful and life-like graphics
+    - continuing to blur the line
+    from fantasy and reality. Has it ever occurred to you to think about how games, animators, and others create these
+    amazing works of art? In this lab, we're going to explore the topic of sphere-tracing: a type of ray marching
+    algorithm. </p>
+  <p style="text-align: justify;">First, let's back up and understand what ray tracing is, since ray marching is a
+    derivation. Ray tracing involves a
+    camera and an environment (also called a world). The camera projects simulated lines called rays into the world
+    which then interact with objects in the world. Think of it like a light source; light travels from its source to
+    objects which is then reflected and altered based on the colliding object. Try to imagine how a computer would need
+    to do this. A computer has to, mathematically, determine when a collision with an object occurs so as to not
+    erroneously pass through that object (we're ignoring translucency!). A naive solution is to extend, or march, the
+    ray outward in intervals of a predetermined unit, checking for collision along its path. This raises an obvious
+    question: what is a unit, and what about the interval? Look at the diagram below.
+  </p>
+  <p style="text-align: justify;">Note that the star is the camera (i.e., where our ray begins), and the purple line is
+    a wall, or an object. If we
+    assume our ray checks for collisions every 2 squares, then the ray passes right through the object! The solution
+    would be to change our frequency to checking for collisions every one square. Though, imagine this world is
+    significantly bigger. If we check for collisions too often, it's slow. Conversely, too few implies the possibility
+    of missing an object. Sphere tracing provides a happy medium.</p>
+  <h2>What To Do</h2>
+  <ol style="text-align: justify;">
+    <li>First, download the accompanying <samp>RaymarchingLab.zip</samp> file (listed above). Inside, you will find
+      three
+      Java classes:
+      <samp>RaymarcherRunner</samp>, <samp>RaymarcherPanel</samp>, and <samp>SwingApplication</samp>. The latter
+      <samp>SwingApplication</samp> initializes boilerplate code
+      for the front-end Swing components, so unless you are interested, it is not necessary to investigate this code
+      further. There are a few methods that we use, but the underlying implementation is beyond the scope of this lab.
+      This lab was designed with the Eclipse IDE, but it can work with or without an IDE.
+    </li>
+    <li>After setting up the project, get accustomed to the two other classes. The main class,
+      <samp>RaymarcherRunner</samp>, as the
+      name suggests, runs the application and initializes all GUI components. On the other hand,
+      <samp>RaymarcherPanel</samp> is
+      where you will be doing most of the laborious work. This <samp>JComponent</samp> object is called a
+      <samp>JPanel</samp>. In short, rendering
+      and drawing should occur on this panel object. To test your environment, we have included a couple lines of code
+      that draws a blue rectangle on the screen inside the <samp>paintComponent</samp> method using the
+      <samp>Graphics2D</samp> class. Play around
+      with this to see if you can try different colors or even different shapes. Remove these lines (except the first
+      two) once you are done experimenting.
+    </li>
+    <li>Since we’re going to be creating an environment for rays to collide with, we obviously need objects for the ray
+      to collide with, right? So, let’s do that. Create two subclasses called <samp>RectangleObject</samp> and
+      <samp>CircleObject</samp> that
+      extend an abstract superclass <samp>CollisionObject</samp>. The idea is this: we’re going to populate our world
+      with random
+      rectangles and circles. A <samp>CollisionObject</samp> should have, at minimum, an <span class="math inline">\((x,
+        y)\)</span> coordinate pair. <samp>RectangleObject</samp> should
+      have width/height fields, and <samp>CircleObject</samp> should have a radius/diameter field, whichever you prefer
+      (note which
+      one you use to construct the object because it will be relevant later).
+    </li>
+    <p><img src="../img/caution.png" /> <b>Warning!</b> Make absolutely sure that you use double or float variables when
+      initializing positions. When drawing with Swing, you can do one of a few things: either create objects with the
+      <samp>java.awt.geom</samp> package that allow for explicit doubles when instantiating shape objects (e.g.,
+      <samp>Line2D</samp>, <samp>Rectangle2D</samp>,
+      <samp>Ellipse2D</samp>) and then draw those with <samp>g2d.drawShape()</samp>, or cast doubles to integers and use
+      other methods in
+      <samp>Graphics2D</samp>. Later on when we perform arithmetic on the positions and dimensions, floating-point
+      operations are
+      crucial to ensure we don’t encounter integer truncation issues.
+    </p>
+    <p><img src="../img/caution.png" /> <b>Warning!</b> If you’re trying to set the positioning based on the
+      screen/window size, you’ll need to use <samp>this.getPreferredSize().width</samp> and
+      <samp>this.getPreferredSize().height</samp>. This is
+      because the <samp>JPanel</samp> hasn’t been packed into the parent <samp>JFrame</samp> component when the
+      <samp>CollisionObject</samp> are instantiated.
+    </p>
+    <p><img src="../img/caution.png" /> <b>Warning!</b> Keep note of whether the objects are instantiated at the center
+      or the top-left. Whether you do either or is up to you, but if you instantiate them at the center now, it’s
+      slightly less effort later. Otherwise, you have to do a bit more later on since we’ll be working with the center
+      of objects.
+    </p>
+    <p class="question"><img src="../img/question.png" class="question" /> Try this out: if you are familiar with
+      vectors, writing
+      your own small 2-D vector class to handle positioning,
+      dimensions, and movement is extremely beneficial!</p>
+
+    <li>Now, you may be wondering: “Where do we instantiate these objects?” Well, we can populate them in the
+      <samp>RaymarcherPanel</samp> class. Create a list of <samp>CollisionObjects</samp> with random dimensions and
+      positions. The size of the
+      list doesn’t necessarily matter, but try to keep it lower than twenty (20) objects. Also, make sure that objects
+      do not generate outside the world!
+    </li>
+    <li>At this point, you should have a fully populated list of <samp>CollisionObjects</samp>. It is now time to draw
+      them! Note
+      that <samp>JComponent</samp>s have the <samp>paintComponent(Graphics g)</samp> method for drawing. We’re going to
+      do something similar.
+      Since we’re going to be drawing objects besides <samp>CollisionObjects</samp>, we should create an interface that
+      says
+      something is “drawable”. Create an interface called <samp>Drawable</samp> with the method signature void
+      <samp>drawObject(Graphics2D
+        g2d)</samp>. From here, implement the interface in <samp>CollisionObject</samp> and override its method in your
+      subclasses. Now, add
+      the functionality to draw the shapes. Finally, in your panel class, iterate over your list of objects and call
+      <samp>drawObject</samp> on each one. When drawing the objects, draw them at their center! Drawing them at the
+      top-left causes
+      severe problems down the road. So, make sure you apply the correct math offsets to draw the shape at its center
+      (note that I said <u>draw</u> at the center; not <u>position</u> at the center. If you position at the center then
+      you’ve
+      already done this part!).
+    </li>
+    <p class="question"><img src="../img/question.png" class="question" /> Try this out: give each shape a random
+      <samp>Color</samp>
+      attribute! The <samp>Graphics2D</samp> method
+      <samp>setColor(java.awt.Color)</samp> may be useful!
+    </p>
+    <img src="../img/raymarching1.png" style="float: center;" />
+    <li>We’re now ready to start our ray marcher! The first thing we need is some type of “camera” or perspective to
+      start at. It also would be a little boring if we could only march rays in one direction, right? So, we’ll need to
+      add a listener to our camera, but we’ll get to that as we go. Firstly, Create a class called <samp>Camera</samp>
+      and another
+      called <samp>March</samp>. <samp>Camera</samp> will be where the ray begins marching, and <samp>March</samp> will
+      be a single step, or iteration, in the
+      ray march. Both of these will have <span class="math inline">\((x, y)\)</span> coordinates and radii. This is
+      almost identical to the <samp>CircleObject</samp> class,
+      and we could reuse it, but because they serve different purposes (and we’re going to add more to it), we’ll just
+      rewrite a new class. We’ll first write the <samp>Camera</samp> class since it is more interesting.</li>
+    <li><samp>Camera</samp>, as we mentioned earlier, is the starting point of our ray march. So, like
+      <samp>CollisionObject</samp>, we’re going
+      to implement <samp>Drawable</samp>. The camera is just a small circle, so giving it a fixed radius of, say, ten
+      (10) pixels is
+      sufficient. Do the same thing you did for <samp>CircleObject</samp>: draw the camera at the provided x and y
+      coordinates.
+    </li>
+    <li>Now, we’re ready to move our camera! There are two ways we can do this: with keyboard input or mouse input. We
+      will choose the latter. As we move the mouse around the world, we want our camera to follow us. Thankfully, Java
+      provides a very nice <samp>MouseMotionListener</samp> interface for us to implement. Once <samp>Camera</samp>
+      implements this, you will be
+      required to override two methods, but we only need to write code inside one: <samp>mouseMoved(MouseEvent)</samp>.
+      Whenever we
+      move the mouse, we want to update the <span class="math inline">\(x\)</span> and <span
+        class="math inline">\(y\)</span> coordinates of <samp>Camera</samp>. Any time the mouse is moved, the mouseMoved
+      method is called, and the <samp>MouseEvent</samp> parameter contains two methods: <samp>getX()</samp> and
+      <samp>getY()</samp>. So, assign the coordinate
+      instance variables of <samp>Camera</samp> to these values in this method.
+    </li>
+    <li>The only thing that’s left is to register the motion listener with the panel. So, create an instance of
+      <samp>Camera</samp>
+      inside the <samp>RaymarcherPanel</samp> constructor. Call <samp>addMouseMotionListener</samp> and pass it the
+      <samp>Camera</samp> object. Also, don’t
+      forget to call <samp>drawObject</samp> from <samp>Camera</samp> inside <samp>RaymarcherPanel</samp>’s
+      <samp>paintComponent</samp> method or you won’t see anything!
+      Run the program and you should see your camera move as you move the mouse.
+    </li>
+    <p><img src="../img/caution.png" /> <b>Warning!</b> If you place the camera’s draw method above the loop where you
+      draw the objects, you won’t see it if your mouse is over an object. Can you deduce why?
+    </p>
+    <p class="question"><img src="../img/question.png" class="question" /> Try this out: If you assign the <span
+        class="math inline">\(x\)</span> and
+      <span class="math inline">\(y\)</span> coordinates to the exact position of the mouse event’s <span
+        class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates,
+      it will
+      be slightly offset. Try and find out why and how to fix it (note that it has nothing to do with the assignment
+      itself!).
+    </p>
+    <img src="../img/raymarching2.png" style="float: center;" />
+    <li>
+      <p>Now, let’s begin the raymarching! As we mentioned, we’re going to implement sphere tracing, where we compute
+        the minimum distance between the mouse and all objects in the scene. So, we first need to understand how to
+        compute this. We’re essentially computing the hypotenuse of the triangle formed from the center of the camera to
+        an object’s center. So, let’s look at this for both cases.</p>
+      <p>For circles, We need to account for only one thing: the radius. Take the distance (also called the magnitude if
+        you’re familiar with vectors) from the camera to the center of the circle and subtract its radius. The formula
+        is as follows: </p>
+      <p><span class="math display">
+          \[
+          d = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2} - r
+          \]
+      </p>
+      <p>Where <span class="math inline">\(x_1\)</span>, <span class="math inline">\(y_1\)</span> represent the
+        coordinates of the camera’s center, and <span class="math inline">\(x_2\)</span>, <span
+          class="math inline">\(y_2\)</span> represent the center of the circle. <span class="math inline">\(r\)</span>
+        is the radius of the circle. In the figure below, we want to compute the magnitude (length) of the green line).
+        This is <span class="math inline">\(d\)</span> in the above equation.</p>
+      <img src="../img/raymarching3.png" style="float: center;" />
+      <p>Rectangles are a bit more complicated since we’re involving both width and height instead of just a radius. The
+        simplest way to do it is to compute the distance between the camera and the line segments that make up the
+        rectangle. <samp>Line2D</samp> provides a great method for computing this distance: <samp>ptSegDist</samp>.
+        There are four line segments
+        that make up each rectangle, so just take the minimum of all four segments. Note that creating the line segments
+        is ever so slightly harder (not by much at all!) if you chose to center the rectangle instead of using its
+        top-left coordinate. In the figure below, note that each line segment is denoted by <span
+          class="math inline">\(L_1\)</span>, <span class="math inline">\(L_2\)</span>, <span
+          class="math inline">\(L_3\)</span>, and <span class="math inline">\(L_4\)</span>.
+        Recreate this in your program using the aforesaid methods. A good idea would be to create an abstract method
+        <samp>computeDistance(double cameraX, double cameraY)</samp> in <samp>CollisionObject</samp> which is overridden
+        and implemented in your
+        subclasses. <i>Tips: This step will most likely take the most amount of time so use the Swing classes to your
+          advantage! <samp>Point2D</samp>, <samp>Line2D</samp>, etc. are all helpful!</i>
+      </p>
+      <img src="../img/raymarching4.png" style="float: center;" />
+    <li>Now, iterate through your list of objects and compute the minimum distance between the camera’s position and
+      each object. Use this distance to draw a circle at the camera’s center with a radius of the minimum distance
+      multiplied by two <i>(think about why we do this!)</i>. As you move the mouse around the screen, you should notice
+      that
+      the circle is drawn out to touch the nearest object.</li>
+    <p><img src="../img/caution.png" /> <b>Warning!</b> If you only multiply the distance of the circle by two and don’t
+      adjust where the circle is drawn, your circle will be drawn at an incorrect spot! So, be sure to multiply the
+      distance by two, then draw it at the camera’s center.
+    </p>
+    <img src="../img/raymarching5.png" style="float: center;" />
+    <img src="../img/raymarching6.png" style="float: right;" />
+    <li>We’re almost there! What we need to do now is actually cast multiple marches out into the world instead of just
+      one. The idea is as follows: march out as far as you can until you collide with something. Compute the minimum
+      distance from that point to every other object in the world and march out to that point. We need to eventually
+      stop marching if the march has a small enough radius (say, 0.01). If the minimum distance from the current point
+      to any other object is smaller than this threshold, we can deduce that we have collided with something and cast
+      the ray. Let’s start with the <samp>March</samp> class.</li>
+    <li>A march consists of four primary things: a circle, line, a starting point, and an ending point. The line’s
+      length should be equal to the radius of the circle. Create the <samp>March</samp> class with these properties.
+      Then, implement
+      the drawing functionality.</li>
+    <li>A ray consists of multiple marches. So, we can create a <samp>Ray</samp> class that receives a list of
+      <samp>March</samp> objects. When
+      drawing the ray, draw all the marches that are in its list.
+    </li>
+    <li>Lastly, we need to add this new functionality to the panel. You should use a loop to keep track of the minimum
+      distance between the current iteration point and any object in the world, and once this goes below that threshold
+      mentioned in step 12, break out, then initialize and draw a <samp>Ray</samp>. When marching, the next point should
+      be created
+      at the current point plus the length of the march (with no alterations to the y coordinate - see step 16 for more
+      on this!).</li>
+    <p><img src="../img/caution.png" /> <b>Warning!</b> If your program is freezing, check to make sure that your
+      distance functions are correctly computing the minimum distance, and that your threshold isn’t too low (below 0.01
+      can cause floating-point precision errors). Also, when setting up the loop to continue until the minimum distance
+      is below the threshold, you most likely want a do-while loop because you want at least one iteration to complete
+      prior to breaking out. Further, you may want to keep track of the ending position of the current point in the
+      march - if it goes beyond the screen, you should terminate the loop! Finally, if you’re noticing that, as you move
+      the mouse closer to a point that it suddenly locks up, check to make sure all coordinates are floating point and
+      non-integer!
+    </p>
+    <p><img src="../img/caution.png" /> <b>Warning!</b> The same bug with the circle’s rendering location occurs here if
+      you don’t offset it like step 11 informed you.
+    </p>
+    <img src="../img/raymarching7.png" style="float: center;" />
+    <li>This is nice, but wouldn’t it be neater if we could rotate that ray? It sure would be!. First, let’s consider
+      what is going on when marching. As we said in step 15, we’re only advancing along the x-axis and not the y-axis.
+      This makes drawing our marches (and hence the ray) easy since there’s no trigonometry involved. But, to advance
+      along both axes, we need a new field in the <samp>Camera</samp> class to keep track of the angle. After this, we
+      need a way of
+      modifying said angle. There are a few ways to do this, but we’ll go with a mouse approach again. Let’s suppose
+      that when the user clicks the left mouse button, their camera angle will increase, and decrease if they click the
+      right mouse button. To implement this, we need to use the <samp>MouseListener</samp> interface, and again, it will
+      require that
+      you import a whole bunch of methods but we only need to use one: <samp>mousePressed(MouseEvent)</samp>.</li>
+    <li>In mousePressed, a <samp>MouseEvent</samp> is supplied, just like <samp>mouseMoved</samp>. The difference is
+      that we will be using the
+      getButton method to determine which button was pressed instead of checking for position. To check which button was
+      pressed, use <samp>event.getButton() == MouseEvent.BUTTONX</samp>, where <samp>X</samp> represents the button (1
+      is
+      the left mouse button, 3
+      is the right button). Write the code to increment the angle by 1 if the left mouse button was pressed, and
+      decrement by 1 if the right button was pressed. After this, add the <samp>Camera</samp> instance as a
+      <samp>mouseListener</samp> object to
+      the panel.
+    </li>
+    <li>
+      <p>So, this doesn’t change much if you run it. However, now we can update our ray drawing procedure. To do this,
+        we can use polar coordinates.</p>
+      <p>We have our starting coordinate pair <span class="math inline">\(P_1\)</span>, and the minimum distance from
+        <span class="math inline">\(P_1\)</span>
+        to
+        any object in the plane is <span class="math inline">\(l\)</span>. The
+        camera’s angle is <span class="math inline">\(t\)</span> in radians. We wish to compute <span
+          class="math inline">\(P_2\)</span>, the ending coordinate pair to this line. Thus,
+      </p>
+      <span class="math display">
+        \begin{align*}
+        P_{2_x} &= P_{1_x} + l \cdot \cos(t)\\
+        P_{2_y} &= P_{1_y} + l \cdot \sin(t)
+        \end{align*}
+      </span>
+      <p>Use this logic to update your code and see what it does now.</p>
+    </li>
+    <img src="../img/raymarching8.png" style="float: center;" />
+    <p class="question"><img src="../img/question.png" class="question" /> Try this out: You may notice that constantly
+      clicking the
+      mouse to change the angle is a bit cumbersome. Use some of the other <samp>MouseListener</samp> methods to change
+      this
+      functionality!
+    <p>
+      <li>And that’s it! You’ve successfully created a sphere tracing ray marcher. Continue to add new things such
+        as different shapes! You can add triangles and polygons in the same way that we did the rectangles.</li>
+  </ol>
+</body>
+</html>

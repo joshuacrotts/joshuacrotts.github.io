@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="CSCI-C 212">
+  <meta name="description" content="Introduction to Software Systems">
+  <link rel='shortcut icon' type='image/x-icon' href='../img/favicon.ico' />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css"
+    integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ=="
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous">
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"
+    integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g=="
+    crossorigin="anonymous"></script>
+  <title>(S24) Introduction to Software Systems</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    .display.math {
+      display: block;
+      text-align: center;
+      margin: 0.5rem auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="title-block-header">
+    <h1 class="title">CSCI-C 212/A 592: Introduction to Software Systems</h1>
+    <h2 class="subtitle">Spring 2024</h2>
+    <h3 class="instructor">Instructors: <a href="https://www.joshuacrotts.us">Joshua Crotts</a>, <a href="https://luddy.indiana.edu/contact/profile/index.html?Muazzam_Siddiqui">Muazzam Siddiqui</a></h3>
+    <h3 class="instructor">Syllabus: <a href="../assets/teaching/c212-s24/c212-s24-jc-syllabus.pdf">PDF</a></h3>
+  </header>
+  <hr />
+  <h3 class="catalog-description">Catalog Description:</h3> <p>Design of computer software systems and introduction to programming in the environment of a contemporary operating system. Topics include a modern object-oriented programming language; building and maintaining large projects; and understanding the operating system interface.</p>
+  <h3 class="prerequisites">Prerequisites: </h3>
+  CSCI-C 211 or CSCI-H 211 or CSCI-C 200 or CSCI-H 200 or equivalent.
+  <h3 class="textbook">Required Textbook:</h3>
+    <p>Joshua Crotts, <i><a href="java-book-1230.pdf">Teaching Java: A Test-Driven Approach</a></i></p>
+  <h3 class="ancillary-resources">Ancillary Resources:</h3>
+    <ul>
+        <li>Cay Horstmann, <i>Big Java: Late Objects</i>, 2e</li>
+        <li>Y. Daniel Liang, <i>Introduction to Java Programming and Data Structures</i>, 13e.</li>
+        <li>Mark Allen Weiss, <i>Data Structures and Problem Solving Using Java</i>, 4e.</li>
+        <li>Joshua Bloch, <i>Effective Java</i>, 3e.</li>
+    </ul>
+  <h3 class="grading-scale">Grading Scale</h3>
+    <ul>
+        <li>Assignments: 40%</li>
+        <li>Labs: 10%</li>
+        <li>Midterm Exam (February 28, 2024): 25%</li>
+        <li>Final Exam (date TBD): 25%</li>
+    </ul>
+  <hr />
+  <h3 class="student-learning-outcomes">Student Learning Outcomes:</h3>
+  Upon completion of this course, students should be able to:
+    <ul>
+        <li>Use basic programming constructs including variables, decisions, loops, and functions in writing programs;</li>
+        <li>Utilize object-oriented programming concepts of classes, objects, encapsulation, inheritance, and polymorphism in designing programs;</li>
+        <li>Demonstrate skill in using software development methodology to design, implement and debug object-oriented software systems;</li>
+        <li>Use appropriate components from the Java Collections framework to solve a given problem;</li>
+        <li>Use an IDE to develop, debug, test and run programs;</li>
+        <li>Analyze searching and sorting algorithms using asymptotic analysis techniques.</li>
+    </ul>
+  <hr />
+  <p><em>Note: </em><b>TJ</b> <em>refers to the required textbook for this class.</em></p>
+  <table id="schedule" class="pure-table pure-table-horizontal">
+    <thead>
+      <tr>
+        <th id="date-column">Week</th>
+        <th id="monday-column">Monday</th>
+        <th id="wednesday-column">Wednesday</th>
+        <th id="lab-column">Lab</th>
+        <th id="assignment-column">Assignment</th></tr>
+        
+    </thead>
+    <tbody>
+      <tr><td>Jan 8</td><td><b>Reading: Chapter 1 of TJ</b><br />Intro, Variables, & Datatypes</td><td>Static Methods & Testing</td><td><a href="assets/teaching/c212-s24/labs/Lab01v1.pdf">IntelliJ & Setup</a></td><td><a href="assets/teaching/c212-s24/assignments/A1v1.pdf">A1</a> Out (1/8)</td></tr>
+
+      <tr><td>Jan 15</td><td><em>(MLK Jr. Day)</em></td><td>Strings & Conditionals</td><td><a href="assets/teaching/c212-s24/labs/Lab02v1.pdf">Basic Programs</a><td></td></tr>
+
+      <tr><td>Jan 22</td><td>Strings & Conditionals cont.</td><td>Methods (Helpers & Recursion)</td><td><a href="assets/teaching/c212-s24/labs/Lab03v1.pdf">Methods</a></td><td>A1 Due, <a href="assets/teaching/c212-s24/assignments/A2v1.pdf">A2</a> Out (1/22)</td></tr>
+
+      <tr><td>Jan 29</td><td>Loops</td><td>Loops cont.</td><td><a href="assets/teaching/c212-s24/labs/Lab04v1.pdf">Loops</a><td></td></tr>
+
+      <tr><td>Feb 5</td><td>Arrays</td><td>ArrayLists</td><td><a href="assets/teaching/c212-s24/labs/Lab05v1.pdf">Arrays, ArrayLists</a></td><td>A2 Due, <a href="assets/teaching/c212-s24/assignments/A3v1.pdf">A3</a> Out (2/5)</td></tr>
+
+      <tr><td>Feb 12</td><td>Java Collections API</td><td>More Collections & Generics</td><td><a href="assets/teaching/c212-s24/labs/Lab06v1.pdf">Collections & Generics</a></td><td>A1 Corrections Due (2/12)</tr>
+
+      <tr><td>Feb 19</td><td>Streams</td><td>Streams cont.</td><td><a href="assets/teaching/c212-s24/labs/Lab07v1.pdf">Streams & Review</a></td><td>A3 Due, <a href="assets/teaching/c212-s24/assignments/A4v1.pdf">A4</a> Out (2/19)</td></tr>
+
+      <tr><td>Feb 26</td>
+        <td>Midterm Review<br />
+            <a href="assets/teaching/c212-s24/exams/midterm-f23.pdf">Fall 2023 Midterm</a><br />
+            <a href="assets/teaching/c212-s24/exams/midterm-soln-f23.pdf">Fall 2023 Midterm Solutions</a></td>
+        <td><b>Midterm</b></td><td><em>(No Lab)</em></td><td>A2 Corrections Due (02/26)</td></tr>
+
+      <tr><td>Mar 4</td><td>Objects & Classes</td><td>Objects & Classes cont.</td><td><a href="assets/teaching/c212-s24/labs/Lab08v1.pdf">Basic OOP</a></td><td>A3 Corrections Due (03/04)</td></tr>
+
+      <tr><td>Mar 11</td><td><em>(Spring Break)</em></td><td><em>(Spring Break)</em></td><td><em>(No Lab)</em></td><td></td></tr>
+
+      <tr><td>Mar 18</td><td>Mutation & Aliasing</td><td>Mutation & Aliasing cont.</td><td><a href="assets/teaching/c212-s24/labs/Lab09v1.pdf">More OOP</a></td><td>A4 Due, <a href="assets/teaching/c212-s24/assignments/A5v1.pdf">A5</a> Out (3/18)</td></tr>
+
+      <tr><td>Mar 25</td><td>Interfaces</td><td>Inheritance</td><td><a href="assets/teaching/c212-s24/labs/Lab10v1.pdf">Even More OOP</a></td><td></td></tr>
+
+      <tr><td>Apr 1</td><td>Inheritance & Abstract Classes</td><td>The "ASPL" Interpreter</td><td><a href="assets/teaching/c212-s24/labs/Lab11v1.pdf">Even Even More OOP</a></td><td>A5 Due, <a href="assets/teaching/c212-s24/assignments/A6v1.pdf">A6</a> Out (4/1)</td></tr>
+
+      <tr><td>Apr 8</td><td><em>(Solar Eclipse)</em></td><td>Exceptions & I/O</td><td><a href="assets/teaching/c212-s24/labs/Lab12v1.pdf">Exceptions & I/O</a></td><td>A4 Corrections Due (04/08)</td></tr>
+
+      <tr><td>Apr 15</td><td>More on Exceptions, Searching, Algorithm Analysis</td><td>Sorting & Algorithm Analysis</td><td><a href="assets/teaching/c212-s24/labs/Lab13v1.pdf">Sorting & Searching</a></td><td></td></tr>
+
+      <tr><td>Apr 22</td><td>Concurrency</td>
+        <td>Final Exam Review<br />
+            <a href="assets/teaching/c212-s24/exams/practice-final-f23.pdf">Practice Fall 2023 Final</a><br />
+            <a href="assets/teaching/c212-s24/exams/practice-final-soln-f23.pdf">Practice Fall 2023 Final Solutions</a><br />
+            <a href="assets/teaching/c212-s24/exams/final-f23.pdf">Fall 2023 Final</a><br />
+            <a href="assets/teaching/c212-s24/exams/final-soln-f23.pdf">Fall 2023 Final Solutions</a>
+        </td>
+            <td><em>(No Lab)</em></td>
+            <td>A5 Corrections Due (04/22), A6 Due (04/22)</td></tr>
+    </tbody>
+  </table>
+ </body>
+</html>

@@ -1,0 +1,64 @@
+.ribbon {
+  padding: 1em 1em 2em;
+}
+.content {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.3;
+}
+h1, #email {
+  margin-bottom: 0;
+}
+@media screen and (min-width: 48em) {
+  #email {
+    margin-top: 2em;
+  }
+}
+.pub {
+  padding-left: 2em;
+}
+.dark {
+  background: #efefef;
+}
+h1, h2, strong {
+  color: #313a53;
+}
+.inverted, .inverted strong {
+  background: #313a53;
+  color: #efefef;
+}
+a {
+  text-decoration: none;
+  color: #00c;
+}
+a:hover {
+  color: #860111;
+}
+em {
+  color: #4e4e4e;
+}
+.revolutionary {
+  color: #e84644;
+}
+.cool {
+  color: #135cb7;
+}
+#schedule th {
+  color: #313a53;
+}
+#schedule thead tr {
+  background: #cccccc;
+}
+#schedule tr:nth-child(2n) td {
+  background: #ffffff;
+}
+#schedule tr:nth-child(2n-1) td {
+  background: #efefef;
+}
+#schedule #date-column {
+  width: 4em;
+}
+#schedule #topic-column {
+  width: 24em;
+}

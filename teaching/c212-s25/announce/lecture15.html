@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lecture 15</title>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Courier+Prime:400,700,400italic);
+
+    body { font-family: 'Georgia'; }
+    .remark-slide-container {
+      background-size: cover;
+    }
+    .remark-slide-number {
+      display: none;
+    }
+    .remark-slide-content {
+      background-color: #fffd;
+      font-size:30px;
+      padding: .5em 2em;
+    }
+    h1, h2, h3 {
+      font-family: 'Georgia';
+      font-weight: normal;
+    }
+    h1, h2, h3, p, ol, ul {
+      margin-top: 1ex;
+      margin-bottom: 1ex;
+    }
+    .remark-code, .remark-inline-code {
+      font-family: 'Courier Prime';
+    }
+    .remark-code {
+      /* font-size: 40px; */
+      letter-spacing: -.02em;
+      line-height: 50px;
+    }
+    /* This rule is modified dynamically by the carousel function and must come last */
+    .remark-slides-area {
+      background-size: cover;
+    }
+
+    .float-left  { float: left  }
+    .float-right { float: right }
+    .logo { top: 0; right: 0; position: absolute; transform: scale(0.5) translate(+50%, -50%) }
+  </style>
+</head>
+<body>
+  <textarea id="source">
+# Today's Agenda:
+
+- Midterm! I'll pass out exams at 3:52.
+- Place ALL BAGS at the front of the room.
+ - You should have a writing utensil, something to drink (if you want), and your aid sheet.
+ - ALL electronics should be placed into your bag and TURNED OFF. DO NOT JUST SILENCE THEM.
+- There is no lab this week.
+  </textarea>
+  <script>
+    var slideshow = remark.create();
+    function carousel() {
+        if (slideshow.getCurrentSlideIndex() == slideshow.getSlideCount()-1)
+          slideshow.gotoFirstSlide();
+        else
+          slideshow.gotoNextSlide();
+      }
+      setInterval(carousel, 15000);
+  </script>
+</body>
+</html>

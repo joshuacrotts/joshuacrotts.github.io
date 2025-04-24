@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lecture 28</title>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Courier+Prime:400,700,400italic);
+
+    body { font-family: 'Georgia'; }
+    .remark-slide-container {
+      background-size: cover;
+    }
+    .remark-slide-number {
+      display: none;
+    }
+    .remark-slide-content {
+      background-color: #fffd;
+      font-size:30px;
+      padding: .5em 2em;
+    }
+    h1, h2, h3 {
+      font-family: 'Georgia';
+      font-weight: normal;
+    }
+    h1, h2, h3, p, ol, ul {
+      margin-top: 1ex;
+      margin-bottom: 1ex;
+    }
+    .remark-code, .remark-inline-code {
+      font-family: 'Courier Prime';
+    }
+    .remark-code {
+      /* font-size: 40px; */
+      letter-spacing: -.02em;
+      line-height: 50px;
+    }
+    /* This rule is modified dynamically by the carousel function and must come last */
+    .remark-slides-area {
+      background-size: cover;
+    }
+
+    .float-left  { float: left  }
+    .float-right { float: right }
+    .logo { top: 0; right: 0; position: absolute; transform: scale(0.5) translate(+50%, -50%) }
+  </style>
+</head>
+<body>
+  <textarea id="source">
+# Today's Agenda:
+
+- Some sorting algorithms!
+- This is a high-level discussion of the algorithms. You NEED to know how they're implemented!
+- Read section 6.2 in the book. DO NOT GOOGLE/CHATGPT/WHATEVER THE ALGORITHMS!!!!!!!!!!
+
+---
+
+# Need help? Go to office hours!
+
+- TA office hours are ALWAYS in Room 0121. (Computer lab on the first floor.)
+- Pizza TONIGHT! Go work on PSet5 and the mini-project!
+
+<img src="pepperoni-pizza-slice.png" style="width:300px;" />
+
+---
+
+# Problem Set 5 is out now!
+
+- Covers sections 4.3, 4.4, 4.5, 5.1, and 5.2 in the textbook.
+- Due TONIGHT AT 11:59PM!!!!!
+- Corrections will be due NEXT WEDNESDAY at 7PM. Grades will be released Saturday morning sometime.
+
+---
+
+# Mini-project is out now!
+
+- Due April 30th at 11:59PM.
+---
+# Some advice from past C212 students...
+<img src="testimonials/Most Important Thing 1-merged_Page_36.png" style="width:100%; height:250px" />
+
+---
+# Some advice from past C212 students...
+<img src="testimonials/Most Important Thing 1-merged_Page_71.png" style="width:100%; height:250px" />
+
+  </textarea>
+  <script>
+    var slideshow = remark.create();
+    function carousel() {
+        if (slideshow.getCurrentSlideIndex() == slideshow.getSlideCount()-1)
+          slideshow.gotoFirstSlide();
+        else
+          slideshow.gotoNextSlide();
+      }
+      setInterval(carousel, 15000);
+  </script>
+</body>
+</html>

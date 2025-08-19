@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lecture 13</title>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Courier+Prime:400,700,400italic);
+
+    body { font-family: 'Georgia'; }
+    .remark-slide-container {
+      background-size: cover;
+    }
+    .remark-slide-number {
+      display: none;
+    }
+    .remark-slide-content {
+      background-color: #fffd;
+      font-size:30px;
+      padding: .5em 2em;
+    }
+    h1, h2, h3 {
+      font-family: 'Georgia';
+      font-weight: normal;
+    }
+    h1, h2, h3, p, ol, ul {
+      margin-top: 1ex;
+      margin-bottom: 1ex;
+    }
+    .remark-code, .remark-inline-code {
+      font-family: 'Courier Prime';
+    }
+    .remark-code {
+      /* font-size: 40px; */
+      letter-spacing: -.02em;
+      line-height: 50px;
+    }
+    /* This rule is modified dynamically by the carousel function and must come last */
+    .remark-slides-area {
+      background-size: cover;
+    }
+
+    .float-left  { float: left  }
+    .float-right { float: right }
+    .logo { top: 0; right: 0; position: absolute; transform: scale(0.5) translate(+50%, -50%) }
+  </style>
+</head>
+<body>
+  <textarea id="source">
+# Today's Agenda:
+
+- More about streams!
+ - Higher-order methods
+ - "map", "filter", "reduce"
+ - Query-based stream methods
+
+---
+
+# Need help? Go to office hours!
+
+- TA office hours are ALWAYS in Room 0121. (Computer lab on the first floor.)
+- Pizza TONIGHT! Go and work on PSet3 and PSet2 corrections!
+
+<img src="pepperoni-pizza-slice.png" style="width:300px;" />
+
+---
+# PSet2 corrections!
+
+- Want to earn up to 90%? Do PSet2 corrections!
+ - Fix your code/tests/style, submit to the NEW autograder link, then speak to a TA.
+ - You must speak with a TA, in person, to do corrections.
+ - Due TUESDAY, March 4th, at 11:59PM.
+
+---
+
+# Problem Set 3 is out now!
+
+- Covers sections 3.1, 3.2, and 3.5 in the textbook.
+- Due TUESDAY, March 4th, at 11:59PM.
+- This problem set has a LOT of moving parts; DO NOT WAIT UNTIL THE LAST MINUTE!
+
+---
+
+
+# The midterm is coming up soon!
+
+- Midterm is ONE WEEK FROM TODAY: March 5th.
+- Covers Chapters 1, 2, 3.1, 3.2, 3.4, 3.5.
+- You will write the exam on paper, in this room, from 3:55-5:10.
+- You are allowed an aid sheet with whatever you want on it; typed, scanned, written, whatever.
+- Previous exams are on the class webpage and in Canvas. STUDY!!!
+
+---
+
+# Some advice from past C212 students...
+<img src="testimonials/Most Important Thing 1-merged_Page_67.png" style="width:100%; height:220px" />
+
+---
+# Some advice from past C212 students...
+<img src="testimonials/Most Important Thing 1-merged_Page_80.png" style="width:100%; height:220px" />
+
+  </textarea>
+  <script>
+    var slideshow = remark.create();
+    function carousel() {
+        if (slideshow.getCurrentSlideIndex() == slideshow.getSlideCount()-1)
+          slideshow.gotoFirstSlide();
+        else
+          slideshow.gotoNextSlide();
+      }
+      setInterval(carousel, 15000);
+  </script>
+</body>
+</html>

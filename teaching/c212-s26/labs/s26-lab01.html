@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 01</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 01 - IDE Setup, Lab Logistics, Basic Java</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Objectives</h2>
+        <ul>
+          <li>Students will install and use IntelliJ IDEA, as well as install JDK 25.</li>
+          <li>Students can explain what is an IDE and why one should use it. They should understand the process of and motivation for using IDEs in Java.</li>
+          <li>Students use the IDE to create our first program, wherein they learn to create a project, class, method, and statements.</li>
+          <li>Finally, students learn how to submit files to the autograder.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          Read the directions below and follow along with your TAs.
+        </p>
+      </div>
+    </div>
+    <!-- <div class="ribbon dark">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+      
+        <p>
+          You may not use anything beyond Chapter 1.1.
+          This includes but is not limited to:
+        </p>
+      
+        <ul>
+          <li>Strings</li>
+          <li>Conditionals</li>
+          <li>Loops or recursion</li>
+          <li>Arrays or data structures</li>
+          <li>Regular expressions</li>
+        </ul>
+      
+        <p>
+          You <strong>may</strong> use methods from the <code>Math</code> class.
+        </p>
+      
+        <p>
+          Any violation results in a score of <strong>0</strong> on the problem set.
+        </p>
+      </div>
+      </div> -->
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Notes and Version Changes:</h2>
+        <p>
+          <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...).
+        </p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Part A: Listen to Your Lab TAs!</h2>
+        <p>Normally, your labs aren't a full lecture. This time, however, we take things slow to get you acclimated with the IntelliJ programming environment. Please follow along with your lab TAs, who will introduce themselves, to install the IDE. They will also demo how to import the lab template into the IDE, as well as how to submit files to the autograder. <b>Pay attention to these demonstrations.</b> You'll be doing this all semester, so it's best to listen fully now, rather than not know what to do later on down the road.</p>
+        <h2>Part B: Lab Quizzes</h2>
+        <p>
+          Every lab, <strong>including this one</strong>, will begin with a 10 minute quiz on Canvas.
+          (This time, however, you will have two quizzes: the first is about the syllabus and the second
+          is about this week's content.)
+        </p>
+        <p>
+          These quizzes are worth 20% of the lab grade, with the coding component being worth the other 80%.
+          You are allowed and encouraged to collaborate on the quiz as well.
+          The quizzes are multiple-choice and are designed to test your understanding of minor details.
+          What this entails is that they will be pedantic and you will probably not score perfectly every
+          time, if ever.
+        </p>
+        <p>
+          This is not something to be discouraged by, because they are intentionally tricky.
+          If you have read the relevant textbook material, attended class, and done the necessary outside
+          study, you will almost certainly get these fully correct.
+          <strong>You cannot retake a quiz. You cannot take quizzes early.</strong>
+        </p>
+        <p>
+          <strong>Arriving late to the quiz means that you only get however much time you have to take it.</strong>
+          Consequently, if you arrive after the quiz submission time, you will receive a zero.
+        </p>
+        <p>
+          If you have to attend another lab, please let <strong><em>ALL</em></strong> staff members,
+          i.e., those in your assigned lab and those of the other, know via email (NOT DISCORD).
+        </p>
+        <h2>Part C: Paired Programming</h2>
+        Each and every lab will involve paired programming. So, get used to whoever you're sitting with, or sit next to someone you already know, because you'll be working with them (or those around you) all semester! Collaborative programming is for the benefit of all parties involved. By ``collaborative programming,'' we do not mean ``one person does all the work while the other person watches.'' This does nothing to the ``watcher'' and only serves to piss the ``worker'' off.
+        Your lab TAs will go over what this means in greater detail.
+        <h2>Part D: Ask Questions! Collaborate!</h2>
+        <p>
+          We cannot stress this enough: ask, ask, ask, ask questions. 
+          Do <b><i>NOT</i></b> simply sit confused. 
+          That is the absolute last thing that you should do. 
+          The second-to-last thing that you should do is use ChatGPT/AI to do the work for you, or simply Google the problem. 
+          Using ChatGPT is a violation of the academic integrity policy, and all incidents will be reported to the university.
+          Moreover, none of these are beneficial to you or your group's learning. 
+          We, as the course staff, care about your learning, and if you are struggling, you need to let us know! 
+          As we have (and will repeatedly) expressed in class, please do not feel stupid or anxious about asking questions. 
+          If you have a question, there is almost certainly at least one other student with that exact same question, so you're doing them a service by asking. 
+        </p>
+        <p>
+          At the same time, however, we expect collaboration and discussion. 
+          This means that, if the lab TAs are walking people through a problem, as a class, you should contribute meaningfully to the conversation and answer questions, even if you are unsure. 
+        </p>
+        <h2>Part E: If you don't finish, don't fret!</h2>
+        <p>As the section title suggests, if you don't finish every lab within the allotted lab time, it's not the end of the world.
+          If you have consistently been on-task, working diligently with your partner/group, then this is generally enough for a very good score on the lab.
+          It is also up to the discretion of the UIs to allow you to complete the lab after the deadline.
+          If they (the UIs) do permit this, you are only allowed to submit up to 11:59PM on the day of your lab.
+          For example, if your lab is at 1:50PM-3:45PM on Thursday, and your UIs let you finish the lab after the standard 3:45PM deadline, you must submit by 11:59PM on Thursday night.
+          You will earn a 0 if you do not submit anything to the autograder by the night of the lab, no exceptions.
+        </p>
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Problems</h2>
+        <ol>
+          <li>
+            <p>
+              Design the <code>double celsiusToFahrenheit(double c)</code> method, which converts a given temperature from Celsius to Fahrenheit.
+            </p>
+            <p><u>Files to Submit:</u> <code>Problem1.java</code>, <code>Problem1Test.java</code></p>
+          </li>
+          <li>
+            <p>
+              Design the <code>int combineDigits(int a, int b)</code> method, which receives two
+              <code>int</code> values between 0 and 9, and combines them into a single two-digit number.
+              The first parameter <code>a</code> is the ten's digit and the second parameter <code>b</code>
+              is the one's digit. For example, <code>combineDigits(4, 5)</code> returns <code>45</code>.
+              If <code>a</code> is <code>0</code>, then it's acceptable for the resulting value to be only one digit.
+              <strong>Do not simply use string concatenation.</strong>
+            </p>
+            <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
+          </li>
+          <li>
+            <p>
+              Design the <code>double logBase(double n, double b)</code> that, when given a number
+              <span>$n$</span> and a base <span>$b$</span>, returns <span>$\log_{b}(n)$</span>.
+              You will need to make use of the change-of-base formula, which we provide below
+              (<span>$n$</span> is the number to compute the logarithm of,
+              <span>$b'$</span> is the old base, and <span>$b$</span> is the new base).
+              Assume that the given number <span>$n$</span> is in base <span>$10$</span>.
+            </p>
+            <p class="math-center">
+              \[
+              \log_b(n) = \dfrac{\log_{b'}(n)}{\log_{b'}(b)}
+              \]
+            </p>
+            <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
+          </li>
+          <li>
+            <p>
+              Design the <code>double crazyMath(double x)</code> method, which receives a value of
+              <span>$x$</span> and computes the value of the following expression:
+            </p>
+            <p class="math-center">
+              \[
+              \sqrt{\left|\left(e^{-x} + {\cos{\frac{2}{x}}}\right)
+              \cdot
+              \left({\frac{\sin(\pi{}x - 2\pi) + 17x\pi}
+              {\log_3{\left|x\right|} \cdot \log_7{\left|x\right| \cdot \ln{\left|x\right|}}}}\right)\right|}
+              \]
+            </p>
+            <p>
+              Below are some test cases. Hint: when testing this method, you may want to use the
+              <code>delta</code> parameter of <code>assertEquals</code>!
+            </p>
+            <pre><code>crazyMath(0)      =&gt; NaN 
+crazyMath(1)      =&gt; Infinity
+crazyMath(2)      =&gt; 21.52368973013284
+crazyMath(3)      =&gt; 14.692493055407942
+crazyMath(10)     =&gt; 9.574086130947974
+crazyMath(100000) =&gt; 86.49768321282015</code></pre>
+            <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

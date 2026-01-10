@@ -1,255 +1,557 @@
 <!doctype html>
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../css/pure-min.css" />
-<link rel="stylesheet" href="../css/grids-responsive-min.css" />
-<link rel="stylesheet" href="../css/style.css" />
-<link rel="icon" type="image/x-icon" href="../img/212favicon.ico">
-<title>C212/A592: Intro to Software Systems</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../css/pure-min.css" />
+  <link rel="stylesheet" href="../css/grids-responsive-min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../img/212favicon.ico">
+  <title>C212/A592: Intro to Software Systems</title>
 </head>
+
 <body>
 
-<div class="ribbon">
-  <div class="content">
-    <h1>CSCI-C212/A592: Introduction to Software Systems</h1>
-    <h2>Spring 2026</h2>
+  <div class="ribbon">
+    <div class="content">
+      <h1>CSCI-C212/A592: Introduction to Software Systems</h1>
+      <h2>Spring 2026</h2>
 
-    <p>
-      This class serves as a second-semester computer science course with the intent of introducing students to the Java programming language and its pragmatics. In particular, we emphasize object-oriented programming, data structures, and algorithms. Topics are covered at an introductory level, with the intent of preparing students for subsequent computer science classes, e.g., data structures, programming languages, operating systems, and beyond. Student work consists of programming problem sets, paired-programming labs, and written exams.
-    </p>
+      <p>
+        This class serves as a second-semester computer science course with the intent of introducing students to the
+        Java programming language and its pragmatics. In particular, we emphasize object-oriented programming, data
+        structures, and algorithms. Topics are covered at an introductory level, with the intent of preparing students
+        for subsequent computer science classes, e.g., data structures, programming languages, operating systems, and
+        beyond. Student work consists of programming problem sets, paired-programming labs, and written exams.
+      </p>
 
-    <p>
-    Upon completion of this course, you should be able to:
-    <ul>
-      <li>Use basic programming constructs including variables, decisions, loops, and functions in writing programs;</li>
-      <li>Utilize object-oriented programming concepts of classes, objects, encapsulation, inheritance, and polymorphism in designing programs;</li>
-      <li>Demonstrate skill in using software development methodology to design, implement and debug object-oriented software systems;</li>
-      <li>Use appropriate components from the Java Collections framework to solve a given problem;</li>
-      <li>Use an IDE to develop, debug, test and run programs;</li>
-      <li>Analyze searching and sorting algorithms using asymptotic analysis techniques.</li>
-    </ul>
-    </p>
+      <p>
+        Upon completion of this course, you should be able to:
+      <ul>
+        <li>Use basic programming constructs including variables, decisions, loops, and functions in writing programs;
+        </li>
+        <li>Utilize object-oriented programming concepts of classes, objects, encapsulation, inheritance, and
+          polymorphism in designing programs;</li>
+        <li>Demonstrate skill in using software development methodology to design, implement and debug object-oriented
+          software systems;</li>
+        <li>Use appropriate components from the Java Collections framework to solve a given problem;</li>
+        <li>Use an IDE to develop, debug, test and run programs;</li>
+        <li>Analyze searching and sorting algorithms using asymptotic analysis techniques.</li>
+      </ul>
+      </p>
+    </div>
   </div>
-</div>
 
-<div class="ribbon dark">
-  <div class="content">
-    <h2>Meta</h2>
+  <div class="ribbon dark">
+    <div class="content">
+      <h2>Meta</h2>
 
-    <p>
-      <strong>Instructors:</strong>
-      <a href="https://luddy.indiana.edu/contact/profile/index.html?Muazzam_Siddiqui">Muazzam Siddiqui</a> and <a href="https://joshuacrotts.us">Joshua Crotts</a></p>
+      <p>
+        <strong>Instructors:</strong>
+        <a href="https://luddy.indiana.edu/contact/profile/index.html?Muazzam_Siddiqui">Muazzam Siddiqui</a> and <a
+          href="https://joshuacrotts.us">Joshua Crotts</a>
+      </p>
 
-    <p>
-    <strong>Locations:</strong>
-    <ul>
-      <li>(Muazzam's Section) Monday &amp; Wednesday at 9:35AM - 10:50AM in Luddy (IF) 1106</li>
-      <li>(Joshua's Section) Monday &amp; Wednesday at 11:10AM - 12:25PM in Luddy (IF) 1106</li>
-      <li></li>
-    </ul>
-  </p>
+      <p>
+        <strong>Locations:</strong>
+      <ul>
+        <li>(Muazzam's Section) Monday &amp; Wednesday at 9:35AM - 10:50AM in Luddy (IF) 1106</li>
+        <li>(Joshua's Section) Monday &amp; Wednesday at 11:10AM - 12:25PM in Luddy (IF) 1106</li>
+        <li></li>
+      </ul>
+      </p>
 
-    <p>
-    <strong>Syllabi:</strong> Available in Canvas.
-    </p>
+      <p>
+        <strong>Syllabi:</strong> Available in Canvas.
+      </p>
 
-    <p>
-    <strong>Textbook:</strong> Available in Canvas.
-    </p>
+      <p>
+        <strong>Textbook:</strong> Available in Canvas.
+      </p>
+    </div>
   </div>
-</div>
 
-<div class="ribbon">
-  <div class="content">
-    <h2>Labs</h2>
-    <p>There are 12 labs. Each lab section has 1 lab per week:</p>
-    <table width="100%" id="schedule" class="pure-table pure-table-horizontal">
-      <thead>
-        <tr>
-          <th id="lab-letter-column">Letter</th>
-          <th id="lab-section-column">Section</th>
-          <th id="lab-time-column">Time</th>
-          <th id="lab-location-column">Place</th>
-          <th id="lab-instructors-column">Instructors</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr><td>A</td><td>4517/4518</td><td>Thursday, 9:10AM - 11:05AM</td><td><a href="https://maps.app.goo.gl/Z5Ppqke54N5yfb2o6">Luddy Hall (IF) 1019</a></td><td>Ian McGillivary &amp; Sam Miller</td></tr>
-          <tr><td>B</td><td>3990/3991</td><td>Thursday, 11:30AM - 1:25PM</td><td><a href="https://maps.app.goo.gl/35i3QHn1aEEbq3v76">Ballantine Hall (BH) 308</a></td><td>Simon Adams &amp; Shane O'Neill &amp;<br/>Ashley Steitz</td></tr>
-          <tr><td>C</td><td>1695</td><td>Thursday, 4:10PM - 6:05PM</td><td><a href="https://maps.app.goo.gl/35i3QHn1aEEbq3v76">Ballantine Hall (BH) 118</a></td><td>Kushagra Gupta &amp; Kyle Li &amp;<br/>Sparsh Nair</td></tr>
-          <tr><td>D</td><td>5339</td><td>Thursday, 6:30PM - 8:25PM</td><td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td><td>Alan Gawrys &amp; Sparsh Nair</td></tr>
-          <tr><td>E</td><td>14245</td><td>Friday, 8:00AM - 9:55AM</td><td><a href="https://maps.app.goo.gl/w9T8g3phv6rKChMb7">Wylie Hall (WY) 125</a></td><td>Joey Myers &amp; Elliot Rubinstein</td></tr>
-          <tr><td>F</td><td>7778</td><td>Friday, 9:10AM - 11:05AM</td><td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td><td>Lillie Donato &amp; Emilio Lugo Gutierrez</td></tr>
-          <tr><td>G</td><td>14246</td><td>Friday, 11:10AM - 1:05PM</td><td><a href="https://maps.app.goo.gl/35i3QHn1aEEbq3v76">Ballantine Hall (BH) 245</a></td><td>George Lisec &amp; Heer Soni</td></tr>
-          <tr><td>H</td><td>9047/12344</td><td>Friday, 11:30AM - 1:25PM</td><td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td><td>Tim "Gilmore" &amp; Kashi Kumar &amp;<br />Margo Steinfeld</td></tr>
-          <tr><td>I</td><td>1694</td><td>Friday, 1:50PM - 3:45PM</td><td><a href="https://maps.app.goo.gl/35i3QHn1aEEbq3v76">Ballantine Hall (BH) 118</a></td><td>Peter Perry &amp; Ransom Wheeler</td></tr>
-          <tr><td>J</td><td>9048/13729</td><td>Friday, 1:50PM - 3:45PM</td><td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td><td>Owen Harris &amp; George Lisec &amp;<br />Sujin Woo</td></tr>
-          <tr><td>K</td><td>13727/13728</td><td>Friday, 4:10PM - 6:05PM</td><td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td><td>Jack Liang &amp; Josh Rudnik</td></tr>
-          <tr><td>L</td><td>13732</td><td>Friday, 6:30PM - 8:25PM</td><td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td><td>Jack Liang</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="ribbon dark">
-  <div class="content">
-    <h2>Course Staff</h2>
-    <table width="100%" id="schedule" class="pure-table pure-table-horizontal">
-      <thead>
-        <tr>
-          <th id="name-column">Name</th>
-          <th id="email-column">Email</th>
-          <th id="position-column">Position</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Joshua Crotts</td><td><a href="mailto:ljcrotts@iu.edu"><span class="stt">ljcrotts@iu.edu</span></a></td><td>Lecturer (section 4464)</td></tr>
-        <tr><td>Muazzam Siddiqui</td><td><a href="mailto:muazsidd@iu.edu"><span class="stt">muazsidd@iu.edu</span></a></td><td>Lecturer (section 11709)</td></tr>
-		<tr><td>Owen Harris</td><td><a href="mailto:harriowe@iu.edu"><span class="stt">harriowe@iu.edu</span></a></td><td>Assistant Instructor</td></tr>
-		<tr><td>Matei Cloteaux</td><td><a href="mailto:harriowe@iu.edu"><span class="stt">harriowe@iu.edu</span></a></td><td>Assistant Instructor</td></tr>
-        <tr><td>Simon Adams</td><td><a href="mailto:simadams@iu.edu"><span class="stt">simadams@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Lillie Donato</td><td><a href="mailto:mdonato@iu.edu"><span class="stt">mdonato@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-       
-        <tr><td>Tim "Gilmore"</td><td><a href="mailto:timgilm@iu.edu"><span class="stt">timgilm@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>        
-        <tr><td>Kushagra Gupta</td><td><a href="mailto:kusgupta@iu.edu"><span class="stt">kusgupta@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Emilio Lugo Gutierrez</td><td><a href="mailto:emlugo@iu.edu"><span class="stt">emlugo@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        
-        <tr><td>Kashi Kumar</td><td><a href="mailto:paakumar@iu.edu"><span class="stt">paakumar@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Kyle Li</td><td><a href="mailto:kyleli@iu.edu"><span class="stt">kyleli@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Jack Liang</td><td><a href="mailto:jacklian@iu.edu"><span class="stt">jacklian@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>George Lisec</td><td><a href="mailto:glisec@iu.edu"><span class="stt">glisec@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Ian McGillivary</td><td><a href="mailto:ianmcgil@iu.edu"><span class="stt">ianmcgil@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Sam Miller</td><td><a href="mailto:sm117@iu.edu"><span class="stt">sm117@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Joey Myers</td><td><a href="mailto:myersnj@iu.edu"><span class="stt">myersnj@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Sparsh Nair</td><td><a href="mailto:nairspar@iu.edu"><span class="stt">nairspar@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Shane O'Neill</td><td><a href="mailto:shamonei@iu.edu"><span class="stt">shamonei@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Peter Perry</td><td><a href="mailto:petperry@iu.edu"><span class="stt">petperry@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Elliot Rubinstein</td><td><a href="mailto:ejrubins@iu.edu"><span class="stt">ejrubins@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Josh Rudnik</td><td><a href="mailto:jrudnik@iu.edu"><span class="stt">jrudnik@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Heer Soni</td><td><a href="mailto:heersoni@iu.edu"><span class="stt">heersoni@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Margo Steinfeld</td><td><a href="mailto:steinfem@iu.edu"><span class="stt">steinfem@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Ashley Steitz</td><td><a href="mailto:asteitz@iu.edu"><span class="stt">asteitz@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Ransom Wheeler</td><td><a href="mailto:rawheel@iu.edu"><span class="stt">rawheel@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-        <tr><td>Sujin Woo</td><td><a href="mailto:woosuj@iu.edu"><span class="stt">woosuj@iu.edu</span></a></td><td>Undergraduate Instructor</td></tr>
-      </tbody>
+  <div class="ribbon">
+    <div class="content">
+      <h2>Labs</h2>
+      <p>There are 10 labs. Each lab section has 1 lab per week:</p>
+      <table width="100%" id="schedule" class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th id="lab-letter-column">Letter</th>
+            <th id="lab-section-column">Section</th>
+            <th id="lab-time-column">Time</th>
+            <th id="lab-location-column">Place</th>
+            <th id="lab-instructors-column">Instructors</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td>4244/4245</td>
+            <td>Thursday, 9:10AM - 11:05AM</td>
+            <td><a href="https://maps.app.goo.gl/Z5Ppqke54N5yfb2o6">Luddy Hall (IF) 1019</a></td>
+            <td>Sam Miller &amp; Elliot Rubinstein</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>3758</td>
+            <td>Thursday, 11:35AM - 1:30PM</td>
+            <td><a href="https://maps.app.goo.gl/35i3QHn1aEEbq3v76">Ballantine Hall (BH) 308</a></td>
+            <td>Elliot Rubinstein &amp;Simon Adams</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>1625</td>
+            <td>Thursday, 4:20PM - 6:15PM</td>
+            <td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td>
+            <td>Joey Myers &amp; Heer Soni</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>4969</td>
+            <td>Thursday, 6:40PM - 8:35PM</td>
+            <td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td>
+            <td>Simon Adams &amp; Matthew Sheldon</td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>12082</td>
+            <td>Friday, 8:00AM - 9:55AM</td>
+            <td><a href="https://maps.app.goo.gl/w9T8g3phv6rKChMb7">Wylie Hall (WY) 125</a></td>
+            <td>Carley Rodenbush &amp; Ransom Wheeler</td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>7189</td>
+            <td>Friday, 9:10AM - 11:05AM</td>
+            <td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td>
+            <td>Matei Cloteaux &amp; Lillie Donato</td>
+          </tr>
+          <tr>
+            <td>G</td>
+            <td>12083</td>
+            <td>Friday, 11:10AM - 1:05PM</td>
+            <td><a href="https://maps.app.goo.gl/35i3QHn1aEEbq3v76">Ballantine Hall (BH) 214</a></td>
+            <td>Kashi Kumar &amp; Ian Mcgillivary</td>
+          </tr>
+          <tr>
+            <td>H</td>
+            <td>8304/11002</td>
+            <td>Friday, 11:35PM - 1:30PM</td>
+            <td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td>
+            <td>Owen Harris &amp; Peter Perry</td>
+          </tr>
+          <tr>
+            <td>I</td>
+            <td>1624/8305/11757</td>
+            <td>Friday, 1:55PM - 3:50PM</td>
+            <td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td>
+            <td>Marlena Ames &amp; Owen Harris &amp;<br />Alex Johnson</td>
+          </tr>
+          <tr>
+            <td>J</td>
+            <td>11755</td>
+            <td>Friday, 4:20PM - 6:15PM</td>
+            <td><a href="https://maps.app.goo.gl/oe2ofMXhM3jF8bEeA">Myles Brand Hall (I) 109</a></td>
+            <td>Sunny Troyer</td>
+          </tr>
+        </tbody>
       </table>
+    </div>
   </div>
-</div>
 
-<div class="ribbon">
-  <div class="content" height="800px">
-    <h2>Tutoring Hours &amp; Schedule</h2>
-    <iframe width="100%" height="800px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSrpdzgjoIT1y2GunP8Z5hrNsk_8MIPTPEUBoS1_dPC7Y6G7ORJau1_wMtKHbnM7hwdDQO41eyvpjXp/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+  <div class="ribbon dark">
+    <div class="content">
+      <h2>Course Staff</h2>
+      <table width="100%" id="schedule" class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th id="name-column">Name</th>
+            <th id="email-column">Email</th>
+            <th id="position-column">Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Joshua Crotts</td>
+            <td><a href="mailto:ljcrotts@iu.edu"><span class="stt">ljcrotts@iu.edu</span></a></td>
+            <td>Lecturer (section 4464)</td>
+          </tr>
+          <tr>
+            <td>Muazzam Siddiqui</td>
+            <td><a href="mailto:muazsidd@iu.edu"><span class="stt">muazsidd@iu.edu</span></a></td>
+            <td>Lecturer (section 11709)</td>
+          </tr>
+          <tr>
+            <td>Owen Harris</td>
+            <td><a href="mailto:harriowe@iu.edu"><span class="stt">harriowe@iu.edu</span></a></td>
+            <td>Assistant Instructor</td>
+          </tr>
+          <tr>
+            <td>Matei Cloteaux</td>
+            <td><a href="mailto:mcloteau@iu.edu"><span class="stt">mcloteau@iu.edu</span></a></td>
+            <td>Assistant Instructor</td>
+          </tr>
+          <tr>
+            <td>Simon Adams</td>
+            <td><a href="mailto:simadams@iu.edu"><span class="stt">simadams@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Lillie Donato</td>
+            <td><a href="mailto:mdonato@iu.edu"><span class="stt">mdonato@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Alex Johnson</td>
+            <td><a href="mailto:adj18@iu.edu"><span class="stt">adj18@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Kashi Kumar</td>
+            <td><a href="mailto:paakumar@iu.edu"><span class="stt">paakumar@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Ian McGillivary</td>
+            <td><a href="mailto:ianmcgil@iu.edu"><span class="stt">ianmcgil@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Sam Miller</td>
+            <td><a href="mailto:sm117@iu.edu"><span class="stt">sm117@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Peter Perry</td>
+            <td><a href="mailto:petperry@iu.edu"><span class="stt">petperry@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Carley Rodenbush</td>
+            <td><a href="mailto:cjrodenb@iu.edu"><span class="stt">cjrodenb@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Elliot Rubinstein</td>
+            <td><a href="mailto:ejrubins@iu.edu"><span class="stt">ejrubins@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Matthew Sheldon</td>
+            <td><a href="mailto:msheldo@iu.edu"><span class="stt">msheldo@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Heer Soni</td>
+            <td><a href="mailto:heersoni@iu.edu"><span class="stt">heersoni@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Sunny Troyer</td>
+            <td><a href="mailto:suntroy@iu.edu"><span class="stt">suntroy@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+          <tr>
+            <td>Ransom Wheeler</td>
+            <td><a href="mailto:rawheel@iu.edu"><span class="stt">rawheel@iu.edu</span></a></td>
+            <td>Undergraduate Instructor</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
-<div class="ribbon dark">
-  <div class="content">
-    <h2>Schedule</h2>
-
-    <table width="100%" id="schedule" class="pure-table pure-table-horizontal">
-      <thead>
-        <tr>
-          <th id="date-column">Date</th>
-          <th id="topic-column">Topic</th>
-          <th id="reading-column">Reading</th>
-          <th id="lab-column">Lab</th>
-          <th id="problemset-column">Problem Set</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Jan 13</td><td><a href="https://docs.google.com/presentation/d/1VbEWXWdzjUNRJ-Pb3Ry7uMwTWXiYEoz0RTaMr71A1mE/edit?usp=sharing">Intro, Variables, Datatypes</a></td><td>&sect;1.1</td><td></td><td><a href="../assets/teaching/c212-s25/problemsets/pset1.pdf">PSet1 out</a></td></tr>
-
-        <tr><td>Jan 15</td><td>Static Methods &amp; Testing</td><td>&sect;1.3-4</td><td><a href="../assets/teaching/c212-s25/labs/lab01.pdf">Lab01</a></td><td></td></tr>
-
-        <tr><td>Jan 20</td><td><em>(MLK Jr. Day)</em></td><td></td><td></td><td></td></tr>
-
-        <tr><td>Jan 22</td><td><a href="https://docs.google.com/presentation/d/1ePykRhhZcI8EFDMWF2co1eJNsZ2wJH65/edit?usp=sharing&ouid=103877831676188743858&rtpof=true&sd=true">Strings</a> &amp; <a href="https://docs.google.com/presentation/d/1CDLFxEDkv5VVlTiRGHicXSdskbwy5lI8/edit?usp=sharing&ouid=103877831676188743858&rtpof=true&sd=true">Conditionals</a></td><td>&sect;1.2 and &sect;2.1<td><a href="../assets/teaching/c212-s25/labs/lab02.pdf">Lab02</a></td><td></td></tr>
-
-        <tr><td>Jan 27</td><td>Strings &amp; Conditionals cont.</td><td>&sect;1.2 and &sect;2.1<td></td><td></td></tr>
-
-        <tr><td>Jan 29</td><td><a href="https://docs.google.com/presentation/d/1dzMDq8zj8labiugIIo1s28UwFEUpjsCVTI2HBT9lqxM/edit?usp=sharing">Methods (Helpers &amp; Recursion)</a></td><td>&sect;2.2<td><a href="../assets/teaching/c212-s25/labs/lab03.pdf">Lab03</a></td><td></td></tr>
-
-        <tr><td>Feb 3</td><td><a href="https://docs.google.com/presentation/d/1QNym2cluATZXRilOjivJzAnJvGok-5_7Ha8n5CHzcIU/edit?usp=sharing">Loops</a></td><td>&sect;2.3<td></td><td></td></tr>
-
-        <tr><td>Feb 5</td><td>Loops cont.</td><td>&sect;2.3<td><a href="../assets/teaching/c212-s25/labs/lab04.pdf">Lab04</a></td><td>PSet1 due, <br /><a href="../assets/teaching/c212-s25/problemsets/pset2.pdf">PSet2 out</a></td></tr>
-
-        <tr><td>Feb 10</td><td><a href="https://docs.google.com/presentation/d/1CkI1OBPLP2wS6h_B85CQ4hVQ3b31iIIGI2XmPpSBxnU/edit?usp=sharing">Arrays</a></td><td>&sect;3.1<td></td><td></td></tr>
-
-        <tr><td>Feb 12</td><td><a href="https://docs.google.com/presentation/d/1Zv62DhEYGpoZ3iMDC2y7bRxsG3jGfyq7PqXcHe8GH0A/edit?usp=sharing">ArrayLists</a></td><td>&sect;3.2.1<td><a href="../assets/teaching/c212-s25/labs/lab05.pdf">Lab05</a></td><td><!--PSet2 due, <br /><a href="../assets/teaching/c212-s25/problemsets/pset3.pdf">PSet3 out</a>, <br />PSet1<sub><em>C</em></sub> due (9/27)--></td></tr>
-
-        <tr><td>Feb 17</td><td><a href="https://docs.google.com/presentation/d/1Zv62DhEYGpoZ3iMDC2y7bRxsG3jGfyq7PqXcHe8GH0A/edit?usp=sharing">Java Collections Framework</a></td><td>&sect;3.2-3<td></td><td></td></tr>
-
-        <tr><td>Feb 19</td><td><a href="https://docs.google.com/presentation/d/1Zv62DhEYGpoZ3iMDC2y7bRxsG3jGfyq7PqXcHe8GH0A/edit?usp=sharing">More Collections</a> &amp; <a href="">Generics</a></td><td>&sect;3.5-6<td><a href="../assets/teaching/c212-s25/labs/lab06.pdf">Lab06</a></td><td>PSet2 due, <br /><a href="../assets/teaching/c212-s25/problemsets/pset3.pdf">PSet3 out</a>, <br />PSet1<sub><em>C</em></sub> due</td></tr>
-
-        <tr><td>Feb 24</td><td>Streams</td><td>&sect;3.4</td><td></td><td></td></tr>
-
-        <tr><td>Feb 26</td><td>Streams cont.</td><td>&sect;3.4</td><td><a href="../assets/teaching/c212-s25/labs/lab07.pdf">Lab07</a></td><td></td></tr>
-
-        <tr><td>Mar 3</td><td>Midterm Exam Review</td><td><td></td><td></td></tr>
-
-        <tr><td>Mar 5</td><td><b>Midterm</b> <br />
-          <a href="../assets/teaching/c212-s25/exams/midterm-f23.pdf">Fall 2023 Midterm; </a><a href="../assets/teaching/c212-s25/exams/midterm-soln-f23.pdf">KEY; </a> <br />
-          <a href="../assets/teaching/c212-s25/exams/midterm-s24.pdf">Spring 2024 Midterm; </a><a href="../assets/teaching/c212-s25/exams/midterm-soln-s24.pdf">KEY; </a> <br />
-          <a href="../assets/teaching/c212-s25/exams/midterm-makeup-s24.pdf">Spring 2024 Makeup Midterm; </a><a href="../assets/teaching/c212-s25/exams/midterm-makeup-soln-s24.pdf">KEY; </a> <br />
-          <a href="../assets/teaching/c212-s25/exams/practice-midterm-f24.pdf">Practice Fall 2024 Midterm; </a><a href="../assets/teaching/c212-s25/exams/practice-midterm-soln-f24.pdf">KEY; </a> <br />
-          <a href="../assets/teaching/c212-s25/exams/midterm-f24.pdf">Fall 2024 Midterm; </a><a href="../assets/teaching/c212-s25/exams/midterm-soln-f24.pdf">KEY; </a>
-          <td></td>
-          <td></td><td>PSet3 due (3/4),<br /><a href="../assets/teaching/c212-s25/problemsets/pset4.pdf">PSet4 out</a>,<br />PSet2<sub><em>C</em></sub> due (3/4)</td></tr>
-
-        
-        <tr><td>Mar 10</td><td>Objects &amp; Classes</td><td>&sect;4.1</td><td></td><td></td></tr>
-
-        <tr><td>Mar 12</td><td>Objects &amp; Classes cont.</td><td>&sect;4.1</td><td><a href="../assets/teaching/c212-s25/labs/lab08.pdf">Lab08</a></td><td></td></tr>
-
-        <tr><td>Mar 17</td><td><em>(Spring Break)</em></td><td></td><td></td><td></td></tr>
-
-        <tr><td>Mar 19</td><td><em>(Spring Break)</em></td><td></td><td></td><td></td></tr>
-
-        <tr><td>Mar 24</td><td>Mutation &amp; Aliasing</td><td>&sect;4.2</td><td></td><td></td></tr>
-
-        <tr><td>Mar 26</td><td>Mutation &amp; Aliasing cont.</td><td>&sect;4.2</td><td><a href="../assets/teaching/c212-s25/labs/lab09.pdf">Lab09</a></td><td>PSet3<sub><em>C</em></sub> due</td></tr>
-
-        <tr><td>Mar 31</td><td>Interfaces</td><td>&sect;4.3</td><td></td><td></td></tr>
-
-        <tr><td>Apr 2</td><td>Inheritance</td><td>&sect;4.4</td><td><a href="../assets/teaching/c212-s25/labs/lab10.pdf">Lab10</a></td><td>PSet4 due,<br /><a href="../assets/teaching/c212-s25/problemsets/pset5.pdf">PSet5 out</a>, <br />Mini-project out</td></tr>
-
-        <tr><td>Apr 7</td><td>Inheritance &amp; Abstract Classes</td><td>&sect;4.4-5 (up to p. ???)</td><td></td><td></td></tr>
-
-        <tr><td>Apr 9</td><td>The "ASPL" Interpreter</td><td>&sect;4.5</td><td><a href="../assets/teaching/c212-s25/labs/lab11.pdf">Lab11</a></td><td></td></tr>
-
-        <tr><td>Apr 14</td><td>Exceptions &amp; I/O</td><td>&sect;5.1-2</td><td></td><td></td></tr>
-
-        <tr><td>Apr 16</td><td>Exceptions &amp; I/O cont.</td><td>&sect;5.1-2</td><td><a href="../assets/teaching/c212-s25/labs/lab12.pdf">Lab12</a></td><td>PSet4<sub><em>C</em></sub> due<!--, <br /><a href="../assets/teaching/c212-s25/problemsets/pset7.pdf">PSet7<sub><em>O</em></sub> out</a>--></td></tr>
-
-        <tr><td>Apr 21</td><td>Searching &amp; Algorithm Analysis</td><td>&sect;6.1 &amp; &sect;7.1</td><td></td><td></td></tr>
-
-        <tr><td>Apr 23</td><td>Sorting &amp; Algorithm Analysis</td><td>&sect;6.2 &amp; &sect;7.1</td><td><a href="../assets/teaching/c212-s25/labs/lab13.pdf">Lab13</a></td><td>PSet5 due<!--, <br /><a href="../assets/teaching/c212-s25/problemsets/pset7.pdf">PSet7<sub><em>O</em></sub> due</a>--></td></tr>
-
-        <tr><td>Apr 28</td><td>Concurrency</td><td>&sect;8.4</td><td></td><td></td></tr>
-
-        <tr><td>Apr 30</td><td>Final Exam Review
-          <br />
-          <a href="../assets/teaching/c212-s25/exams/practice-final-f23.pdf">Practice Fall 2023 Final Exam; </a><a href="../assets/teaching/c212-s25/exams/practice-final-soln-f23.pdf">KEY; </a> <br />
-          <a href="../assets/teaching/c212-s25/exams/final-f23.pdf">Fall 2023 Final Exam; </a><a href="../assets/teaching/c212-s25/exams/final-soln-f23.pdf">KEY; </a> <br />
-          <a href="../assets/teaching/c212-s25/exams/final-s24.pdf">Spring 2024 Final Exam; </a><a href="../assets/teaching/c212-s25/exams/final-soln-s24.pdf">KEY; </a> <br />
-          <a href="../assets/teaching/c212-s25/exams/final-f24.pdf">Fall 2024 Final Exam; </a><a href="../assets/teaching/c212-s25/exams/final-soln-f24.pdf">KEY; </a> <br />
-          </td>
-          <td></td>
-          <td></td>
-          <td>Mini-project due (4/30),<br/>PSet5<sub><em>C</em></sub> due (4/30)</td></tr></td>
-
-        <!-- <tr><td>Dec 16</td><td><b>Final Exam at 3:00PM--5:00PM in Luddy (IF) 1106.</b> -->
-
-          <!-- <a href="../assets/teaching/c212-s25/exams/practice-final-f24.pdf">Practice Fall 2024 Final Exam; </a><a href="../assets/teaching/c212-s25/exams/practice-final-soln-f24.pdf">KEY; </a> -->
-          <td></td>
-        </td><td></td><td></td></tr>
-      </tbody>
-    </table>
+  <div class="ribbon">
+    <div class="content" height="550px">
+      <h2>Tutoring Hours &amp; Schedule</h2>
+      <iframe width="100%" height="550px"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS9bsZMHagwBkNQP_M4riDsOsnBSn73ALuuI62JeK6VoRZ3RjNFzycnH2V-KrI78jH7MnGpXi9e0HZf/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+    </div>
   </div>
-</div>
+
+  <div class="ribbon dark">
+    <div class="content">
+      <h2>Schedule</h2>
+
+<table width="100%" id="schedule" class="pure-table pure-table-horizontal">
+  <thead>
+    <tr>
+      <th id="date-column">Date</th>
+      <th id="topic-column">Topic</th>
+      <th id="reading-column">Reading</th>
+      <th id="lab-column">Lab</th>
+      <th id="problemset-column">Problem Set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Week 1 (1/12) -->
+    <tr>
+      <td>Jan 12</td>
+      <td><a href="https://docs.google.com/presentation/d/1VbEWXWdzjUNRJ-Pb3Ry7uMwTWXiYEoz0RTaMr71A1mE/edit?usp=sharing">Intro &amp; Basics</a></td>
+      <td>&sect;1.1</td>
+      <td></td>
+      <td><a href="./c212-s26/psets/s26-pset01.html">PSet1 out</a></td>
+    </tr>
+    <tr>
+      <td>Jan 14</td>
+      <td>Java Basics &amp; Testing</td>
+      <td>&sect;1.3-4</td>
+      <td><a href="./c212-s26/labs/s26-lab01.html">Lab01</a></td>
+      <td></td>
+    </tr>
+
+    <!-- Week 2 (1/19) -->
+    <tr>
+      <td>Jan 19</td>
+      <td><em>(MLK Jr. Day &mdash; NO CLASS)</em></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Jan 21</td>
+      <td>
+        <a href="https://docs.google.com/presentation/d/1ePykRhhZcI8EFDMWF2co1eJNsZ2wJH65/edit?usp=sharing&ouid=103877831676188743858&rtpof=true&sd=true">Strings</a>
+        &amp;
+        <a href="https://docs.google.com/presentation/d/1CDLFxEDkv5VVlTiRGHicXSdskbwy5lI8/edit?usp=sharing&ouid=103877831676188743858&rtpof=true&sd=true">Conditionals</a>
+      </td>
+      <td>&sect;1.2 and &sect;2.1</td>
+      <td><a href="./c212-s26/labs/s26-lab02.html">Lab02</a></td>
+      <td>PSet1 due;<br /><a href="./c212-s26/psets/s26-pset02.html">PSet2 out</a></td>
+    </tr>
+
+    <!-- Week 3 (1/26) -->
+    <tr>
+      <td>Jan 26</td>
+      <td>Conditionals &amp; Recursion</td>
+      <td>&sect;2.1-2</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Jan 28</td>
+      <td><a href="https://docs.google.com/presentation/d/1dzMDq8zj8labiugIIo1s28UwFEUpjsCVTI2HBT9lqxM/edit?usp=sharing">Recursion</a></td>
+      <td>&sect;2.2</td>
+      <td><a href="./c212-s26/labs/s26-lab03.html">Lab03</a></td>
+      <td>PSet2 due;<br /><a href="./c212-s26/psets/s26-pset03.html">PSet3 out</a></td>
+    </tr>
+
+    <!-- Week 4 (2/2) -->
+    <tr>
+      <td>Feb 2</td>
+      <td><a href="https://docs.google.com/presentation/d/1QNym2cluATZXRilOjivJzAnJvGok-5_7Ha8n5CHzcIU/edit?usp=sharing">Loops (I)</a></td>
+      <td>&sect;2.3</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Feb 4</td>
+      <td>Loops (II)</td>
+      <td>&sect;2.3</td>
+      <td><a href="./c212-s26/labs/s26-lab04.html">Lab04</a></td>
+      <td>PSet3 due; <br /><a href="./c212-s26/psets/s26-pset04.html">PSet4 out</a></td>
+    </tr>
+
+    <!-- Week 5 (2/9) -->
+    <tr>
+      <td>Feb 9</td>
+      <td><a href="https://docs.google.com/presentation/d/1CkI1OBPLP2wS6h_B85CQ4hVQ3b31iIIGI2XmPpSBxnU/edit?usp=sharing">Arrays</a></td>
+      <td>&sect;3.1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Feb 11</td>
+      <td><b>Exam 1</b></td>
+      <td></td>
+      <td><a href="./c212-s26/labs/s26-lab05.html">Lab05</a></td>
+      <td>PSet4 due (on <b>Tuesday!</b>);<br /><a href="./c212-s26/psets/s26-pset05.html">PSet5 out</a></td>
+    </tr>
+
+    <!-- Week 6 (2/16) -->
+    <tr>
+      <td>Feb 16</td>
+      <td><a href="https://docs.google.com/presentation/d/1Zv62DhEYGpoZ3iMDC2y7bRxsG3jGfyq7PqXcHe8GH0A/edit?usp=sharing">ArrayLists</a></td>
+      <td>&sect;3.2.1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Feb 18</td>
+      <td><a href="https://docs.google.com/presentation/d/1Zv62DhEYGpoZ3iMDC2y7bRxsG3jGfyq7PqXcHe8GH0A/edit?usp=sharing">Collections (I)</a></td>
+      <td>&sect;3.2-3</td>
+      <td><a href="./c212-s26/labs/s26-lab06.html">Lab06</a></td>
+      <td>PSet5 due;<br /><a href="./c212-s26/psets/s26-pset06.html">PSet6 out</a></td>
+    </tr>
+
+    <!-- Week 7 (2/23) -->
+    <tr>
+      <td>Feb 23</td>
+      <td><a href="https://docs.google.com/presentation/d/1Zv62DhEYGpoZ3iMDC2y7bRxsG3jGfyq7PqXcHe8GH0A/edit?usp=sharing">Collections (II)</a></td>
+      <td>&sect;3.4</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Feb 25</td>
+      <td>Generics</td>
+      <td>&sect;3.5-6</td>
+      <td><a href="./c212-s26/labs/s26-lab07.html">Lab07</a></td>
+      <td>PSet6 due;<br/><a href="./c212-s26/psets/s26-pset07.html">PSet7 out</a></td>
+    </tr>
+
+    <!-- Week 8 (3/2) -->
+    <tr>
+      <td>Mar 2</td>
+      <td>Streams (I)</td>
+      <td>&sect;3.4</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Mar 4</td>
+      <td>Streams (II)</td>
+      <td>&sect;3.4</td>
+      <td><a href="./c212-s26/labs/s26-lab08.html">Lab08</a></td>
+      <td>PSet7 due;<br/><a href="./c212-s26/psets/s26-pset08.html">PSet8 out</a></td>
+    </tr>
+
+    <!-- Week 9 (3/9) -->
+    <tr>
+      <td>Mar 9</td>
+      <td>Classes &amp; Objects (I)</td>
+      <td>&sect;4.1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Mar 11</td>
+      <td>Classes &amp; Objects (II)</td>
+      <td>&sect;4.1</td>
+      <td><a href="./c212-s26/labs/s26-lab09.html">Lab09</a></td>
+      <td>PSet8 due;<br /><a href="./c212-s26/psets/s26-pset09.html">PSet9 out</a></td>
+    </tr>
+
+    <!-- Week 10 (3/16) -->
+    <tr>
+      <td>Mar 16</td>
+      <td><em>(Spring Break &mdash; NO CLASS)</em></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Mar 18</td>
+      <td><em>(Spring Break &mdash; NO CLASS)</em></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <!-- Week 11 (3/23) -->
+    <tr>
+      <td>Mar 23</td>
+      <td>Mutation &amp; Aliasing (I)</td>
+      <td>&sect;4.2</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Mar 25</td>
+      <td>Mutation &amp; Aliasing (II)</td>
+      <td>&sect;4.2</td>
+      <td><a href="./c212-s26/labs/s26-lab010.html">Lab10</a></td>
+      <td>PSet9 due;<br /><a href="./c212-s26/psets/s26-pset010.html">PSet10 out</a></td>
+    </tr>
+
+    <!-- Week 12 (3/30) -->
+    <tr>
+      <td>Mar 30</td>
+      <td><b>Exam 2</b></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Apr 1</td>
+      <td>Interfaces</td>
+      <td>&sect;4.3</td>
+      <td><a href="./c212-s26/labs/s26-lab011.html">Lab11</a></td>
+      <td></td>
+    </tr>
+
+    <!-- Week 13 (4/6) -->
+    <tr>
+      <td>Apr 6</td>
+      <td>Inheritance</td>
+      <td>&sect;4.4</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Apr 8</td>
+      <td>Abstract &amp; Final Classes</td>
+      <td>&sect;4.4-5</td>
+      <td><a href="./c212-s26/labs/s26-lab012.html">Lab12</a></td>
+      <td>PSet10 due;<br /><a href="./c212-s26/psets/s26-pset011.html">PSet11 out</a></td>
+    </tr>
+
+    <!-- Week 14 (4/13) -->
+    <tr>
+      <td>Apr 13</td>
+      <td>Exceptions &amp; I/O (I)</td>
+      <td>&sect;5.1-2</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Apr 15</td>
+      <td>Exceptions &amp; I/O (II)</td>
+      <td>&sect;5.1-2</td>
+      <td><a href="./c212-s26/labs/s26-lab013.html">Lab13</a></td>
+      <td>PSet11 due;<br /><a href="./c212-s26/psets/s26-pset012.html">PSet12 out</a></td>
+    </tr>
+
+    <!-- Week 15 (4/20) -->
+    <tr>
+      <td>Apr 20</td>
+      <td>Searching &amp; Analysis</td>
+      <td>&sect;6.1 &amp; &sect;7.1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Apr 22</td>
+      <td>Sorting &amp; Analysis</td>
+      <td>&sect;6.2 &amp; &sect;7.1</td>
+      <td>Lab14</td>
+      <td>PSet12 due</td>
+    </tr>
+
+    <!-- Week 16 (4/27) -->
+    <tr>
+      <td>Apr 27</td>
+      <td>Special Topic</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Apr 29</td>
+      <td>Final Exam Review</td>
+      <td></td>
+      <td></td>
+      <td>Mini-Project due.</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+  </div>
 
 </body>
+
 </html>

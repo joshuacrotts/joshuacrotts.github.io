@@ -47,14 +47,25 @@ em {
 #schedule th {
   color: #313a53;
 }
+
+#schedule table {
+
+}
+
 #schedule thead tr {
   background: #cccccc;
 }
 #schedule tr:nth-child(2n) td {
   background: #ffffff;
+  line-height: 1.4em;
+  height: 2.8em;
+  vertical-align: middle;
 }
 #schedule tr:nth-child(2n-1) td {
   background: #efefef;
+  line-height: 1.4em;
+  height: 2.8em;
+  vertical-align: middle;
 }
 #schedule #date-column {
   width: 4em;
@@ -62,3 +73,16 @@ em {
 #schedule #topic-column {
   width: 24em;
 }
+
+/* Center MathJax display equations */
+.math-center {
+  text-align: center;
+  margin: 1em 0;
+}
+
+/* Center tables without breaking Pure.css */
+.center-table {
+  margin-left: auto;
+  margin-right: auto;
+}
+  

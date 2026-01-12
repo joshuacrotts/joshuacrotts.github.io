@@ -238,12 +238,14 @@
       <li>
         <p>
           The "square root curve" is a method of scaling grades for an assessment.
-        </p>
-
-        <p>
-          Design the <code>double squareRootScalePoints(double score, double maxPoints)</code> method that,
-          when given a raw score and the maximum number of points for some assessment, returns the number
-          of points earned from the curve.
+          The idea is to "curve" a student's grade to a "more meaningful" grade.
+          For example, suppose a student scores 65/100 on an exam.
+          Their curved score is \(\sqrt{65}\cdot 10 \approx 8.06 \cdot 10 \approx 80.62\).
+          Therefore, the student earned 15.06 points from the square root scale.
+          Design the <code>double squareRootScalePoints(double score, double maxPoints)</code> method that, when given a raw score and the maximum number of points for some assessment, returns the number of points earned <i>from the curve</i>.
+          For example, <code>squareRootScalePoints(65, 100)</code> returns approximately 15.62, because the student earned an 80.62 after the square root scaling.
+          If the exam were out of 80 points, i.e., <code>squareRootScalePoints(65, 80)</code>, the method would instead return a value that is approximately 7.111.
+          (Note: this exercise purposefully omits the mathematical details to get you to think about what you're supposed to do!)
         </p>
 
         <p><u>Files to Submit:</u> <code>Problem7.java</code>, <code>Problem7Test.java</code></p>

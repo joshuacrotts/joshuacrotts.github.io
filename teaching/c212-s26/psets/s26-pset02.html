@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../../../css/pure-min.css" />
+  <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+
+  <title>C212 – Problem Set 2</title>
+
+  <!-- MathJax for formulas -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-center {
+      text-align: center;
+      margin: 1em 0;
+    }
+
+    .center-table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Problem Set 2 - Strings &amp; Conditionals</h2>
+    <p><strong>Assigned:</strong> January 21, 2026</p>
+    <p><strong>Due:</strong> January 28, 2026 at 11:59 PM EST</p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>Objectives</h2>
+    <ul>
+      <li>Students work with certain string manipulation methods.</li>
+      <li>Students begin to understand the different types of conditional statements and how they redirect program control flow.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Instructions</h2>
+
+    <p>
+      For each problem, create a class named <code>ProblemX</code>,
+      where <code>X</code> is the problem number
+      (e.g., <code>Problem1.java</code>).
+      Write corresponding JUnit test classes named
+      <code>ProblemXTest</code>. 
+      Each method must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+    </p>
+
+    <p>
+      <strong>
+        Do not round your solutions. For example, do not use
+        <code>Math.round</code> or float your output to, e.g.,
+        2 decimal places, unless specified.
+      </strong>
+    </p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>What You <em>Cannot</em> Use</h2>
+
+    <p>
+      You may not use anything beyond Chapter 2.1.
+      This includes but is not limited to:
+    </p>
+
+    <ul>
+      <li>Recursion</li>
+      <li>Loops</li>
+      <li>Arrays or data structures</li>
+      <li>Regular expressions</li>
+    </ul>
+    <p>
+      Any violation results in a score of <strong>0</strong> on the problem set.
+    </p>
+    <p>
+      Please contact a staff member if you are unsure as to whether you're allowed to use something.
+    </p>
+  </div>
+</div>
+
+<div class="ribbon">
+    <div class="content">
+    <h2>Notes and Version Changes:</h2>
+    <p>
+    <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
+</p>    
+</div>
+</div>
+
+<!-- PROBLEMS -->
+
+<div class="ribbon dark">
+  <div class="content">
+      <h2>Problems</h2>
+
+      Under development...
+
+    <!-- <ol>
+      <li>
+        <p>
+          Design the <code>double gigametersToLightDays(double gkm)</code> method, which converts a distance
+          in gigameters to light days (i.e., the distance that light travels in one day). Light travels
+          299,792,458 meters per second, and there are 86,400 seconds in a day.
+        </p>
+        <p><u>Files to Submit:</u> <code>Problem1.java</code>, <code>Problem1Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          Design the <code>double grocery(int a, int b, int o, int g, int p, int c)</code> method, which
+          receives six integers representing the number of apples, bananas, oranges, grapefruits,
+          pineapples, and coconuts purchased at a store. Use the following table to compute the total
+          purchase cost in US dollars.
+        </p>
+
+        <table class="pure-table pure-table-horizontal center-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price Per Item</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Apple</td><td>$3.43</td></tr>
+            <tr><td>Banana</td><td>$2.91</td></tr>
+            <tr><td>Orange</td><td>$2.12</td></tr>
+            <tr><td>Grapefruit</td><td>$5.23</td></tr>
+            <tr><td>Pineapple</td><td>$4.36</td></tr>
+            <tr><td>Coconut</td><td>$3.11</td></tr>
+          </tbody>
+        </table>
+
+        <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          Design the <code>double coneSurfaceArea(double r, double h)</code> method, which computes the
+          surface area of a cone. The formula is:
+        </p>
+
+        <p class="math-center">
+          \[
+          A = \pi r \left( r + \sqrt{h^2 + r^2} \right)
+          \]
+        </p>
+
+        <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          The z-score is a measure of how far a given data point is away from the mean of a normally-distributed sample.
+          In essence, roughly 68% of data falls between z-scores of [−1, 1], roughly 95% falls between [−2, 2], and
+          99.7% falls between [−3, 3]. This means that extreme outliers have z-scores of either less than −3 or greater
+          than 3.
+        </p>
+
+        <p>
+          Design the <code>boolean isExtremeOutlier(double x, double avg, double stddev)</code> method that, when given
+          a data point $x$, a mean $\mu$, and a standard deviation $\sigma$, computes the corresponding z-score of $x$
+          and returns whether it is an "extreme" outlier. Use the following formula:
+        </p>
+
+        <p class="math-center">
+          \[
+          Z = \frac{(x - \mu)}{\sigma}
+          \]
+        </p>
+
+        <p>
+          Hint: remember that you cannot use <code>if</code>, <code>switch</code>, or conditional statements.
+          How can you leverage a <code>Math</code> class method to solve the problem? You are allowed to use
+          comparison and logical operators, e.g., <code>&lt;</code> and <code>||</code>.
+        </p>
+
+        <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          Design the <code>double lawOfCosines(double a, double b, double th)</code> method that, when given
+          two side lengths of a triangle $a$, $b$ and the angle between those two sides $\theta$ in degrees,
+          returns the length of the third side $c$.
+        </p>
+
+        <p class="math-center">
+          \[
+          c = \sqrt{a^2 + b^2 - 2ab\cos \theta}
+          \]
+        </p>
+
+        <p><u>Files to Submit:</u> <code>Problem5.java</code>, <code>Problem5Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          A physics formula for computing object distance displacement is
+        </p>
+
+        <p class="math-center">
+          \[
+          d = t \cdot v_i + (1/2) \cdot at^2
+          \]
+        </p>
+
+        <p>
+          Design the <code>double distanceTraveled(double vi, double a, double t)</code> method that,
+          when given these variables as parameters, returns the distance that the object in question traveled.
+        </p>
+
+        <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          The "square root curve" is a method of scaling grades for an assessment.
+          The idea is to "curve" a student's grade to a "more meaningful" grade.
+          For example, suppose a student scores 65/100 on an exam.
+          Their curved score is \(\sqrt{65}\cdot 10 \approx 8.06 \cdot 10 \approx 80.62\).
+          Therefore, the student earned 15.06 points from the square root scale.
+          Design the <code>double squareRootScalePoints(double score, double maxPoints)</code> method that, when given a raw score and the maximum number of points for some assessment, returns the number of points earned <i>from the curve</i>.
+          For example, <code>squareRootScalePoints(65, 100)</code> returns approximately 15.62, because the student earned an 80.62 after the square root scaling.
+          If the exam were out of 80 points, i.e., <code>squareRootScalePoints(65, 80)</code>, the method would instead return a value that is approximately 7.111.
+          (Note: this exercise purposefully omits the mathematical details to get you to think about what you're supposed to do!)
+        </p>
+
+        <p><u>Files to Submit:</u> <code>Problem7.java</code>, <code>Problem7Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          Design the <code>double billTotal(double t)</code> method, which computes the total for a bill.
+          The total is the given subtotal $t$, plus 6.75% of $t$ for the tax, and 20% of the taxed total
+          for the tip.
+        </p>
+
+        <p><u>Files to Submit:</u> <code>Problem8.java</code>, <code>Problem8Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          Design the <code>boolean areOddOrSum(int x, int y, int z)</code> method that returns true if $x$
+          or $y$ are odd, but not both (and not neither), OR if the sum of $x$ and $y$ is equal to $z$.
+        </p>
+
+        <p><u>Files to Submit:</u> <code>Problem9.java</code>, <code>Problem9Test.java</code></p>
+      </li>
+
+      <li>
+        <p>
+          Design the <code>double angle(double a, double b, double c)</code> method that, when given three
+          side lengths of a triangle $a$, $b$, and $c$, returns the angle $\theta$ opposite to that of $c$
+          in degrees.
+        </p>
+
+        <p class="math-center">
+          \[
+          \theta = \cos^{-1}\left(\frac{a^2 + b^2 - c^2}{2ab}\right)
+          \]
+        </p>
+
+        <p><u>Files to Submit:</u> <code>Problem10.java</code>, <code>Problem10Test.java</code></p>
+      </li>
+
+    </ol> -->
+  </div>
+</div>
+
+</body>
+</html>

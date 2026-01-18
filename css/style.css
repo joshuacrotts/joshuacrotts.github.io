@@ -58,13 +58,13 @@ em {
 #schedule tr:nth-child(2n) td {
   background: #ffffff;
   line-height: 1.4em;
-  height: 2.8em;
+  height: 3.8em;
   vertical-align: middle;
 }
 #schedule tr:nth-child(2n-1) td {
   background: #efefef;
   line-height: 1.4em;
-  height: 2.8em;
+  height: 3.8em;
   vertical-align: middle;
 }
 #schedule #date-column {
@@ -72,6 +72,19 @@ em {
 }
 #schedule #topic-column {
   width: 24em;
+}
+
+#staff tr:nth-child(2n) td {
+  background: #ffffff;
+  line-height: 1.4em;
+  height: 1.2em;
+  vertical-align: middle;
+}
+#staff tr:nth-child(2n-1) td {
+  background: #efefef;
+  line-height: 1.4em;
+  height: 1.2em;
+  vertical-align: middle;
 }
 
 /* Center MathJax display equations */

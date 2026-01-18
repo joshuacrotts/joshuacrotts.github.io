@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
     <link rel="stylesheet" href="../../../css/style.css" />
     <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
-    <title>C212 – Lab 01</title>
+    <title>C212 – Lab 02</title>
     <!-- MathJax for formulas -->
     <script>
       MathJax = {
@@ -35,38 +35,40 @@
     <div class="ribbon dark">
       <div class="content">
         <h2>Instructions</h2>
-        <p>
-          Read the directions below and follow along with your TAs.
-        </p>
+    <p>
+      For each problem, create a class named <code>ProblemX</code>,
+      where <code>X</code> is the problem number
+      (e.g., <code>Problem1.java</code>).
+      Write corresponding JUnit test classes named
+      <code>ProblemXTest</code>. 
+      Each method must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+    </p>
+
+
       </div>
     </div>
-    <!-- <div class="ribbon dark">
+    <div class="ribbon">
       <div class="content">
         <h2>What You <em>Cannot</em> Use</h2>
-      
         <p>
-          You may not use anything beyond Chapter 1.1.
+          You may not use anything beyond Chapter 2.1.
           This includes but is not limited to:
         </p>
-      
         <ul>
-          <li>Strings</li>
-          <li>Conditionals</li>
-          <li>Loops or recursion</li>
+          <li>Recursion</li>
+          <li>Loops</li>
           <li>Arrays or data structures</li>
           <li>Regular expressions</li>
         </ul>
-      
         <p>
-          You <strong>may</strong> use methods from the <code>Math</code> class.
+          Any violation results in a score of <strong>0</strong> on the lab.
         </p>
-      
         <p>
-          Any violation results in a score of <strong>0</strong> on the problem set.
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
         </p>
       </div>
-      </div> -->
-    <div class="ribbon">
+    </div>
+    <div class="ribbon dark">
       <div class="content">
         <h2>Notes and Version Changes:</h2>
         <p>
@@ -75,11 +77,48 @@
       </div>
     </div>
     <!-- PROBLEMS -->
-    <div class="ribbon dark">
+    <div class="ribbon">
       <div class="content">
         <h2>Problems</h2>
-        
-        Under development...
+        <ol>
+          <li>
+            <p>
+              Design the <code>String userId(String f, String l, int y)</code> method that computes a user ID
+              based on three given values: a non-empty first name, a non-empty last name, and a birth year \(y \geq 1900\). A user ID is
+              calculated by taking the first five letters of the last name, the first letter of the first
+              name, and the last two digits of the birth year, and combining the result. Your method should,
+              therefore, receive two <code>String</code> parameters and an <code>int</code>. You are not allowed to convert
+              the year to a <code>String</code> in order to retrieve its last two digits. Below are some test cases.
+            </p>
+            <pre>userId("Joshua", "Crotts", 1999)     =&gt; "CrottJ99"
+userId("Katherine", "Johnson", 1918) =&gt; "JohnsK18"
+userId("Peter", "Perry", 2003)       =&gt; "PerryP03"
+userId("Fred", "Fu", 1957)           =&gt; "FuF57"</pre>
+                    <p><u>Files to Submit:</u> <code>Problem1.java</code>, <code>Problem1Test.java</code></p>
+          </li>
+          <li>
+            <p>
+              Design the <code>int max(int x, int y, int z)</code> method that returns the maximum of three
+              integers <code>x</code>, <code>y</code>, and <code>z</code>. Do not use any built-in
+              (<code>Math</code> library) methods. If you have a case where two of the integers are the largest or all of the integers are the same, it does not matter which you return.
+            </p>
+            <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
+          </li>
+              <li>
+    <p>
+      Design the <code>String popChars(String s, char c, char d)</code> method, which receives a
+      string <code>s</code> and two characters <code>c</code> and <code>d</code>. The method removes
+      <code>c</code> if <code>s</code> starts with <code>c</code>, and removes <code>d</code> if the
+      second character of <code>s</code> is <code>d</code>. The remainder of the string is the same.
+    </p>
+    <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
+    </li>
+
+    <li>
+      <p><strong>This question is worth 10 extra credit points.</strong> Even though this question is extra credit, you should still do it! You are required to know the corresponding material (i.e., how to use the <code>compareTo</code> string method) for PSet2, so it serves as good practice. We make this extra credit because it may not have been covered in lecture. Even so, it <i>is</i> in the book and the lecture slides!</p>
+      <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
+    </li>
+        </ol>
       </div>
     </div>
   </body>

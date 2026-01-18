@@ -114,7 +114,220 @@
   <div class="content">
       <h2>Problems</h2>
 
-      Under development...
+<ol>
+  <li>
+    <p>
+      Design the <code>String cutUsername(String email)</code> method that receives an email address
+      of the form <code>X@Y.Z</code> and returns the username. The username of an email address is
+      <code>X</code>.
+    </p>
+
+    <p><u>Files to Submit:</u> <code>Problem1.java</code>, <code>Problem1Test.java</code></p>
+  </li>
+
+  <li>
+    <p>
+      Design the <code>boolean lessThan20(int x, int y, int z)</code> method that, when given three
+      integers <code>x</code>, <code>y</code>, and <code>z</code>, returns whether or not one of them
+      is less than twenty away from another. For example, <code>lessThan20(19, 2, 412)</code> returns
+      true because <code>2</code> is less than <code>20</code> away from <code>19</code>. Another
+      example is <code>lessThan20(999, 888, 777)</code>, which returns false because none of the
+      numbers have a difference less than twenty.
+    </p>
+
+    <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
+  </li>
+
+  <li>
+    <p>
+      Design the <code>boolean isEvenlySpaced(int x, int y, int z)</code> method, which receives
+      three integers <code>x</code>, <code>y</code>, and <code>z</code>, and returns whether they are
+      evenly spaced. Evenly spaced means that the difference between the smallest and medium number
+      is the same as the difference between the medium and largest number.
+    </p>
+
+    <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
+  </li>
+
+  <li>
+    <p>
+      Design the <code>String cutTry(String s)</code> method, which receives a string <code>s</code>
+      and, if <code>s</code> ends with <code>"try"</code>, it is removed. Otherwise, the original
+      string is returned.
+    </p>
+
+    <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
+  </li>
+
+  <li>
+    <p>
+      In propositional logic, there are several <em>connectives</em> that act on boolean truth values.
+      These include logical conjunction \(\land\), disjunction \(\lor\), conditional \(\to\),
+      biconditional \(\leftrightarrow\), and negation \(\lnot\). We can represent <em>schemata</em> as
+      a series of composed method calls. For example, an evaluation of
+      \(P \to \lnot (Q \leftrightarrow \lnot R)\) are assigned to <code>false</code> and \(\texttt{Q}\) is
+      assigned to <code>true</code>, is equivalent to:
+    </p>
+
+    <pre>static final boolean P = false;
+static final boolean Q = true;
+static final boolean R = false;
+
+cond(P, not(bicond(Q, not(R))))</pre>
+
+    <p>
+      The presented schema resolves to <code>true</code>. Design methods for the five connectives
+      according to the following truth tables. These methods should be called <code>cond</code>,
+      <code>bicond</code>, <code>and</code>, <code>or</code>, and <code>not</code>. Assume that
+      \(\mathrm{T}\) is <code>true</code> and \(\mathrm{F}\) is <code>false</code>.
+    </p>
+
+ <!-- Negation: its own row -->
+<p>
+\[
+\begin{array}{c|c}
+P & \lnot P \\
+\hline
+\mathrm{T} & \mathrm{F} \\
+\mathrm{F} & \mathrm{T}
+\end{array}
+\]
+</p>
+
+<!-- Others: rows of 2, spaced out -->
+<p>
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{cc|c}
+P & Q & P \land Q \\
+\hline
+\mathrm{T} & \mathrm{T} & \mathrm{T} \\
+\mathrm{T} & \mathrm{F} & \mathrm{F} \\
+\mathrm{F} & \mathrm{T} & \mathrm{F} \\
+\mathrm{F} & \mathrm{F} & \mathrm{F}
+\end{array}
+&
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+\begin{array}{cc|c}
+P & Q & P \lor Q \\
+\hline
+\mathrm{T} & \mathrm{T} & \mathrm{T} \\
+\mathrm{T} & \mathrm{F} & \mathrm{T} \\
+\mathrm{F} & \mathrm{T} & \mathrm{T} \\
+\mathrm{F} & \mathrm{F} & \mathrm{F}
+\end{array}
+\end{array}
+\]
+</p>
+
+<p>
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{cc|c}
+P & Q & P \to Q \\
+\hline
+\mathrm{T} & \mathrm{T} & \mathrm{T} \\
+\mathrm{T} & \mathrm{F} & \mathrm{F} \\
+\mathrm{F} & \mathrm{T} & \mathrm{T} \\
+\mathrm{F} & \mathrm{F} & \mathrm{T}
+\end{array}
+&
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+\begin{array}{cc|c}
+P & Q & P \leftrightarrow Q \\
+\hline
+\mathrm{T} & \mathrm{T} & \mathrm{T} \\
+\mathrm{T} & \mathrm{F} & \mathrm{F} \\
+\mathrm{F} & \mathrm{T} & \mathrm{F} \\
+\mathrm{F} & \mathrm{F} & \mathrm{T}
+\end{array}
+\end{array}
+\]
+</p>
+<p><u>Files to Submit:</u> <code>Problem5.java</code>, <code>Problem5Test.java</code></p>
+  </li>
+
+  <li>
+    <p>
+      Design the <code>boolean isInsideRectangle(double rx, double ry, double w, double h, double px, double py)</code>
+      method that, when given a rectangle centered at \((r_x, r_y)\), width \(w\) and height \(h\) as
+      well as a point \((p_x, p_y)\), returns whether the point is located strictly inside the
+      rectangle.
+    </p>
+
+    <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
+  </li>
+
+  <li>
+    <p>
+      Carlo is shipping out orders of candy to local grocery stores. Boxes have a maximum weight
+      defined by a value \(w\), and we can (potentially) fit both small and large bars of candy in a
+      box. Design the <code>int fitCandy(int s, int l, int w)</code> method that, when given a number
+      of small bars \(s\), large bars \(l\), and maximum weight \(w\), determines the number of small
+      candy bars he can fit in the box. Large bars weigh five kilograms, and small bars weigh one
+      kilogram. Note that Carlo always tries to fit large candies first before small. Return
+      <code>-1</code> if it is impossible to fill the box with the given criteria. Below are some
+      test examples. You cannot use loops, recursion, or data structures to solve this problem. Hint:
+      consider this as an analysis of three cases.
+    </p>
+    <pre>fitCandy(4, 1, 9)      =&gt; 4
+fitCandy(4, 1, 4)      =&gt; 4
+fitCandy(1, 2, 6)      =&gt; 1
+fitCandy(6, 1, 13)     =&gt; -1
+fitCandy(60, 100, 550) =&gt; 50
+fitCandy(7, 1, 12)     =&gt; 7
+fitCandy(7, 1, 13)     =&gt; -1</pre>
+
+<p><u>Files to Submit:</u> <code>Problem7.java</code>, <code>Problem7Test.java</code></p>
+  </li>
+
+  <li>
+    <p>
+      An IPv4 address contains four integer values stored in four octets, separated by dots. For
+      instance, <code>192.168.1.244</code> is a valid IPv4 address. Another example is
+      <code>149.165.192.52</code>. Design the <code>boolean isValidIpv4(String ip)</code> method
+      that, when given a string, determines whether or not it represents a valid IPv4 address. Each
+      octet must be an integer between 0 and 255 inclusive. Note that some IPv4 addresses are, in
+      reality, nonsensical, e.g., <code>0.0.0.0</code>, but we will not consider these as invalid.
+      Below the examples is a helper method, <code>isNumeric</code>, to determine whether or not a
+      string is “numeric.” Understanding <em>how</em> this helper method works is unimportant for the
+      time being. You <textit>will</textit> need to use <code>Integer.parseInt</code>,
+      <code>substring</code>, and <code>indexOf</code>.
+    </p>
+
+    <p>
+      <strong>Warning:</strong> Again, you <strong>cannot</strong> use, e.g., arrays, loops, or regular
+      expressions to solve this problem, and if you do, you will receive a 0 on the entire problem
+      set.
+    </p>
+
+    <pre>isValidIpv4("192.168.1.244")    =&gt; true
+isValidIpv4("149.165.192.52")   =&gt; true
+isValidIpv4("192.168.1.256")    =&gt; false
+isValidIpv4("192.168.1201.23")  =&gt; false
+isValidIpv4("192.168.1201.ABC") =&gt; false
+isValidIpv4("ABC.DEF.GHI")      =&gt; false
+isValidIpv4("192.168.1A6.201")  =&gt; false</pre>
+
+    <pre><code>/**
+ * Determines whether or not we can convert a given string into 
+ * an integer datatype.
+ * @param n input string.
+ * @return true if we can convert n to an int, false otherwise.
+ */
+static boolean isNumeric(String n) {
+  try {
+    Integer.parseInt(n);
+    return true;  
+  } catch (NumberFormatException ex) {
+    return false;
+  }
+}</code></pre>
+
+<p><u>Files to Submit:</u> <code>Problem8.java</code>, <code>Problem8Test.java</code></p>
+  </li>
+</ol>
+
 
     <!-- <ol>
       <li>

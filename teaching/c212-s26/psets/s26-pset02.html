@@ -289,8 +289,11 @@ fitCandy(7, 1, 13)     =&gt; -1</pre>
       that, when given a string, determines whether or not it represents a valid IPv4 address. Each
       octet must be an integer between 0 and 255 inclusive. Note that some IPv4 addresses are, in
       reality, nonsensical, e.g., <code>0.0.0.0</code>, but we will not consider these as invalid.
-      Below the examples is a helper method, <code>isNumeric</code>, to determine whether or not a
-      string is “numeric.” Understanding <em>how</em> this helper method works is unimportant for the
+      
+    </p>
+    <p>Below the examples is a helper method, <code>isNumeric</code>, which returns whether or not a
+      string is "numeric," i.e., if the string represents an integer. 
+      Understanding <em>how</em> this helper method works is unimportant for the
       time being. You <textit>will</textit> need to use <code>Integer.parseInt</code>,
       <code>substring</code>, and <code>indexOf</code>.
     </p>

@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../../../css/pure-min.css" />
+  <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+
+  <title>C212 – Problem Set 4</title>
+
+  <!-- MathJax for formulas -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-center {
+      text-align: center;
+      margin: 1em 0;
+    }
+
+    .center-table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Problem Set 4 - Loops</h2>
+    <p><strong>Assigned:</strong> February 4, 2026</p>
+    <p><strong>Due:</strong> February 10, 2026 at 11:59 PM EST</p>
+    <p><strong>Warning!</strong> This problem set is due on a <strong>Tuesday</strong> rather than a Wednesday. Your first exam is on February 11, 2026, and we don't want you to have to choose between studying and completing the problem set, so we make it due a day early. The problem set serves as good practice for the exam!</p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>Objectives</h2>
+    <ul>
+      <li>Students understand the direct correspondence between iteration and tail recursive methods. </li>
+      <li>Students design methods that use iteration to solve complex problems.</li>
+      <li>Students make the choice to use iteration versus recursion when the time calls for it.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Instructions</h2>
+
+    <p>
+      For each problem, create a class named <code>ProblemX</code>,
+      where <code>X</code> is the problem number
+      (e.g., <code>Problem1.java</code>).
+      Write corresponding JUnit test classes named
+      <code>ProblemXTest</code>. 
+      Each method must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+    </p>
+    <p>For problems containing multiple parts, write the methods inside the same class.</p>
+
+    <p>
+      <strong>
+        Do not round your solutions. For example, do not use
+        <code>Math.round</code> or float your output to, e.g.,
+        2 decimal places, unless specified.
+      </strong>
+    </p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>What You <em>Cannot</em> Use</h2>
+
+    <p>
+      You may not use anything beyond Chapter 2, however certain parts of Chapter 2 remain disallowed.
+      This includes but is not limited to:
+    </p>
+
+    <ul>
+      <li>StringBuilder</li>
+      <li>Arrays or data structures</li>
+      <li>Regular expressions</li>
+    </ul>
+    <p>
+      Any violation results in a score of <strong>0</strong> on the problem set.
+    </p>
+    <p>
+      Please contact a staff member if you are unsure as to whether you're allowed to use something.
+    </p>
+  </div>
+</div>
+
+<div class="ribbon">
+    <div class="content">
+    <h2>Notes and Version Changes:</h2>
+    <p>
+    <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
+</p>    
+</div>
+</div>
+
+<!-- PROBLEMS -->
+
+<div class="ribbon dark">
+  <div class="content problems">
+      <h2>Problems</h2>
+
+<ol>
+  <li>
+    <p>
+    Recall the <code>isPalindromeTR</code> method from the last problem set.
+    Design the <code>boolean isPalindromeLoop(String s)</code> method that solves the problem using a loop. 
+    The same restrictions from that problem hold true for this problem.
+    </p>
+    <p><u>Files to Submit:</u> <code>Problem1.java</code>, <code>Problem1Test.java</code></p>
+  </li>
+
+  <li>
+    <p>Recall the <code>hyperfactorial</code> and <code>hyperfactorialTR</code> problems from the last problem set. (Refer back to that problem set for the hyperfactorial definition.)
+Design the <code>long hyperfactorialLoop(long n)</code> method that solves the problem using a loop.</p>
+    <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
+  </li>
+
+  <li>
+    <p>Recall the <code>subfactorial</code> and <code>subfactorialTR</code> problems from the last problem set. (Refer back to that problem set for the hyperfactorial definition.)
+Design the <code>long subfactorial(long n)</code> method that solves the problem using a loop.</p>
+    <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
+  </li>
+
+  <li>
+    
+    <p>Recall the <code>collatz</code> and <code>collatzTR</code> methods from the last problem set.
+Design the <code>String collatzLoop(int n)</code> method that solves the problem using a loop.</p>
+    <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
+  </li>
+
+  <li>
+    <p>Recall the <code>collectParenthesizedStrings</code> and <code>collectParenthesizedStringsTR</code> methods from the last problem set.
+Design the <code>String collectParenthesizedStringsLoop(String s)</code> method, which solves the problem using a loop.</p>
+
+    <p>
+      Assume there are no nested parentheses, all parentheses are balanced, and each parenthesized
+      string contains at least one character.
+    </p>
+    <p><u>Files to Submit:</u> <code>Problem5.java</code>, <code>Problem5Test.java</code></p>
+  </li>
+
+<li>
+
+  <p>The C programming language contains the <code>atoi</code> ``ascii-to-integer'' function, which receives a string and, if the string represents some integer, returns the number converted to an integer.
+Design the <code>int atoi(String s)</code> method that, when given a string \(s\), returns its value as an integer if it can be parsed as an integer.
+An integer may contain a sign as the first character, that being \(+\) or \(-\).
+If the integer does not have a sign, it is assumed to be positive. 
+Ignore all leading zeroes and leading non-digits. 
+Upon reading a sign, the remaining characters must be digits for the number to be a valid integer.
+Upon finding the first non-zero digit (after the sign), if one exists, begin interpreting the string as a number. 
+At any point thereafter, if a non-digit is encountered, return the number parsed up to that point. 
+You may assume that the bounds of an integer are never exceeded, i.e., all valid integers will be within the bounds of \([-2^{31}, 2^{31}-1]\). 
+Writing enough tests is <i>crucial</i> to correctly solving this exercise!
+We provide some examples below.</p>
+
+<pre>
+atoi("ABCD")           => 0
+atoi("42")             => 42
+atoi("000042")         => 42
+atoi("004200")         => 4200
+atoi("ABCD42ABCD")     => 42
+atoi("ABCD+42ABCD")    => 42
+atoi("ABCD-42ABCD")    => -42
+atoi("000-42000")      => -42000
+atoi("000-ABCD")       => 0
+atoi("-+-+1234")       => 0
+atoi("-A1234")         => 0
+atoi("000+42ABCD")     => 42
+atoi("8080*8080")      => 8080
+</pre>
+<p><strong>Warning:</strong> you are not allowed to use <code>Integer.parseInt</code> or similar methods that trivialize the problem.</p>
+<p><i>Hint:</i> to convert a character into its integer counterpart, use the <code>Character.getNumericValue</code> method.</p>
+    <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
+</li>
+
+<li>
+  <p>
+    Wordle is a game created by Josh Wardle, where the objective is to guess a word
+    with a given number of turns, inspired by Mastermind. In this exercise, you
+    will implement a stage of the Wordle game.
+  </p>
+
+  <p>
+    Design the <code>String guessWord(String W, String G)</code> method that, when
+    given a string <code>W</code> and a “guess” string <code>G</code>, returns a new
+    string with the following properties:
+  </p>
+
+  <ul>
+    <li>
+      <p>
+        If \( |W| \neq |G| \), return <code>null</code>.
+      </p>
+    </li>
+    <li>
+      <p>
+        For every index \( i \), if \( W_i = G_i \), append \( W_i \) to the output
+        string. If \( W_i \neq G_i \) but \( G_i \in W \), append an asterisk to the
+        output string. Otherwise, output a dash.
+      </p>
+    </li>
+  </ul>
+
+  <p>Below are some example inputs and outputs.</p>
+
+  <pre>
+guessWord("PLANS", "TRAP")  => null
+guessWord("PLANS", "TRAIN") => "--A-*"
+guessWord("PLANS", "PLANE") => "PLAN-"
+guessWord("PLANS", "PLANS") => "PLANS"
+guessWord("PLANS", "SNLPA") => "*****"
+  </pre>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem7.java</code>, <code>Problem7Test.java</code>
+  </p>
+</li>
+
+<li>
+  <p>
+    Design the <code>String substring(String s, int a, int b)</code> method, which
+    receives a string and two integers <code>a</code>, <code>b</code>, and returns
+    the substring between these indices. If either are out of bounds of the string,
+    return <code>null</code>. You <strong>cannot</strong> use the
+    <code>substring</code> method(s) provided by the <code>String</code> class.
+  </p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem8.java</code>, <code>Problem8Test.java</code>
+  </p>
+</li>
+
+<li>
+  <p>File names are often compared lexicographically.</p>
+
+  <p>
+    For example, a file with name <code>"File12.txt"</code> is less than <code>"File2.txt"</code> because
+    <code>"1"</code> is less than <code>"2"</code>.
+  </p>
+
+  <p>
+    Design the <code>int compareFiles(String f1, String f2)</code> method that would fix this ordering to return the more sensible ordering.
+    That is, if a file has a prefix and a suffix, where the only differing piece is the number, then make the file with the lower number return a negative number.
+    You may assume that the file names are always of the form <code>NameNum.Extension</code>, where <code>Name</code> is some alphabetic string (i.e., where the string contains only letters), <code>Num</code> is some positive integer, and <code>Extension</code> is another alphabetic string.
+    If the prefix or or suffix do not match, return the sign (i.e., -1, 0, 1) of calling <code>compareTo</code> on the file names.
+    Take the following examples as motivation.
+  </p>
+
+  <pre>
+compareFiles("File12.txt", "File1.txt")  => 1
+compareFiles("File10.txt", "File11.txt") => -1
+compareFiles("File1.txt", "File12.txt")  => -1
+compareFiles("File1.txt", "File1.txt")   => 0
+compareFiles("File1.txt", "File1.png")   => 1
+  </pre>
+
+  <p>
+    <strong>Warning:</strong> if you try to Google this problem (or use AI for this problem), it will almost certainly tell you to use regular expressions or some other ridiculous approach.
+    If you do, you will receive a 0 on the problem set.
+    Again, <em>both of these are violations of the academic integrity policy.</em>
+    Don't give in.
+    Solve it yourself, like you should for all other problems.
+  </p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem9.java</code>, <code>Problem9Test.java</code>
+  </p>
+</li>
+
+<li>
+  <p>
+    The <em>definite integral</em> of a function \(f\), defined as \(\int_{a}^{b} f(x)\;\text{d}x\), produces the area under the curve of \(f\) on the interval \([a, b]\). The thing is, though, integrals are defined in terms of <em>Riemann summations</em>, which provide estimations on the area under a curve.
+    Riemann sums approximate the area by creating rectangles of a fixed width \(\Delta\), as shown in Figure&nbsp;1 for an arbitrary function \(f\). Left-Riemann, right-Riemann, and midpoint-Riemann approximations define the focal point, i.e., the height, of the rectangle. Notice that, in Figure&nbsp;1, we use a midpoint-Riemann sum with \(\Delta = 0.2\), in which the collective sum of all the rectangle areas is the Riemann approximation. Your job is to use this idea to approximate the area of a circle.
+  </p>
+
+<div class="figure">
+  <img src="../../../img/midpoint-riemann.png"
+       alt="Figure 1: Midpoint-Riemann Approximation of a Function" />
+  <p class="caption">
+    Figure 1: Midpoint-Riemann Approximation of a Function
+  </p>
+</div>
+
+
+  <p>
+    Design the <code>double circleArea(double r, double delta)</code> method, which receives a radius \(r\) and a delta \(\Delta\). It computes (and returns) a <u><strong>left</strong></u>-Riemann approximation of the area of a circle. To solve this problem, compute the <u><strong>left</strong></u>-Riemann approximation of quadrant 1, and multiply the area by 4. We illustrate this in Figure&nbsp;2 where \(\Delta=0.5\) and its radius \(r=2\). <span style="color:red;">Further note that no calculus knowledge is necessary to solve this exercise.</span>
+  </p>
+
+<div class="figure">
+  <img src="../../../img/right-riemann.png"
+       alt="Figure 2: Left-Riemann Approximation of a Function" />
+  <p class="caption">
+    Figure 2: Left-Riemann Approximation of a Function
+  </p>
+</div>
+
+  <p>
+    <i>Note:</i> the approximated area will vary based on the chosen Riemann approximation, so for this problem, you must approximate the area of <u>quadrant 1</u>, then multiply that value accordingly.
+  </p>
+
+  <p><i>Hint:</i> remember the Pythagorean theorem?</p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>ProblemX.java</code>, <code>ProblemXTest.java</code>
+  </p>
+</li>
+
+
+</ol>
+
+  </div>
+</div>
+
+</body>
+</html>

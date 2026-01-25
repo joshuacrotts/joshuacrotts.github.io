@@ -136,7 +136,7 @@
       <li>
         <p>
           The <em>hyperfactorial</em> of a number, namely \(H(n)\), is the value of
-          \(1^1 \cdot 2^2 \cdot \dots \cdot n^n\). Because the resulting values are outrageously large,
+          \(1^1 \cdot 2^2 \cdot \ldots \cdot n^n\). Because the resulting values are outrageously large,
           use the <code>long</code> datatype. Design the standard recursive
           <code>long hyperfactorial(long n)</code> method, which receives a long integer \(n\) and returns its
           hyperfactorial.
@@ -289,7 +289,7 @@
     When we encounter a <code>"|"</code>, take the left boolean value and recurse on the right side, then return the logical OR of the two values.
   </p>
     <p>For example, evaluating <code>"!T&F|T"</code> means we first negate <code>T</code> to get <code>F</code>, then we encounter <code>&amp;</code>, so we recurse on the rest of the string to evaluate <code>"F|T"</code>. We encounter <code>|</code>, so we recurse on the rest of the string to evaluate <code>"T"</code>, which resolves to <code>true</code>. As the recursion unwinds, we evaluate <code>false || true</code> to get <code>true</code>, then <code>false &amp;&amp; true</code> to get <code>false</code>.</p>
-    <p>This order of evaluation is right-associative, i.e., it's as if <code>"!T&F|T"</code> has implicit parentheses, e.g., <code>("!T")&("F"|("T"))</code>.</p>
+    <p>This order of evaluation is right-associative, i.e., it's as if <code>"!T&F|T"</code> has implicit parentheses as <code>("!T")&("F"|("T"))</code>.</p>
     <ol type="a">
       <li>
         <p>
@@ -309,180 +309,11 @@
       <p>Hint 1: this problem is pretty difficult to solve, and we would strongly recommend you not wait until the last minute to start working on it.</p>
       <p>Hint 2: consider this a case analysis on the length of the string: if the string is length 1, what do you know about it? If it is length 2, what do you know about it? If it has more than 2 characters, what do you know about it?</p>
       <p>Hint 3: obviously, the hardest part of this problem is handling the case where there are more than 2 characters, e.g., with a binary operator, because there's the inherent possibility of a negated <code>BooleanLiteral</code>, which must be handled prior to the binary operator evaluation.</p>
+
+      <p><u>Files to Submit:</u> <code>Problem7.java</code>, <code>Problem7Test.java</code></p>
   </li>
 </ol>
 
-
-
-    <!-- <ol>
-      <li>
-        <p>
-          Design the <code>double gigametersToLightDays(double gkm)</code> method, which converts a distance
-          in gigameters to light days (i.e., the distance that light travels in one day). Light travels
-          299,792,458 meters per second, and there are 86,400 seconds in a day.
-        </p>
-        <p><u>Files to Submit:</u> <code>Problem1.java</code>, <code>Problem1Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          Design the <code>double grocery(int a, int b, int o, int g, int p, int c)</code> method, which
-          receives six integers representing the number of apples, bananas, oranges, grapefruits,
-          pineapples, and coconuts purchased at a store. Use the following table to compute the total
-          purchase cost in US dollars.
-        </p>
-
-        <table class="pure-table pure-table-horizontal center-table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Price Per Item</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Apple</td><td>$3.43</td></tr>
-            <tr><td>Banana</td><td>$2.91</td></tr>
-            <tr><td>Orange</td><td>$2.12</td></tr>
-            <tr><td>Grapefruit</td><td>$5.23</td></tr>
-            <tr><td>Pineapple</td><td>$4.36</td></tr>
-            <tr><td>Coconut</td><td>$3.11</td></tr>
-          </tbody>
-        </table>
-
-        <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          Design the <code>double coneSurfaceArea(double r, double h)</code> method, which computes the
-          surface area of a cone. The formula is:
-        </p>
-
-        <p class="math-center">
-          \[
-          A = \pi r \left( r + \sqrt{h^2 + r^2} \right)
-          \]
-        </p>
-
-        <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          The z-score is a measure of how far a given data point is away from the mean of a normally-distributed sample.
-          In essence, roughly 68% of data falls between z-scores of [−1, 1], roughly 95% falls between [−2, 2], and
-          99.7% falls between [−3, 3]. This means that extreme outliers have z-scores of either less than −3 or greater
-          than 3.
-        </p>
-
-        <p>
-          Design the <code>boolean isExtremeOutlier(double x, double avg, double stddev)</code> method that, when given
-          a data point $x$, a mean $\mu$, and a standard deviation $\sigma$, computes the corresponding z-score of $x$
-          and returns whether it is an "extreme" outlier. Use the following formula:
-        </p>
-
-        <p class="math-center">
-          \[
-          Z = \frac{(x - \mu)}{\sigma}
-          \]
-        </p>
-
-        <p>
-          Hint: remember that you cannot use <code>if</code>, <code>switch</code>, or conditional statements.
-          How can you leverage a <code>Math</code> class method to solve the problem? You are allowed to use
-          comparison and logical operators, e.g., <code>&lt;</code> and <code>||</code>.
-        </p>
-
-        <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          Design the <code>double lawOfCosines(double a, double b, double th)</code> method that, when given
-          two side lengths of a triangle $a$, $b$ and the angle between those two sides $\theta$ in degrees,
-          returns the length of the third side $c$.
-        </p>
-
-        <p class="math-center">
-          \[
-          c = \sqrt{a^2 + b^2 - 2ab\cos \theta}
-          \]
-        </p>
-
-        <p><u>Files to Submit:</u> <code>Problem5.java</code>, <code>Problem5Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          A physics formula for computing object distance displacement is
-        </p>
-
-        <p class="math-center">
-          \[
-          d = t \cdot v_i + (1/2) \cdot at^2
-          \]
-        </p>
-
-        <p>
-          Design the <code>double distanceTraveled(double vi, double a, double t)</code> method that,
-          when given these variables as parameters, returns the distance that the object in question traveled.
-        </p>
-
-        <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          The "square root curve" is a method of scaling grades for an assessment.
-          The idea is to "curve" a student's grade to a "more meaningful" grade.
-          For example, suppose a student scores 65/100 on an exam.
-          Their curved score is \(\sqrt{65}\cdot 10 \approx 8.06 \cdot 10 \approx 80.62\).
-          Therefore, the student earned 15.06 points from the square root scale.
-          Design the <code>double squareRootScalePoints(double score, double maxPoints)</code> method that, when given a raw score and the maximum number of points for some assessment, returns the number of points earned <i>from the curve</i>.
-          For example, <code>squareRootScalePoints(65, 100)</code> returns approximately 15.62, because the student earned an 80.62 after the square root scaling.
-          If the exam were out of 80 points, i.e., <code>squareRootScalePoints(65, 80)</code>, the method would instead return a value that is approximately 7.111.
-          (Note: this exercise purposefully omits the mathematical details to get you to think about what you're supposed to do!)
-        </p>
-
-        <p><u>Files to Submit:</u> <code>Problem7.java</code>, <code>Problem7Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          Design the <code>double billTotal(double t)</code> method, which computes the total for a bill.
-          The total is the given subtotal $t$, plus 6.75% of $t$ for the tax, and 20% of the taxed total
-          for the tip.
-        </p>
-
-        <p><u>Files to Submit:</u> <code>Problem8.java</code>, <code>Problem8Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          Design the <code>boolean areOddOrSum(int x, int y, int z)</code> method that returns true if $x$
-          or $y$ are odd, but not both (and not neither), OR if the sum of $x$ and $y$ is equal to $z$.
-        </p>
-
-        <p><u>Files to Submit:</u> <code>Problem9.java</code>, <code>Problem9Test.java</code></p>
-      </li>
-
-      <li>
-        <p>
-          Design the <code>double angle(double a, double b, double c)</code> method that, when given three
-          side lengths of a triangle $a$, $b$, and $c$, returns the angle $\theta$ opposite to that of $c$
-          in degrees.
-        </p>
-
-        <p class="math-center">
-          \[
-          \theta = \cos^{-1}\left(\frac{a^2 + b^2 - c^2}{2ab}\right)
-          \]
-        </p>
-
-        <p><u>Files to Submit:</u> <code>Problem10.java</code>, <code>Problem10Test.java</code></p>
-      </li>
-
-    </ol> -->
   </div>
 </div>
 

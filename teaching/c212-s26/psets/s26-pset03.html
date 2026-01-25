@@ -281,8 +281,8 @@
 
       A BooleanExpression is one of:
         - BooleanLiteralAtom
-        - BooleanLiteralAtom + "&amp;" + BooleanLiteralAtom
-        - BooleanLiteralAtom + "|" + BooleanLiteralAtom
+        - BooleanExpression + "&amp;" + BooleanExpression
+        - BooleanExpression + "|" + BooleanExpression
     </pre>
     <p>We evaluate a <code>BooleanExpression</code> as follows: when we encounter a <code>"!"</code>, flip the immediately-following boolean value.
     When we encounter a <code>"&amp;"</code>, extract the left boolean value and recurse on the right side, then return the logical AND of the two values.

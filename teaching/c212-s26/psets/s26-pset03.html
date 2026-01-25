@@ -262,7 +262,7 @@
       <code>char findLastNonDigitCharTR(String s)</code> method that returns the last character in
       the string that is not a digit. If no such character exists, return the <code>NUL</code>
       character, i.e., <code>'\0'</code>.
-      You will need to design a <code>private static</code> helper method.
+      <!-- You will need to design a <code>private static</code> helper method. -->
     </p>
     <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
   </li>
@@ -285,10 +285,10 @@
         - BooleanExpression + "|" + BooleanExpression
     </pre>
     <p>We evaluate a <code>BooleanExpression</code> as follows: when we encounter a <code>"!"</code>, flip the immediately-following boolean value.
-    When we encounter a <code>"&amp;"</code>, extract the left boolean value and recurse on the right side, then return the logical AND of the two values.
-    When we encounter a <code>"|"</code>, extract the left boolean value and recurse on the right side, then return the logical OR of the two values.
+    When we encounter a <code>"&amp;"</code>, take the left boolean value and recurse on the right side, then return the logical AND of the two values.
+    When we encounter a <code>"|"</code>, take the left boolean value and recurse on the right side, then return the logical OR of the two values.
   </p>
-    <p>For example, evaluating <code>"!T&F|T"</code> means we first negate <code>!T</code> to <code>F</code>, then we encounter <code>&amp;</code>, so we recurse on the rest of the string to evaluate <code>"F|T"</code>. We encounter <code>|</code>, so we recurse on the rest of the string to evaluate <code>"T"</code>, which resolves to <code>true</code>. As the recursion unwinds, we evaluate <code>false || true</code> to get <code>true</code>, then <code>false &amp;&amp; true</code> to get <code>false</code>.</p>
+    <p>For example, evaluating <code>"!T&F|T"</code> means we first negate <code>T</code> to get <code>F</code>, then we encounter <code>&amp;</code>, so we recurse on the rest of the string to evaluate <code>"F|T"</code>. We encounter <code>|</code>, so we recurse on the rest of the string to evaluate <code>"T"</code>, which resolves to <code>true</code>. As the recursion unwinds, we evaluate <code>false || true</code> to get <code>true</code>, then <code>false &amp;&amp; true</code> to get <code>false</code>.</p>
     <p>This order of evaluation is right-associative, i.e., it's as if <code>"!T&F|T"</code> has implicit parentheses, e.g., <code>("!T")&("F"|("T"))</code>.</p>
     <ol type="a">
       <li>

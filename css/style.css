@@ -99,3 +99,6 @@ em {
   margin-right: auto;
 }
   
+.problems > ol > li {
+  margin-bottom: 4em;
+}

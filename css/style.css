@@ -102,3 +102,18 @@ em {
 .problems > ol > li {
   margin-bottom: 4em;
 }
+
+.figure {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.figure img {
+  max-width: 30%;
+  height: auto;
+}
+
+.figure .caption {
+  font-style: italic;
+  margin-top: 0.5em;
+}

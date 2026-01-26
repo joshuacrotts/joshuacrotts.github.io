@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 03</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 03 - Standard &amp; Tail Recursion</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          For each problem, create a class named <code>ProblemX</code>,
+          where <code>X</code> is the problem number
+          (e.g., <code>Problem1.java</code>).
+          Write corresponding JUnit test classes named
+          <code>ProblemXTest</code>. 
+          All methods (yes, <i>including helpers</i>) must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+          Helper methods should be marked as <code>private</code>.
+          You do not need to write explicit tests for helper methods because they will be indirectly tested through the driver methods.
+        </p>
+        <p>For problems containing multiple parts, write the methods inside the same class.</p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use anything beyond Chapter 2.2.
+          This includes <u>but is not limited to:</u>
+        </p>
+        <ul>
+          <li>Bitwise operators</li>
+          <li>Loops</li>
+          <li>Arrays or data structures</li>
+          <li>Regular expressions</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the lab. We have been seeing more and more of these violations recently, so please be careful! Ask your TAs if you are unsure about whether something is allowed.
+        </p>
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Notes and Version Changes:</h2>
+        <p>
+        </p>
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon">
+      <div class="content problems">
+        <h2>Problems</h2>
+        <ol>
+          <li>
+            <p>This problem has two parts.</p>
+            <ol type="a">
+              <li>
+                <p>
+                  Design the recursive <code>String replaceAB(String s)</code> method that
+                  replaces any occurrence of the character <code>"A"</code> with the
+                  character <code>"B"</code> in a given string <code>s</code>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Design the tail recursive <code>String replaceABTR(String s)</code> method
+                  that solves the same problem as <code>replaceAB</code>, but instead uses
+                  tail recursion. You will need to design a helper method. Remember to include the relevant access modifiers!
+                </p>
+              </li>
+            </ol>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem1.java</code>, <code>Problem1Test.java</code>
+            </p>
+          </li>
+          <li>
+            <p>
+              In the textbook, we defined recursive addition over natural numbers (integers
+              &ge; 0) using the restricted context (only having <code>isZero</code>,
+              <code>addOne</code>, <code>subOne</code>, conditionals, and recursion) as
+              follows:
+            </p>
+            <pre>
+/**
+ * Determines whether the given integer is zero.
+ * @param n a non-negative integer
+ * @return true if n is zero; false otherwise
+ */
+private static boolean isZero(int n) {
+  return n == 0;
+}
+
+/**
+ * Adds one to the given integer.
+ * @param n a non-negative integer
+ * @return n + 1
+ */
+private static int addOne(int n) {
+  return n + 1;
+}
+
+/**
+ * Subtracts one from the given integer, stopping at zero.
+ * @param n a non-negative integer
+ * @return n - 1 if n &gt; 0; otherwise 0
+ */
+private static int subOne(int n) {
+  return n &lt;= 0 ? 0 : n - 1;
+}
+
+/**
+ * Recursively adds two non-negative integers.
+ * @param n a non-negative integer
+ * @param m a non-negative integer
+ * @return the sum n + m
+ */
+static int add(int n, int m) {
+  if (isZero(m)) {
+    return n;
+  } else {
+    return addOne(add(n, subOne(m)));
+  }
+}
+  </pre>
+            <p>
+              Design the standard recursive <code>mult(int x, int y)</code> and
+              <code>pow(int x, int y)</code> methods that multiply <code>x</code> by
+              <code>y</code> and raise <code>x</code> to the power of <code>y</code>
+              respectively. Note that <code>x</code> and <code>y</code> &ge; 0.
+              Importantly: you are restricted to the context that the textbook uses to write
+              <code>add</code>. Therefore, you are not allowed to use <code>+</code>,
+              <code>-</code>, <code>*</code>, or any other method calls.
+            </p>
+            <p>
+              <i>Hint 1:</i> use <code>add</code> to define <code>mult</code>, and <code>mult</code>
+              to define <code>pow</code>. Copy the four methods above into your
+              <code>Problem2.java</code> file.
+            </p>
+            <p><i>Hint 2:</i> we will assume \(n^m\) is undefined when \(n=0\) and \(m=0\), so do not test it!</p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem2.java</code>, <code>Problem2Test.java</code>
+            </p>
+          </li>
+          <li>
+            <p>Note: this exercise is worth 5 points of extra credit, but you should still do it if you have time!</p>
+            <p>
+              Design the tail recursive <code>int compareToTR(String s, String t)</code> method that compares two strings <code>s</code> and <code>t</code> lexicographically (dictionary order). 
+              The method returns -1 if <code>s</code> is lexicographically less than <code>t</code>, +1 if <code>s</code> is lexicographically greater than <code>t</code>, and zero if the two strings are equal.
+              You will need to design a helper method. Remember to include the relevant access modifiers!
+            </p>
+            <p>As an extra incentive, if you write this method by recursing over indices (which is more efficient) rather than the lengths of the strings, you will receive an additional 5 points of extra credit.</p>
+            <p><i>Warning:</i> you are also not allowed to use any <code>String</code> class methods to solve this problem except for <code>charAt</code> and <code>length</code>.</p>
+            <p><i>Hint 1:</i> break this down into a series of case analyses.</p>
+            <p><i>Hint 2:</i> if the two strings are empty, then they are equal. If exactly one of them is empty, then the empty string is lexicographically less than the non-empty string. Otherwise, we should compare their first characters and recurse accordingly.</p>
+            <p><i>Hint 3:</i> this is a good exercise in determining if your helper actually needs an accumulator; does it?</p>
+            <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

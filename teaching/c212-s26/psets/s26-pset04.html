@@ -237,9 +237,10 @@ guessWord("PLANS", "SNLPA") => "*****"
 <li>
   <p>
     Design the <code>String substring(String s, int a, int b)</code> method, which
-    receives a string and two integers <code>a</code>, <code>b</code>, and returns
-    the substring between these indices. If either are out of bounds of the string,
-    return <code>null</code>. You <strong>cannot</strong> use the
+    receives a string \(s\) and two integers \(a\), \(b\), and returns
+    the substring between these indices, inclusive on \(a\) and exclusive on \(b\).
+    If \(a &lt; 0\), \(b &gt; s\texttt{.length()}\), or \(a > b\), return <code>null</code>.
+    You <strong>cannot</strong> use the
     <code>substring</code> method(s) provided by the <code>String</code> class.
   </p>
 
@@ -250,11 +251,8 @@ guessWord("PLANS", "SNLPA") => "*****"
 </li>
 
 <li>
-  <p>File names are often compared lexicographically.</p>
-
-  <p>
-    For example, a file with name <code>"File12.txt"</code> is less than <code>"File2.txt"</code> because
-    <code>"1"</code> is less than <code>"2"</code>.
+  <p>File names are often compared lexicographically. 
+    For example, a file with name <code>"File12.txt"</code> is less than <code>"File2.txt"</code> because <code>"1"</code> is (lexicographically) less than <code>"2"</code>.
   </p>
 
   <p>

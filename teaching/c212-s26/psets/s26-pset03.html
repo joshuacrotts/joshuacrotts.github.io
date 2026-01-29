@@ -111,6 +111,8 @@
     <b>Note 1 (01/28):</b> You <i>are</i> allowed to use methods from the <code>Character</code> and <code>Math</code> classes.
 
     <b>Note 2 (01/28):</b> Clarification on Problem 5a: when collecting parenthesized strings, do not include any delimiters between the collected strings.
+
+    <b>Note 3 (01/28):</b> Removal of the tail recursive requirement from Problem 8. Fix to method name in autograder.
 </p>    
 </div>
 </div>
@@ -274,7 +276,6 @@
   </li>
 
   <li>
-    <p>This problem has two parts.</p>
     <p>Consider the following data definitions:</p>
     <pre>
       A BooleanLiteral is one of:
@@ -296,23 +297,12 @@
   </p>
     <p>For example, evaluating <code>"!T&F|T"</code> means we first negate <code>T</code> to get <code>F</code>, then we encounter <code>&amp;</code>, so we recurse on the rest of the string to evaluate <code>"F|T"</code>. We encounter <code>|</code>, so we recurse on the rest of the string to evaluate <code>"T"</code>, which resolves to <code>true</code>. As the recursion unwinds, we evaluate <code>false || true</code> to get <code>true</code>, then <code>false &amp;&amp; true</code> to get <code>false</code>.</p>
     <p>This order of evaluation is right-associative, i.e., it's as if <code>"!T&F|T"</code> has implicit parentheses as <code>("!T")&("F"|("T"))</code>.</p>
-    <ol type="a">
-      <li>
-        <p>
+      <p>
           Design the standard recursive
           <code>boolean evaluateBooleanExpression(String expr)</code> method that evaluates a
           given boolean expression according to the above data definition.
           Therefore, you may assume that the input is always a valid <code>BooleanExpression</code>.
-        </p>
-      </li>
-      <li>
-        <p>
-          Design the tail recursive
-          <code>boolean evaluateBooleanExpressionTR(String expr)</code> method that uses tail recursion to solve the same problem. 
-          You will need to design a <code>private static</code> helper method.
-        </p>
-      </li>
-    </ol>
+      </p>
       <p><i>Hint 1:</i> this problem is pretty difficult to solve, and we would strongly recommend you not wait until the last minute to start working on it.</p>
       <p><i>Hint 2:</i> consider this a case analysis on the length of the string: if the string is length 1, what do you know about it? If it is length 2, what do you know about it? If it has more than 2 characters, what do you know about it?</p>
       <p><i>Hint 3:</i> obviously, the hardest part of this problem is handling the case where there are more than 2 characters, e.g., with a binary operator, because there's the inherent possibility of a negated <code>BooleanLiteral</code>, which must be handled prior to the binary operator evaluation.</p>

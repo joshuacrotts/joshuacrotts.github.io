@@ -108,7 +108,9 @@
     <div class="content">
     <h2>Notes and Version Changes:</h2>
     <p>
-    <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
+    <b>Note 1:</b> You <i>are</i> allowed to use methods from the <code>Character</code> and <code>Math</code> classes.
+
+    <b>Note 2:</b> Clarification on Problem 5a: when collecting parenthesized strings, do not include any delimiters between the collected strings.
 </p>    
 </div>
 </div>
@@ -148,9 +150,8 @@
       </li>
       <li>
         <p>
-          Design the <code>long hyperfactorialTR(long n)</code> method that uses tail recursion and
-          accumulators to solve the problem. You will need to design a
-          <code>private static</code> helper method.
+          Design the tail recursive <code>long hyperfactorialTR(long n)</code> method that uses tail recursion to solve the same problem. 
+          You will need to design a <code>private static</code> helper method.
         </p>
       </li>
     </ol>
@@ -183,9 +184,8 @@
       </li>
       <li>
         <p>
-          Design the <code>long subfactorialTR(long n)</code> method that uses tail recursion and
-          accumulators to solve the problem. You will need to design a
-          <code>private static</code> helper method.
+          Design the tail recursive <code>long subfactorialTR(long n)</code> method that uses tail recursion to solve the same problem. 
+          You will need to design a <code>private static</code> helper method.
         </p>
       </li>
     </ol>
@@ -220,7 +220,7 @@
       </li>
       <li>
         <p>
-          Design the <code>String collatzTR(int n)</code> method that uses tail recursion and accumulators to solve the problem.
+          Design the tail recursive <code>String collatzTR(int n)</code> method that uses tail recursion to solve the same problem.
           You will need to design a <code>private static</code> helper method.
         </p>
       </li>
@@ -248,12 +248,14 @@
           Design the standard recursive
           <code>String collectParenthesizedStrings(String s)</code> method, which returns a single
           string containing all parenthesized substrings.
+          Do not include a delimiter.
+          For example, <code>collectParenthesizedStrings("(abc)pqr(de)")</code> returns <code>"abcde"</code>.
         </p>
       </li>
       <li>
         <p>
-          Design the <code>String collectParenthesizedStringsTR(String s)</code> method that solves
-          the same problem using tail recursion. Remember to include the relevant access modifiers.
+          Design the tail recursive <code>String collectParenthesizedStringsTR(String s)</code> method that uses tail recursion to solve the same problem.
+          You will need to design a <code>private static</code> helper method.
         </p>
       </li>
     </ol>
@@ -306,8 +308,8 @@
       <li>
         <p>
           Design the tail recursive
-          <code>boolean evaluateBooleanExpressionTR(String expr)</code> method solves the problem using tail recursion and accumulators. You will need to design an explicit
-          helper method. Remember to include the relevant access modifiers.
+          <code>boolean evaluateBooleanExpressionTR(String expr)</code> method that uses tail recursion to solve the same problem. 
+          You will need to design a <code>private static</code> helper method.
         </p>
       </li>
     </ol>

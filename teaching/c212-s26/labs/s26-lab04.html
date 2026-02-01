@@ -82,49 +82,49 @@
       <div class="content problems">
         <h2>Problems</h2>
         <ol>
-
           <!-- Problem 1. -->
           <li>
-              <p>(30 points) Recall the <code>replaceAB</code> and <code>replaceABTR</code> methods from the last lab. Design the <code>String replaceABLoop(String s)</code> method that solves the same problem as those methods, but uses a loop.</p>
-              <p><i>Hint:</i> use the translation pipeline from your tail recursive implementation!</p>
+            <p>(30 points) Recall the <code>replaceAB</code> and <code>replaceABTR</code> methods from the last lab. Design the <code>String replaceABLoop(String s)</code> method that solves the same problem as those methods, but uses a loop.</p>
+            <p class="hint"><i>Hint:</i> use the translation pipeline from your tail recursive implementation!</p>
             <p>
               <u>Files to Submit:</u>
               <code>Problem1.java</code>, <code>Problem1Test.java</code>
             </p>
           </li>
-
           <!-- Problem 3. -->
-           <li>
+          <li>
             <p>(40 points) Design the <code>int chickenCounterLoop(String s)</code> method that counts the number of times the word "chicken" appears in a given non-<code>null</code> string <code>s</code>. You must account for overlapping occurrences of <code>"chicken"</code> that are created when removing another occurrence. For example, invoking <code>countChickenLoop("abcchickechickenn")</code> returns 2 because, after removing the substring <code>"chicken"</code> from the original string, we are left with <code>"abcchicken"</code>, which itself contains another instance of <code>"chicken"</code>.</p>
-
-            <p><i>Hint:</i> it may be a very wise idea to first write this as a tail recursive algorithm, then mechanically translate it into a loop! Break it up into a base case and the recursive step: if the string doesn't contain chicken, what do you do? On the other hand, if it <i>does</i>, what do you do?</p>
+            <p class="hint"><i>Hint:</i> it may be a very wise idea to first write this as a tail recursive algorithm, then mechanically translate it into a loop! Break it up into a base case and the recursive step: if the string doesn't contain chicken, what do you do? On the other hand, if it <i>does</i>, what do you do?</p>
             <p>
               <u>Files to Submit:</u>
               <code>Problem2.java</code>, <code>Problem2Test.java</code>
             </p>
-           </li>
-
-            <!-- Problem 3. -->
-           <li>
-            <p><i></i></p>
-
-            <p>(5 points) Design the <code>int factorialLoop(int n)</code> method that computes the factorial of a given integer \(n \geq 0\) using a loop.</p>
-
-            <p>(10 points) Design the <code>boolean isFactorionLoop(int n)</code> method that returns whether a given integer \(n \geq 0\) is a <i>factorion</i> using a loop.
-            A factorion is a number that is equal to the sum of the factorials of its digits. For example, 145 is a factorion because \(1! + 4! + 5! = 145\).
-            </p>
-            <p class="warning"><strong>Warning:</strong> you cannot convert the integer to a string or use any string methods.</p>
-            <p style="margin-left: 40px;"><i>Hint:</i> use modulus and division to extract digits!</p>
-
-            <p>(15 points) Design the <code>String findFactorions(int a, int b)</code> method that, when given two integers \(1 \leq a &lt; b\), returns a string containing all the factorions in the range \([a, b]\), inclusive.</p>
-          
+          </li>
+          <!-- Problem 3. -->
+          <li>
+            
+              <p>This problem has two parts.</p>
+              <p>An <i>impatient number</i> is an integer \(n \geq 0\) where the sum of its digits each raised to the power of the number <i>of</i> digits in \(n\) is equal to \(n\). For example, 1634 is an impatient number because \(1^4+6^4+3^4+4^4 = 1634\).</p>
+              <ol type="a">
+              <li>
+                <p>(10 points) Design the <code>boolean isImpatientNumberLoop(int n)</code> method that returns whether a given integer \(n \geq 0\) is an impatient number using a loop.
+                </p>
+                <p class="warning"><strong>Warning:</strong> you cannot convert the integer to a string or use any string methods.</p>
+                <p class="hint"><i>Hint 1:</i> use modulus and division to extract digits!</p>
+                <p class="hint"><i>Hint 2:</i> use <code>Math.pow</code>.</p>
+              </li>
+              <li>
+                <p>(20 points) Design the <code>String findImpatientsLoop(int a, int b)</code> method that, when given two integers \(1 \leq a &lt; b\), returns a comma-separated string of all the impatient numbers in the range \([a, b]\), inclusive, using a loop. 
+                  If there are no impatient numbers in the range, return the empty string.
+                  For example, <code>findImpatientsLoop(10, 500)</code> returns <code>"153,370,371,407"</code>.
+                </p>
+              </li>
+            </ol>
             <p>
               <u>Files to Submit:</u>
               <code>Problem3.java</code>, <code>Problem3Test.java</code>
             </p>
-            <p><i>Hint 1:</i> you will need four <code>for</code> loops!</p>
-            <p><i>Hint 2:</i> think about how nested loops work. If you're having trouble, consult your notes or the textbook, or just think about how you process a double loop, and then interpolate that to four nested loops.</p>
-            </li>
+          </li>
         </ol>
       </div>
     </div>

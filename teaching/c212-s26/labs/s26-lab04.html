@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 04 UNDER DEVELOPMENT</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 04 - Loops</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          For each problem, create a class named <code>ProblemX</code>,
+          where <code>X</code> is the problem number
+          (e.g., <code>Problem1.java</code>).
+          Write corresponding JUnit test classes named
+          <code>ProblemXTest</code>. 
+          All methods (yes, <i>including helpers</i>) must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+          Helper methods should be marked as <code>private</code>.
+          You do not need to write explicit tests for helper methods because they will be indirectly tested through the driver methods.
+        </p>
+        <p>For problems containing multiple parts, write the methods inside the same class.</p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use anything beyond Chapter 2.3.
+          This includes <u>but is not limited to:</u>
+        </p>
+        <ul>
+          <li>Bitwise operators</li>
+          <li>Loops</li>
+          <li>Arrays or data structures</li>
+          <li>Regular expressions</li>
+          <li>Exceptions</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the lab.
+        </p>
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Notes and Version Changes:</h2>
+        <p>
+        </p>
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon">
+      <div class="content problems">
+        <h2>Problems</h2>
+        <ol>
+
+          <!-- Problem 1. -->
+          <li>
+              <p>(30 points) Recall the <code>replaceAB</code> and <code>replaceABTR</code> methods from the last lab. Design the <code>String replaceABLoop(String s)</code> method that solves the same problem as those methods, but uses a loop.</p>
+              <p><i>Hint:</i> use the translation pipeline from your tail recursive implementation!</p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem1.java</code>, <code>Problem1Test.java</code>
+            </p>
+          </li>
+
+          <!-- Problem 3. -->
+           <li>
+            <p>(40 points) Design the <code>int chickenCounterLoop(String s)</code> method that counts the number of times the word "chicken" appears in a given non-<code>null</code> string <code>s</code>. You must account for overlapping occurrences of <code>"chicken"</code> that are created when removing another occurrence. For example, invoking <code>countChickenLoop("abcchickechickenn")</code> returns 2 because, after removing the substring <code>"chicken"</code> from the original string, we are left with <code>"abcchicken"</code>, which itself contains another instance of <code>"chicken"</code>.</p>
+
+            <p><i>Hint:</i> it may be a very wise idea to first write this as a tail recursive algorithm, then mechanically translate it into a loop! Break it up into a base case and the recursive step: if the string doesn't contain chicken, what do you do? On the other hand, if it <i>does</i>, what do you do?</p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem2.java</code>, <code>Problem2Test.java</code>
+            </p>
+           </li>
+
+            <!-- Problem 3. -->
+           <li>
+            <p><i></i></p>
+
+            <p>(5 points) Design the <code>int factorialLoop(int n)</code> method that computes the factorial of a given integer \(n \geq 0\) using a loop.</p>
+
+            <p>(10 points) Design the <code>boolean isFactorionLoop(int n)</code> method that returns whether a given integer \(n \geq 0\) is a <i>factorion</i> using a loop.
+            A factorion is a number that is equal to the sum of the factorials of its digits. For example, 145 is a factorion because \(1! + 4! + 5! = 145\).
+            </p>
+            <p class="warning"><strong>Warning:</strong> you cannot convert the integer to a string or use any string methods.</p>
+            <p style="margin-left: 40px;"><i>Hint:</i> use modulus and division to extract digits!</p>
+
+            <p>(15 points) Design the <code>String findFactorions(int a, int b)</code> method that, when given two integers \(1 \leq a &lt; b\), returns a string containing all the factorions in the range \([a, b]\), inclusive.</p>
+          
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem3.java</code>, <code>Problem3Test.java</code>
+            </p>
+            <p><i>Hint 1:</i> you will need four <code>for</code> loops!</p>
+            <p><i>Hint 2:</i> think about how nested loops work. If you're having trouble, consult your notes or the textbook, or just think about how you process a double loop, and then interpolate that to four nested loops.</p>
+            </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

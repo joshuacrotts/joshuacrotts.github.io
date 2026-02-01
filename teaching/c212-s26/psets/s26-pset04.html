@@ -92,6 +92,7 @@
       <li>StringBuilder</li>
       <li>Arrays or data structures</li>
       <li>Regular expressions</li>
+      <li>Exceptions</li>
     </ul>
     <p>
       Any violation results in a score of <strong>0</strong> on the problem set.
@@ -151,7 +152,7 @@ Design the <code>String collatzLoop(int n)</code> method that solves the problem
 Design the <code>String collectParenthesizedStringsLoop(String s)</code> method, which solves the problem using a loop.</p>
 
     <p>
-      Assume there are no nested parentheses, all parentheses are balanced, and each parenthesized
+      Like the last problem set, assume there are no nested parentheses, all parentheses are balanced, and each parenthesized
       string contains at least one character.
     </p>
     <p><u>Files to Submit:</u> <code>Problem5.java</code>, <code>Problem5Test.java</code></p>
@@ -186,7 +187,10 @@ atoi("-A1234")         => 0
 atoi("000+42ABCD")     => 42
 atoi("8080*8080")      => 8080
 </pre>
-<p><strong>Warning:</strong> you are not allowed to use <code>Integer.parseInt</code> or similar methods that trivialize the problem.</p>
+<p><strong>Warning 1:</strong> you are not allowed to use <code>Integer.parseInt</code> or similar methods that trivialize the problem.</p>
+
+<p><strong>Warning 2:</strong> we do not provide all of the test cases you need to pass the autograder tests. If you do not write your own <i>in addition to the ones we provide</i>, you will lose a substantial fraction of your unit test points.</p>
+
 <p><i>Hint:</i> to convert a character into its integer counterpart, use the <code>Character.getNumericValue</code> method.</p>
     <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
 </li>

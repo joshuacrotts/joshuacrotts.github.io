@@ -117,3 +117,28 @@ em {
   font-style: italic;
   margin-top: 0.5em;
 }
+
+.hint::before {
+  content: "💡 ";
+  font-weight: bold;
+}
+
+.warning::before {
+  content: "⚠️ ";
+  font-weight: bold;
+}
+
+
+.hint {
+  background: #ffffcc;
+  border: 1px solid #cccc99;
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+.warning {
+  background: #ffcccc;
+  border: 1px solid #cc9999;
+  padding: 0.5em;
+  margin: 1em 0;
+}

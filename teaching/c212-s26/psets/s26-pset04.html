@@ -161,14 +161,21 @@ Design the <code>String collectParenthesizedStringsLoop(String s)</code> method,
 <li>
 
   <p><i>(20 points)</i> The C programming language contains the <code>atoi</code> "ascii-to-integer" function, which receives a string and, if the string represents some integer, returns the number converted to an integer.
-Design the <code>int atoi(String s)</code> method that, when given a string \(s\), returns its value as an integer if it can be parsed as an integer.
-An integer may contain a sign as the first character, that being \(+\) or \(-\).
-If the integer does not have a sign, it is assumed to be positive. 
-Ignore all leading zeroes and leading non-digits. 
-Upon reading a sign, the remaining characters must be digits for the number to be a valid integer.
-Upon finding the first non-zero digit (after the sign), if one exists, begin interpreting the string as a number. 
-At any point thereafter, if a non-digit is encountered, return the number parsed up to that point. 
-You may assume that the bounds of an integer are never exceeded, i.e., all valid integers will be within the bounds of \([-2^{31}, 2^{31}-1]\). 
+Design the <code>int atoi(String s)</code> method that, when given a string \(s\), returns its value as an integer if it can be parsed as an integer, using the following rules:
+<ul>
+  <li><p>Ignore all leading zeroes and leading non-digits.</p></li>
+
+  <li><p>Upon reading a sign (+ or -), the remaining characters must be digits for the number to be a valid integer.</p></li>
+
+  <li><p>An integer without a sign is assumed to be positive.</p></li>
+
+  <li><p>After reading a digit, if a non-digit is encountered, return the number parsed up to that point.</p></li>
+
+  <li><p>Assume that the bounds of an integer are never exceeded, i.e., all valid integers will be within the bounds of \([-2^{31}, 2^{31}-1]\).</p></li>
+
+  <li><p>If no valid integer is parsed, return 0.</p></li>
+</ul>
+
 Writing enough tests is <i>crucial</i> to correctly solving this exercise!
 We provide some examples below.</p>
 

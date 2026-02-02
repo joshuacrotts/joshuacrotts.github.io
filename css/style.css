@@ -142,3 +142,18 @@ em {
   padding: 0.5em;
   margin: 1em 0;
 }
+
+.note {
+  background: #e6f2ff;
+  border: 1px solid #99c2ff;
+  padding: 0.5em 0.5em 0.5em 2em;
+  margin: 1em 0;
+  position: relative;
+}
+
+.note::before {
+  content: "ℹ️";
+  position: absolute;
+  left: 0.5em;
+  top: 0.5em;
+}

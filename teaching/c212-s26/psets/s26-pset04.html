@@ -120,7 +120,7 @@
 
 <ol>
   <li>
-    <p>
+    <p><i>(8 points)</i>
     Recall the <code>isPalindromeTR</code> method from the last problem set.
     Design the <code>boolean isPalindromeLoop(String s)</code> method that solves the problem using a loop. 
     The same restrictions from that problem hold true for this problem.
@@ -129,26 +129,26 @@
   </li>
 
   <li>
-    <p>Recall the <code>hyperfactorial</code> and <code>hyperfactorialTR</code> problems from the last problem set. (Refer back to that problem set for the hyperfactorial definition.)
+    <p><i>(8 points)</i> Recall the <code>hyperfactorial</code> and <code>hyperfactorialTR</code> problems from the last problem set. (Refer back to that problem set for the hyperfactorial definition.)
 Design the <code>long hyperfactorialLoop(long n)</code> method that solves the problem using a loop.</p>
     <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
   </li>
 
   <li>
-    <p>Recall the <code>subfactorial</code> and <code>subfactorialTR</code> problems from the last problem set. (Refer back to that problem set for the hyperfactorial definition.)
+    <p><i>(8 points)</i> Recall the <code>subfactorial</code> and <code>subfactorialTR</code> problems from the last problem set. (Refer back to that problem set for the hyperfactorial definition.)
 Design the <code>long subfactorial(long n)</code> method that solves the problem using a loop.</p>
     <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
   </li>
 
   <li>
     
-    <p>Recall the <code>collatz</code> and <code>collatzTR</code> methods from the last problem set.
+    <p><i>(8 points)</i> Recall the <code>collatz</code> and <code>collatzTR</code> methods from the last problem set.
 Design the <code>String collatzLoop(int n)</code> method that solves the problem using a loop.</p>
     <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
   </li>
 
   <li>
-    <p>Recall the <code>collectParenthesizedStrings</code> and <code>collectParenthesizedStringsTR</code> methods from the last problem set.
+    <p><i>(8 points)</i> Recall the <code>collectParenthesizedStrings</code> and <code>collectParenthesizedStringsTR</code> methods from the last problem set.
 Design the <code>String collectParenthesizedStringsLoop(String s)</code> method, which solves the problem using a loop.</p>
 
     <p>
@@ -160,7 +160,7 @@ Design the <code>String collectParenthesizedStringsLoop(String s)</code> method,
 
 <li>
 
-  <p>The C programming language contains the <code>atoi</code> "ascii-to-integer" function, which receives a string and, if the string represents some integer, returns the number converted to an integer.
+  <p><i>(20 points)</i> The C programming language contains the <code>atoi</code> "ascii-to-integer" function, which receives a string and, if the string represents some integer, returns the number converted to an integer.
 Design the <code>int atoi(String s)</code> method that, when given a string \(s\), returns its value as an integer if it can be parsed as an integer.
 An integer may contain a sign as the first character, that being \(+\) or \(-\).
 If the integer does not have a sign, it is assumed to be positive. 
@@ -196,7 +196,7 @@ atoi("8080*8080")      => 8080
 </li>
 
 <li>
-  <p>
+  <p><i>(8 points)</i>
     Wordle is a game created by Josh Wardle, where the objective is to guess a word
     with a given number of turns, inspired by Mastermind. In this exercise, you
     will implement a stage of the Wordle game.
@@ -240,7 +240,7 @@ guessWord("PLANS", "SNLPA") => "*****"
 </li>
 
 <li>
-  <p>
+  <p><i>(8 points)</i>
     Design the <code>String substring(String s, int a, int b)</code> method, which
     receives a string \(s\) and two integers \(a\), \(b\), and returns
     the substring between these indices, inclusive on \(a\) and exclusive on \(b\).
@@ -258,7 +258,8 @@ guessWord("PLANS", "SNLPA") => "*****"
 </li>
 
 <li>
-  <p>File names are often compared lexicographically. 
+  <p><i>(8 points)</i>
+    File names are often compared lexicographically. 
     For example, a file with name <code>"File12.txt"</code> is less than <code>"File2.txt"</code> because <code>"1"</code> is (lexicographically) less than <code>"2"</code>.
   </p>
 
@@ -293,7 +294,7 @@ compareFiles("File1.txt", "File1.png")   => 1
 </li>
 
 <li>
-  <p>
+  <p><i>(16 points)</i>
     The <em>definite integral</em> of a function \(f\), defined as \(\int_{a}^{b} f(x)\;\text{d}x\), produces the area under the curve of \(f\) on the interval \([a, b]\). The thing is, though, integrals are defined in terms of <em>Riemann summations</em>, which provide estimations on the area under a curve.
     Riemann sums approximate the area by creating rectangles of a fixed width \(\Delta\), as shown in Figure&nbsp;1 for an arbitrary function \(f\). Left-Riemann, right-Riemann, and midpoint-Riemann approximations define the focal point, i.e., the height, of the rectangle. Notice that, in Figure&nbsp;1, we use a midpoint-Riemann sum with \(\Delta = 0.2\), in which the collective sum of all the rectangle areas is the Riemann approximation. Your job is to use this idea to approximate the area of a circle.
   </p>

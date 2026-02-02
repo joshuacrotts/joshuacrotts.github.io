@@ -274,7 +274,7 @@ guessWord("PLANS", "SNLPA") => "*****"
     Design the <code>int compareFiles(String f1, String f2)</code> method that would fix this ordering to return the more sensible ordering.
     That is, if a file has a prefix and a suffix, where the only differing piece is the number, then make the file with the lower number return a negative number.
     You may assume that the file names are always of the form <code>NameNum.Extension</code>, where <code>Name</code> is some alphabetic string (i.e., where the string contains only letters), <code>Num</code> is some positive integer, and <code>Extension</code> is another alphabetic string.
-    If the prefix or or suffix do not match, return the sign (i.e., -1, 0, 1) of calling <code>compareTo</code> on the file names.
+    If the prefix or or suffix do not match, return the sign (i.e., -1, 0, 1) of calling <code>compareTo</code> on the entire strings.
     Take the following examples as motivation.
   </p>
 
@@ -284,6 +284,7 @@ compareFiles("File10.txt", "File11.txt") => -1
 compareFiles("File1.txt", "File12.txt")  => -1
 compareFiles("File1.txt", "File1.txt")   => 0
 compareFiles("File1.txt", "File1.png")   => 1
+compareFiles("Docs.txt", "Files.png")    => -1
   </pre>
 
   <p class="warning">
@@ -326,10 +327,6 @@ compareFiles("File1.txt", "File1.png")   => 1
     Figure 2: Left-Riemann Approximation of a Function
   </p>
 </div>
-
-  <p class="note">
-    <i>Note:</i> the approximated area will vary based on the chosen Riemann approximation, so for this problem, you must approximate the area of <u>quadrant 1</u>, then multiply that value accordingly.
-  </p>
 
   <p class="hint"><i>Hint:</i> remember the Pythagorean theorem?</p>
 

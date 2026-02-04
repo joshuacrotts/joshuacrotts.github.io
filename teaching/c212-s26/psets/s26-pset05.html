@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../../../css/pure-min.css" />
+  <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+
+  <title>C212 – Problem Set 5</title>
+
+  <!-- MathJax for formulas -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-center {
+      text-align: center;
+      margin: 1em 0;
+    }
+
+    .center-table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Problem Set 5 - Arrays</h2>
+    <p><strong>Assigned:</strong> February 11, 2026</p>
+    <p><strong>Due:</strong> February 18, 2026 at 11:59 PM EST</p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>Objectives</h2>
+    <ul>
+      <li>Students use arrays to solve problems that involve data sets and manipulation.</li>
+      <li>Students construct methods that return arrays, receive arrays, and instantiate arrays.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Instructions</h2>
+
+    <p>
+      For each problem, create a class named <code>ProblemX</code>,
+      where <code>X</code> is the problem number
+      (e.g., <code>Problem1.java</code>).
+      Write corresponding JUnit test classes named
+      <code>ProblemXTest</code>. 
+      Each method must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+    </p>
+    <p>For problems containing multiple parts, write the methods inside the same class.</p>
+
+    <p>
+      <strong>
+        Do not round your solutions. For example, do not use
+        <code>Math.round</code> or float your output to, e.g.,
+        2 decimal places, unless specified.
+      </strong>
+    </p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>What You <em>Cannot</em> Use</h2>
+
+    <p>
+      You may not use anything beyond Chapter 3.1.
+      This includes but is not limited to:
+    </p>
+
+    <ul>
+      <li>Bitwise operators</li>
+      <li>StringBuilder</li>
+      <li>Other data structures besides arrays</li>
+      <li>Regular expressions</li>
+      <li>Exceptions</li>
+    </ul>
+    <p>
+      Any violation results in a score of <strong>0</strong> on the problem set.
+    </p>
+    <p>
+      Please contact a staff member if you are unsure as to whether you're allowed to use something.
+    </p>
+  </div>
+</div>
+
+<div class="ribbon">
+    <div class="content">
+    <h2>Notes and Version Changes:</h2>
+    <p>
+      <strong>Note 1:</strong> For all problems, assume that the input arrays are non-<code>null</code> unless otherwise specified.
+    <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
+</p>    
+</div>
+</div>
+
+<!-- PROBLEMS -->
+
+<div class="ribbon dark">
+  <div class="content problems">
+      <h2>Problems</h2>
+
+<ol>
+  <li>
+    <p><i>(8 points)</i>
+Design the <code>String[] fizzBuzz(int min, int max)</code> method that iterates over the interval
+    \(i \in [\mathit{min}, \mathit{max}]\) (you may assume \(\mathit{max} \geq \mathit{min}\)) and returns an array
+    containing strings that meet the following criteria:
+  </p>
+
+  <ul>
+    <li><p>If <code>i</code> is divisible by <code>3</code>, insert <code>"Fizz"</code>.</p></li>
+    <li><p>If <code>i</code> is divisible by <code>5</code>, insert <code>"Buzz"</code>.</p></li>
+    <li><p>If <code>i</code> is divisible by both <code>3</code> and <code>5</code>, insert <code>"FizzBuzz"</code>.</p></li>
+    <li><p>Otherwise, insert <code>"i"</code>, where <code>i</code> is the current number.</p></li>
+  </ul>
+
+  <p>Take the following examples as motivation.</p>
+
+  <pre>
+fizzBuzz(1, 12)  => {"1", "2", "Fizz", "4", "Buzz",
+                     "Fizz", "7", "8", "Fizz", "Buzz",
+                     "11", "Fizz"}
+fizzBuzz(15, 18) => {"FizzBuzz", "16", "17", "Fizz"}
+  </pre>
+    <p><u>Files to Submit:</u> <code>Problem1.java</code>, <code>Problem1Test.java</code></p>
+  </li>
+
+  <li>
+    <p><i>(12 points)</i>
+      Design the standard recursive <code>boolean canSum(int[] A, int t)</code> method that, when given an array of integers
+    \(A\) and a target \(t\), determines whether or not there exists a group of numbers in \(A\) that
+    sum to \(t\). For example, if \(A=\{2, 4, 10, 8\}\) and \(t=9\), then <code>canSum</code> returns
+    false because there is no possible selection of integers from \(A\) that sum to \(9\). On the
+    other hand, if \(A=\{3, 7, 4, 5, 9\}\) and \(t=8\), then we return true because \(3+5=8\). If
+    \(A=\{2, 4, 2, 1, 5, 4\}\) and \(t=9\), then we return true because \(4+1+4\), but also
+    \(4+5=9\), \(5+4=9\), and \(4+1+2+2=9\).
+  </p>
+
+  <p class="note">
+    <i>Note:</i> The value of \(t\) can be negative, zero, or positive, so don't have a base case that assumes otherwise.
+  </p>
+
+  <p class="hint">
+    <i>Hint 1:</i> 
+    Our solution is four lines long&mdash;yours should be around the same length.
+  </p> 
+  <p class="hint">
+    <i>Hint 2:</i> 
+    Make two recursive calls! If at least one of them returns true, then you have your answer. The questions are, what makes your method return true and what makes the recursive calls different? 
+  </p> 
+  <p class="warning">
+    <strong>Warning:</strong> There is a solution to this problem that uses an advanced technique called dynamic programming. Do not use this technique; the problem states that you must solve this using standard recursion.
+  </p>
+    <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
+  </li>
+
+  <li>
+    <p><i>(12 points)</i> 
+   The correlation coefficient \(r\) is a measure of the strength and direction of a linear
+    relationship between two variables \(x\) and \(y\). The value of \(r\) is always between
+    \(-1\) and \(1\). When \(r &gt; 0\), there is a positive linear relationship between
+    \(x\) and \(y\). When \(r &lt; 0\), there is a negative linear relationship between
+    \(x\) and \(y\). When \(r = 0\) or is approximately zero, there is no (or little) linear
+    relationship between \(x\) and \(y\). The formula for the correlation coefficient is as
+    follows:
+  </p>
+
+  <p>
+    \[
+      r = \frac{1}{n-1}\cdot\frac{1}{S_x \cdot S_y}\cdot\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})
+    \]
+  </p>
+
+  <p>
+    Where \(n\) is the number of data points, \(x_i\) and \(y_i\) are the \(i^\text{th}\) data
+    points, \(\bar{x}\) and \(\bar{y}\) are the means of \(x\) and \(y\) respectively, and
+    \(S_x\) and \(S_y\) are the <em>sample standard deviations</em> of \(x\) and \(y\)
+    respectively. To compute the sample standard deviation of a set of values \(S\), we use
+    the formula:
+  </p>
+
+  <p>
+    \[
+      S_x = \sqrt{\frac{\sum_{i=1}^{|S|}(x_i - \bar{x})^2}{|S| - 1}}
+    \]
+  </p>
+
+  <p>
+    Design the <code>double correlationCoefficient(double[] xs, double[] ys)</code> method
+    that, when given two arrays of doubles <code>xs</code> and <code>ys</code>, returns the
+    correlation coefficient between the two arrays.
+  </p>
+
+  <p class="note">
+    <i>Note:</i>
+    You may assume that
+    \( |\mathit{xs}| = |\mathit{ys}| \) and that both arrays have at least two elements.
+  </p>
+
+  <p class="hint">
+    <i>Hint:</i> The \(\sum\) notation may look intimidating, but it just means "the sum of."
+  </p>
+
+    <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
+  </li>
+
+  <li>
+    
+    <p><i>(12 points)</i> This problem has three parts.</p>
+    <ol type="a">
+      <li><p>Design the standard recursive <code>int findMaxWordLength(String[] S)</code> method, which
+receives a <code>String[]</code> and returns the length of the longest word in the array. </p> 
+<p class="note"><i>Note:</i> Assume
+that the array contains at least one string.</p>
+
+<p class="hint"><i>Hint:</i> You should design a helper method to recurse
+over the array. The helper method must be standard recursive.</p></li>
+
+<li><p>Design the tail recursive <code>int findMaxWordLengthTR(String[] S)</code> method that uses tail recursion to solve the problem. You will need to design a helper method. Remember to include the relevant access modifiers!</p></li>
+<li><p>Design the <code>int findMaxWordLengthLoop(String[] S)</code> method that solves the problem using a loop.</p></li>
+    </ol>
+    <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
+  </li>
+
+  <li>
+    <p><i>(18 points)</i> This problem has three parts.</p>
+    <p>Consider the following data definition:</p>
+
+  <pre>
+A ValidPolynomial is one of:
+ - Var
+ - PositiveInteger
+ - PositiveInteger Var "^" PositiveInteger
+ - ValidPolynomial " + " ValidPolynomial
+ - ValidPolynomial " - " ValidPolynomial
+  </pre>
+
+  <p>
+    Suppose we want to write the <code>int evalPolynomial(String p, char v, int n)</code> method
+    that, when given a “valid polynomial”, a variable <code>v</code>, and a value <code>n</code>,
+    evaluates the polynomial with respect to <code>v</code> at <code>n</code>. Design this method,
+    but do so in a piecemeal fashion:
+  </p>
+
+  <ol type="a">
+    <li>
+      <p>
+        Design the <code>boolean isPositiveInteger(String s)</code> method that returns whether
+        <code>s</code> is a string that represents a positive integer. You may assume that the
+        integer it returns is always within the bounds of a valid 32-bit integer.
+      </p>
+      <p class="warning"><strong>Warning:</strong> You are not allowed to use any built-in parsing methods such as <code>Integer.parseInt</code>, nor can you use exceptions to trivialize the problem. You must traverse over the string character by character.</p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>String[] extract(String s)</code> method that retrieves the components of a
+        valid polynomial of the form <code>ax^n</code>, where <code>a</code> and <code>n</code> are
+        positive integers, and <code>x</code> is a variable, but not necessarily the character
+        <code>'x'</code>.
+      </p>
+
+      <pre>
+extract("5x^4")    => [5, 4]
+extract("9x^1")    => [9, 1] 
+extract("102x^10") => [102, 10]
+      </pre>
+    </li>
+
+    <li>
+      <p>
+        Finish the <code>evalPolynomial</code> method. You may assume that the given variable
+        <code>v</code> is always the sole variable used in the given expression.
+      </p>
+
+      <pre>
+evalPolynomial("3x^1 + 3", 'x', 3)                         => 12
+evalPolynomial("4x^4 + 7x^3 + 21x^2 - 65x^1 + 3", 'x', 0)  => 3
+evalPolynomial("4x^4 + 7x^3 + 21x^2 - 65x^1 + 3", 'x', 16) => 295155
+      </pre>
+    </li>
+  </ol>
+    <p><u>Files to Submit:</u> <code>Problem5.java</code>, <code>Problem5Test.java</code></p>
+  </li>
+
+<li>
+
+  <p><i>(14 points)</i> 
+    Design the <code>int countAdjacentZeroSums(int[][] A)</code> method that receives a two-dimensional
+    array <code>A</code> and returns the number of row-adjacent cells that sum to zero.
+    By row-adjacent, we mean two cells that are ordered one after the other in a row-major order
+    traversal over the array.
+    Consider the following \(4\times 3\) array.
+    We see that <code>A[0][0]</code> and <code>A[0][1]</code> are side-by-side and sum to zero.
+    Additionally, <code>A[2][4]</code> and <code>A[3][0]</code> are side-by-side when considering a
+    row-major traversal and sum to zero.
+    There are no other adjacent zero sums, so we return <code>2</code>.
+  </p>
+
+  <p>
+    \[
+    \begin{bmatrix}
+    -5 & 5 & 1 & 3 & 0\\
+    9 & 3 & 12 & -3 & 17\\
+    23 & 31 & -42 & -8 & 16\\
+    -16 & -23 & 18 & -8 & -7
+    \end{bmatrix}
+    \]
+  </p>
+  <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
+</li>
+
+<li>
+  <p><i>(24 points)</i>
+    One way to solve a systems of equations is to put the values into a matrix and use “Gaussian elimination” to get a “triangular matrix.”
+    If none of that makes sense, then consider an <code>int[][]</code> of the following:
+  </p>
+
+  <p>
+    \[
+    \begin{bmatrix}
+    3 & 4 & -2 & 5\\
+    0 & -6 & -7 & 1\\
+    0 & 0 & 2 & -3
+    \end{bmatrix}
+    \]
+  </p>
+
+  <p>
+    Notice that the bottom-left “corner” of the matrix is all zeroes.
+    To be more formal, for every row \(i\), the first \(i-1\) elements are zero.
+    It looks like a triangle of zeroes, hence the “triangular matrix” label.
+    Note that the matrix represents the following system of equations:
+  </p>
+
+  <p>
+    \[
+    \begin{aligned}
+      3x + 4y - 2z &= 5\\
+      -6y - 7z &= 1\\
+      2z &= -3
+    \end{aligned}
+    \]
+  </p>
+
+  <p>
+    We can very easily figure out the value of \(z\): divide both sides of the equation by \(2\) to deduce that \(z=-1.5\).
+    From there, we plug in \(-1.5\) into \(-6y - 7z = 1\) to get \(-6y - 11.5 = 1\) and, to solve for \(y\), subtract \(-11.5\) from both sides to get \(-6y = 12.5\), then \(y=-6.25\).
+    Finally, plug \(z=-1.5\) and \(y=6.25\) into \(3x+4y-2z=5\) to get \(3x + 25 + 3 = 5\).
+    To solve for \(x\), subtract \(25\) and \(3\) from \(5\) to get \(3x=-23\).
+    Dividing both sides by \(3\) gets us \(x\approx -7.66\).
+  </p>
+
+  <p>
+    Design the <code>double[] solveTriangularMatrix(int[][] M)</code> that returns an array of the solutions to the system of equations defined by <code>M</code>.
+    The indices of the returned array correspond to the variables of the equation.
+    You may assume that index <code>0</code> is the first variable, index <code>1</code> is the second variable, and so forth.
+    You must work with any arbitrarily-sized matrix <code>M &times; N</code>, where \(M, N \geq 2\).
+  </p>
+  </p>
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem7.java</code>, <code>Problem7Test.java</code>
+  </p>
+</li>
+
+</ol>
+
+  </div>
+</div>
+
+</body>
+</html>

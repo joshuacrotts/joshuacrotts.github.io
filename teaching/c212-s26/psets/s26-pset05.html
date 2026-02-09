@@ -105,8 +105,9 @@
 <div class="ribbon">
     <div class="content">
     <h2>Notes and Version Changes:</h2>
-    <p>
-      <strong>Note 1:</strong> For all problems, assume that the input arrays are non-<code>null</code> unless otherwise specified.
+    <p><strong>Note 1:</strong> For all problems, assume that the input arrays are non-<code>null</code> unless otherwise specified.</p>
+    <p><strong>Note 2:</strong> Remember that any methods that returns a one-dimensional array should be tested using <code>assertArrayEquals</code> and not <code>assertEquals</code>.
+    <p><strong>Note 3:</strong> Helper methods are allowed and encouraged!</p>
     <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
 </p>    
 </div>
@@ -368,7 +369,7 @@ evalPolynomial("4x^4 + 7x^3 + 21x^2 - 65x^1 + 3", 'x', 16) => 295155
   <p>
   We can very easily figure out the value of \(z\): divide both sides of the equation by \(2\) to
   deduce that \(z=-1.5\). From there, we plug in \(-1.5\) into \(-6y - 7z = 1\) to get
-  \(-6y - 10.5 = 1\) and, to solve for \(y\), subtract \(-10.5\) from both sides to get
+  \(-6y + 10.5 = 1\) and, to solve for \(y\), subtract \(10.5\) from both sides to get
   \(-6y = -9.5\), then \(y=1.583\). Finally, plug \(z=-1.5\) and \(y=1.583\) into
   \(3x+4y-2z=5\) to get \(3x + 4(1.583) - 2(-1.5) = 5\). To solve for \(x\), subtract \(4(1.583)\)
   and \(-2(-1.5)\) from \(5\) to get \(3x = 5 - 4(1.583) + 2(-1.5)\), which is approximately
@@ -378,10 +379,10 @@ evalPolynomial("4x^4 + 7x^3 + 21x^2 - 65x^1 + 3", 'x', 16) => 295155
   <p>
     Design the <code>double[] solveTriangularMatrix(double[][] M)</code> that returns an array of the solutions to the system of equations defined by <code>M</code>.
     The indices of the returned array correspond to the variables of the equation.
-    You may assume that index <code>0</code> is the first variable, index <code>1</code> is the second variable, and so forth.
+    You may assume that index <code>0</code> is the left-most variable, index <code>1</code> is the second variable, and so forth.
     Assume that the input matrix is always a valid triangular matrix representing a system of equations with a unique solution.
   </p>
-  <p class="hint"><i>Hint 1:</i> Start from the last row and work your way up to the top.</p>
+  <p class="hint"><i>Hint 1:</i> Start from the last row by computing the right-most variable and work your way up to the top.</p>
   <p class="hint"><i>Hint 2:</i> This technique of computing variables and working upwards is called <i>back substitution</i>.</p>
   <p>
     <u>Files to Submit:</u>

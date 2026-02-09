@@ -447,6 +447,10 @@ evalPolynomial("4x^4 + 7x^3 + 21x^2 - 65x^1 + 3", 'x', 16) => 295155
         product. Assume that both arrays are at least \(1 \times 1\) in size.
       </p>
     </li>
+    <p class="hint">
+      <i>Hint:</i> Design the helper method <code>int[][] copyInto(int[][] A, int[][] B, int m, int n)</code> method that does the following: (i) copies all the elements from \(A\) into a new array \(R\), (ii) copies all the elements from \(B\) into \(R\) starting at index \((m, n)\), and (iii) returns \(R\). 
+      By "starting at index \((m, n)\)", we mean that the top-left corner of \(B\) is copied into \(R[m][n]\).
+    </p>
   </ol>
 
   <p>

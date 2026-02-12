@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 06</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 06 - Multi-Dimensional Arrays and ArrayLists</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          For each problem, create a class named <code>ProblemX</code>,
+          where <code>X</code> is the problem number
+          (e.g., <code>Problem1.java</code>).
+          Write corresponding JUnit test classes named
+          <code>ProblemXTest</code>. 
+          All methods (yes, <i>including helpers</i>) must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+          Helper methods should be marked as <code>private</code>.
+          You do not need to write explicit tests for helper methods because they will be indirectly tested through the driver methods.
+        </p>
+        <p>For problems containing multiple parts, write the methods inside the same class.</p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use anything beyond Chapter 3.2.1.
+          This includes <u>but is not limited to:</u>
+        </p>
+        <ul>
+      <li>Bitwise operators</li>
+      <li>StringBuilder</li>
+      <li>Data structures except for arrays and ArrayLists</li>
+      <li>Regular expressions</li>
+      <li>Exceptions</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the lab.
+        </p>
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Notes and Version Changes:</h2>
+        <p class="note">
+          <b>Note 1:</b> One way to test methods that return multi-dimensional arrays is to call your method, storing its (array) result in a variable, and call <code>assertTrue</code> on the result of <code>Arrays.deepEquals</code> on the variable and the expected array.
+        </p>
+        <p class="note">
+          <b>Note 2:</b> Another way to test two-dimensional arrays in particular is to traverse over the expected and actual arrays and call <code>assertArrayEquals</code> on each pair of rows.
+        </p>
+        <p class="note">
+          <b>Note 3:</b> Remember that methods returning <code>ArrayList</code> data structures should be tested using <code>assertEquals</code>.
+        </p>
+        <p class="note">
+          <b>Note 4:</b> An easy way to create lists quickly is to use <code>List.of</code>. If you don't know how to use this, consult your lecture notes or the textbook or ask your neighbors/TAs!
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon">
+      <div class="content problems">
+        <h2>Problems</h2>
+        <ol>
+          <!-- Problem 1. -->
+          <li>
+            <p><i>(50 points)</i> Design the <code>int[][] crop(int[][] M, int r1, int c1, int r2, int c2)</code> method that crops a given array of integers, starting from \((r_1, c_1)\) to \((r_2, c_2)\), inclusive on both ends.
+            Assume that \(M\) is a non-<code>null</code> two-dimensional array of integers, and \(r_1, c_1, r_2, c_2\) are valid indices in \(M\) such that \(0 \leq r_1 \leq r_2 < M\texttt{.length}\) and \(0 \leq c_1 \leq c_2 < M\texttt{[0].length}\).
+            </p>
+            <p>For instance, if we invoke <code>crop</code> with the following array and indices \((1, 1)\) to \((2, 2)\):</p>
+            \[
+              \begin{bmatrix}
+                1 & 2 & 3 & -1 & -2\\
+                4 & 5 & 6 & 7  & 8\\
+                7 & 8 & 9 & 10 & 11\\
+                12 & 13 & 14 & 15 & 16
+              \end{bmatrix}
+            \]
+            <p>Then the resulting array should be:</p>
+            \[
+              \begin{bmatrix}
+                5 & 6 \\
+                8 & 9
+              \end{bmatrix} 
+            \]
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem1.java</code>, <code>Problem1Test.java</code>
+            </p>
+          </li>
+        <li>
+  <p><i>(50 points)</i>
+    Design the <code>List&lt;String&gt; assignGrades(List&lt;Double&gt; G, List&lt;String&gt; L, double[] C)</code>
+    method that, when given a <code>List&lt;Double&gt;</code> of exam grades \(G\), a
+    <code>List&lt;String&gt;</code> of letter grades \(L\), and a cut-off score array \(C\),
+    assigns a letter grade to the given exam.
+    That is, the method should return a list where the \(i^\text{th}\) element corresponds to the
+    \(i^\text{th}\) element of \(G\).
+  </p>
+
+  <p>
+    You may assume that \(L.\texttt{length} = C.\texttt{length} + 1\), and that \(L[i]\) corresponds to \(C[i]\).
+    Importantly, \(C[i]\) is the lowest score at which the letter \(L[i]\) is awarded.
+    The fact that \(L.\texttt{length}\) is one greater than \(C.\texttt{length}\) implies that anything
+    lower than the lowest cutoff is awarded the “lowest” grade.
+    You may also assume that \(C\) is sorted in descending order.
+    Finally, you may assume that all grades in \(G\) can be assigned to exactly one of the letters.
+    Take the following test cases as motivation.
+  </p>
+
+
+  <pre>
+// Test 1:
+List<Double> G1 = List.of(95.0);
+List<String> L1 = List.of("A", "B", "C", "D", "F");
+double[] C1 = new double[]{90, 80, 70, 60};
+assignGrades(G1, L1, C1) => ["A"]
+
+// Test 2:
+List<Double> G2 = List.of(80.0);
+List<String> L2 = List.of("A", "B", "C", "D", "F");
+double[] C2 = new double[]{90, 80, 70, 60};
+assignGrades(G2, L2, C2) => ["B"]
+
+// Test 3:
+List<Double> G3 = List.of(79.0, 85.5, 89.95, 90.14, 0.0, 50.0, 60.01);
+List<String> L3 = List.of("A", "B", "C", "D", "F");
+double[] C3 = new double[]{90, 80, 70, 60};
+assignGrades(G3, L3, C3) => ["C", "B", "B", "A", "F", "F", "D"]
+
+// Test 4:
+List<Double> G4 = List.of(79.0, 85.5, 89.95, 90.14, 0.0, 50.0, 60.01);
+List<String> L4 = List.of("A", "A-", "B+", "B", "B-", "C+", "C",
+                  "C-", "D+", "D", "D-", "F");
+double[] C4 = new double[]{93, 90, 87, 83, 80, 77, 73, 70, 67, 63, 60};
+assignGrades(G4, L4, C4) => ["C+", "B", "B+", "A-", "F", "F", "D-"]
+  </pre>
+<p class="warning"><strong>Warning 1:</strong> A lot of students find this problem unintuitive. When we say, “take the following test
+cases as motivation,” we mean that you should actually sit down, work through them, and understand what’s
+going on. Don’t just rush through it!</p>
+<p class="warning"><strong>Warning 2:</strong> If you use <i>only</i> the test cases that we provide, you will receive a very low ``Student Tests'' score.</p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem2.java</code>, <code>Problem2Test.java</code>
+            </p>
+</li>          
+
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

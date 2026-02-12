@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../../../css/pure-min.css" />
+  <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+
+  <title>C212 – Problem Set 6</title>
+
+  <!-- MathJax for formulas -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-center {
+      text-align: center;
+      margin: 1em 0;
+    }
+
+    .center-table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Problem Set 6 - Multi-Dimensional Arrays and ArrayLists</h2>
+    <p><strong>Assigned:</strong> February 18, 2026</p>
+    <p><strong>Due:</strong> February 25, 2026 at 11:59 PM EST</p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>Objectives</h2>
+    <ul>
+      <li>Students write methods that operate recursively or iteratively over ArrayList objects.</li>
+      <li>Students see the advantages and disadvantages over static arrays versus ArrayList objects.</li>
+      <li>Students begin to understand the differences between data structures in the Java collections
+framework.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Instructions</h2>
+
+    <p>
+      For each problem, create a class named <code>ProblemX</code>,
+      where <code>X</code> is the problem number
+      (e.g., <code>Problem1.java</code>).
+      Write corresponding JUnit test classes named
+      <code>ProblemXTest</code>. 
+      Each method must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+    </p>
+    <p>For problems containing multiple parts, write the methods inside the same class.</p>
+
+    <p>
+      <strong>
+        Do not round your solutions. For example, do not use
+        <code>Math.round</code> or float your output to, e.g.,
+        2 decimal places, unless specified.
+      </strong>
+    </p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>What You <em>Cannot</em> Use</h2>
+
+    <p>
+      You may not use anything beyond Chapter 3.2.1.
+      This includes but is not limited to:
+    </p>
+
+    <ul>
+      <li>Bitwise operators</li>
+      <li>Regular expressions</li>
+      <li>Data structures besides arrays and ArrayLists, e.g., <code>HashMap</code>, <code>HashSet</code>, <code>LinkedList</code>, etc.</li>
+      <li>Exceptions</li>
+      <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+    </ul>
+    <p>
+      Any violation results in a score of <strong>0</strong> on the problem set.
+    </p>
+    <p>
+      Please contact a staff member if you are unsure as to whether you're allowed to use something.
+    </p>
+  </div>
+</div>
+
+<div class="ribbon">
+    <div class="content">
+    <h2>Notes and Version Changes:</h2>
+    <p><strong>Warning:</strong> The problem sets are now getting difficult enough to where it is tempting to solve the problems
+with generative AI. We’re approaching the middle point of the semester, and with fatigue setting
+in, the easy way out looks appealing. Do not fall into this trap. The TAs and I are, very easily, able
+to tell AI code from what you genuinely write. You will receive a 0 and be reported for academic
+dishonesty. (Moreover, this is a surefire way to not prepare yourself for the in-person, proctored,
+and written exams.) Please don’t jeopardize your academic future.</p>
+    <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
+</p>    
+</div>
+</div>
+
+<!-- PROBLEMS -->
+
+<div class="ribbon dark">
+  <div class="content problems">
+      <h2>Problems</h2>
+
+<ol>
+  <!-- Problem 1. -->
+  <li>
+  <p><i>(16 points)</i>
+    John Conway designed the “Game of Life,” which is a cellular automaton.
+    In essence, the game is a grid of cells, where each cell is either “alive” or “dead.”
+    The neighbors of a cell are the (up to eight) cells that surround a cell.
+    Rules advance/guide the “game” from one state to the next.
+    These rules are as follows:
+  </p>
+
+  <ol>
+    <li>
+      <p>
+        If a cell \(c\) is alive and has between two and three alive neighbors, then it remains alive.
+      </p>
+    </li>
+    <li>
+      <p>
+        If a cell \(c\) is alive and has less than two alive neighbors, then it dies.
+      </p>
+    </li>
+    <li>
+      <p>
+        If a cell \(c\) is alive and has more than three alive neighbors, then it dies.
+      </p>
+    </li>
+    <li>
+      <p>
+        If a cell \(c\) is dead and has three alive neighbors, then it becomes alive.
+      </p>
+    </li>
+  </ol>
+
+  <p>
+    Design the <code>boolean[][] gameOfLife(boolean[][] B)</code> method that, when given an initial
+    board configuration \(B\), returns the next state of the game after applying the preceding list
+    of rules. Each element in \(B\) is a boolean value, where <code>true</code> means the cell at
+    \(i, j\) is alive and <code>false</code> means the cell at \(i, j\) is dead. The
+    <code>gameOfLife</code> method should <em>not</em> update the given board. Instead, return a new
+    board with the updated values. It may be helpful to design the following auxiliary methods:
+  </p>
+
+  <ul>
+    <li><p><code>int[][] getAdjacentCells(boolean[][] B, int i, int j)</code></p></li>
+    <li><p><code>int[][] getAliveCells(boolean[][] B, int i, int j)</code></p></li>
+    <li><p><code>int[][] getDeadCells(boolean[][] B, int i, int j)</code></p></li>
+  </ul>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem1.java</code>, <code>Problem1Test.java</code>
+  </p>
+  </li>
+
+  <!-- Problem 2. -->
+   <li>
+  <p><i>(34 points)</i>
+    Minesweeper is a simple strategy game where the objective is to uncover all spaces on a board without running into mines.
+    If you are not familiar with the mechanics, we encourage you to <a href="https://minesweeper.online/new-game" target="_blank">find a version online and play it</a> for a bit to understand its gameplay.
+    In this exercise you will implement the minesweeper game as a series of methods.
+    <strong>Note: you only need to officially test <code>play</code>, but it may help you to test other methods.</strong>
+  </p>
+
+  <ol type="a">
+    <li>
+      <p>
+        First, design the static <code>boolean isValidMove(char[][] board, int mx, int my)</code> method that receives a board and a move position, and determines whether the move is valid. A move is valid if it is located within the bounds of the board.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the static <code>List&lt;int[]&gt; getValidNeighbors(char[][] board, int mx, int my)</code> method that receives a board and a move position, and returns a list of all the immediate neighbors to the cell \((\mathit{mx}, \mathit{my})\).
+        Each element of the list is a two-element integer array containing the \(x\) and \(y\) coordinates of the neighbor.
+        Consider the diagram below, where \((0, 0)\) is the move position, and the surrounding cells are its neighbors, represents as offsets.
+        Note that <code>getValidNeighbors</code> should only return neighbors that are <em>in bounds</em>.</p>
+        <p class="hint"><i>Hint:</i> Use <code>isValidMove</code>.
+      </p>
+
+      <div class="figure">
+        <img style="width:30%" src="../minesweeper.png" alt="Diagram showing neighbors around a cell." />
+      </div>
+    </li>
+
+    <li>
+      <p>
+        Design the static <code>List&lt;int[]&gt; getNonMineNeighbors(char[][] board, int mx, int my)</code> method that receives a board and a move position, and returns a list of all the neighbors that are not mines.
+        A non-mine neighbor is denoted by the character literal <code>'-'</code>.</p>
+        <p class="warning"><strong>Warning:</strong> You <em>must</em> use <code>getValidNeighbors</code> in your definition.</p>
+    </li>
+
+    <li>
+      <p>
+        Design the static <code>List&lt;int[]&gt; getMineNeighbors(char[][] board, int mx, int my)</code> method that receives a board and a move position, and returns a list of all the neighbors that are mines.
+        Mines are denoted by the character literal <code>'B'</code>.
+        <p class="warning"><strong>Warning:</strong> You <em>must</em> use <code>getValidNeighbors</code> in your definition.</p>
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the static <code>int countAdjacentMines(char[][] board, int mx, int my)</code> method that receives a board and a move position, and returns the number of mines that are adjacent to the given position. This method should be one line long and contain a call to <code>getMineNeighbors</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        With the helper methods complete, we now need a method that searches through a position and reveals all non-mine adjacent positions. In general, this is a <em>traversal</em> algorithm called <em>depth-first search</em>. The idea is to recursively extend out the path until we hit a mine, at which point we unwind the recursive calls to extend another path.
+      </p>
+
+      <p>
+        Design the static <code>void extPath(char[][] board, int mx, int my)</code> method that receives a board and a move position, and extends the path from the given position using the following rules:
+      </p>
+
+      <ol type="i">
+        <li><p>If the given move position is invalid, then return.</p></li>
+        <li><p>If the character at <code>board[mx][my]</code> is not a dash, <code>'-'</code>, then return.</p></li>
+        <li>
+          <p>
+            Otherwise, determine the number of adjacent mines to the move position. If the number of adjacent mines is non-zero, assign to <code>board[mx][my]</code> the number of mines at that move position.
+          </p>
+        </li>
+        <li>
+          <p>
+            If the number of adjacent mines <em>is</em> zero, then we can extend out the path to all non-mine neighbors. First, assign to <code>board[mx][my]</code> the character literal <code>'0'</code>, then loop over all non-mine neighbors to the move position. In the loop body, call <code>extPath</code> on each neighbor.
+          </p>
+        </li>
+      </ol>
+    </li>
+
+    <li>
+      <p>
+        Minesweeper board generation is an algorithmic problem in and of itself, and as such our implementation will be simple.
+        Design the static <code>char[][] makeBoard(int N, int M, int B)</code> method that receives a board size of \(N\) rows, \(M\) columns, and \(B\) mines to place.
+        To randomly place mines, create a <code>List&lt;int[]&gt;</code> of all the possible cells on the board, shuffle the list, retrieve the first \(B\) cells, and assign the character literal <code>'B'</code> to them. Assign the character literal <code>'-'</code> to all other cells.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Finally, design the static <code>char[][] play(char[][] board, int mx, int my)</code> method that receives a board and a move position, and attempts to play the given move position on the board. If, at that position on the board, there is a mine, return <code>null</code>. Otherwise, call <code>extPath</code> on the board and position, then return <code>board</code>. In essence, <code>play</code> receives one game state and transitions it to the next state.
+      </p>
+    </li>
+  </ol>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem2.java</code>, <code>Problem2Test.java</code>
+  </p>
+</li>
+
+  <!-- Problem 3. -->
+   <li>
+    <p><i>(8 points)</i> Design the static <code>List&lt;Integer&gt; exptIntermediates(int n, int m)</code> method that, when given two integers \(n > 0\) and \(m \geq 0\), returns a <code>List&lt;Integer&gt;</code> of the intermediate values of \(n^m\).
+The first element of the resulting list is \(n^m\), and the second element is \(n^{0}\), the third is \(n^1\), the fourth is \(n^2\), and so forth.
+For example, <code>exptIntermediates(3, 4)</code> returns <code>[81, 1, 3, 9, 27]</code>.</p>
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem3.java</code>, <code>Problem3Test.java</code>
+  </p>
+   </li>
+
+   <!-- Problem 4. -->
+  <li>
+    <p><i>(8 points)</i> Design the static <code>List&lt;Boolean&gt; areValidNames(List&lt;String&gt; names)</code> method that, when given a list of names \(L\), returns a list of booleans where the \(i^\text{th}\) boolean denotes whether the \(i^\text{th}\) name in \(L\) is valid.
+      A name is valid if it is all upper-cased and contains only letters or dashes. (This means that a name can contain letters <i>and</i> dashes.)</p>
+        <p>
+    <u>Files to Submit:</u>
+    <code>Problem4.java</code>, <code>Problem4Test.java</code>
+  </p>
+  </li>
+
+
+   <!-- Problem 5. -->
+    <li>
+  <p><i>(12 points)</i>
+    Design the static <code>int[] minDistancePoint(List&lt;int[]&gt; L, int x, int y)</code> method that, when given a non-empty list of two-element integer arrays \(L\) and a coordinate pair \((x, y)\), returns the coordinate pair in \(L\) that is the closest to \((x, y)\).
+  </p>
+
+  <p>
+    The input list, as described, contains two-element arrays, where index \(0\) is its \(x\)-coordinate and index \(1\) is its \(y\)-coordinate.
+  </p>
+
+  <p>
+    For example, if \(L = [[1, 2], [-2, 3], [2, 0]]\) and \((x, y) = (0, 0)\), the returned pair is \([2, 0]\) because its distance of \(2\) to the point \((0, 0)\) is the smallest out of all three points.
+  </p>
+
+    <p>
+    <u>Files to Submit:</u>
+    <code>Problem5.java</code>, <code>Problem5Test.java</code>
+  </p>
+</li>
+
+
+<li>
+  <p>
+    The <em>prime factorization</em> problem is about finding prime numbers that multiply to some positive integer.
+    That is, given a positive integer \(n\), we want to find its prime factors.
+    It is an open mathematics and computer science question whether it is possible to find the prime factorization of a positive integer in <em>polynomial time</em>.
+    The naive algorithm is to iterate over the primes from \(2, 3, \dots, n\), find the lowest prime \(p\) that divides \(n\), divide \(n\) by \(p\), then repeat until \(n\) is prime.
+  </p>
+
+  <p>
+    We can visualize this algorithm via a <em>prime factor tree.</em>
+    For example, let's find the prime factorization of \(330\).
+    The smallest prime starting from \(2\) that divides \(330\) is \(2\).
+    So, the root of the tree is \(330\), the left branch leads to a prime factor, and the right is a smaller sub-problem, that being \(330 / 2 = 165\).
+    The smallest prime that divides \(165\) is \(3\), so we get \(3\) in the left branch and \(55\) in the right branch.
+    Repeat once more to get \(5\) and \(11\), and we stop because \(11\) is prime.
+  </p>
+
+  <p style="text-align: center;">
+    INSERT-GRAPHIC
+  </p>
+
+  <ol type="a">
+    <li>
+      <p>
+        Design the static <code>List&lt;Integer&gt; primeFactors(int n)</code> method that, when given a positive integer
+        \(n \geq 2\), returns a list of the prime factors of \(n\).
+        To test a positive integer for primality, use the method that we provide as an example in Chapter \(2\),
+        or design your own version.
+      </p>
+    </li>
+
+    <li>
+      <p><i>(22 points)</i>
+        Design the static <code>List&lt;Integer&gt; primeFactorsTree(int n)</code> method that creates a
+        “factor tree” as a list.
+        That is, consider once again the prime factorization of \(330\).
+        The returned list should be \([330, 2, 165, 3, 55, 5, 11]\),
+        because the left branch of \(330\) leads to \(2\), and the right branch leads to factoring \(165\).
+        The <code>primeFactorsTree</code> method must call <code>primeFactors</code>.
+      </p>
+    </li>
+  </ol>
+
+</ol>
+
+  </div>
+</div>
+
+</body>
+</html>

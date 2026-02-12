@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
     <link rel="stylesheet" href="../../../css/style.css" />
     <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
-    <title>C212 – Lab 05</title>
+    <title>C212 – Lab 06</title>
     <!-- MathJax for formulas -->
     <script>
       MathJax = {
@@ -29,7 +29,7 @@
   <body>
     <div class="ribbon">
       <div class="content">
-        <h2>Lab 05 - Arrays</h2>
+        <h2>Lab 06 - Multi-Dimensional Arrays and ArrayLists</h2>
       </div>
     </div>
     <div class="ribbon dark">
@@ -52,13 +52,13 @@
       <div class="content">
         <h2>What You <em>Cannot</em> Use</h2>
         <p>
-          You may not use anything beyond Chapter 3.1.
+          You may not use anything beyond Chapter 3.2.1.
           This includes <u>but is not limited to:</u>
         </p>
         <ul>
       <li>Bitwise operators</li>
       <li>StringBuilder</li>
-      <li>Data structures except for arrays</li>
+      <li>Data structures except for arrays and ArrayLists</li>
       <li>Regular expressions</li>
       <li>Exceptions</li>
         </ul>
@@ -74,14 +74,16 @@
       <div class="content">
         <h2>Notes and Version Changes:</h2>
         <p class="note">
-          <b>Note 1:</b> Remember that any methods that returns a one-dimensional array should be tested using <code>assertArrayEquals</code> and not <code>assertEquals</code>.
-        </p>
-        <!-- <p class="note">
-          <b>Note 2:</b> Multi-dimensional arrays should be tested by calling the method, storing its result in a variable, and calling <code>assertTrue</code> on the result of <code>Arrays.deepEquals</code> on the variable and the expected array.
+          <b>Note 1:</b> One way to test methods that return multi-dimensional arrays is to call your method, storing its (array) result in a variable, and call <code>assertTrue</code> on the result of <code>Arrays.deepEquals</code> on the variable and the expected array.
         </p>
         <p class="note">
-          <b>Note 3:</b> A way to test two-dimensional arrays in particular is to traverse over the expected and actual arrays and call <code>assertArrayEquals</code> on each pair of rows.
-        </p> -->
+          <b>Note 2:</b> Another way to test two-dimensional arrays in particular is to traverse over the expected and actual arrays and call <code>assertArrayEquals</code> on each pair of rows.
+        </p>
+        <p class="note">
+          <b>Note 3:</b> Remember that methods returning <code>ArrayList</code> data structures should be tested using <code>assertEquals</code>.
+        </p>
+        <p class="note">
+          <b>Note 4:</b> An easy way to create lists quickly is to use <code>List.of</code>. If you don't know how to use this, consult your lecture notes or the textbook or ask your neighbors/TAs!
       </div>
     </div>
     <!-- PROBLEMS -->
@@ -91,40 +93,7 @@
         <ol>
           <!-- Problem 1. -->
           <li>
-            <p><i>(50 points)</i> Design the <code>int[] countEvensOddsZeroes(int[] A)</code> method that counts the number of even numbers, odd numbers, and zeroes in the given array.
-            The returned array should contain three elements: the count of even numbers, the count of odd numbers, and the count of zeroes, in that order.</p>
-            <p>
-              <u>Files to Submit:</u>
-              <code>Problem1.java</code>, <code>Problem1Test.java</code>
-            </p>
-          </li>
-          
-          <!-- Problem 2.
-          <li>
-            <p><i>(25 points)</i> Design the <code>char[][] stretchString(String s, int m, int n)</code> method that, when given a string \(s\) and two positive integers \(m, n > 0\), returns an array of characters from \(s\) after stretching it into a two-dimensional array in row-major order.</p>
-            <p>
-              For example, suppose \(s = \texttt{"Hi C212!"}\), \(m = 3\), and \(n = 5\). 
-              The resulting array should be:
-<div style="text-align: center;">
-  <pre style="display: inline-block; text-align: left; margin: 0;">
-[[ 'H',   'i',   ' ',   'C',   '2'],
- [ '1',   '2',   '!',  '\0',  '\0'],
- ['\0',  '\0',  '\0',  '\0',  '\0']]
-  </pre>
-</div>
-
-              where <code>'\0'</code> is the <code>NUL</code>-byte character that fills in the remaining cells of the array when \(s\) is not long enough to fill the entire \(m \times n\) array.
-              Assume that the length of \(s\) is at most \(m \cdot n\).
-            </p>
-            <p>
-              <u>Files to Submit:</u>
-              <code>Problem2.java</code>, <code>Problem2Test.java</code>
-            </p>
-          </li>
-
-          Problem 3.
-          <li>
-            <p><i>(15 points)</i> Design the <code>int[][] crop(int[][] M, int r1, int c1, int r2, int c2)</code> method that crops a given array of integers, starting from \((r_1, c_1)\) to \((r_2, c_2)\), inclusive on both ends.
+            <p><i>(50 points)</i> Design the <code>int[][] crop(int[][] M, int r1, int c1, int r2, int c2)</code> method that crops a given array of integers, starting from \((r_1, c_1)\) to \((r_2, c_2)\), inclusive on both ends.
             Assume that \(M\) is a non-<code>null</code> two-dimensional array of integers, and \(r_1, c_1, r_2, c_2\) are valid indices in \(M\) such that \(0 \leq r_1 \leq r_2 < M\texttt{.length}\) and \(0 \leq c_1 \leq c_2 < M\texttt{[0].length}\).
             </p>
             <p>For instance, if we invoke <code>crop</code> with the following array and indices \((1, 1)\) to \((2, 2)\):</p>
@@ -145,37 +114,66 @@
             \]
             <p>
               <u>Files to Submit:</u>
-              <code>Problem3.java</code>, <code>Problem3Test.java</code>
+              <code>Problem1.java</code>, <code>Problem1Test.java</code>
             </p>
           </li>
-        -->
-          <li>
-            <p><i>(50 points)</i>
-  Design the <code>String[] repeatStrings(String[] S, int[] A)</code> method that,
-  when given an array of strings <span>\(S\)</span> and an array of integers
-  <span>\(A\)</span>, returns a new array of strings <span>\(S'\)</span> such that,
-  for each index <span>\(i\)</span> of <span>\(S'\)</span>,
-  <span>\(S'[i]\)</span> contains <span>\(A[i]\)</span> concatenated copies of
-  <span>\(S[i]\)</span>.
-</p>
+        <li>
+  <p><i>(50 points)</i>
+    Design the <code>List&lt;String&gt; assignGrades(List&lt;Double&gt; G, List&lt;String&gt; L, double[] C)</code>
+    method that, when given a <code>List&lt;Double&gt;</code> of exam grades \(G\), a
+    <code>List&lt;String&gt;</code> of letter grades \(L\), and a cut-off score array \(C\),
+    assigns a letter grade to the given exam.
+    That is, the method should return a list where the \(i^\text{th}\) element corresponds to the
+    \(i^\text{th}\) element of \(G\).
+  </p>
 
-<p>
-  For example, consider
-  <span>\(S = \)</span><code>["CANVAS", "Plain", "Row"]</code> and
-  <span>\(A = \)</span><code>[2, 1, 3]</code>.
-  The returned array of strings
-  <span>\(S' = \)</span><code>["CANVASCANVAS", "Plain", "RowRowRow"]</code>.
-</p>
+  <p>
+    You may assume that \(L.\texttt{length} = C.\texttt{length} + 1\), and that \(L[i]\) corresponds to \(C[i]\).
+    Importantly, \(C[i]\) is the lowest score at which the letter \(L[i]\) is awarded.
+    The fact that \(L.\texttt{length}\) is one greater than \(C.\texttt{length}\) implies that anything
+    lower than the lowest cutoff is awarded the “lowest” grade.
+    You may also assume that \(C\) is sorted in descending order.
+    Finally, you may assume that all grades in \(G\) can be assigned to exactly one of the letters.
+    Take the following test cases as motivation.
+  </p>
 
-<p>
-  You may assume that <span>\(A[i] \geq 1\)</span> for any
-  <span>\(i \in [0, |A| - 1]\)</span>.
-</p>
+
+  <pre>
+// Test 1:
+List<Double> G1 = List.of(95.0);
+List<String> L1 = List.of("A", "B", "C", "D", "F");
+double[] C1 = new double[]{90, 80, 70, 60};
+assignGrades(G1, L1, C1) => ["A"]
+
+// Test 2:
+List<Double> G2 = List.of(80.0);
+List<String> L2 = List.of("A", "B", "C", "D", "F");
+double[] C2 = new double[]{90, 80, 70, 60};
+assignGrades(G2, L2, C2) => ["B"]
+
+// Test 3:
+List<Double> G3 = List.of(79.0, 85.5, 89.95, 90.14, 0.0, 50.0, 60.01);
+List<String> L3 = List.of("A", "B", "C", "D", "F");
+double[] C3 = new double[]{90, 80, 70, 60};
+assignGrades(G3, L3, C3) => ["C", "B", "B", "A", "F", "F", "D"]
+
+// Test 4:
+List<Double> G4 = List.of(79.0, 85.5, 89.95, 90.14, 0.0, 50.0, 60.01);
+List<String> L4 = List.of("A", "A-", "B+", "B", "B-", "C+", "C",
+                  "C-", "D+", "D", "D-", "F");
+double[] C4 = new double[]{93, 90, 87, 83, 80, 77, 73, 70, 67, 63, 60};
+assignGrades(G4, L4, C4) => ["C+", "B", "B+", "A-", "F", "F", "D-"]
+  </pre>
+<p class="warning"><strong>Warning 1:</strong> A lot of students find this problem unintuitive. When we say, “take the following test
+cases as motivation,” we mean that you should actually sit down, work through them, and understand what’s
+going on. Don’t just rush through it!</p>
+<p class="warning"><strong>Warning 2:</strong> If you use <i>only</i> the test cases that we provide, you will receive a very low ``Student Tests'' score.</p>
             <p>
               <u>Files to Submit:</u>
               <code>Problem2.java</code>, <code>Problem2Test.java</code>
             </p>
-          </li>
+</li>          
+
         </ol>
       </div>
     </div>

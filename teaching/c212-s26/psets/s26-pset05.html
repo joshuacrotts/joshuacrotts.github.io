@@ -108,6 +108,7 @@
     <p><strong>Note 1:</strong> For all problems, assume that the input arrays are non-<code>null</code> unless otherwise specified.</p>
     <p><strong>Note 2:</strong> Remember that any methods that returns a one-dimensional array should be tested using <code>assertArrayEquals</code> and not <code>assertEquals</code>.
     <p><strong>Note 3:</strong> Helper methods are allowed and encouraged!</p>
+    <p><strong>Note 4 (added 02/12):</strong> Made a few clarifying changes to the polynomial problem.</p>
     <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
 </p>    
 </div>
@@ -269,6 +270,7 @@ A ValidPolynomial is one of:
         <code>s</code> is a string that represents a positive integer. You may assume that the
         integer it returns is always within the bounds of a valid 32-bit integer.
       </p>
+      <p class="note"><i>Note:</i> 0 counts as a positive integer in this contexts. Mathematicians will be upset by this definition.</p>
       <p class="warning"><strong>Warning:</strong> You are not allowed to use any built-in parsing methods such as <code>Integer.parseInt</code>, nor can you use exceptions to trivialize the problem. You must traverse over the string character by character.</p>
     </li>
 
@@ -298,6 +300,7 @@ evalPolynomial("3x^1 + 3", 'x', 3)                         => 12
 evalPolynomial("4x^4 + 7x^3 + 21x^2 - 65x^1 + 3", 'x', 0)  => 3
 evalPolynomial("4x^4 + 7x^3 + 21x^2 - 65x^1 + 3", 'x', 16) => 295155
       </pre>
+      <p class="hint"><i>Hint:</i> For this part of the problem, you <i>are</i> allowed to use <code>Integer.parseInt</code>.</p>
     </li>
   </ol>
   <p class="warning">

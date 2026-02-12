@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../../../css/pure-min.css" />
+  <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+
+  <title>C212 – Problem Set 7</title>
+
+  <!-- MathJax for formulas -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-center {
+      text-align: center;
+      margin: 1em 0;
+    }
+
+    .center-table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Problem Set 7 - The Collections Framework</h2>
+    <p><strong>Assigned:</strong> February 25, 2026</p>
+    <p><strong>Due:</strong> March 4, 2026 at 11:59 PM EST</p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>Objectives</h2>
+    <ul>
+      <li>Students begin to understand the differences between data structures in the Java collections
+framework.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="ribbon">
+  <div class="content">
+    <h2>Instructions</h2>
+
+    <p>
+      For each problem, create a class named <code>ProblemX</code>,
+      where <code>X</code> is the problem number
+      (e.g., <code>Problem1.java</code>).
+      Write corresponding JUnit test classes named
+      <code>ProblemXTest</code>. 
+      Each method must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+    </p>
+    <p>For problems containing multiple parts, write the methods inside the same class.</p>
+
+    <p>
+      <strong>
+        Do not round your solutions. For example, do not use
+        <code>Math.round</code> or float your output to, e.g.,
+        2 decimal places, unless specified.
+      </strong>
+    </p>
+  </div>
+</div>
+
+<div class="ribbon dark">
+  <div class="content">
+    <h2>What You <em>Cannot</em> Use</h2>
+
+    <p>
+      You may not use anything beyond Chapter 3.2.
+      This includes but is not limited to:
+    </p>
+
+    <ul>
+      <li>Bitwise operators</li>
+      <li>Regular expressions</li>
+      <li>Exceptions</li>
+      <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+    </ul>
+    <p>
+      Any violation results in a score of <strong>0</strong> on the problem set.
+    </p>
+    <p>
+      Please contact a staff member if you are unsure as to whether you're allowed to use something.
+    </p>
+  </div>
+</div>
+
+<div class="ribbon">
+    <div class="content">
+    <h2>Notes and Version Changes:</h2>
+</div>
+</div>
+
+<!-- PROBLEMS -->
+
+<div class="ribbon dark">
+  <div class="content problems">
+      <h2>Problems</h2>
+
+<ol>
+  <!-- Problem 1. -->
+<li>
+  <p><i>(10 points)</i>
+    Joe the mountain climber has come across a large mountain range. He wants to climb only the tallest
+    mountains in the range. Design the <code>int[] peakFinder(int[] H)</code> method that returns an
+    array \(H'\) of all the peaks in an <code>int[]</code> of mountain heights \(H\). A peak \(p\) is
+    defined as an element of \(h\) at index \(i\) such that \(p[i - 1] &lt; p[i]\) and
+    \(p[i] &gt; p[i + 1]\). If \(i = 0\) or \(i = |H| - 1\), Joe will not climb \(p[i]\). Joe doesn't
+    want to climb a mountain of the same height more than once, so you should not add any peaks that
+    have already been added to \(H'\). We present some test cases below.
+  </p>
+
+  <pre>
+peakFinder({9, 13, 7, 2, 8})                        =&gt; {13}
+peakFinder({8, 7, 8, 7, 8, 7, 8, 7})                =&gt; {8}
+peakFinder({111, 27, 84, 31, 5, 9, 4, 3, 2, 1, 64}) =&gt; {84, 9}
+peakFinder({})                                      =&gt; {}
+peakFinder({1})                                     =&gt; {}
+peakFinder({1, 2})                                  =&gt; {}
+peakFinder({1, 2, 1})                               =&gt; {2}
+peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
+  </pre>
+
+  <p class="warning"><strong>Warning:</strong> For this problem you are not allowed to use an <code>ArrayList</code> or any helper methods, e.g.,
+    <code>.contains</code>, or methods from the <code>Arrays</code> class. You <em>may</em> (and should)
+    use a <code>Set&lt;Integer&gt;</code> to keep track of previously-seen peaks.
+  </p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem1.java</code>, <code>Problem1Test.java</code>
+</li>
+  </li>
+
+  <!-- Problem 2. -->
+   <li>
+  <p><i>(16 points)</i>
+    Design the <code>List&lt;String&gt; tokenize(String s, char d)</code> method that, when given a string
+    \(s\) and a <code>char</code> delimiter \(d\), returns an <code>ArrayList</code> of tokens split at
+    the delimiter.
+  </p>
+  <p>You may assume that delimiters are not side-by-side, that there is at least one delimiter in the
+    string, and it is neither at the beginning nor the end of the string.</p>
+
+<p class="warning"><strong>Warning 1:</strong> For this problem, you must parse the input by hand; you <strong>cannot</strong> call any <code>String</code>
+    methods (except <code>.length</code> and <code>.charAt</code>).
+
+    <p class="warning"><strong>Warning 2:</strong> You also cannot use methods that do the "heavy lifting" for you, e.g., <code>String.split</code>, <code>StringTokenizer</code>, or regular expressions.</p>
+
+  <p class="note">
+    <i>Note:</i> Because of the above criteria, we guarantee that the length of the input string is at least 3.</p>
+  </p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem2.java</code>, <code>Problem2Test.java</code>
+</li>
+
+  <!-- Problem 3. -->
+<li>
+  <p><i>(16 points)</i>
+    Design the <code>Map&lt;String, Integer&gt; wordCount(String s)</code> method that, when given a string \(s\),
+    counts the number of words in the list, then stores the resulting frequencies in a
+    <code>HashMap&lt;String, Integer&gt;</code>.</p>
+    
+    <p>Assume that \(s\) is not cleaned. That is, you should first
+    remove all of the following punctuation: periods, commas, exclamation points, question marks, semi-colons, dashes, hashes, ampersands, asterisks, and parentheses, from \(s\), producing a new string \(s'\). 
+    Then, split the string based on spaces, and produce a map of the words
+    to their respective counts.</p>
+    
+    <p>Do not factor case into your total; e.g.,
+    <code>"fAcToR"</code> and <code>"factor"</code> count as the same word. The ordering of the returned
+    map is not significant.
+  </p>
+
+  <pre>
+String s = "Hello world, the world is healthy, is 
+            it not? I certainly agree that the world 
+            is #1 and healthy."
+wordCount(s) =&gt; [&lt;"hello" : 1&gt;, &lt;"world" : 3&gt;, &lt;"the" : 2&gt;
+                 &lt;"is" : 3&gt;, &lt;"healthy" : 2&gt;, &lt;"it" : 1&gt;,
+                 &lt;"i" : 1&gt;, &lt;"certainly" : 1&gt; &lt;"agree" : 1&gt;
+                 &lt;"that" : 1&gt;, &lt;"1" : 1&gt;, &lt;"and" : 1&gt;, &lt;"not" : 1&gt;]
+  </pre>
+
+  <p class="warning"><strong>Warning:</strong> Like in Problem 2, you are not allowed to use built-in mechanisms for splitting your string.</p>
+
+  <p class="hint"><i>Hint:</i> You <i>are</i> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem3</code> file or call it directly.</p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem3.java</code>, <code>Problem3Test.java</code>
+</li>
+
+   <!-- Problem 4. -->
+<li>
+  <p><i>(16 points)</i>
+    Design the <code>double postfixEvaluator(List&lt;String&gt; l)</code> method that, when given a list of binary
+    operators and numeric operands represents as strings, returns the result of evaluating the postfix-notation
+    expression.
+    We provide a few examples below.
+  </p> 
+
+  <pre>
+postfixEvaluator({"5", "2", "*", "5", "+", "2", "+"}) =&gt; 17
+postfixEvaluator({"1", "2", "3", "4", "+", "+", "+"}) =&gt; 10
+postfixEvaluator({"12", "3", "/"})                    =&gt; 4
+postfixEvaluator({"3", "4", "-"})                     =&gt; -1
+  </pre>
+
+  <p class="hint"><i>Hint 1:</i> You will need to write a few helper methods to solve this problem, and it is best to break it down
+    into steps. First, write a method that determines if a given string is one of the four binary operators:
+    <code>"+"</code>, <code>"-"</code>, <code>"*"</code>, or <code>"/"</code>. You may assume that any inputs that
+    are not binary operators are operands, i.e., numbers. Then, write a method that applies a given binary operator
+    to a list of operands, i.e., an <code>ArrayList&lt;Double&gt;</code>.</p>
+  <p class="hint"><i>Hint 2:</i> What particular data structure would be helpful in solving this problem?</p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem4.java</code>, <code>Problem4Test.java</code>
+</li>
+
+
+   <!-- Problem 5. -->
+<li>
+  <p><i>(12 points)</i>
+    The <em>substitution cipher</em> is a text cipher that encodes an alphabet string \(A\)
+    (also called the <em>plain-text alphabet</em>) with a key string \(K\)
+    (also called the <em>cipher-text alphabet</em>). The \(A\) string is defined as
+    <code>"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</code>, and \(K\) is any permutation of \(A\).
+    We can encode a string \(s\) using \(K\) as a mapping from \(A\).
+    For example, if \(K\) is the string
+    <code>"ZEBRASCDFGHIJKLMNOPQTUVWXY"</code> and \(s\) is
+    <code>"WE MIGHT AS WELL SURRENDER!"</code>, the result of encoding \(s\) produces
+    <code>"VA JFCDQ ZP VAII PTOOAKRAO!"</code>.
+  </p>
+
+  <p>
+    Design the <code>substitutionCipher</code> method, which receives a plain-text alphabet
+    string \(A\), a cipher-text string \(K\), and a string \(s\) to encode.
+    <code>substitutionCipher</code> should return a string \(s'\) using the aforementioned
+    substitution cipher algorithm.
+  </p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem5.java</code>, <code>Problem5Test.java</code>
+</li>
+
+
+<li>
+  <p><i>(16 points)</i>
+    Design the <code>List&lt;List&lt;String&gt;&gt; lex(String e)</code> method that, when given an expression written
+    in prefix fashion, returns a list of <em>tokens</em> and their identifiers.
+  </p>
+
+  <p>
+    The <code>lex</code> method returns a list of two-element lists. The first is the “tag” of the token, and the
+    second is the token itself. Tokens in this language are <code>"L_PAREN"</code>, <code>"R_PAREN"</code>,
+    <code>"NUMBER"</code>, and <code>"SYMBOL"</code>. Left and right parentheses are straightforward, as are numbers
+    (you may assume that all numbers are positive integers). Anything else should be regarded as a symbol. Note that
+    symbols are to be considered space-separated, e.g., <code>"HELLO"</code> is one <code>"SYMBOL"</code>; not five.
+    <!-- Whitespaces are ignored. -->
+  </p>
+
+  <p>
+    For example, consider the input <code>(+ (- 43 5) 42)</code>. The <code>lex</code> method therefore returns:
+  </p>
+
+  <pre>
+[
+ ["L_PAREN", "("],
+ ["SYMBOL", "+"],
+ ["L_PAREN", "("],
+ ["SYMBOL", "-"],
+ ["NUMBER", "43"],
+ ["NUMBER", "5"],
+ ["R_PAREN", ")"],
+ ["NUMBER", "42"]
+ ["R_PAREN", ")"]
+]
+  </pre>
+
+  <p class="warning"><strong>Warning:</strong> Like in Problems 2 and 3, you are not allowed to use built-in mechanisms for splitting your string.</p>
+
+  <p class="hint"><i>Hint 1:</i> You <i>are</i> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem6</code> file or call it directly.</p>
+
+  <p class="hint"><i>Hint 2:</i> It might be a good idea to write a helper method that receives the input string and adds exactly one space between each of the "tokens," and then tokenize that string.</p>
+
+
+<p class="note"><i>Note:</i> In some contexts, this method could <em>also</em> be called “tokenize,” but that method name has a particular meaning with respect to the problem set.
+
+  <p>
+     <u>Files to Submit:</u>
+    <code>Problem6.java</code>, <code>Problem6Test.java</code>
+</li>
+
+<li>
+  <p><i>(14 points)</i>
+    Design the <code>Set&lt;List&lt;Integer&gt;&gt; selectPairs(int[] A, int t)</code> method that, when given an array
+    of integers \(A\) and a target \(t\), returns all possible pairs of numbers in \(A\) that sum to \(t\). For example,
+    if \(A=\{2, 2, 4, 10, 6, -2\}\) and \(t=4\), we return a set containing two two-element lists: \(\{2, 2\}\) and
+    \(\{6, -2\}\). Do not add a pair that already exists in the set or a pair that, by reversing the pair, we get a pair
+    in the existing set. E.g., \(\{-2, 6\}\) should not be added to the set.
+  </p>
+
+  <p>
+    There is a simple brute-force algorithm to solve this problem via two loops, but by incorporating a second set for
+    lookups, we can do much better: for every number \(n\) in \(A\), add \(n\) to a set \(S\), and if \(t-n=m\) for
+    some \(m\in S\), then we know that \(m+n\) must equal \(t\), therefore we add \(\{n, m\}\) to the resulting set of
+    integer arrays.
+    Walking through this with the example from before, we get the following sequence of actions:
+  </p>
+
+  <ul>
+    <li>
+      <p>
+        Initialize \(S=\{\}\) and \(L=\{\}\). We know that \(t=4\).
+      </p>
+    </li>
+    <li>
+      <p>
+        We add \(2\) to \(S\). \(S=\{2\}\).
+      </p>
+    </li>
+    <li>
+      <p>
+        Because \(4-2\in S\), the two-element array \(\{2, 2\}\) is added to \(L\). \(2\) is not re-added to \(S\).
+      </p>
+    </li>
+    <li>
+      <p>
+        Because \(4-4\not\in S\), we only add \(4\) to \(S\). \(S=\{2, 4\}\).
+      </p>
+    </li>
+    <li>
+      <p>
+        Because \(4-10\not\in S\), we only add \(10\) to \(S\). \(S=\{2, 4, 10\}\).
+      </p>
+    </li>
+    <li>
+      <p>
+        Because \(4-6\not\in S\), we only add \(6\) to \(S\). \(S=\{2, 4, 10, 6\}\).
+      </p>
+    </li>
+    <li>
+      <p>
+        Because \(4-(-2)\in S\), the two-element array \(\{6, -2\}\) is added to \(L\). We add \(-2\) to \(S\).
+        \(S=\{2, 4, 10, 6, -2\}\).
+      </p>
+    </li>
+  </ul>
+  <p>
+     <u>Files to Submit:</u>
+    <code>Problem7.java</code>, <code>Problem7Test.java</code>
+</li>
+
+<li>
+  <p><strong>Extra Credit (10 points)</strong>
+    You are designing a system with querying functionality similar to a database language such as SQL. In particular,
+    we have a 2D array of strings whose first row contains column headers to a database. Examples of such columns may be
+    <code>"ID"</code>, <code>"Name"</code>, <code>"Age"</code>, <code>"Salary"</code>, and so forth.
+  </p>
+
+  <p>
+    Design the <code>List&lt;String&gt; query(String[][] db, String cmd)</code> method that, when given a “database”
+    and a “Command”, returns the data from the rows that satisfy the criteria enforced by the command.
+  </p>
+
+  <pre>
+A Command is "SELECT &lt;count&gt; &lt;header&gt; WHERE &lt;predicate&gt;"
+  </pre>
+
+  <p>
+    The <code>SELECT</code> command receives a <code>&lt;count&gt;</code>, which is a number between \(1\) and \(n\),
+    or the asterisk to indicate everyone in the database. The <code>WHERE</code> clause receives a “Predicate”.
+    The <code>SELECT</code> command receives a <code>&lt;count&gt;</code> and a <code>&lt;header&gt;</code> to
+    designate that the command should return <code>&lt;count&gt;</code> rows with data from the
+    <code>&lt;header&gt;</code> column. An asterisk can be used to select all rows in the database. Your
+    implementation should be flexible enough to work with any arbitrary column over the database. (You may assume that
+    the input <code>&lt;header&gt;</code> is a valid column in the database, but it cannot be hard-coded to fit only a
+    particular set of database columns, e.g., <code>"ID"</code>, <code>"Name"</code>, and so forth.)
+  </p>
+
+  <pre>
+A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
+  </pre>
+
+  <p>
+    Headers are one of the column headers of the database, and comparators are either <code>=</code>, <code>!=</code>,
+    <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, or <code>&gt;=</code>, or <code>LIKE</code>. Values are
+    either numbers, floats, or strings.
+  </p>
+
+  <p>
+    Parsing a <code>LIKE</code> command is more complicated. There are four possible types of values:
+  </p>
+
+  <pre>
+'S'
+'%S'
+'S%'
+'%S%'
+  </pre>
+
+  <p>
+    The first matches an exact string, namely <code>S</code>. The second matches any string that ends with
+    <code>S</code>. The third matches any string that begins with <code>S</code>. The fourth matches any string that
+    contains <code>S</code>.
+  </p>
+
+  <p>
+    You may assume all commands are well-formed. However, it is possible that a command returns no results, e.g.,
+    <code>SELECT * Name WHERE Salary &gt;= '10000000'</code>
+  </p>
+</li>
+
+
+  <li>
+<p><strong>Extra Credit (10 points)</strong>
+  Reversi is a “pebble-based,” grid-style, turn-based, two-player game where the goal is to have as many pebbles of your color on the board as possible. If you're unfamiliar with the game,
+  <a href="https://www.mathsisfun.com/games/reversi.html" target="_blank" rel="noopener noreferrer">play it here</a>
+  until you understand how it works.
+</p>
+
+<p>There are a few rules to placing pebbles on the board:</p>
+
+<ol>
+  <li>
+    For a player to place a pebble of color <em>P</em> at position <em>(r, c)</em>, it must make a valid move.
+    A move is <em>valid</em> if and only if there is at least one pebble of the opposite color <em>Q</em> in between <em>(r, c)</em> and some other pebble of color <em>P</em>.
+  </li>
+  <li>
+    When making a move at position <em>(r, c)</em> by pebble of color <em>P</em>, we flip all <em>Q</em>-colored pebbles in between <em>(r, c)</em> and other <em>P</em>-colored pebbles along the grid.
+  </li>
+</ol>
+
+<p>
+  For example, consider the following board configuration, where one pebble is colored <code>R</code> (red)
+  and the other is colored <code>B</code> (black).
+</p>
+
+<figure style="margin: 1rem 0; text-align: center;">
+  <!-- Board 1: row 4 has R,B; row 5 has B,R -->
+  <svg
+    width="320" height="320" viewBox="0 0 320 320"
+    role="img" aria-label="Reversi board example: row 4 has R then B; row 5 has B then R"
+    style="max-width: 100%; height: auto; border: 1px solid #ccc;"
+  >
+    <!-- grid -->
+    <g stroke="#000" stroke-width="1">
+      <!-- vertical lines -->
+      <line x1="0"   y1="0" x2="0"   y2="320"></line>
+      <line x1="40"  y1="0" x2="40"  y2="320"></line>
+      <line x1="80"  y1="0" x2="80"  y2="320"></line>
+      <line x1="120" y1="0" x2="120" y2="320"></line>
+      <line x1="160" y1="0" x2="160" y2="320"></line>
+      <line x1="200" y1="0" x2="200" y2="320"></line>
+      <line x1="240" y1="0" x2="240" y2="320"></line>
+      <line x1="280" y1="0" x2="280" y2="320"></line>
+      <line x1="320" y1="0" x2="320" y2="320"></line>
+
+      <!-- horizontal lines -->
+      <line x1="0" y1="0"   x2="320" y2="0"></line>
+      <line x1="0" y1="40"  x2="320" y2="40"></line>
+      <line x1="0" y1="80"  x2="320" y2="80"></line>
+      <line x1="0" y1="120" x2="320" y2="120"></line>
+      <line x1="0" y1="160" x2="320" y2="160"></line>
+      <line x1="0" y1="200" x2="320" y2="200"></line>
+      <line x1="0" y1="240" x2="320" y2="240"></line>
+      <line x1="0" y1="280" x2="320" y2="280"></line>
+      <line x1="0" y1="320" x2="320" y2="320"></line>
+    </g>
+
+    <!-- discs (1-based row/col): (4,4)=R, (4,5)=B, (5,4)=B, (5,5)=R -->
+    <!-- cell centers: x=(c-0.5)*40, y=(r-0.5)*40 -->
+    <circle cx="140" cy="140" r="14" fill="red"   stroke="#000" stroke-width="1"></circle>
+    <circle cx="180" cy="140" r="14" fill="black" stroke="#000" stroke-width="1"></circle>
+    <circle cx="140" cy="180" r="14" fill="black" stroke="#000" stroke-width="1"></circle>
+    <circle cx="180" cy="180" r="14" fill="red"   stroke="#000" stroke-width="1"></circle>
+  </svg>
+</figure>
+
+<p>
+  If it is <code>R</code>'s move, then they must make a move that flips at least one <code>B</code>, according to rule (1).
+  So, we can place a pebble colored <code>R</code> at the following positions (denoted by “(row, column)”):
+  (3, 5), (5, 3), (2, 4), and (4, 2).
+  If we choose to place a <code>R</code>-colored pebble at position (3, 5), we flip the <code>B</code>-colored pebble at position (3, 4)
+  because a line forms between (3, 3) and (3, 5), according to rule (2):
+</p>
+
+<figure style="margin: 1rem 0; text-align: center;">
+  <!-- Board 2: after placing R at (4,6) in the pictured row-4 line, row 4 becomes R R R at cols 4-6 -->
+  <svg
+    width="320" height="320" viewBox="0 0 320 320"
+    role="img" aria-label="Reversi board after a move: row 4 has three red pebbles in a row; row 5 has black then red"
+    style="max-width: 100%; height: auto; border: 1px solid #ccc;"
+  >
+    <!-- grid -->
+    <g stroke="#000" stroke-width="1">
+      <!-- vertical lines -->
+      <line x1="0"   y1="0" x2="0"   y2="320"></line>
+      <line x1="40"  y1="0" x2="40"  y2="320"></line>
+      <line x1="80"  y1="0" x2="80"  y2="320"></line>
+      <line x1="120" y1="0" x2="120" y2="320"></line>
+      <line x1="160" y1="0" x2="160" y2="320"></line>
+      <line x1="200" y1="0" x2="200" y2="320"></line>
+      <line x1="240" y1="0" x2="240" y2="320"></line>
+      <line x1="280" y1="0" x2="280" y2="320"></line>
+      <line x1="320" y1="0" x2="320" y2="320"></line>
+
+      <!-- horizontal lines -->
+      <line x1="0" y1="0"   x2="320" y2="0"></line>
+      <line x1="0" y1="40"  x2="320" y2="40"></line>
+      <line x1="0" y1="80"  x2="320" y2="80"></line>
+      <line x1="0" y1="120" x2="320" y2="120"></line>
+      <line x1="0" y1="160" x2="320" y2="160"></line>
+      <line x1="0" y1="200" x2="320" y2="200"></line>
+      <line x1="0" y1="240" x2="320" y2="240"></line>
+      <line x1="0" y1="280" x2="320" y2="280"></line>
+      <line x1="0" y1="320" x2="320" y2="320"></line>
+    </g>
+
+    <!-- discs: row 4 cols 4,5,6 are R; row 5 col 4 is B; row 5 col 5 is R -->
+    <circle cx="140" cy="140" r="14" fill="red"   stroke="#000" stroke-width="1"></circle>
+    <circle cx="180" cy="140" r="14" fill="red"   stroke="#000" stroke-width="1"></circle>
+    <circle cx="220" cy="140" r="14" fill="red"   stroke="#000" stroke-width="1"></circle>
+
+    <circle cx="140" cy="180" r="14" fill="black" stroke="#000" stroke-width="1"></circle>
+    <circle cx="180" cy="180" r="14" fill="red"   stroke="#000" stroke-width="1"></circle>
+  </svg>
+</figure>
+
+<p>
+  From here, it is <code>B</code>'s turn, and they can move to positions (2, 3), (4, 5), and (2, 5).
+  In this exercise you will implement Reversi as a series of piecemeal-designed methods.
+</p>
+
+<ol type="a">
+  <li>
+    <p>Design the <code>boolean isBlankCell(char[][] B, int r, int c)</code> method that, when given a Reversi board <em>B</em>
+    and a position at row <em>r</em> and column <em>c</em>, returns whether that position is blank.
+    A cell is blank if it is denoted by the <code>'.'</code> character.</p>
+  </li>
+
+  <li>
+    <p>Design the <code>boolean isValidMove(char[][] B, int r, int c)</code> method that returns whether the position <em>(r, c)</em>
+    is in the bounds of the array.</p>
+  </li>
+
+  <li>
+    <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getValidMovesForPebble(char[][] B, char P, int r, int c)</code> method that returns all valid moves
+    from the pebble colored as <em>P</em> located at <em>(r, c)</em>.
+    Follow the rules from above.</p>
+    <p class="hint"><i>Hint:</i> It may be helpful to have an array of the eight directional offsets (similar to the Minesweeper presentation), and expand outward.
+  </li>
+
+  <li>
+    <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getPebblePositions(char[][] B, char P)</code> method that returns all positions where there is a pebble colored as <em>P</em>.</p>
+  </li>
+
+  <li>
+    <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getValidMoves(char[][] B, char P)</code> method that returns all valid moves from <em>all</em> positions with a pebble colored as <em>P</em>.</p>
+    <p class="warning"><strong>Warning:</strong> You must use <code>getPebblePositions</code> and <code>getValidMovesForPebble</code> in your definition of this method.</p>
+  </li>
+
+  <li>
+    <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getFlippablePebbles(char[][] B, char P, int r, int c)</code> method that returns a set of all the positions
+    that will be flipped by placing a pebble <em>P</em> at position <em>(r, c)</em>.</p>
+    <p class="warning"><strong>Warning:</strong> Do <em>not</em> assume that position <em>(r, c)</em> starts off as valid.</p>
+  </li>
+
+  <li>
+    <p>Design the <code>char[][] flipPositions(char[][] B, char P, char Q, int r, int c)</code> method that returns a new board after flipping all of the pebbles
+    of color <em>Q</em> that, if we start from position <em>(r, c)</em> with a pebble colored <em>P</em>, we expand out until we hit another pebble that is also colored <em>P</em>.</p>
+    
+    <p class="warning"><strong>Warning:</strong> Don't forget to place a <em>P</em>-colored pebble at position <em>(r, c)</em>!</p>
+  </li>
+</ol>
+    <p class="warning"><strong>Important Warning:</strong> This is a pretty difficult problem that you should only attempt after doing the rest of the problems and you want a challenge.
+    We reserve the right to question the validity of your solution to this problem, and we will only give you credit if we are convinced that you wrote your own solution. (Therefore, don't ChatGPT the solution and expect to get away with it!)
+  </li>
+
+</ol>
+  </ol>
+
+  </div>
+</div>
+
+</body>
+</html>

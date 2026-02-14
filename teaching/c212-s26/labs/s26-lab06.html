@@ -131,7 +131,7 @@
     You may assume that \(L.\texttt{length} = C.\texttt{length} + 1\), and that \(L[i]\) corresponds to \(C[i]\).
     Importantly, \(C[i]\) is the lowest score at which the letter \(L[i]\) is awarded.
     The fact that \(L.\texttt{length}\) is one greater than \(C.\texttt{length}\) implies that anything
-    lower than the lowest cutoff is awarded the “lowest” grade.
+    lower than the lowest cutoff is awarded the "lowest" grade.
     You may also assume that \(C\) is sorted in descending order.
     Finally, you may assume that all grades in \(G\) can be assigned to exactly one of the letters.
     Take the following test cases as motivation.
@@ -140,34 +140,34 @@
 
   <pre>
 // Test 1:
-List<Double> G1 = List.of(95.0);
-List<String> L1 = List.of("A", "B", "C", "D", "F");
+List&lt;Double&gt; G1 = List.of(95.0);
+List&lt;String&gt; L1 = List.of("A", "B", "C", "D", "F");
 double[] C1 = new double[]{90, 80, 70, 60};
 assignGrades(G1, L1, C1) => ["A"]
 
 // Test 2:
-List<Double> G2 = List.of(80.0);
-List<String> L2 = List.of("A", "B", "C", "D", "F");
+List&lt;Double&gt; G2 = List.of(80.0);
+List&lt;String&gt; L2 = List.of("A", "B", "C", "D", "F");
 double[] C2 = new double[]{90, 80, 70, 60};
 assignGrades(G2, L2, C2) => ["B"]
 
 // Test 3:
-List<Double> G3 = List.of(79.0, 85.5, 89.95, 90.14, 0.0, 50.0, 60.01);
-List<String> L3 = List.of("A", "B", "C", "D", "F");
+List&lt;Double&gt; G3 = List.of(79.0, 85.5, 89.95, 90.14, 0.0, 50.0, 60.01);
+List&lt;String&gt; L3 = List.of("A", "B", "C", "D", "F");
 double[] C3 = new double[]{90, 80, 70, 60};
 assignGrades(G3, L3, C3) => ["C", "B", "B", "A", "F", "F", "D"]
 
 // Test 4:
-List<Double> G4 = List.of(79.0, 85.5, 89.95, 90.14, 0.0, 50.0, 60.01);
-List<String> L4 = List.of("A", "A-", "B+", "B", "B-", "C+", "C",
-                  "C-", "D+", "D", "D-", "F");
+List&lt;Double&gt; G4 = List.of(79.0, 85.5, 89.95, 90.14, 0.0, 50.0, 60.01);
+List&lt;String&gt; L4 = List.of("A", "A-", "B+", "B", "B-", "C+", "C",
+                          "C-", "D+", "D", "D-", "F");
 double[] C4 = new double[]{93, 90, 87, 83, 80, 77, 73, 70, 67, 63, 60};
 assignGrades(G4, L4, C4) => ["C+", "B", "B+", "A-", "F", "F", "D-"]
   </pre>
 <p class="warning"><strong>Warning 1:</strong> A lot of students find this problem unintuitive. When we say, “take the following test
 cases as motivation,” we mean that you should actually sit down, work through them, and understand what’s
 going on. Don’t just rush through it!</p>
-<p class="warning"><strong>Warning 2:</strong> If you use <i>only</i> the test cases that we provide, you will receive a very low ``Student Tests'' score.</p>
+<p class="warning"><strong>Warning 2:</strong> If you use <i>only</i> the test cases that we provide, you will receive a very low "Student Tests" score.</p>
             <p>
               <u>Files to Submit:</u>
               <code>Problem2.java</code>, <code>Problem2Test.java</code>

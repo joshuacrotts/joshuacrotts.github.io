@@ -82,13 +82,66 @@
         <ol>
           <!-- Problem 1. -->
           <li>
+            <p><i>(40 points)</i>
+  Design the <code>Set&lt;Integer&gt; moreThanN(int[] A, int n)</code> method, which receives an
+  <code>int[]</code> <em>A</em> and an integer <em>n</em> &ge; 1 and returns a new
+  <code>Set&lt;Integer&gt;</code> of values containing those values from <em>A</em>
+  that occur strictly more than <em>n</em> times.
+</p></p>
             <p>
               <u>Files to Submit:</u>
               <code>Problem1.java</code>, <code>Problem1Test.java</code>
             </p>
           </li>
         <li>
-  <p><i>(50 points)</i>
+  <p><i>(60 points)</i> <em>Anagrams</em> are strings that are formed by rearranging the letters of another string.
+  For example, "plea" is an anagram for "leap", but we consider an <em>alphabetized anagram</em>
+  to be the alphabetized arrangement of letters for an anagram.
+  As an example, "aelrst" is the alphabetized anagram for "alerts", "alters", "slater", and "staler".
+  Design the <code>static Map&lt;String, Set&lt;String&gt;&gt; alphaAnagramGroups(List&lt;String&gt; los)</code> method,
+  which maps all alphabetized anagrams to the strings <em>los</em> using the above criteria.
+</p>
+
+<p>
+  The output order of the map is significant: it should be alphabetized by the ordering of the strings.
+  (Which <code>Map</code> type should you use?)
+  Additionally, the fact that we map alphabetized anagrams to strings to sets indicates that duplicates do not matter,
+  and that is true.
+</p>
+
+<p>
+  The ordering of the sets is significant: it should be the insertion order of the strings.
+  (Which <code>Set</code> type should you use?)
+</p>
+
+<p>
+  Use the following test case as an example.
+</p>
+
+<pre><code>
+los = ["presorting", "plea", "introduces", "anger", "leap", "petals",
+       "donate", "plates", "range", "reductions", "rediscount", "anger",
+       "tapers", "pale", "atoned", "staple", "repast", "reportings"]
+
+alphaAnagramGroups(los)
+  => {
+       {"adenot", ["donate", "atoned"]},
+       {"aegnr", ["anger", "range"]},
+       {"aelp", ["plea", "leap", "pale"]},
+       {"aelpst", ["petals", "plates", "staple"]},
+       {"aeprst", ["tapers", "repast"]},
+       {"cdeinorstu", ["introduces", "reductions", "rediscount"]},
+       {"eginoprrst", ["presorting", "reportings"]}
+     }
+</code></pre>
+
+<p class="hint"><i>Hint 1:</i> You will need to design a method that creates an "ordered version" of a given string.
+
+</p>
+<p class="warning"><strong>Warning 1:</strong> To create the ordered string, you cannot use any Java sorting methods to do this, e.g., <code>Arrays.sort</code>, <code>Collections.sort</code>, and so forth.
+Think about how you can leverage a <code>PriorityQueue</code>!</p>
+<p class="warning"><strong>Warning 2:</strong> If you only use the test that we give, your "Student Tests" score will be very low.</p>
+
             <p>
               <u>Files to Submit:</u>
               <code>Problem2.java</code>, <code>Problem2Test.java</code>

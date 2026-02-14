@@ -194,16 +194,59 @@ and written exams.) Please don’t jeopardize your academic future.</p>
 
     <li>
       <p>
-        Design the <code>List&lt;int[]&gt; getValidNeighbors(char[][] board, int row, int col)</code> method that receives a board and a move position, and returns a list of all the immediate neighbors to the cell \((\mathit{row}, \mathit{col})\).
-        Each element of the list is a two-element integer array containing the \(row\) and \(column\) of the neighbor.
-        Consider the diagram below, where \((0, 0)\) is the move position, and the surrounding cells are its neighbors, represents as offsets.
-        Note that <code>getValidNeighbors</code> should only return neighbors that are <em>in bounds</em>.</p>
+    Design the <code>List&lt;int[]&gt; getValidNeighbors(char[][] board, int row, int col)</code> method that receives a board and
+    a move position, and returns a list of all the immediate neighbors to the cell <em>(row, col)</em>.
+    Each element of the list is a two-element integer array containing the <em>x</em> and <em>y</em> coordinates of the neighbor.
+    Consider the diagram below, where <em>(0, 0)</em> is the move position, and the surrounding cells are its neighbors,
+    represented as offsets. Note that <code>getValidNeighbors</code> should only return neighbors that are <em>in bounds</em>.
+    </p>
         <p class="hint"><i>Hint:</i> Use <code>isValidMove</code>.
       </p>
 
-      <div class="figure">
-        <img style="width:30%" src="../minesweeper.png" alt="Diagram showing neighbors around a cell." />
-      </div>
+<figure style="margin: 1rem 0; text-align: center;">
+  <!-- Neighbor offset diagram -->
+  <svg
+    width="360" height="360" viewBox="0 0 360 360"
+    role="img" aria-label="Neighbor offsets around (0,0): eight surrounding offsets in a 3 by 3 grid"
+    style="max-width: 100%; height: auto;"
+  >
+    <defs>
+      <style>
+        .cell { fill: #fff; stroke: #000; stroke-width: 2; }
+        .txt  { font: 18px sans-serif; dominant-baseline: middle; text-anchor: middle; }
+      </style>
+    </defs>
+
+    <!-- grid cells (3x3), each 120x120 -->
+    <!-- row 1 -->
+    <rect class="cell" x="0"   y="0"   width="120" height="120"></rect>
+    <rect class="cell" x="120" y="0"   width="120" height="120"></rect>
+    <rect class="cell" x="240" y="0"   width="120" height="120"></rect>
+
+    <!-- row 2 -->
+    <rect class="cell" x="0"   y="120" width="120" height="120"></rect>
+    <rect class="cell" x="120" y="120" width="120" height="120"></rect>
+    <rect class="cell" x="240" y="120" width="120" height="120"></rect>
+
+    <!-- row 3 -->
+    <rect class="cell" x="0"   y="240" width="120" height="120"></rect>
+    <rect class="cell" x="120" y="240" width="120" height="120"></rect>
+    <rect class="cell" x="240" y="240" width="120" height="120"></rect>
+
+    <!-- labels -->
+    <text class="txt" x="60"  y="60">(-1, 1)</text>
+    <text class="txt" x="180" y="60">(0, 1)</text>
+    <text class="txt" x="300" y="60">(1, 1)</text>
+
+    <text class="txt" x="60"  y="180">(-1, 0)</text>
+    <text class="txt" x="180" y="180">(0, 0)</text>
+    <text class="txt" x="300" y="180">(1, 0)</text>
+
+    <text class="txt" x="60"  y="300">(-1, -1)</text>
+    <text class="txt" x="180" y="300">(0, -1)</text>
+    <text class="txt" x="300" y="300">(1, -1)</text>
+  </svg>
+</figure>
     </li>
 
     <li>
@@ -233,7 +276,7 @@ and written exams.) Please don’t jeopardize your academic future.</p>
       </p>
 
       <p>
-        Design the <code>void extPath(char[][] board, int row, int col)</code> method that receives a board and a move position, and extends the path from the given position using the following rules:
+        Design the <code>void reveal(char[][] board, int row, int col)</code> method that receives a board and a move position, and extends the path from the given position using the following rules:
       </p>
 
       <ol type="i">
@@ -256,14 +299,18 @@ and written exams.) Please don’t jeopardize your academic future.</p>
       <p>
         Minesweeper board generation is an algorithmic problem in and of itself, and as such our implementation will be simple.
         Design the <code>char[][] makeBoard(int N, int M, int B)</code> method that receives a board size of \(N\) rows, \(M\) columns, and \(B\) mines to place.
-        To randomly place mines, create a <code>List&lt;int[]&gt;</code> of all the possible cells on the board, shuffle the list, retrieve the first \(B\) cells, and assign the character literal <code>'B'</code> to them. Assign the character literal <code>'-'</code> to all other cells.
+        To randomly place mines, create a <code>List&lt;int[]&gt;</code> of all the possible cells on the board, shuffle the list, retrieve the first \(B\) cells, and assign the character literal <code>'B'</code> to them. 
+        Assign the character literal <code>'-'</code> to all other cells.
       </p>
       <p class="hint"><i>Hint:</i> You can either shuffle the list yourself or use <code>Collections.shuffle</code>.</p>
     </li>
 
     <li>
       <p>
-        Finally, design the <code>char[][] play(char[][] board, int row, int col)</code> method that receives a board and a move position, and attempts to play the given move position on the board. If, at that position on the board, there is a mine, return <code>null</code>. Otherwise, call <code>extPath</code> on the board and position, then return <code>board</code>. In essence, <code>play</code> receives one game state and transitions it to the next state.
+        Finally, design the <code>char[][] play(char[][] board, int row, int col)</code> method that receives a board and a move position, and attempts to play the given move position on the board. 
+        If, at that position on the board, there is a mine, return <code>null</code>. 
+        Otherwise, call <code>reveal</code> on the board and position, then return <code>board</code>. 
+        In essence, <code>play</code> receives one game state and transitions it to the next state.
       </p>
     </li>
   </ol>

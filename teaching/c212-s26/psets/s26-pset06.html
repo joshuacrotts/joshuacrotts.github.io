@@ -289,7 +289,7 @@ and written exams.) Please don’t jeopardize your academic future.</p>
         </li>
         <li>
           <p>
-            If the number of adjacent mines <em>is</em> zero, then we can extend out the path to all non-mine neighbors. First, assign to <code>board[row][col]</code> the character literal <code>'0'</code>, then loop over all non-mine neighbors to the move position. In the loop body, call <code>extPath</code> on each neighbor.
+            If the number of adjacent mines <em>is</em> zero, then we can extend out the path to all non-mine neighbors. First, assign to <code>board[row][col]</code> the character literal <code>'0'</code>, then loop over all non-mine neighbors to the move position. In the loop body, call <code>reveal</code> on each neighbor.
           </p>
         </li>
       </ol>

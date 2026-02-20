@@ -110,6 +110,8 @@ in, the easy way out looks appealing. Do not fall into this trap. The TAs and I 
 to tell AI code from what you genuinely write. You will receive a 0 and be reported for academic
 dishonesty. (Moreover, this is a surefire way to not prepare yourself for the in-person, proctored,
 and written exams.) Please don’t jeopardize your academic future.</p>
+
+<p><strong>Note 1 (added 02/19):</strong> Added clarification to problem 2 part h that you can assume the move position is always valid.</p>
     <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 6 below - the "v" should have a subscript "i". If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
 </p>    
 </div>
@@ -311,6 +313,7 @@ and written exams.) Please don’t jeopardize your academic future.</p>
         If, at that position on the board, there is a mine, return <code>null</code>. 
         Otherwise, call <code>reveal</code> on the board and position, then return <code>board</code>. 
         In essence, <code>play</code> receives one game state and transitions it to the next state.
+        You do not need to consider invalid moves for this method, so you can assume that the move position is always valid.
       </p>
     </li>
   </ol>

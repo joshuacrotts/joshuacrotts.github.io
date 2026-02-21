@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Problem Set 8</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Problem Set 8 - Generics and Streams</h2>
+        <p><strong>Assigned:</strong> March 4, 2026</p>
+        <p><strong>Due:</strong> March 11, 2026 at 11:59 PM EST</p>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Objectives</h2>
+        <ul>
+          <li>Students learn how generics allow them to write methods that work over any type.</li>
+          <li>Students explore the use of streams for processing collections.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          For each problem, create a class named <code>ProblemX</code>,
+          where <code>X</code> is the problem number
+          (e.g., <code>Problem1.java</code>).
+          Write corresponding JUnit test classes named
+          <code>ProblemXTest</code>. 
+          Each method must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+        </p>
+        <p>For problems containing multiple parts, write the methods inside the same class.</p>
+        <p>
+          <strong>
+          Do not round your solutions. For example, do not use
+          <code>Math.round</code> or float your output to, e.g.,
+          2 decimal places, unless specified.
+          </strong>
+        </p>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use anything beyond Chapter 3.
+          This includes but is not limited to:
+        </p>
+        <ul>
+          <li>Bitwise operators</li>
+          <li>Regular expressions</li>
+          <li>Exceptions</li>
+          <li>Objects, classes, etc.</li>
+          <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the problem set.
+        </p>
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Notes and Version Changes:</h2>
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon dark">
+      <div class="content problems">
+        <h2>Problems</h2>
+        <ol>
+          <!-- Problem 1. -->
+          <li>
+            <p><i>(10 points)</i>
+              Design the <code>&lt;T&gt; List&lt;T&gt; take(List&lt;T&gt; l, int n)</code> method that returns a list with the first \( n \)
+              elements of the given list \( l \). If \( |l| \le n \), return all elements of the list, but don't return the list itself.
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem1.java</code>, <code>Problem1Test.java</code>
+          </li>
+          <!-- Problem 2. -->
+          <li>
+            <p><i>(10 points)</i>
+              Design the <code>&lt;T&gt; boolean isPalinList(List&lt;T&gt; ls)</code> method that, when given a <code>List&lt;T&gt;</code>,
+              returns whether the list is palindromic.
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem2.java</code>, <code>Problem2Test.java</code>
+          </li>
+          <!-- Problem 3. -->
+          <li>
+            <p><i>(16 points)</i>
+              Design the <code>&lt;T&gt; List&lt;List&lt;T&gt;&gt; cartesianProduct(List&lt;List&lt;T&gt;&gt; ls)</code> method that, when given a list of lists, returns the cartesian product of each list.
+              That is, if \( ls \) contains lists \( l_1, l_2, ..., l_n \), you should construct and return \( l_1 \times l_2 \times \cdots \times l_n \).
+              The cartesian product of <em>two</em> lists \( X \times Y \) is \( (x_1, y_1), (x_1, y_2), ..., (x_1, y_n), ..., (x_n, y_n) \), but generalizing this to \( n \) lists is more difficult.
+            </p>
+            <p>One way to solve this problem is to design a method that computes the cartesian product of only two lists.
+              Then, write a method that computes the cartesian product of a list of lists plus a second list of values.
+              This then generalizes to any number of lists via a case analysis of having 0, 1, 2, or greater than 2 lists to compute the cartesian product of.
+            </p>
+            <p>Another way is to use a recursive approach:</p>
+            <ol type="i">
+              <li>If the list is empty, return the empty list.</li>
+              <li>If the list contains only one list inside, return a list where the elements are singletons.
+                For example, <code>[[1, 2]]</code> returns <code>[[1], [2]]</code>.
+              </li>
+              <li>Otherwise, split the list into two parts: call the first element \( \mathit{xs} \) and the rest \( \mathit{yss} \).
+                Instantiate a "result list" \( R \).
+                Recursively call the method on \( \mathit{ys} \).
+                Then, for every element \( x \in \mathit{xs} \), for every element \( \mathit{ys} \in \mathit{yss} \), create a new list \( l \).
+                Add to it \( x \) and all of the elements from \( \mathit{ys} \).
+                Then, add \( l \) to \( R \).
+              </li>
+            </ol>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem3.java</code>, <code>Problem3Test.java</code>
+          </li>
+          <!-- Problem 4. -->
+          <li>
+            <p><i>(16 points)</i>
+              Design the <code>&lt;T&gt; List&lt;T&gt; interleave(List&lt;T&gt; l1, List&lt;T&gt; l2, int m, int n)</code> method that, when given two lists \( l_1, l_2 \) and two integers \( m, n \), returns a new list with the first \( m \) elements of \( l_1 \), then the first \( n \) elements of \( l_2 \), then the next \( m \) elements of \( l_1 \), and so forth.
+              If there are less than \( m \) elements left to take from \( l_1 \) or there are less than \( n \) elements left to take from \( l_2 \), take the rest of the lists.
+              You may assume that \( m, n \geq 1 \).
+              We provide an example below.
+            </p>
+            <pre>
+interleave(List.of("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+           List.of("10", "20", "30", "40", "50"),
+           3,
+           2)
+   => List.of("a", "b", "c", "10", "20", "d", "e", "f", "30", "40", 
+              "g", "h", "i", "50", "j")
+</pre>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem4.java</code>, <code>Problem4Test.java</code>
+          </li>
+          <!-- Problem 5. -->
+          <li>
+            <p><i>(8 points)</i>
+              Design the <code>boolean containsHigh(List&lt;List&lt;Integer&gt;&gt; lop)</code> method that, when given a list of two-element arrays representing \( x, y \) coordinate pairs, returns whether or not any of the \( y \)-coordinates are greater than \( 450 \). <strong>You must use only the Stream API.</strong>
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem5.java</code>, <code>Problem5Test.java</code>
+          </li>
+          <li>
+            <p><i>(8 points)</i>
+              Design the <code>List&lt;Integer&gt; sqAddFiveOmit(List&lt;Integer&gt; lon)</code> that receives a list of numbers, returns a list of those numbers squared and adds five to the result, omitting any of the resulting numbers that end in \( 5 \) or \( 6 \). <strong>You must use only the Stream API.</strong>
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem6.java</code>, <code>Problem6Test.java</code>
+          </li>
+          <li>
+            <p><i>(8 points)</i>
+              Design the <code>List&lt;String&gt; removeLonger(List&lt;String&gt; los, int n)</code> method that receives a list of strings, and removes all strings that contain more characters than a given integer \( n \). Return this result as a list. <strong>You must use only the Stream API.</strong>
+            </p>
+            <u>Files to Submit:</u>
+            <code>Problem7.java</code>, <code>Problem7Test.java</code>
+          </li>
+          <li>
+            <p><i>(8 points)</i>
+              Design the <code>int filterSumChars(String s)</code> method that, when given a string \( s \), removes all non-alphanumeric characters, converts all letters to uppercase, and computes the sum of the ASCII values of the letters. Digits should also be added, but use the digit itself and not its ASCII value. <strong>You must use only the Stream API.</strong>
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem8.java</code>, <code>Problem8Test.java</code>
+            </p>
+          </li>
+          <li>
+            <p><i>(8 points)</i>
+              Design the <code>int productOdds(int n)</code> method that returns the product of all of the odd integers from \( 1 \) to \( n \), inclusive.
+              You should use an <code>IntStream</code> to generate the appropriate range.
+              <strong>You must use only the Stream API.</strong>
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem9.java</code>, <code>Problem9Test.java</code>
+            </p>
+          </li>
+          <li>
+            <p><i>(8 points)</i>
+              Design the <code>int keyLength(Map&lt;String, Set&lt;String&gt;&gt; M, int n)</code> that, when given a map \( M \) of strings to sets of strings and a length \( n \), returns the total length of the keys that map to a set of size at most \( n \). 
+              <strong>You must use only the Stream API.</strong>
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem10.java</code>, <code>Problem10Test.java</code>
+            </p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

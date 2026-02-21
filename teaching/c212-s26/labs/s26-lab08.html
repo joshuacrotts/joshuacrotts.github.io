@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 07</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 08 - Generics and Streams</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          For each problem, create a class named <code>ProblemX</code>,
+          where <code>X</code> is the problem number
+          (e.g., <code>Problem1.java</code>).
+          Write corresponding JUnit test classes named
+          <code>ProblemXTest</code>. 
+          All methods (yes, <i>including helpers</i>) must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+          Helper methods should be marked as <code>private</code>.
+          You do not need to write explicit tests for helper methods because they will be indirectly tested through the driver methods.
+        </p>
+        <p>For problems containing multiple parts, write the methods inside the same class.</p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use anything beyond Chapter 3.
+          This includes <u>but is not limited to:</u>
+        </p>
+        <ul>
+          <li>Bitwise operators</li>
+          <li>StringBuilder</li>
+          <li>Regular expressions</li>
+          <li>Objects, classes, etc.</li>
+          <li>Exceptions</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the lab.
+        </p>
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Notes and Version Changes:</h2>
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon">
+      <div class="content problems">
+        <h2>Problems</h2>
+        <ol>
+          <!-- Problem 1. -->
+          <li>
+            <p><i>(30 points)</i>
+              Design the <code>List&lt;Integer&gt; remvDups(List&lt;Integer&gt; lon)</code> method, which receives a list of integers and removes all duplicate integers. Return this result as a new list. <strong>You must use only the Stream API.</strong>
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem1.java</code>, <code>Problem1Test.java</code>
+            </p>
+          </li>
+          <li>
+            <p><i>(30 points)</i> 
+              Design the <code>List&lt;Double&gt; filterThenSquare(List&lt;Double&gt; lon)</code> method, which receives a list of doubles, removes all numbers that are multiples of seven, and squares the remaining values. Return this result as a new list. <strong>You must use only the Stream API.</strong>
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem2.java</code>, <code>Problem2Test.java</code>
+            </p>
+          </li>
+          <li>
+            <p><i>(40 points)</i> 
+              Design the <code>Optional&lt;Integer&gt; maximum(List&lt;Integer&gt; lon)</code> method that, when given a list of integers, returns the maximum value in the list as an <code>Optional&lt;Integer&gt;</code>. If there are no values in the given list, return <code>Optional.empty()</code>. <strong>You must use only the Stream API.</strong>
+            </p>
+            <p class="note"><i>Note:</i> With this problem, don't cheese it by calling the <code>IntStream</code> <code>max</code> method. Figure out how to solve it with <code>reduce</code> or <code>collect</code>! As a hint, think about how you would find the maximum number in a list of numbers using recursion.</p>
+            <p class="hint"><i>Hint:</i> There are two versions of <code>reduce</code> that you can call...</p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>Problem3.java</code>, <code>Problem3Test.java</code>
+            </p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

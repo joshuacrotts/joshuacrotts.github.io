@@ -199,7 +199,12 @@ wordCount(s) =&gt; [&lt;"hello" : 1&gt;, &lt;"world" : 3&gt;, &lt;"the" : 2&gt;
                  &lt;"that" : 1&gt;, &lt;"1" : 1&gt;, &lt;"and" : 1&gt;, &lt;"not" : 1&gt;]
   </pre>
 
+
+
   <p class="warning"><strong>Warning:</strong> Like in Problem 2, you are not allowed to use built-in mechanisms for splitting your string.</p>
+
+  <p class="note"><i>Note:</i> Only the punctuation listed above should be filtered out.
+    Do not use a blanket ``punctuation'' filter.</p>
 
   <p class="hint"><i>Hint:</i> You <i>are</i> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem3</code> file or call it directly.</p>
 
@@ -221,6 +226,7 @@ wordCount(s) =&gt; [&lt;"hello" : 1&gt;, &lt;"world" : 3&gt;, &lt;"the" : 2&gt;
 postfixEvaluator({"5", "2", "*", "5", "+", "2", "+"}) =&gt; 17
 postfixEvaluator({"1", "2", "3", "4", "+", "+", "+"}) =&gt; 10
 postfixEvaluator({"12", "3", "/"})                    =&gt; 4
+postfixEvaluator({"2.5", "3", "*", "1", "-"})         =&gt; 6.5
 postfixEvaluator({"3", "4", "-"})                     =&gt; -1
   </pre>
 
@@ -299,12 +305,14 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
 
   <p class="warning"><strong>Warning:</strong> Like in Problems 2 and 3, you are not allowed to use built-in mechanisms for splitting your string.</p>
 
+<p class="note"><i>Note:</i> In some contexts, this method could <em>also</em> be called “tokenize,” but that method name has a particular meaning with respect to the problem set.</p>
+
   <p class="hint"><i>Hint 1:</i> You <i>are</i> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem6</code> file or call it directly.</p>
 
   <p class="hint"><i>Hint 2:</i> It might be a good idea to write a helper method that receives the input string and adds exactly one space between each of the "tokens," and then tokenize that string.</p>
 
 
-<p class="note"><i>Note:</i> In some contexts, this method could <em>also</em> be called “tokenize,” but that method name has a particular meaning with respect to the problem set.
+
 
   <p>
      <u>Files to Submit:</u>
@@ -405,7 +413,7 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
   <p>
     Headers are one of the column headers of the database, and comparators are either <code>=</code>, <code>!=</code>,
     <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, or <code>&gt;=</code>, or <code>LIKE</code>. Values are
-    either numbers, floats, or strings.
+    either numbers, floats, or strings, and are <i>always</i>enclosed by single quotes.
   </p>
 
   <p>
@@ -565,8 +573,8 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
   </li>
 
   <li>
-    <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getValidMovesForPebble(char[][] B, char P, int r, int c)</code> method that returns all valid moves
-    from the pebble colored as <em>P</em> located at <em>(r, c)</em>.
+    <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getValidMovesForPebble(char[][] B, int r, int c)</code> method that returns all valid moves
+    from the pebble located at <em>(r, c)</em>.
     Follow the rules from above.</p>
     <p class="hint"><i>Hint:</i> It may be helpful to have an array of the eight directional offsets (similar to the Minesweeper presentation), and expand outward.
   </li>

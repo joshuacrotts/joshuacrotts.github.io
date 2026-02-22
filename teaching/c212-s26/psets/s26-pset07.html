@@ -258,10 +258,10 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
   </p>
 
   <p>
-    Design the <code>String substitutionCipher(String A, String K, String s)</code> method, which receives a plain-text alphabet
-    string \(A\), a cipher-text string \(K\), and a string \(s\) to encode.
-    <code>substitutionCipher</code> should return a string \(s'\) using the aforementioned
-    substitution cipher algorithm.
+    Design the <code>String substitutionCipher(String A, String K, String s)</code> method, which receives a plain-text alphabet string \(A\), a cipher-text string \(K\), and a string \(s\) to encode.
+    <code>substitutionCipher</code> should return a string \(s'\) using the aforementioned substitution cipher algorithm.
+    If a character from \(s\) does not have a pairing letter in the cipher-text string, use the character itself in the encoded string \(s\).
+    You may assume that there is exactly one pairing per letter in each alphabet.
   </p>
 
   <p>
@@ -573,8 +573,7 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
   </li>
 
   <li>
-    <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getValidMovesForPebble(char[][] B, int r, int c)</code> method that returns all valid moves
-    from the pebble located at <em>(r, c)</em>.
+    <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getValidMovesForPebble(char[][] B, int r, int c)</code> method that returns all valid moves from the pebble located at <em>(r, c)</em>.
     Follow the rules from above.</p>
     <p class="hint"><i>Hint:</i> It may be helpful to have an array of the eight directional offsets (similar to the Minesweeper presentation), and expand outward.
   </li>

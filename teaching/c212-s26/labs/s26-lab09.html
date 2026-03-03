@@ -91,7 +91,7 @@
 
               <ol class="paren-alpha">
                 <li><p><i>(5 points)</i>
-                  Design the <code>WordStats</code> class that represents the statistics of a list of words.
+                  Design the <code>WordStats</code> class.
                   It should have a single constructor that receives a <code>List&lt;String&gt;</code> of words.
                   Rather than storing the list of words, the constructor should compute and store the frequency of each word in a <code>Map&lt;String, Integer&gt;</code>.
                   Instantiate the map as a lexicographically-ordered map.</p>
@@ -112,7 +112,7 @@
 
                 <li><p><i>(15 points)</i> Design the <code>Optional&lt;String&gt; mostFrequent()</code> method that returns the most frequent word, or an empty <code>Optional</code> if there are no words.</p>
                 
-                <p class="hint"><i>Hint:</i> To create a populated <code>Optional</code> use <code>Optional.of(v)</code> for some value <code>v</code>. To create an empty <code>Optional</code> use <code>Optional.empty()</code>.</p>
+                <p class="hint"><i>Hint:</i> To create a populated <code>Optional</code> use <code>Optional.of(v)</code> for some value <code>v</code>. To create an empty <code>Optional</code>, use <code>Optional.empty()</code>.</p>
                 </li>
 
                 <li><p><i>(20 points)</i> Design the <code>WordStats merge(WordStats otherWord)</code> method that merges the <code>otherWord</code> instance of <code>WordStats</code> into <code>this</code> instance by creating and returning a new <code>WordStats</code> object that contains the frequencies of both instances added together. For example, if <code>this</code> instance has the word "hello" with frequency 2 and the <code>otherWord</code> instance has the word "hello" with frequency 3, then the merged <code>WordStats</code> object should have the word "hello" with frequency 5.</p>
@@ -129,7 +129,7 @@
                 
                 <p class="hint"><i>Hint:</i> You <i>can</i> use the <code>String.split</code> method to solve this problem, but a better solution would be to copy and paste your <code>tokenize</code> method from <code>PSet07</code>!</p>
 
-                <p class="note"><i>Note:</i> This isn't the world's greatest use for a static method, because a better approach would be to have a constructor that receives the string.</p></li>
+                <p class="note"><i>Note:</i> Admittedly, this isn't the world's greatest use of a <code>static</code> method, because a better approach would be to have a constructor that receives the string.</p></li>
 
 
                 <li><p><i>(25 points)</i> Override the <code>public boolean equals(Object obj)</code> and <code>public boolean hashCode()</code> methods. Namely, two <code>WordStats</code> objects are equal if and only if they represent the same set of words with the same frequencies. The hash code of a <code>WordStats</code> object is the result of invoking <code>Objects.hash</code> on the underlying map.</p></li>

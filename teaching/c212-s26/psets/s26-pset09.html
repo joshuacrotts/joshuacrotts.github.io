@@ -95,15 +95,42 @@
         <h2>Problems</h2>
         <ol>
           <!-- Problem 1 (RgbColor). -->
-          <li>
-            <p><i>(15 points)</i>
-              XXX
-            </p>
-            <p>
-              <u>Files to Submit:</u>
-              <code>XXX.java</code>, <code>XXX.java</code>
-            </p>
-          </li>
+<li>
+  <p><i>(15 points)</i>
+    Design the <code>RgbColor</code> class to represent a color that has three channels: red, green, and blue.
+    This type of class is generally associated with pixels on a display, which use three integers (also sometimes with an opacity for transparency), values ranging between 0 and 255, to represent the three values of color.
+    Combining these integers creates a color.
+    For example, a color whose red channel is 255, whose green channel is 0, and whose blue channel is 255 creates magenta.
+    The constructor should receive these three integer values and assign them to instance variables.
+    Design the relevant accessor (e.g., <code>int getRed()</code>) methods.
+    Additionally, design the following methods:
+  </p>
+
+  <ol type="a">
+    <li>
+      <p>
+        <code>RgbColor invert()</code>, which returns a new <code>RgbColor</code> instance that represents the inversion of <code>this</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <code>RgbColor grayscale()</code>, returns a new <code>RgbColor</code> instance that represents the grayscale color of <code>this</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <code>boolean isGrayscale()</code>, which returns whether <code>this</code> color is grayscale, i.e., whether all three of the channels are the same.
+      </p>
+    </li>
+  </ol>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>RgbColor.java</code>, <code>RgbColorTest.java</code>
+  </p>
+</li>
 
 
           <!-- Problem 2 Duration. -->
@@ -198,29 +225,151 @@
 
 
           <!-- Problem 3 (Vector). -->
-          <li>
-            <p><i>(30 points)</i>
-              XXX
-            </p>
-            <p>
-              <u>Files to Submit:</u>
-              <code>XXX.java</code>, <code>XXX.java</code>
-            </p>
-          </li>
+<li>
+  <p><i>(30 points)</i>
+    In this exercise, you will design a class that represents a two-dimensional vector.
+    Vectors have a direction and a magnitude, and are represented by two components: \(x\) and \(y\).
+  </p>
 
+  <ol type="a">
+    <li>
+      <p>
+        Design the <code>Vector</code> class, which stores two <code>double</code> values representing the \(x\) and \(y\) components of the vector.
+        The constructor should receive these two values and assign them to the instance variables.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>double getX()</code>, <code>double getY()</code>, <code>void setX(double x)</code>, and <code>void setY(double y)</code> methods that return the respective components of the vector and set the respective components of the vector.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>double getMagnitude()</code> method that returns the magnitude of the vector, which is defined as \(\sqrt{x^2 + y^2}\).
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>Vector add(Vector v)</code> method that adds a given vector \(v\) to this vector.
+        The result is a new <code>Vector</code> instance whose components are the sum of the respective components of both vectors.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>Vector subtract(Vector v)</code> method that subtracts a given vector \(v\) from this vector.
+        The result is a new vector whose components are the difference of the respective components of both vectors.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>Vector scale(double s)</code> method that scales this vector by a given scalar \(s\).
+        The result is a new vector whose components are multiplied by \(s\).
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>Vector normalize()</code> method that normalizes this vector to the unit vector, i.e., a vector with a magnitude of \(1\).
+        The result is a new vector whose components are divided by the magnitude of this vector.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>double dot(Vector v)</code> method that computes the dot product of this vector with a given vector \(v\).
+        The dot product is defined as \(x_1 \cdot x_2 + y_1 \cdot y_2\), where \((x_1, y_1)\) and \((x_2, y_2)\) are the components of the two vectors.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Finally, override the <code>equals</code>, <code>hashCode</code>, and <code>toString</code> methods.
+        Two vectors are equal if their components are equal.
+        The hash code of a vector is the sum of the hash codes of its components.
+        The <code>toString</code> representation of a vector is the stringified version of the vector, e.g., <code>"(x, y)"</code>.
+      </p>
+    </li>
+  </ol>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Vector.java</code>, <code>VectorTest.java</code>
+  </p>
+</li>
 
 
 
           <!-- Problem 4 (Bag). -->
-          <li>
-            <p><i>(35 points)</i>
-              XXX
-            </p>
-            <p>
-              <u>Files to Submit:</u>
-              <code>XXX.java</code>, <code>XXX.java</code>
-            </p>
-          </li>
+<li>
+  <p><i>(35 points)</i>
+    The <em>bag</em>, or multi-set, data structure is a simple set-like data structure, with the exception that elements can be inserted multiple times into a bag.
+    Order does not matter with a bag, nor does its internal structure.
+    With bags, we can add items, remove items, query how many of an item there are, and return the number of items in the bag.
+  </p>
+
+  <ol type="a">
+    <li>
+      <p>
+        Design the generic <code>Bag&lt;T&gt;</code> class. It would be inefficient to simply store a list of all the items in the bag.
+        So, your bag will employ a <code>Map&lt;T, Integer&gt;</code>, which associates an item \(T\) with its count in the map.
+        Instantiate the map as an instance variable as a <code>HashMap</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>void insert(T t)</code> method, which inserts an item \(t\) into the bag.
+        If the item already exists, its associated count is incremented by one.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>boolean remove(T t)</code> method, which removes an item \(t\) from the bag, meaning its associated count is decremented by one.
+        If \(t\) does not exist, the method returns <code>false</code>, and otherwise returns <code>true</code>.
+        If decrementing the count results in \(0\), then remove the key \(t\).
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>int count(T t)</code> method that returns the respective quantity of item \(t\) in the bag.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>int size()</code> method that returns the number of items in the bag.
+        The method should <em>not</em> traverse over the keys and sum the values; this should be a ``constant-time'' operation.
+        Don't overthink how to do this!
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>boolean contains(T t)</code> method that returns whether the bag contains <code>t</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>boolean isSubBagOf(Bag b)</code> method that determines <code>this</code> is a sub-bag of <code>b</code>.
+        A bag \(b_1\) is a sub-bag of \(b_2\) if, for every element \(i \in b_1\), then \(i \in b_2\) and
+        <code>count</code>\((b_1[i]) \leq \)<code>count</code>\((b_2[i])\).
+      </p>
+    </li>
+  </ol>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Bag.java</code>, <code>BagTest.java</code>
+  </p>
+</li>
         </ol>
       </div>
     </div>

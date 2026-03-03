@@ -104,7 +104,7 @@ em {
 }
 
 .problems > ol > li > ol > li {
-  margin-bottom: 4em;
+  margin-bottom: 2em;
 }
 
 .figure {
@@ -162,11 +162,10 @@ em {
   top: 0.5em;
 }
 
-
-.paren-alpha {
+ol.paren-alpha {
   list-style-type: lower-alpha;
 }
 
-.paren-alpha li::marker {
+ol.paren-alpha > li::marker {
   content: "(" counter(list-item, lower-alpha) ") ";
 }

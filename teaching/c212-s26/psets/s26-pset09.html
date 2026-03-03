@@ -94,9 +94,126 @@
       <div class="content problems">
         <h2>Problems</h2>
         <ol>
-          <!-- Problem 1. -->
+          <!-- Problem 1 (RgbColor). -->
           <li>
-            <p><i>(X points)</i>
+            <p><i>(15 points)</i>
+              XXX
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>XXX.java</code>, <code>XXX.java</code>
+            </p>
+          </li>
+
+
+          <!-- Problem 2 Duration. -->
+<li>
+  <p><i>(20 points)</i>
+    In this exercise you will design the <code>Duration</code> class for working with units of a duration.
+    Programming languages often support operations for handling dates, times, and durations to varying degrees of success.
+    Java provides a few classes and methods of its own, and you cannot use these in your implementation, as that would defeat the point of the exercise.
+  </p>
+
+  <ol class="paren-alpha">
+    <li>
+      <p>Design the <code>Duration</code> class. 
+      Its constructor should receive the following parameters:</p>
+
+      <ul>
+        <li>
+          <code>Duration(int h, int m, int s)</code> receives three integers
+          \(h \geq 0\), \(0 \leq m < 60\), and \(0 \leq s < 60\)
+          representing durations in hours, minutes, and seconds respectively.
+        </li>
+
+        <li>
+          <code>Duration(int s)</code> receives a single integer
+          \(s \geq 0\) representing the number of seconds.
+        </li>
+
+        <li>
+          <code>Duration(String t)</code> receives a string of the form
+          <code>"hh:mm:ss"</code> with three components: hours, minutes, and seconds.
+          You can assume that the string is always in the correct format, and that the hours, minutes, and seconds are valid according to the same rules as the previous two constructors.
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>int getNumberOfSeconds()</code> method, which returns the number of seconds that this <code>Duration</code> object represents.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>int getNumberOfMinutes()</code> method, which returns the number of minutes that this <code>Duration</code> object represents. 
+        If there are an inexact number of minutes, simply return the minutes. 
+        As an example, <code>new Duration("02:30:45").getNumberOfMinutes()</code> returns <code>150</code> and not <code>151</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>int getNumberOfHours()</code> method, which returns the number of hours that this <code>Duration</code> object represents.
+        Return inexact hours in the same way as <code>getNumberOfMinutes</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Override the <code>toString</code> method to return a stringified version of the duration where the hours, minutes, and seconds are separated by colons. 
+        Single-digit units of time must contain a leading zero.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Override the <code>equals</code> method to return whether a given <code>Duration</code> object represents the same duration as <code>this</code> instance.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>Duration addDuration(Duration d)</code> that adds the given <code>Duration</code> object \(d\) to <code>this</code> <code>Duration</code> object.
+        Do not mutate <code>this</code> or the passed <code>Duration</code> object; instead, return a new <code>Duration</code> object that represents the result of the addition.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>Optional&lt;Duration&gt; subtractDuration(Duration d)</code> that subtracts the given <code>Duration</code> object \(d\) from <code>this</code> <code>Duration</code> object.
+        Like <code>addDuration</code>, you should not mutate <code>this</code> or the passed <code>Duration</code> object; instead, return a new <code>Duration</code> object, wrapped in an <code>Optional</code>, that represents the result of the subtraction.
+        If the result of a subtraction is a negative duration amount, return an empty <code>Optional</code>.
+      </p>
+    </li>
+  </ol>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>Duration.java</code>, <code>DurationTest.java</code>
+  </p>
+          </li>
+
+
+
+          <!-- Problem 3 (Vector). -->
+          <li>
+            <p><i>(30 points)</i>
+              XXX
+            </p>
+            <p>
+              <u>Files to Submit:</u>
+              <code>XXX.java</code>, <code>XXX.java</code>
+            </p>
+          </li>
+
+
+
+
+          <!-- Problem 4 (Bag). -->
+          <li>
+            <p><i>(35 points)</i>
               XXX
             </p>
             <p>

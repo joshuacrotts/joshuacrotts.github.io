@@ -77,13 +77,15 @@
     <div class="ribbon dark">
       <div class="content">
         <h2>Notes and Version Changes:</h2>
-        <p></p>
+        <p>You do not need to write tests for any <code>hashCode</code> implementations. We will check these manually.</p>
+                <p class="warning"><strong>Important Warning:</strong> You must write the method headers for all methods that we list below in order for your code to compile in the autograder. We will not award partial points for non-compiling code. So, we strongly recommend that, before you implement the methods, you first write the method headers and Javadocs.</p>
       </div>
     </div>
     <!-- PROBLEMS -->
     <div class="ribbon">
       <div class="content problems">
         <h2>Problems</h2>
+
         <ol>
           <!-- Problem 1. -->
           <li>
@@ -99,8 +101,7 @@
                 </li>
 
                 <li>
-                  <p><i>(10 points)</i> This class, unlike many others that you will write in subsequent problem sets and labs, will not have any accessors. Instead, design the <code>Set&lt;String&gt; getUniqueWords()</code> method that returns a set of all the words in the collection.
-                  Like the underlying map, the set should also be lexicographically ordered.</p>
+                  <p><i>(10 points)</i> This class, unlike many others that you will write in subsequent problem sets and labs, will not have any accessors. Instead, design the <code>List&lt;String&gt; getListOfWords()</code> method that returns a list of all the words in the collection.The order of the words in the list should be the same as the order of the keys in the underlying map, i.e., lexicographical order. Be aware that you should add a word to the list as many times as it occurs in the frequency map. For example, if the frequency map contains the key "hello" with value 3, then the list returned by <code>getListOfWords()</code> should contain three occurrences of "hello".</p>
                 </li>
 
                 <li>
@@ -110,7 +111,7 @@
 
                 <li><p><i>(10 points)</i> Overload the <code>int count(String word)</code> method to return the number of times a given word appears in the list.</p></li>
 
-                <li><p><i>(15 points)</i> Design the <code>Optional&lt;String&gt; mostFrequent()</code> method that returns the most frequent word, or an empty <code>Optional</code> if there are no words.</p>
+                <li><p><i>(15 points)</i> Design the <code>Optional&lt;String&gt; mostFrequent()</code> method that returns the most frequent word, or an empty <code>Optional</code> if there are no words. If two words share the same frequency, return the first one of that frequency.</p>
                 
                 <p class="hint"><i>Hint:</i> To create a populated <code>Optional</code> use <code>Optional.of(v)</code> for some value <code>v</code>. To create an empty <code>Optional</code>, use <code>Optional.empty()</code>.</p>
                 </li>
@@ -122,12 +123,14 @@
                   Instead, you should create a new <code>WordStats</code> object with the appropriate frequencies.
                 </p>
 
-                <p class="hint"><i>Hint:</i> Remember that the <code>WordStats</code> constructor receives a <code>List&lt;String&gt;</code> of words. How do you convert two <code>Map&lt;String, Integer&gt;</code> instances "back" into a single <code>List&lt;String&gt;</code>?</p>
+                <p class="hint"><i>Hint 1:</i> Remember that the <code>WordStats</code> constructor receives a <code>List&lt;String&gt;</code> of words. How do you convert two <code>Map&lt;String, Integer&gt;</code> instances "back" into a single <code>List&lt;String&gt;</code>?</p>
+
+                <p class="hint"><i>Hint 2:</i> Use <code>getListOfWords</code>...</p>
                 </li>
               
                 <li><p><i>(10 points)</i> Design the <code>static WordStats fromString(String s)</code> method that returns a <code>WordStats</code> object that represents the statistics of the words in the given string. The string is a space-separated list of words.</p>
                 
-                <p class="hint"><i>Hint:</i> You <i>can</i> use the <code>String.split</code> method to solve this problem, but a better solution would be to copy and paste your <code>tokenize</code> method from <code>PSet07</code>!</p>
+                <p class="hint"><i>Hint:</i> You <i>can</i> use the <code>String.split</code> method to solve this problem, but a better solution would be to copy and paste your <code>tokenize</code> method from <code>PSet07</code>! If you <i>do</i> use <code>String.split</code>, the <i>only</i> parameter you are allowed to pass to it is the space: <code>" "</code>. Anything else such as <code>"\\s+"</code> results in an automatic zero.</p>
 
                 <p class="note"><i>Note:</i> Admittedly, this isn't the world's greatest use of a <code>static</code> method, because a better approach would be to have a constructor that receives the string.</p></li>
 

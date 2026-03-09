@@ -103,7 +103,7 @@
     Combining these integers creates a color.
     For example, a color whose red channel is 255, whose green channel is 0, and whose blue channel is 255 creates magenta.
     The constructor should receive these three integer values and assign them to instance variables.
-    Design the relevant accessor (e.g., <code>int getRed()</code>) methods.
+    Design the relevant accessor methods. Call them <code>getRed()</code>, <code>getGreen()</code>, and <code>getBlue()</code>.
     Additionally, design the following methods:
   </p>
 
@@ -117,6 +117,7 @@
     <li>
       <p>
         <code>RgbColor grayscale()</code>, returns a new <code>RgbColor</code> instance that represents the grayscale color of <code>this</code>.
+        To compute the grayscale color, take the average of the three channels (casting to <code>int</code>) and set all three channels to that average.
       </p>
     </li>
 
@@ -136,7 +137,7 @@
 
           <!-- Problem 2 Duration. -->
 <li>
-  <p><i>(20 points)</i>
+  <p><i>(15 points)</i>
     In this exercise you will design the <code>Duration</code> class for working with units of a duration.
     Programming languages often support operations for handling dates, times, and durations to varying degrees of success.
     Java provides a few classes and methods of its own, and you cannot use these in your implementation, as that would defeat the point of the exercise.
@@ -165,6 +166,7 @@
           You can assume that the string is always in the correct format, and that the hours, minutes, and seconds are valid according to the same rules as the previous two constructors.
         </li>
       </ul>
+      <p class="hint"><i>Hint:</i> It may be tempting to store three separate instance variables for hours, minutes, and seconds, but consider the implications of this approach! You may have a harder time implementing the methods that need to work with the duration as a whole.</p>
     </li>
 
     <li>
@@ -227,7 +229,7 @@
 
           <!-- Problem 3 (Vector). -->
 <li>
-  <p><i>(30 points)</i>
+  <p><i>(25 points)</i>
     In this exercise, you will design a class that represents a two-dimensional vector.
     Vectors have a direction and a magnitude, and are represented by two components: \(x\) and \(y\).
   </p>
@@ -307,7 +309,7 @@
 
           <!-- Problem 4 (Bag). -->
 <li>
-  <p><i>(35 points)</i>
+  <p><i>(30 points)</i>
     The <em>bag</em>, or multi-set, data structure is a simple set-like data structure, with the exception that elements can be inserted multiple times into a bag.
     Order does not matter with a bag, nor does its internal structure.
     With bags, we can add items, remove items, query how many of an item there are, and return the number of items in the bag.
@@ -370,6 +372,32 @@
     <u>Files to Submit:</u>
     <code>Bag.java</code>, <code>BagTest.java</code>
   </p>
+</li>
+
+<li>
+<p><i>(15 points)</i> Java's type system (i.e., its ability to tell us information about the type of a variable) is, unfortunately, not expressive enough to do specific things.
+For example, one thing we cannot do is write a method whose parameter is an array of some specific length. 
+Instead, we have to state that the parameter is an <code>Object</code>, then perform a runtime check on the type via <code>instanceof</code>.
+In this exercise you will reimplement the behavior of <code>Arrays.deepToString</code>: a method to convert an array of any dimension into a string representation.</p>
+
+<p>The algorithm is recursive and straightforward: if the parameter \(A\) is <code>null</code>, return <code>"null"</code>.
+Otherwise, we know that \(A\) is an array of some dimension. 
+Traverse over the elements of \(A\), and if \(A[i]\) is an instance of <code>Object[]</code>, then recursively call <code>deepToString</code> on it.
+Otherwise, just call <code>toString</code> on it.</p>
+
+<p>Create a class called <code>DeepToString</code>, and then design the static <code>String deepToString(Object[] A)</code> method, which implements this algorithm. The output string should follow the same format as <code>Arrays.deepToString</code>, which encloses its elements in brackets, separated by commas and a space.</p>
+
+<p>For example, we can invoke <code>DeepToString.deepToString(new Integer[][]{{1, 2}, {3, 4}})</code>, which returns the string <code>"[[1, 2], [3, 4]]"</code>.</p>
+
+<p class="warning"><strong>Warning:</strong> You cannot use <code>Arrays.deepToString</code> or any similar method that trivializes the problem.</p>
+
+<p class="hint"><i>Hint:</i> The problem states this, but the <code>instanceof</code>, which checks whether an object is an instance of a particular type, is your friend here.</p>
+
+<p class="note"><i>Note 1:</i> This method does not support arrays of primitive types, e.g., <code>int[]</code>, <code>double[]</code>, and so forth. If you want to test an array of primitive types, you will have to box the elements into their wrapper classes, e.g., <code>Integer[]</code>, <code>Double[]</code>, etc.</p>
+
+<p class="note"><i>Note 2:</i> As the problem states, your method should be able to process arrays of <i>any</i> dimension, hence the recursive decomposition.</p>
+
+<p><u>Files to Submit:</u> <code>DeepToString.java</code>, <code>DeepToStringTest.java</code></p>
 </li>
         </ol>
       </div>

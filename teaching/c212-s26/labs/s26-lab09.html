@@ -38,7 +38,7 @@
         <p>
           Because we're introducing classes with this lab, it is no longer appropriate to use the class name <code>ProblemX</code>.
           Instead, design classes with the given specification in each problem, along with the appropriate test suite.
-          Each method in a class (including accessors!) must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+          Each method in a class must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
         </p>
         <p>For problems containing multiple parts, write the methods inside the same class.</p>
         <p>
@@ -89,13 +89,13 @@
         <ol>
           <!-- Problem 1. -->
           <li>
-            <p>In this question, you will implement a class that represents the statistics of a list of words.</p>
+            <p>In this question, you will implement a class that represents the statistics of a list of case-sensitive words.</p>
 
               <ol class="paren-alpha">
                 <li><p><i>(5 points)</i>
                   Design the <code>WordStats</code> class.
                   It should have a single constructor that receives a <code>List&lt;String&gt;</code> of words.
-                  Rather than storing the list of words, the constructor should compute and store the frequency of each word in a <code>Map&lt;String, Integer&gt;</code>.
+                  Rather than storing the list of words, the constructor should compute and store the frequency of each word in a private and final <code>Map&lt;String, Integer&gt;</code>.
                   Instantiate the map as a lexicographically-ordered map.</p>
                   <p class="hint"><i>Hint:</i> What are the three types of maps that you   can instantiate? Which of those three orders its keys in the desired order?</p>
                 </li>

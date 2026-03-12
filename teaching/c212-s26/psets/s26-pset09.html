@@ -92,6 +92,7 @@
         <p>You do not need to write tests for any <code>hashCode</code> implementations. We will check these manually.</p>
                 <p class="warning"><strong>Important Warning 1:</strong> You must write the method headers for all methods that we list below in order for your code to compile in the autograder. We will not award partial points for non-compiling code. So, we strongly recommend that, before you implement the methods, you first write the method headers and Javadocs.</p>
                 <p class="warning"><strong>Important Warning 2:</strong> When writing the <code>equals</code> method, IntelliJ will likely suggest that you use <code>Objects.equals</code> or ask if you want to override the method in a way that uses <i>reflection</i> through the <code>getClass()</code> method. Both of these are disallowed by the rules of the lab and problem set, and if you use them, you will earn an automatic zero. Write the method in the way that we teach you! The golden rule is that, if you don't understand an IntelliJ suggestion or a suggestion made by Google/online, don't use it!</p>
+          <p>Update 03/12: Removed "constant time" requirement for <code>size()</code>.</p>
       </div>
     </div>
     <!-- PROBLEMS -->
@@ -352,8 +353,6 @@
     <li>
       <p>
         Design the <code>int size()</code> method that returns the number of items in the bag.
-        The method should <em>not</em> traverse over the keys and sum the values; this should be a ``constant-time'' operation.
-        Don't overthink how to do this!
       </p>
     </li>
 

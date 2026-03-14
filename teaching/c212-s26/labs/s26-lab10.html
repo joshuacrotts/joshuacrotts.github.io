@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 10</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 10 - Mutation and Aliasing</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          Design classes with the given specification in each problem, along with the appropriate test suite.
+          Each method in a class, excluding mutators, accessors, and constructors, must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+        </p>
+        <p>
+          <strong>
+          Do not round your solutions. For example, do not use
+          <code>Math.round</code> or float your output to, e.g.,
+          2 decimal places, unless specified.
+          </strong>
+        </p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use anything beyond Chapter 4.2.
+          This includes but is not limited to:
+        </p>
+        <ul>
+          <li>Interfaces</li>
+          <li>Inheritance</li>
+          <li>Bitwise operators</li>
+          <li>Regular expressions</li>
+          <li>Reflection and the <code>getClass()</code> method</li>
+          <li><code>Objects.equals</code></li>
+          <li>Exceptions</li>
+          <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the lab.
+        </p>
+        <p>Anything that trivializes a problem is disallowed. This lab is designed to get you acclimated with immutable classes and data representation. Therefore, mutation and aliasing are off the table. As such, all <u>instance</u> variables should be declared as <code>final</code>.</p>
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Notes and Version Changes:</h2>
+        <p>You do not need to write tests for any <code>hashCode</code> implementations. We will check these manually.</p>
+        <p class="warning"><strong>Important Warning 1:</strong> You must write the method headers for all methods that we list below in order for your code to compile in the autograder. We will not award partial points for non-compiling code. So, we strongly recommend that, before you implement the methods, you first write the method headers and Javadocs.</p>
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon">
+      <div class="content problems">
+        <h2>Problems</h2>
+
+        <ol>
+          <!-- Problem 1. -->
+          <li>
+            <p>In this question you will implement the <code>MiniStack</code> data structure. This is similar to the <code>MiniArrayList</code> class from the chapter, but, of course, is a stack and not an array list.</p>
+
+            <p>Unlike many stack implementations, however, we will use an array-backed stack. This means that, instead of using a collection of <code>private</code> and <code>static</code> <code>Node</code> classes, the stack will use an array to store its elements. When the array runs out of space, a new one is allocated and the elements are copied over. 
+<strong>If you use a node-based stack implementation, you will automatically receive a 0.</strong></p>
+
+              <ol class="paren-alpha">
+                <li><p><i>(10 points)</i>
+                  First, design the generic <code>MiniStack</code> class. 
+                  Its constructor should receive no arguments, and instantiate two instance variables: <code>T[] elements</code> and <code>size</code> to a new array and zero respectively. 
+                  Remember that you cannot instantiate a generic array, so how do we do that? 
+                  The initial capacity of the array should be set to <code>INITIAL_CAPACITY</code>, which is a <code>private static final</code> variable declared in the class as <code>10</code>.
+                  <p class="hint"><i>Hint:</i> Remember how we did this during lecture!</p>
+                  <p class="warning"><strong>Warning:</strong> Do not use <code>System.arraycopy</code>, even if IntelliJ prompts you to use it. You must do the copying yourself. 
+                  If you use <code>System.arraycopy</code> or any other means of copying the array that is built-in, you will receive an automatic 0.</p>
+                </li>
+
+                <li>
+                  <p><i>(40 points)</i> Second, design the <code>void add(T t)</code> method, which adds an element onto the top of the stack.
+                  The "top of the stack," when using an array, is the right-most element, i.e., the element with the highest index.
+                  It might be a good idea to design a helper method that resizes the underlying array when it runs out of space.
+                  Your resize factor, i.e., by what factor you resize the underlying array, is up to you to decide.
+                  </p>
+                </li>
+
+                <li>
+                  <p><i>(10 points)</i> Design the <code>Optional&lt;T&gt; peek()</code> method, which returns the top element of the stack, wrapped in an <code>Optional</code>, without removing it. If the stack is empty, return an empty <code>Optional</code>.</p>
+                </li>
+
+                <li><p><i>(10 points)</i> Design the <code>Optional&lt;T&gt; pop()</code> method, which removes and returns the top element of the stack, wrapped in an <code>Optional</code>. If the stack is empty, return an empty <code>Optional</code>.</p>
+                </li>
+
+                <li><p><i>(10 points)</i> Design the <code>int size()</code> method, which returns the number of logical elements in the stack.</p></li>
+                
+                <li><p><i>(20 points)</i> Override the <code>public String toString()</code> method to return a sring containing the elements of the stack from top-to-bottom, separated by commas and a space. For example, if the stack contains, from bottom-to-top, <code>10</code>, <code>20</code>, <code>30</code>, <code>40</code>, and <code>50</code>, then <code>toString()</code> returns <code>"50, 40, 30, 20, 10."</code>.</p> 
+                
+                <p class="hint"><i>Hint:</i> Remember that your stack contains generic objects of type <code>T</code>, so how can you get that type's <code>toString()</code> implementation?</p>
+
+                <p class="warning"><strong>Warning: </strong> In this problem, you should use <code>StringBuilder</code> to avoid a timeout in the autograder when repeatedly concatenating strings.</p>
+                </li>
+              </ol>
+            <p>
+              <u>Files to Submit:</u>
+              <code>MiniStack.java</code>, <code>MiniStackTest.java</code>
+            </p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

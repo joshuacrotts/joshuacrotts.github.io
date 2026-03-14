@@ -78,7 +78,7 @@
         <p>
           Any violation results in a score of <strong>0</strong> on the problem set.
         </p>
-        <p>Anything that trivializes a problem is disallowed. This problem set is designed to get you acclimated with immutable classes and data representation. Therefore, mutation and aliasing are off the table. As such, all <u>instance</u> variables should be declared as <code>final</code>.</p>
+        <!-- <p>Anything that trivializes a problem is disallowed. This problem set is designed to get you acclimated with immutable classes and data representation. Therefore, mutation and aliasing are off the table. As such, all <u>instance</u> variables should be declared as <code>final</code>.</p> -->
         <p>
           Please contact a staff member if you are unsure as to whether you're allowed to use something.
         </p>
@@ -88,7 +88,7 @@
       <div class="content">
         <h2>Notes and Version Changes:</h2>
         <p>You do not need to write tests for any <code>hashCode</code> implementations. We will check these manually.</p>
-        <p class="warning"><strong>Important Warning 1:</strong> You must write the method headers for all methods that we list below in order for your code to compile in the autograder. We will not award partial points for non-compiling code. So, we strongly recommend that, before you implement the methods, you first write the method headers and Javadocs.</p>
+        <p class="warning"><strong>Important Warning:</strong> You must write the method headers for all methods that we list below in order for your code to compile in the autograder. We will not award partial points for non-compiling code. So, we strongly recommend that, before you implement the methods, you first write the method headers and Javadocs.</p>
       </div>
     </div>
     <!-- PROBLEMS -->
@@ -98,8 +98,38 @@
         <ol>
           <!-- Problem 1 (StringBuilder). -->
 <li>
-  <p><i>(20 points)</i>
-  </p>
+  <p><i>(20 points)</i> Repeated string concatenation is a common performance issue in Java.
+  As we know, Java <code>String</code> objects are immutable, which means that concatenation creates new <code>String</code> objects.
+  This is fine for small strings, but for larger strings (or concatenation operations performed in a loop), this can be a performance bottleneck.
+  Each concatenation requires copying the entire string.
+  Java provides the <code>StringBuilder</code> class to alleviate the issue.
+  In this exercise, you will design a <code>MiniStringBuilder</code> class that mimics the behavior of <code>StringBuilder</code>.
+  You cannot use <code>StringBuilder</code> or the older <code>StringBuffer</code> classes in your implementation.</p>
+
+  <ol class="paren-alpha">
+    <li>
+      <p>Design the <code>MiniStringBuilder</code> class, which stores a <code>char[]</code> as an instance variable. The class should also store a variable to keep track of the number of "logical characters" that are in-use by the buffer.</p>
+    </li>
+    <li>
+      <p>Design two constructors for the <code>MiniStringBuilder</code> class: one that receives no arguments and initializes the default capacity of the underlying <code>char[]</code> array to <code>20</code>, and another that receives a <code>String</code> <code>s</code> and initializes the <code>char[]</code> array to the characters of <code>s</code>.</p>
+    </li>
+    <li>
+      <p>Override the <code>equals</code> method to return whether two <code>MiniStringBuilder</code> objects represent the same string.</p>
+    </li>
+    <li>
+      <p>Override the <code>hashCode</code> method to return the hash code of the <code>MiniStringBuilder</code> object.
+      The hash code is defined as the hash code of the underlying array of characters. Use <code>Arrays.hashCode</code> rather than <code>Objects.hash</code>.</p>
+    </li>
+    <li>
+      <p>Override the <code>toString</code> method, which returns the <code>char[]</code> array as a <code>String</code> object. The resulting string should contain only the logical characters in the buffer, and not the entire array. Output the characters without any additional characters, such as brackets or commas.</p>
+    </li>
+    <li>
+      <p>Design the <code>void append(String s)</code> method, which appends the given string <code>s</code> onto the end of the current string stored in the buffer. The given string should not simply be appended onto the end of the buffer, but rather added to the end of the previous string in the buffer. If the buffer runs out of space, reallocate the array to be twice its current size, similar to how we reallocate the array in the <code>MiniArrayList</code> example class.</p>
+    </li>
+    <li>
+      <p>Design the <code>void clear()</code> method, which resets the <code>char[]</code> array to the default size of <code>20</code> and clears the character buffer.</p>
+    </li>
+  </ol>
   <p>
     <u>Files to Submit:</u>
     <code>MiniStringBuilder.java</code>, <code>MiniStringBuilderTest.java</code>
@@ -107,25 +137,179 @@
 </li>
 
 
-          <!-- Problem 1 (Matrix). -->
+          <!-- Problem 2 (Matrix). -->
 <li>
-  <p><i>(20 points)</i>
-  </p>
+  <p><i>(20 points)</i> This question has seven parts.</p>
+
+  <ol class="paren-alpha">
+    <li>
+      <p>Design the <code>Matrix</code> class, which stores a two-dimensional array of integers. Its constructor should receive two integers <code>m</code> and <code>n</code> representing the number of rows and columns respectively, as well as a two-dimensional array of integers (you may assume that the number of rows and columns of the passed array are equal to <code>m</code> and <code>n</code>).
+      Copy the integers from the passed array into an instance variable array.</p>
+      <p class="warning"><strong>Warning:</strong>
+      Do <em>not</em> simply assign the provided array to the instance variable!</p>
+    </li>
+
+    <li>
+      <p>Design the <code>boolean set(int i, int j, int val)</code> method, which sets the value at row <code>i</code> and column <code>j</code> to <code>val</code>.
+      If the row or column is out of bounds, return <code>false</code> and do not set the value.
+      Otherwise, set the value and return <code>true</code>.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>boolean add(Matrix m)</code> method, which adds the values of the passed matrix to the current matrix.
+      If the dimensions of the passed matrix do not match the dimensions of the current matrix, return <code>false</code> and do not add the matrix.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>boolean multiply(Matrix m)</code> method, which multiplies the values of the passed matrix to the current matrix.
+      Two matrices \(A=P\times Q\), \(B=R\times S\) can be multiplied if and only if \(Q = R\).
+      The resulting matrix has dimensions \(P \times S\).
+      Therefore, we need a case analysis: if we cannot multiply \(m\) with this matrix, return <code>false</code> and do not multiply the matrix.
+      The product of two matrices \(A\) and \(B\) is the matrix \(C\) where \(C_{i, j} = \sum_{k=1}^{N} A_{i, k}\cdot B_{k, j}\) for the indices \(i\), \(k\), and \(j\).</p>
+    
+    <p class="hint"><i>Hint 1:</i> Use three <code>for</code> loops!
+    </p>
+    <p class="hint"><i>Hint 2:</i> This problem makes use of a variable \(N\) that is not explicitly given in the problem. What does \(N\) represent? Think about it...</p>
+    </li>
+
+    <li>
+      <p>Design the <code>void transpose()</code> method, which transposes the matrix.
+      That is, the rows become the columns and the columns become the rows.
+      You may need to alter the dimensions of the matrix.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>void rotate()</code> method, rotates the matrix <code>90</code> degrees clockwise.
+      To rotate a matrix, compute the transposition and then reverse the rows.
+      You may need to alter the dimensions of the matrix.</p>
+    </li>
+
+    <li>
+      <p>Override the <code>toString</code> method to return a stringified version of the matrix.
+      As an example, <code>"[[1, 2, 3], [4, 5, 6]]"</code> represents the following matrix:</p>
+
+      <div class="math-center">
+        \[
+        \begin{bmatrix}
+          1&2&3\\
+          4&5&6
+        \end{bmatrix}
+        \]
+      </div>
+    </li>
+  </ol>
+
   <p>
     <u>Files to Submit:</u>
-    <code>MiniStringBuilder.java</code>, <code>MiniStringBuilderTest.java</code>
+    <code>Matrix.java</code>, <code>MatrixTest.java</code>
   </p>
 </li>
 
 
 
-          <!-- Problem 1 (Complex). -->
+          <!-- Problem 3 (Complex). -->
 <li>
-  <p><i>(20 points)</i>
+  <p><i>(20 points)</i> 
+    A <i>complex number</i> \(c \in \mathbb{C}\) has two components: a <i>real part</i> \(\text{Re}(c) \in \mathbb{R}\) and an <i>imaginary part</i> \(\text{Im}(c) \in \mathbb{R}\).
+    Together, these components compose into \(a + bi\).
+    In this problem, you will design a class that represents complex numbers whose components are <code>int</code> values, to simplify the problem.
   </p>
+  <p>For a bit of motivation behind why complex numbers are interesting, see the <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot fractal</a>.
+  <!-- <p>
+    One of the issues with representing "arbitrarily large" numbers of any kind is that we cannot use primitive types, since they have fixed sizes.
+    Instead, our class will represent the real and imaginary parts of a complex number as instances of <code>BigInteger</code>.
+    In the next problem set, you will learn how <code>BigInteger</code> works under the hood, and implement your own version of it.
+    For this problem, however, you will simply use the <code>BigInteger</code> class provided by Java.
+  </p> -->
+  <ol class="paren-alpha">
+    <li>
+      
+    <p>
+      Design the <code>ComplexNumber</code> class, whose constructor receives two <code>int</code> values: \(a\) and \(b\).
+      Store these as the real and imaginary parts of the complex number, respectively.
+    </p>
+<!-- 
+    <p class="hint"><i>Hint:</i> To create a <code>BigInteger</code>, we need to pass its argument as a string: <code>new BigInteger("42")</code>. Do you know why?</p> -->
+    </li>
+
+    <li><p>Design the empty constructor that initializes \(a\) and \(b\) to 0.</p></li>
+
+    <li><p>Design the <code>int getReal()</code> and <code>int getImaginary()</code> accessor methods to return the respective instance variables.</p></li>
+
+    <li><p>Override the <code>equals</code> method to return whether two <code>ComplexNumber</code> objects are equal.
+    Two <code>ComplexNumber</code> objects are equal if and only if their constituents are equal.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>hashCode</code> method to return the hash code of <code>this</code> <code>ComplexNumber</code> object.
+        Its hash code is defined as invoking <code>Objects.hash</code> on the real and imaginary components.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Override the <code>toString</code> method to return a string representation of the complex number of the form <code>"a + bi"</code>, <code>"a - bi"</code>, or <code>"a"</code> when <code>b</code> is either positive, negative, or 0 respectively.
+      </p>
+    </li>
+
+    <li>
+      <p>Design the <code>double magnitude()</code> method, which returns the magnitude of <code>this</code> <code>ComplexNumber</code>.
+        The magnitude of a complex number is defined as the square root of its components.
+      </p>
+    </li>
+
+    <li>
+      <p>Design the <code>double argument()</code> method, which returns the argument, or angle, of <code>this</code> <code>ComplexNumber</code> in radians.
+        The argument of a complex number is computed by \(\tan^{-1}(b/a)\).
+      </p>
+    </li>
+    <li>
+      <p>
+        Design the <code>ComplexNumber conjugate()</code> method, which returns the conjugate of
+        <code>this</code> complex number. The conjugate of a complex number flips the parity of the
+        imaginary component. That is, if we have a complex number <code>a + bi</code>, its conjugate is
+        <code>a - bi</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>ComplexNumber add(ComplexNumber c2)</code> method, which receives a
+        <code>ComplexNumber</code> as an argument and returns a new <code>ComplexNumber</code>
+        representing the sum of <code>this</code> complex number and the given number. The sum of two
+        complex numbers is the sum of the real components and the imaginary components.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>ComplexNumber sub(ComplexNumber c2)</code> method, which receives a
+        <code>ComplexNumber</code> as an argument and returns a new <code>ComplexNumber</code>
+        representing the difference of <code>this</code> complex number and the given number. The
+        difference of two complex numbers is the difference of the real components and the imaginary
+        components.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>ComplexNumber mul(ComplexNumber c2)</code> method, which receives a
+        <code>ComplexNumber</code> as an argument and returns a new <code>ComplexNumber</code>
+        representing the product of <code>this</code> complex number and the given number. The product
+        of two complex numbers is as follows:
+      </p>
+
+      <div class="math-center">
+        \[
+          (a + bi)(c + di) = (ac - bd) + (ad + bc)i
+        \]
+      </div>
+    </li>
+  </ol>
+
   <p>
     <u>Files to Submit:</u>
-    <code>BigComplex.java</code>, <code>BigComplexTest.java</code>
+    <code>ComplexNumber.java</code>, <code>ComplexNumberTest.java</code>
   </p>
 </li>
 
@@ -133,8 +317,58 @@
 
           <!-- Problem 4 (PQueue). -->
 <li>
-  <p><i>(40 points)</i>
-  </p>
+  <p><i>(40 points)</i> A <em>persistent data structure</em> is one that saves intermittent data structures after applying operations that would otherwise alter the contents of the data structure.
+  Take, for instance, a standard FIFO queue. When we invoke its enqueue/add method, we mutate the underlying data structure to now contain the new element.
+  If this were a persistent queue, then enqueueing a new element would, instead, return a new queue that contains all elements <em>and</em> the newly-enqueued value, thereby leaving the original queue unchanged.</p>
+
+  <ol class="paren-alpha">
+    <li>
+      <p>First, design the generic, private, and static class <code>Node</code> inside a generic <code>PQueue</code> class skeleton.
+      It should store, as instance variables, a pointer to its next element as well as its associated value.</p>
+    </li>
+
+    <li>
+      <p>Then, design the <code>PQueue</code> class, which represents a persistent queue data structure. As instance variables, store "first" and "last" pointers as <code>Node</code> objects, as well as an integer to represent the number of existing elements. In the constructor, instantiate the pointers to <code>null</code> and the number of elements to zero.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private PQueue&lt;T&gt; copy()</code> method, which returns a new queue with the same elements as the current queue.</p>
+      <p class="hint"><i>Hint:</i>
+      You should divide this method into a case analysis: one where <code>this</code> queue is empty and another where it is not.
+      In the former case, return a new queue with no elements.
+      In the latter case, iterate over the elements of the queue, enqueuing each element into a new queue.
+      You will need to instantiate a new <code>Node</code> (reference) for each element.</p>
+    </li>
+
+    <li>
+      <p>Override the <code>equals</code> method to return whether the elements of <code>this</code> queue are equal to the provided queue's elements.
+      You will need to traverse over the queues in a fashion similar to how you do it in <code>copy</code>.</p>
+      <p class="hint"><i>Hint:</i> 
+      Again, break this up into a case analysis: (1) if the provided object is not a <code>PQueue&lt;?&gt;</code>, return <code>false</code>. (2) Otherwise, if they do not have the same number of elements, return <code>false</code>. Otherwise, compare each element sequentially.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>PQueue&lt;T&gt; enqueue(T t)</code> method, which enqueues a value onto the end of a new queue containing all the old elements, in addition to the new value. You should use the <code>copy</code> method to your advantage.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>PQueue&lt;T&gt; dequeue()</code> method, which removes the first element of the queue, returning a new queue without this first value. You should use the <code>copy</code> method to your advantage.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>T peek()</code> method, which returns the first element of the queue, or <code>null</code> if the queue is empty.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>static &lt;T&gt; PQueue&lt;T&gt; of(T... vals)</code> method, which creates a queue with the values passed as <code>vals</code>. Note that this must be a variadic method.</p>
+      <p class="warning"><strong>Warning:</strong> Do not create a series of <code>PQueue</code> objects by enqueueing each element into a distinct queue; this is incredibly inefficient. Instead, allocate each <code>Node</code> one-by-one, thereby never calling <code>enqueue</code>.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>int size()</code> method, which returns the number of elements in the queue.
+      You should not traverse the queue to compute this value.</p>
+    </li>
+  </ol>
   <p>
     <u>Files to Submit:</u>
     <code>PQueue.java</code>, <code>PQueueTest.java</code>

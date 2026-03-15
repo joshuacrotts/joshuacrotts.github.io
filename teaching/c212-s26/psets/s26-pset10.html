@@ -150,6 +150,10 @@
     </li>
 
     <li>
+      <p>Design the <code>int[][] getMatrix()</code> method, which returns a copy of the underlying two-dimensional array of integers.</p>
+    </li>
+
+    <li>
       <p>Design the <code>boolean set(int i, int j, int val)</code> method, which sets the value at row <code>i</code> and column <code>j</code> to <code>val</code>.
       If the row or column is out of bounds, return <code>false</code> and do not set the value.
       Otherwise, set the value and return <code>true</code>.</p>
@@ -254,14 +258,16 @@
 
     <li>
       <p>Design the <code>double magnitude()</code> method, which returns the magnitude of <code>this</code> <code>ComplexNumber</code>.
-        The magnitude of a complex number is defined as the square root of its components.
+        The magnitude of a complex number is defined as the square root of the sums of the squares of its components: \(\sqrt{a^2 + b^2}\).
       </p>
     </li>
 
     <li>
-      <p>Design the <code>double argument()</code> method, which returns the argument, or angle, of <code>this</code> <code>ComplexNumber</code> in radians.
+      <p>Design the <code>Optional&lt;Double&gt; argument()</code> method, which returns the argument, or angle, of <code>this</code> <code>ComplexNumber</code> in radians.
         The argument of a complex number is computed by \(\tan^{-1}(b/a)\).
+        If the real component is zero, then the argument is undefined; return an empty <code>Optional</code>.
       </p>
+      <p class="warning"><strong>Warning:</strong> Don't forget about integer division!</p>
     </li>
     <li>
       <p>

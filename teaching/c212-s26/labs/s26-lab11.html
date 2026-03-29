@@ -62,6 +62,7 @@
           <li>Reflection and the <code>getClass()</code> method</li>
           <li><code>Objects.equals</code></li>
           <li>Exceptions</li>
+          <li>Any other forms of computing object hash codes, e.g., using prime numbers, multiplying by primes, etc.</li>
           <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
         </ul>
         <p>
@@ -88,8 +89,193 @@
         <ol>
           <!-- Problem 1. -->
           <li>
+<p><i>(65 points)</i> In this exercise, you'll be developing a <code>Document</code> interface along with its implementing classes:</p>
+
+<ul>
+  <li><code>TextDocument</code></li>
+  <li><code>SpreadsheetDocument</code></li>
+  <li><code>PresentationDocument</code></li>
+</ul>
+
+<p>The <code>Document</code> interface is defined as follows:</p>
+
+<pre><code class="language-java">interface Document {
+
+  /**
+   * Returns the number of pages in this document.
+   */
+  int numberOfPages();
+
+  /**
+   * Returns a string representing that the Document is being printed.
+   */
+  default String print() { return "Printing the document!"; }
+}</code></pre>
+
+<p>
+  Notice that we have a <code>default</code> method, which is one that an implementing class does
+  <strong>not</strong> have to implement. It provides “default” functionality, should the
+  “implementee” not want to implement the method (hence the name!).
+</p>
+
+<ol class="paren-alpha">
+  <li>
+    Implement the other three classes with the following specifications:
+    <ul>
+      <li>
+        A <code>TextDocument</code> consists of 100 pages. When it is printed, it should return a
+        message <code>"Printing text document!"</code>.
+      </li>
+      <li>
+        A <code>SpreadsheetDocument</code> has 50 pages. When it is printed, it should return a
+        message <code>"Printing spreadsheet document!"</code>.
+      </li>
+      <li>
+        A <code>PresentationDocument</code> contains 20 pages. It utilizes the default
+        implementation of the <code>print</code> method.
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    Design the <code>PrintingOffice</code> class, which includes the following static method:
+    <code>static Optional&lt;Double&gt; avgPages(List&lt;Document&gt; lodocs)</code>. This method calculates
+    and returns the average number of pages across the provided list of <code>Document</code>
+    objects. Remember why we use <code>Optional&lt;Double&gt;</code>: if there are no <code>Document</code>
+    objects in the list, we would be dividing by zero if we took the average!
+  </li>
+
+  <li>
+    Inside the <code>PrintingOffice</code> class, modify it to include the
+    <code>static String printDocuments(List&lt;Document&gt; documents)</code> method, responsible for
+    invoking <code>print</code> on each <code>Document</code> in the provided list, concatenating
+    the results into a single string separated by a comma, and returning that string.
+  </li>
+</ol>
             <p>
+              <u>Files to Submit:</u>
+              <code>Document.java</code>, <code>TextDocument.java</code>, <code>SpreadsheetDocument.java</code>, <code>PresentationDocument.java</code>, <code>PrintingOffice.java</code>, <code>DocumentTest.java</code>
             </p>
+          </li>
+
+          <li>
+            <p><i>(35 points</i>)
+  It's often useful to reduce a data structure, e.g., an <code>ArrayList</code> or a
+  <code>BinarySearchTree</code>, down to a single value.
+  Java collections can sometimes do this with streams, but custom data structures such as
+  <code>MiniArrayList</code>/<code>MiniStack</code> do not automatically support this kind of
+  reduction.
+  In Haskell, we can define a way to reduce, or <em>fold</em>, over a type with the
+  <code>Foldable</code> type class.
+  We can model a similar behavior in Java with interfaces.</p>
+  <ol class="paren-alpha">
+    <li>
+<p>
+  Design the generic <code>IFoldable&lt;T&gt;</code> interface, which contains one method:
+  <code>&lt;R&gt; fold(R initial, BiFunction&lt;R, T, R&gt; f)</code>.
+</p>
+
+<p>
+  Here, <code>T</code> is the element type of the structure implementing
+  <code>IFoldable</code>, <code>R</code> is the type of the accumulated result,
+  <code>initial</code> is the starting accumulator value, and <code>f</code> is the binary
+  function that combines the current accumulator with one element of the structure to produce
+  the next accumulator.
+</p>
+</li>
+
+<li>
+<p>Next, take the <code>MiniArrayList</code> code provided below and modify it to implement <code>IFoldable</code>. You will need to implement the <code>fold</code> method, which should iterate through the elements of the <code>MiniArrayList</code>, applying the function <code>f</code> to each element and the accumulated result, starting with the initial value.</p>
+<p>While we will not require you to test this directly, you should! You can test your implementation by folding over a <code>MiniArrayList</code> of integers to compute their sum, product, etc. This is how we will test your implementation!</p>
+
+<pre>
+<code class="language-java">
+class MiniArrayList&lt;T&gt; implements IFoldable&lt;T&gt; {
+
+  private static final int DEFAULT_CAPACITY = 10;
+  private static final int RESIZE_FACTOR = 2;
+  private T[] elements;
+  private int size;
+   
+  MiniArrayList() {
+    this(MiniArrayList.DEFAULT_CAPACITY);
+  }
+
+  MiniArrayList(int capacity) {
+    this.size = 0;
+    this.elements = (T[]) new Object[capacity];
+  }
+
+  public &lt;R&gt; R fold(R initial, BiFunction&lt;R, T, R&gt; f) {
+    /* TODO you fill this in! */
+  }
+
+  void add(T element) {
+    this.insert(this.size, element);
+  }
+
+  boolean insert(int idx, T element) {
+    if (idx &lt; 0 || idx &gt; this.size) {
+      return false;
+    }
+    if (this.size == this.elements.length) {
+      this.resize();
+    }
+    this.shiftRight(idx);
+    this.elements[idx] = element;
+    this.size++;
+    return true;
+  }
+
+  Optional&lt;T&gt; get(int idx) {
+    return idx &lt; 0 || idx >= this.size ? Optional.empty() : Optional.of(this.elements[idx]);
+  }
+
+  Optional&lt;T&gt; remove(int idx) {
+    if (idx &lt; 0 || idx &gt;= this.size) {
+      return Optional.empty();
+    } else {
+      Optional&lt;T&gt; e = this.get(idx);
+      this.shiftLeft(idx);
+      this.size--;
+      return e;
+    }
+  }
+
+  int size() {
+    return this.size;
+  }
+
+  private void shiftLeft(int idx) {
+    for (int i = idx; i &lt; this.size - 1; i++) {
+      this.elements[i] = this.elements[i + 1];
+    }
+  }
+
+  private void shiftRight(int idx) {
+    for (int i = this.size; i &gt; idx; i--) {
+      this.elements[i] = this.elements[i - 1];
+    }
+  }
+
+  private void resize() {
+    T[] newElements = (T[]) new Object[this.elements.length * MiniArrayList.RESIZE_FACTOR];
+    for (int i = 0; i &lt; this.elements.length; i++) {
+      newElements[i] = this.elements[i];
+    }
+    this.elements = newElements;
+  }
+}
+</code>
+</pre>
+
+<p class="note"><i>Note:</i> It does not matter whether you fold left or fold right; we will only test your implementation on associative functions.</p>
+</li>
+
+<p>
+  <u>Files to Submit:</u>
+  <code>IFoldable.java</code>, <code>MiniArrayList.java</code>
+</p>
           </li>
         </ol>
       </div>

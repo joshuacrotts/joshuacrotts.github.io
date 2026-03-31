@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
     <link rel="stylesheet" href="../../../css/style.css" />
     <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
-    <title>C212 – Lab 10</title>
+    <title>C212 – Lab 11</title>
     <!-- MathJax for formulas -->
     <script>
       MathJax = {
@@ -89,7 +89,7 @@
         <ol>
           <!-- Problem 1. -->
           <li>
-<p><i>(65 points)</i> In this exercise, you'll be developing a <code>Document</code> interface along with its implementing classes:</p>
+<p><i>(65 points)</i> In this exercise, you'll be developing the <code>IDocument</code> interface along with its implementing classes:</p>
 
 <ul>
   <li><code>TextDocument</code></li>
@@ -97,9 +97,9 @@
   <li><code>PresentationDocument</code></li>
 </ul>
 
-<p>The <code>Document</code> interface is defined as follows:</p>
+<p>The <code>IDocument</code> interface is defined as follows:</p>
 
-<pre><code class="language-java">interface Document {
+<pre><code class="language-java">interface IDocument {
 
   /**
    * Returns the number of pages in this document.
@@ -139,22 +139,22 @@
 
   <li>
     Design the <code>PrintingOffice</code> class, which includes the following static method:
-    <code>static Optional&lt;Double&gt; avgPages(List&lt;Document&gt; lodocs)</code>. This method calculates
-    and returns the average number of pages across the provided list of <code>Document</code>
-    objects. Remember why we use <code>Optional&lt;Double&gt;</code>: if there are no <code>Document</code>
+    <code>static Optional&lt;Double&gt; avgPages(List&lt;IDocument&gt; lodocs)</code>. This method calculates
+    and returns the average number of pages across the provided list of <code>IDocument</code>
+    objects. Remember why we use <code>Optional&lt;Double&gt;</code>: if there are no <code>IDocument</code>
     objects in the list, we would be dividing by zero if we took the average!
   </li>
 
   <li>
     Inside the <code>PrintingOffice</code> class, modify it to include the
-    <code>static String printDocuments(List&lt;Document&gt; documents)</code> method, responsible for
-    invoking <code>print</code> on each <code>Document</code> in the provided list, concatenating
+    <code>static String printDocuments(List&lt;IDocument&gt; documents)</code> method, responsible for
+    invoking <code>print</code> on each <code>IDocument</code> in the provided list, concatenating
     the results into a single string separated by a comma, and returning that string.
   </li>
 </ol>
             <p>
               <u>Files to Submit:</u>
-              <code>Document.java</code>, <code>TextDocument.java</code>, <code>SpreadsheetDocument.java</code>, <code>PresentationDocument.java</code>, <code>PrintingOffice.java</code>, <code>DocumentTest.java</code>
+              <code>IDocument.java</code>, <code>TextDocument.java</code>, <code>SpreadsheetDocument.java</code>, <code>PresentationDocument.java</code>, <code>PrintingOffice.java</code>, <code>DocumentTest.java</code>
             </p>
           </li>
 

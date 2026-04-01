@@ -89,7 +89,7 @@
         <ol>
           <!-- Problem 1. -->
           <li>
-<p><i>(65 points)</i> In this exercise, you'll be developing the <code>IDocument</code> interface along with its implementing classes:</p>
+<p><i>(100 points)</i> In this exercise, you'll be developing the <code>IDocument</code> interface along with its implementing classes:</p>
 
 <ul>
   <li><code>TextDocument</code></li>
@@ -149,7 +149,7 @@
     Inside the <code>PrintingOffice</code> class, modify it to include the
     <code>static String printDocuments(List&lt;IDocument&gt; documents)</code> method, responsible for
     invoking <code>print</code> on each <code>IDocument</code> in the provided list, concatenating
-    the results into a single string separated by a comma, and returning that string.
+    the results into a single string, separated by a single comma (i.e., <code>","</code>), and returning that string.
   </li>
 </ol>
             <p>
@@ -159,7 +159,7 @@
           </li>
 
           <li>
-            <p><i>(35 points</i>)
+            <p><i>(20 extra credit points)</i>
   It's often useful to reduce a data structure, e.g., an <code>ArrayList</code> or a
   <code>BinarySearchTree</code>, down to a single value.
   Java collections can sometimes do this with streams, but custom data structures such as
@@ -172,7 +172,7 @@
     <li>
 <p>
   Design the generic <code>IFoldable&lt;T&gt;</code> interface, which contains one method:
-  <code>&lt;R&gt; fold(R initial, BiFunction&lt;R, T, R&gt; f)</code>.
+  <code>&lt;R&gt; R fold(R initial, BiFunction&lt;R, T, R&gt; f)</code>.
 </p>
 
 <p>

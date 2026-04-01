@@ -30,7 +30,7 @@
     <div class="ribbon">
       <div class="content">
         <h2>Problem Set 11 - Interfaces and Inheritance</h2>
-        <p><strong>Assigned:</strong> March 8, 2026</p>
+        <p><strong>Assigned:</strong> April 8, 2026</p>
         <p><strong>Due:</strong> April 15, 2026 at 11:59 PM EST</p>
       </div>
     </div>
@@ -38,7 +38,9 @@
       <div class="content">
         <h2>Objectives</h2>
         <ul>
-          <li>TODO</li>
+          <li>Students use abstract and final classes to write a programming language interpreter.</li>
+          <li>Students implement a well-known Java data structure for arbitrarily-large integers</li>
+          <li>Students design and implement a stream data structure and subtypes to understand interfaces and object hierarchies.</li>
         </ul>
       </div>
     </div>
@@ -62,7 +64,7 @@
       <div class="content">
         <h2>What You <em>Cannot</em> Use</h2>
         <p>
-          You may not use anything beyond Chapter 4.2.
+          You may not use anything beyond Chapter 4.
           This includes but is not limited to:
         </p>
         <ul>
@@ -97,27 +99,208 @@
         <ol>
           <!-- Problem 1 (BigInt). -->
 <li>
-  <p>
+  <p><i>(32 points)</i> In this series of problems, you will design a class and several methods that act on arbitrarily large or small <em>integers</em>, resembling the <code>BigInteger</code> class. You <em><strong>cannot</strong></em> use any methods from <code>BigInteger</code>, or the <code>BigInteger</code> class itself.
+  </p>
+  <p class="warning"><strong>Warning:</strong> This problem is complicated and takes some time to think through. It shouldn't be completed in one sitting! Remember to ask us for help if you get stuck, and to break it down into smaller pieces. We have provided you with a lot of helper methods to make your life easier, so make sure to use them! Most important: follow the directions!</p>
+<ol class="paren-alpha">
+    <li>
+      <p>Design the <code>BigInt</code> class, which has a constructor that receives a string. The <code>BigInt</code> class stores a <code>List&lt;Integer&gt;</code> as an instance variable, as well as a boolean for keeping track of whether it is negative. You will need to convert the given string into said list of digits. Store the digits in reverse order, i.e., the least-significant digit (the ones digit) of the number is the first element of the list. Leading zeroes should be omitted from the representation.</p>
+
+      <p>The possible values for the parameter are an optional sign (either positive <strong>or</strong> negative), followed by one or more digits.</p>
+
+      <p>Below are some example inputs.</p>
+
+      <pre><code>new BigInt("42")         =&gt; [2, 4], isNegative = false
+new BigInt("0420")       =&gt; [0, 2, 4], isNegative = false
+new BigInt("-42")        =&gt; [2, 4], isNegative = true
+new BigInt("0000420000") =&gt; [0, 0, 0, 0, 2, 4], isNegative = false
+new BigInt("+42")        =&gt; [2, 4], isNegative = false;</code></pre>
+    </li>
+
+    <p class="warning"><strong>Warning:</strong> One thing that a lot of students will do, showcasing a misunderstanding of the problem, is store the value as an integer after parsing it using <code>Integer.parseInt</code>. This will not work, and there is a very simple counterexample to show why.</p>
+
+    <li>
+      <p>Override the <code>equals</code> method to return whether <code>this</code> instance represents the same integer as the parameter. If <code>o</code> is not an instance of <code>BigInt</code>, return <code>false</code>.</p>
+
+      <pre><code>new BigInt("42").equals(new BigInt("42"))      =&gt; true
+new BigInt("00042").equals(new BigInt("0042")) =&gt; true
+new BigInt("+42").equals(new BigInt("42"))     =&gt; true
+new BigInt("42").equals(new BigInt("-42"))     =&gt; false
+new BigInt("-42").equals(new BigInt("42"))     =&gt; false
+new BigInt("422").equals(new BigInt("420"))    =&gt; false</code></pre>
+    </li>
+
+    <li>
+      <p>Override the <code>hashCode</code> method to return the hash code of the number. The hash code is defined as the hash code, using <code>Objects.hash</code> of its list of digits and the sign (i.e., whether it is positive or negative).</p>
+    </li>
+
+    <li>
+      <p>Override the <code>toString</code> method to return a stringified version of the number. Remember to include the negative sign where appropriate. If the number is positive, do not include a sign.</p>
+    </li>
+
+    <li>
+      <p>Implement the <code>Comparable&lt;BigInt&gt;</code> interface and override the method it provides, namely <code>public int compareTo(BigInt b2)</code>. Return the result of comparing <code>this</code> instance with the parameter. That is, if \(a &lt; b\), return \(-1\), if \(a &gt; b\), return \(1\), and otherwise return \(0\), where \(a\) is <code>this</code> and \(b\) is <code>b2</code>.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>BigInt copy()</code> method, which returns a (deep)-copy of <code>this</code> instance representing the same integer. Do <em>not</em> simply copy the reference to the list of digits over to the new <code>BigInt</code> (this violates the aliasing principle that we have repeatedly discussed and can be the cause of relentless debugging).</p>
+    </li>
+
+    <li>
+      <p>Design the <code>BigInt negate()</code> method, which returns a copy of <code>this</code> instance of <code>BigInt</code>, but negated. Do <em>not</em> modify <code>this</code> instance.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private boolean areDifferentSigns(BigInt b)</code> method, which returns whether <code>this</code> instance and <code>b</code> have different signs. That is, if one is positive and one is negative, <code>areDifferentSigns</code> returns <code>true</code>, and false otherwise.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private BigInt addPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the sum of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative. We will use \(A \oplus B\) to symbolically represent this version of addition.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private BigInt subPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the difference of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative, and the minuend (the left-hand operand) is greater than or equal to the subtrahend (the right-hand operand). We will use \(A ∸ B\) to symbolically represent this version of subtraction.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private BigInt mulPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the product of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>BigInt add(BigInt b)</code> and <code>BigInt sub(BigInt b)</code> methods that returns the sum/difference of <code>this</code> and <code>b</code> respectively. Note that these methods should be a case analysis of the signs of the operands. Use the following equivalences to guide your design. Do <em>not</em> over-complicate these methods. Importantly, <code>sub</code> can be written in exactly one line!</p>
+
+      <p>\[
+      A - B = A + (-B)
+      \]</p>
+
+      <p>\[
+      (-A) + (-B) = -(A \oplus B).
+      \]</p>
+
+      <p>\[
+      A + (-B) = A ∸ B \text{ if } |A| \geq |B|. \text{ Otherwise, } -(B ∸ A).
+      \]</p>
+
+      <p>\[
+      (-A) + B = B + (-A).
+      \]</p>
+    </li>
+
+    <li>
+      <p>Design the <code>BigInt mul(BigInt b)</code> method, which returns the product of <code>this</code> and <code>b</code>. The product of two negative integers is a positive integer, and the product of exactly one positive and exactly one negative is a negative integer.</p>
+    </li>
+  </ol>
     <u>Files to Submit:</u>
-    <code>MiniStringBuilder.java</code>, <code>MiniStringBuilderTest.java</code>
+    <code>BigInt.java</code>, <code>BigIntTest.java</code>
   </p>
 </li>
 
 
           <!-- Problem 2 (Streams). -->
 <li>
+  <p><i>(8 points)</i> An <em>infinite stream</em> is one that, in theory, produces infinite results!
+    We have illustrated this with Java's <code>Stream</code> API, but now we're going to design our own.
+    Consider the <code>IStream</code> interface below:
+  </p>
+
+  <pre><code>interface IStream&lt;T&gt; {
+  T next();
+}</code></pre>
+
   <p>
+    When calling <code>next</code> on a stream, we update the contents of the stream and return the next result.
+    We mark this as a generic interface to allow for any desired return type.
+    For instance, below is a stream that produces factorial values:
+  </p>
+
+  <pre><code>class FactorialStream implements IStream&lt;Integer&gt; {
+
+  private int n;
+  private int fact;
+ 
+  FactorialStream() {
+    this.n = 1;
+    this.fact = 1;
+  }
+
+  @Override
+  public Integer next() {
+    this.fact *= this.n;
+    this.n++;
+    return this.fact;
+  }
+}</code></pre>
+
+  <p>
+    Testing it with ten calls to <code>next</code> yields predictable results.
+  </p>
+
+  <pre><code>class FactorialStreamTest {
+
+  @Test
+  void testFactorialStream() {
+    IStream&lt;Integer&gt; FS = new FactorialStream();
+    assertEquals(1, FS.next());
+    assertEquals(2, FS.next());
+    assertEquals(6, FS.next());
+    assertEquals(24, FS.next());
+    assertEquals(120, FS.next());
+  }
+}</code></pre>
+
+  <p>
+    Design the <code>FibonacciStream</code> class, which implements <code>IStream&lt;Integer&gt;</code> and correctly overrides <code>next</code> to produce Fibonacci sequence values.
+    You code should <em>not</em> use any loops or recursion.
+    Recall that the Fibonacci sequence is defined as \(f(n) = f(n - 1) + f(n - 2)\) for all \(n \geq 2\).
+    The base cases are \(f(0) = 0\) and \(f(1) = 1\).
+  </p>
+
+  <pre><code>class FibonacciStreamTest {
+
+  @Test
+  void testFibonacciStream() {
+    IStream&lt;Integer&gt; FS = new FibonacciStream();
+    assertEquals(0, FS.next());
+    assertEquals(1, FS.next());
+    assertEquals(1, FS.next());
+    assertEquals(2, FS.next());
+    assertEquals(3, FS.next());
+    assertEquals(5, FS.next());
+  }
+}</code></pre>
     <u>Files to Submit:</u>
-    <code>Matrix.java</code>, <code>MatrixTest.java</code>
+    <code>IStream.java</code>, <code>FibonacciStream.java</code>, <code>FibonacciStreamTest.java</code>
   </p>
 </li>
 
 
           <!-- Problem 3 (FunctionalStream). -->
 <li>
+  <p><i>(8 points)</i> Java's functional API allows us to pass lambda expressions as arguments to other methods, as well as method references (as we saw in Chapter 3).
+    Design the generic <code>FunctionalStream</code> class to implement <code>IStream</code>, whose constructor receives a unary function <code>Function&lt;T, T&gt; f</code> and an initial value <code>T t</code>.
+    Then, override the <code>next</code> method to invoke \(f\) on the current element of the stream and return the previous.
+    For example, the following test case shows the expected results when creating a stream of infinite positive multiples of three.
+  </p>
+
+  <pre><code>class FunctionalStreamTester {
+
+  @Test
+  void testMultiplesOfThreeStream() {
+    IStream&lt;Integer&gt; mtll = new FunctionalStream&lt;&gt;(x -&gt; x + 3, 0);
+    assertEquals(0, mtll.next());
+    assertEquals(3, mtll.next());
+    assertEquals(6, mtll.next());
+    assertEquals(9, mtll.next());
+    assertEquals(12, mtll.next());
+  }
+}</code></pre>
+
   <p>
+    What's awesome about this exercise is that it allows us to define the elements of the stream as any arbitrary lambda expression, meaning that we could redefine <code>FactorialStream</code> and <code>FibonacciStream</code> in terms of <code>FunctionalStream</code>.
+    We can generate infinitely many ones, squares, triples, or whatever else we desire.
+  </p>
     <u>Files to Submit:</u>
-    <code>Matrix.java</code>, <code>MatrixTest.java</code>
+    <code>FunctionalStream.java</code>, <code>FunctionalStreamTest.java</code>
   </p>
 </li>
 
@@ -125,9 +308,25 @@
 
           <!-- Problem 4 (StreamTake). -->
 <li>
-  <p>
+  <p><i>(8 points)</i> Design the <code>StreamTake</code> class.
+    Its constructor should receive an <code>IStream</code> and an integer \(n\) denoting how many elements to take, as parameters.
+    Then, write a <code>List&lt;T&gt; getList()</code> method, which returns a <code>List&lt;T&gt;</code> of \(n\) elements from the given stream.
+  </p>
+
+  <pre><code>class StreamTakeTester {
+
+ @Test
+ void testStreamTake() {
+  StreamTake llt1 = new StreamTake(new FactorialStream(), 8);
+  StreamTake llt2 = new StreamTake(new FibonacciStream(), 10);
+  assertEquals("[1, 2, 6, 24, 120, 720, 5040, 40320]",
+                       llt1.getList().toString());
+  assertEquals("[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]",
+                       llt2.getList().toString());
+ }
+}</code></pre>
     <u>Files to Submit:</u>
-    <code>Matrix.java</code>, <code>MatrixTest.java</code>
+    <code>StreamTake.java</code>, <code>StreamTakeTest.java</code>
   </p>
 </li>
 
@@ -135,31 +334,134 @@
           <!-- Problem 5 (NumberFormat). -->
 <li>
 
-  <p>
+  <p><i>(8 points)</i> In this exercise, you will design an interface and classes that format numbers in different ways.
+  </p>
+
+  <ol class="paren-alpha">
+    <li>
+      <p>Design the <code>INumberFormat</code> interface, which contains the <code>String format(long n)</code> method.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>DollarFormat</code> class, which implements <code>INumberFormat</code>, and returns a string where the number is prepended with a dollar sign <code>"$"</code>.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>CommaFormat</code> class, which implements <code>INumberFormat</code>, and returns a string where the number contains commas where appropriate. For example, <code>format(4412)</code> should return <code>"4,412"</code>.</p>
+    </li>
+
+    <li>
+      <p>Finally, design the <code>StandardFormat</code> class, which implements <code>INumberFormat</code>, and returns a string where the number is simply returned as a string.</p>
+    </li>
+  </ol>
     <u>Files to Submit:</u>
-    <code>ComplexNumber.java</code>, <code>ComplexNumberTest.java</code>
+    <code>INumberFormat.java</code>, <code>DollarFormat.java</code>, <code>CommaFormat.java</code>, <code>StandardFormat.java</code>, <code>NumberFormatTest.java</code>
   </p>
 </li>
 
+<li>
+  <p><i>(8 points)</i>
+    
+  </ul>
+Design the abstract <code>Ticket</code> class, which represents a ticket that can be purchased.
+    A ticket has a price and a unique ticket identifier.
+    Each ticket has a method <code>getPrice</code> that returns the cost of the ticket, and a method <code>getId</code> that returns the ticket's unique identifier.
+    The ticket identifier should be incremented via a <code>static</code> variable that is incremented and then assigned to the instance variable.
+    Override the <code>hashCode</code> and <code>equals</code> methods as appropriate.
+    The <code>Ticket</code> class constructor should only receive a ticket cost (in USD).
+  </p>
 
-          <!-- Problem 6 (Abstract classes 1). -->
+  <p>
+    Then, design the following concrete subclasses (note that none of these concrete classes should override <code>hashCode</code> or <code>equals</code>):
+  </p>
+
+  <ul>
+    <li>
+      <p><code>StandardTicket</code>, which always returns a fixed price of whatever is passed to the constructor.</p>
+    </li>
+
+    <li>
+      <p><code>DiscountedTicket</code>, which receives both the price and the discount as parameters. The discount should be a value between 0.0 and 1.0. Apply the discount inside an overridden <code>getPrice</code> method.</p>
+    </li>
+
+    <li>
+      <p><code>VirtualTicket</code>, which adds a convenience fee of $2.50 on top of whatever that ticket's price is.</p>
+    </li>
+  </ul>
+
+    <u>Files to Submit:</u>
+    <code>Ticket.java</code>, <code>StandardTicket.java</code>, <code>DiscountedTicket.java</code>, <code>VirtualTicket.java</code>, <code>TicketTest.java</code>
+  </p>
+          <!-- Problem 7 (ASPL). -->
 <li>
 
-  <p>
+  <p><i>(28 points)</i> This exercise is based on the ASPL interpreter that we wrote in the textbook. 
+  A copy of the starter code is listed in Canvas.
+  In the autograder, you only need to submit the files we list below; not the starter code. Do not modify the starter code.</p>
+  <ol class="paren-alpha">
+    <li>
+      <p>First, design the <code>ProgramNode</code> class, which allows the user to define a program as a sequence of statements rather than a single expression.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>DefNode</code> class, which allows the user to create a global definition. Because we're now working with definitions that do not extend the environment, we should use the set method in environment. When creating a global definition via <code>DefNode</code>, we're expressing the idea that, from that point forward, the (root) environment should contain a binding from the identifier to whatever value it binds.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>FuncNode</code> node. We will consider a function definition as an abstract tree node that begins with <code>FuncNode</code>. This node has two parameters to its constructor: a list of parameter (string) identifiers, and a single abstract syntax tree node representing the body of the function. We will only consider functions that return values; void functions do not exist in this language.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>ApplyNode</code> class, which applies a function to its arguments. You do not need to consider applications in which the first argument is a non-function.</p>
+
+      <p>Calling/Invoking a function is perhaps the hardest part of this exercise. Here's the idea, which is synonymous and shared with almost all programming languages:</p>
+
+      <ol type="i">
+        <li>
+          <p>First, evaluate each argument of the function call, which produces a list of evaluated abstract syntax trees.</p>
+        </li>
+
+        <li>
+          <p>We then want to create an environment in which the formal parameters are bound to their arguments. Overload the <code>extend</code> method in <code>Environment</code> to now receive a list of string identifiers and a list of (evaluated) AST arguments. Bind each formal to its corresponding AST, and return the extended environment.</p>
+        </li>
+
+        <li>
+          <p>Evaluate the function abstract syntax tree to get its function definition as an abstract syntax tree.</p>
+        </li>
+
+        <li>
+          <p>Call <code>eval</code> on the function body and pass the new (extended) environment.</p>
+        </li>
+      </ol>
+
+      <p>
+        This seems like a lot of work (because it is), but it means you can write really cool programs, including those that use recursion!
+      </p>
+
+      <pre><code>new ProgramNode(
+  new DefNode("!", 
+    new FuncNode(
+      List.of("n"),
+      new IfNode(
+        new PrimNode("eq?", 
+          new VarNode("n"), 
+          new NumNode(0)),
+        new NumNode(1),
+        new PrimNode("*", 
+          new VarNode("n"), 
+          new ApplyNode("!", 
+            new PrimNode("-", 
+            new VarNode("n"), 
+            new NumNode(1))))))),
+  new ApplyNode("!", new NumNode(5)))</code></pre>
+    </li>
+  </ol>
+    
     <u>Files to Submit:</u>
-    <code>ComplexNumber.java</code>, <code>ComplexNumberTest.java</code>
+    <code>ProgramNode.java</code>, <code>DefNode.java</code>, <code>FuncNode</code>, <code>ApplyNode.java</code>, <code>Environment.java</code>, <code>AsplTest.java</code>
   </p>
 </li>
 
-
-          <!-- Problem 7 (Abstract classes and interfaces). -->
-<li>
-
-  <p>
-    <u>Files to Submit:</u>
-    <code>ComplexNumber.java</code>, <code>ComplexNumberTest.java</code>
-  </p>
-</li>
         </ol>
       </div>
     </div>

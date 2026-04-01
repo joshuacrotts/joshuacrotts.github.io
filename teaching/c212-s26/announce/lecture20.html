@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lecture 20</title>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Courier+Prime:400,700,400italic);
+
+    body { font-family: 'Georgia'; }
+    .remark-slide-container {
+      background-size: cover;
+    }
+    .remark-slide-number {
+      display: none;
+    }
+    .remark-slide-content {
+      background-color: #fffd;
+      font-size:30px;
+      padding: .5em 2em;
+    }
+    h1, h2, h3 {
+      font-family: 'Georgia';
+      font-weight: normal;
+    }
+    h1, h2, h3, p, ol, ul {
+      margin-top: 1ex;
+      margin-bottom: 1ex;
+    }
+    .remark-code, .remark-inline-code {
+      font-family: 'Courier Prime';
+    }
+    .remark-code {
+      /* font-size: 40px; */
+      letter-spacing: -.02em;
+      line-height: 50px;
+    }
+    /* This rule is modified dynamically by the carousel function and must come last */
+    .remark-slides-area {
+      background-size: cover;
+    }
+
+    .float-left  { float: left  }
+    .float-right { float: right }
+    .logo { top: 0; right: 0; position: absolute; transform: scale(0.5) translate(+50%, -50%) }
+  </style>
+</head>
+<body>
+  <textarea id="source">
+# Today's Agenda:
+
+- Interfaces!
+- Writing a method to sum the values in an ArrayList and a LinkedList.
+- How can we compare instances of some class?
+- Comparator
+- Functional interfaces.
+- Writing a small expression interpreter.
+
+---
+
+# Need help? Go to office hours!
+
+- TA office hours are ALWAYS in Room 0121. (Computer lab on the first floor.)
+- Go and finish PSet9!
+- Study for Exam 2! Use the practice exams!
+
+---
+
+# The mini-project is now available!
+
+- Read the project description in Canvas.
+- Start forming groups of 2-4 if you want to work with people (use the Canvas groups feature).
+- First deadline (project proposal) is due on April 3rd!
+
+---
+
+# Problem Set 10 is out now!
+
+- Due in two weeks, so don't worry about it right now.
+- Covers section 4.2 in the textbook.
+
+---
+
+# Exam 2 is next Monday!
+
+- Covers all material up through and including PSet9.
+- Emphasizes Chapter 3 and Chapter 4.1, but still cumulative!
+- Start studying now!
+
+---
+
+# Some advice from past C212 students...
+<img src="testimonials/Most Important Thing 1-merged_Page_14.png" style="width:100%; height:220px" />
+
+---
+# Some advice from past C212 students...
+<img src="testimonials/Most Important Thing 1-merged_Page_19.png" style="width:100%; height:220px" />
+
+  </textarea>
+  <script>
+    var slideshow = remark.create();
+    function carousel() {
+        if (slideshow.getCurrentSlideIndex() == slideshow.getSlideCount()-1)
+          slideshow.gotoFirstSlide();
+        else
+          slideshow.gotoNextSlide();
+      }
+      setInterval(carousel, 15000);
+  </script>
+</body>
+</html>

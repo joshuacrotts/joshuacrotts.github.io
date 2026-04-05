@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 12</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 12 - Inheritance</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          Follow each step carefully. There is no autograder for this assignment, and you'll soon understand why.
+          When you're done, call over your lab TAs, who will grade you on the spot. If you leave lab without being graded, you will receive a 0. Do not ask to be regraded!
+        </p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use anything beyond Chapter 4.5.
+          This includes but is not limited to:
+        </p>
+        <ul>
+          <li>Bitwise operators</li>
+          <li>Regular expressions</li>
+          <li>Reflection and the <code>getClass()</code> method</li>
+          <li><code>Objects.equals</code></li>
+          <li>Exceptions</li>
+          <li>Any other forms of computing object hash codes, e.g., using prime numbers, multiplying by primes, etc.</li>
+          <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the lab.
+        </p>
+        <!-- <p>Anything that trivializes a problem is disallowed. This lab is designed to get you acclimated with immutable classes and data representation. Therefore, mutation and aliasing are off the table. As such, all <u>instance</u> variables should be declared as <code>final</code>.</p> -->
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon dark">
+      <div class="content problems">
+        <h2>Problems</h2>
+
+<p>In this lab you will be working on finishing a breakout/brick breaker/Arkanoid clone. 
+If you have never heard of this game before, please go to <a href="https://www.coolmathgames.com/0-brick-breaker" target="_blank">https://www.coolmathgames.com/0-brick-breaker</a> and play it for a few minutes to get an idea of how the game works. (Note that in this version, the paddle is controlled by the mouse.)</p>
+
+<p>You won't be implementing the entire game, e.g., the graphics or collision detection.
+Instead, your job is to design a few classes that handle the object hierarchy in the system.</p>
+
+<p>Download the starter code from Canvas and import it into IntelliJ. 
+Nothing will compile for the time being, because several classes (that you will write) are missing.</p>
+
+<h4><code>GameObject</code> Class</h4>
+
+<p>First, design the abstract <code>GameObject</code> class, whose constructor receives four <code>double</code> values: <code>x</code>, <code>y</code>, <code>width</code>, and <code>height</code>. Store these as instance variables and write the relevant accessor and mutator methods.
+This class represents an <em>entity</em> in the game.</p>
+
+<p>Also, make <code>GameObject</code> implement the <code>ICollidable</code> interface, which describes objects that can collide into one another. Hopefully, you understand why we might want that functionality. An object that responds to collisions with others must override the <code>handleCollisions</code> method. In a future step, we'll see how it works.
+Finally, <code>GameObject</code> should declare the following abstract methods:</p>
+
+<ul>
+    <li><code>abstract void update();</code></li>
+    <li><code>abstract void render(Graphics2D g2d);</code></li>
+</ul>
+
+
+
+<h4><code>Paddle</code> Class</h4>
+
+<p>Next, go into the <code>Paddle</code> class and make it extend <code>GameObject</code>. This will require you to design a constructor that then calls the superclass constructor. 
+The <code>Paddle</code> constructor, however, should only receive two values: the starting x and y coordinates.
+For its dimensions, initialize two private, static, and final integers to denote the width and height of the paddle to be 100 by 20 pixels, then pass these values to the superclass constructor. 
+The <code>Paddle</code> class should also store two new fields: <code>velX</code> and <code>velY</code> representing the \(x\) velocity and \(y\) velocity respectively. 
+When you press the left and right arrow keys, the paddle will move to the left and to the right (this behavior is already implemented into the system).
+Lastly, make <code>Paddle</code> implement the <code>ICollidable</code> interface. This will require you to override three methods: <code>isPaddle</code>, <code>isBall</code>, and <code>isBrick</code>. Use common sense to correctly implement these methods.</p>
+
+<h4><code>Ball</code> Class</h4>
+
+<p>Move into the <code>Ball</code> class. You will see that it is almost finished. Change the constructor to initialize the velocity variables to be random <code>double</code> values between -10 and 10 (inclusive or exclusive - doesn't matter) rather than the existing values.</p>
+Then, take a look at the <code>update</code> method. While there is nothing here that we want you to change or add to, take a few minutes to discuss with your partner(s) about the code and how it works.</p>
+
+<p>Then, look at the <code>handleCollisions</code> method. 
+  Inside, we loop through all the entities in the system and check to see if the current ball collides with any of them.
+  If there is a collision with an object, we check to see if that object is either a paddle or a brick.
+  In the former case, we perform some simple vector math to update the ball's velocity. 
+  In the latter case, we remove the brick from the list of entities and reverse the y velocity of the ball. Again, take some time to look through this code and discuss it with your partners.</p>
+
+<h4><code>Brick</code> Class</h4>
+
+<p>Lastly, finish designing the <code>Brick</code> class, which should also extend <code>GameObject</code>. This should be extremely straightforward. Identical to <code>Paddle</code>, its constructor should receive only positional values, but you need to pass to the superclass constructor the dimensions. The brick dimensions should be 50 by 20 pixels.</p>
+
+<h4>Final Thoughts</h4>
+
+<p>After implementing all of the classes, the project should compile without errors. 
+Go into <code>BreakoutRunner</code> and run the program from the <code>main</code> method. Move the paddle around with the left and right arrow keys.</p>
+
+<p>This is a very small lab, but hopefully you now understand the purpose of abstract classes: they serve as models for classes that other classes should extend. Abstract classes, of course, cannot be themselves instantiated, because it is nonsensical to do so. If you wish, you can delve deeper into the details of Java Swing and the other classes used in this lab.</p>
+
+<p>Zip your lab and submit it to Canvas. Let your graders know, then you may leave.</p>
+      </div>
+    </div>
+  </body>
+</html>

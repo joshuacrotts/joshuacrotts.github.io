@@ -167,8 +167,7 @@
       <div class="content problems">
         <h2>Problems</h2>
         <ol>
-          <li>
-          <!-- Problem 1 (K-Means). -->
+       <!--   <li>
 <p><i>(20 points)</i> <em>K-means clustering</em> is a data science technique that clusters a list of data into k-clusters based on similarity.</p>
 
 <p>K-means is an <em>iterative algorithm</em>, which makes an initial guess of the solution and gradually refines the guess over multiple iterations, similar to the square root approximation algorithm. The algorithm is as follows: we're given a list \(L\) of \((x, y)\) points and a number \(k > 0\) of clusters to create.</p>
@@ -186,18 +185,32 @@
 <ol class="paren-alpha">
     <li>Design the <code>Point</code> class, which represents a point in the Cartesian plane.</li>
     <li>Design the <code>Cluster</code> class, which stores a <code>Point</code> as its centroid and also stores a <code>List&lt;Point&gt;</code> representing the points that belong to that cluster.</li>
-    <li>Design the <code>KMeans</code> class, which contains the <code>static List&lt;Cluster&gt; kMeans(String filename, int k, double epsilon)</code> method, which reads a file of line-separated <code>(x, y)</code> points, applies the k-means clustering algorithm to cluster the points into <code>k</code> clusters, and returns the resulting list of clusters.</li>
+    <li>Design the <code>KMeans</code> class, which contains the <code>static List&lt;Cluster&gt; kMeans(String filename, int k, double epsilon)</code> method, which reads a file of line-separated <code>(x, y)</code> points, applies the k-means clustering algorithm to cluster the points into <code>k</code> clusters, and returns the resulting list of clusters.
+    The x and y coordinates of a point in the file are space-separated, e.g., <code>5.7 10.3</code>.</li>
 </ol>           
   <p>
     <u>Files to Submit:</u>
     <code>KMeans.java</code>, <code>Point.java</code>, <code>Cluster.java</code>, <code>KMeansTest.java</code>
   </p>
-</li>
+</li>-->
 
 
           <!-- Problem 2 (RowNumbering). -->
 <li>
-  <p>
+    <p><i>(15 points)</i> Design the <code>RowNumbering</code> class, which contains one method: <code>static void outputRowNumbering(String filename)</code>. When given a file name containing an extension that is not <code>out</code>, this method should create a new file of the same name with the <code>out</code> extension, where each line from the original file is prefaced with the line number containing padded zeroes.</p>
+
+<p>For example, suppose a file <code>test.in</code> contains 473 lines of text. The generated output file should be named <code>test.out</code>, with its contents as follows:</p>
+
+<pre>
+001 ...
+002 ...
+...
+471 ...
+472 ...
+473 ...
+</pre>
+
+<p>So, the number of leading zeroes of each line depends on what the line number is, as well as how many lines are in the original input file.</p>
     <u>Files to Submit:</u>
     <code>RowNumbering.java</code>, <code>RowNumberingTest.java</code>
   </p>
@@ -206,7 +219,7 @@
 
           <!-- Problem 3 (StackLanguage). -->
 <li>
-  <p><i>(20 points)</i> A <em>stack-based</em> programming language is one that uses a stack to keep track of variables, values, and the results of expressions. These types of languages have existed for several decades, and in this exercise you will implement such a language.</p>
+  <p><i>(35 points)</i> A <em>stack-based</em> programming language is one that uses a stack to keep track of variables, values, and the results of expressions. These types of languages have existed for several decades, and in this exercise you will implement such a language.</p>
 
 <p>Design the <code>StackLanguage</code> class, whose constructor receives no parameters. The class contains two instance methods: <code>void readFile(String f)</code> and <code>double interpret()</code>.</p>
 
@@ -244,7 +257,7 @@
 
           <!-- Problem 4 (MazeSolver). -->
 <li>
-<p>A maze is a grid of cells, each of which is either open or blocked. We can move from one free cell to another if they are adjacent and non-diagonal.</p>
+<p><i>(30 points)</i> A maze is a grid of cells, each of which is either open or blocked. We can move from one free cell to another if they are adjacent and non-diagonal.</p>
 
 <p>The start of the maze is the top-left cell, and the goal is to move to the bottom-right. For example, below is a maze, and below that is an example of a solved maze.</p>
 
@@ -277,7 +290,7 @@
     </div>
 </div>
 
-<p>In this exercise, you will design a maze-solving program that can solve mazes using different strategies.</p>
+<p>In this exercise, you will design a maze-solving program that can solve mazes.</p>
 
 <ol class="paren-alpha">
     <li>
@@ -291,11 +304,11 @@
         <p>Start at a cell and mark it as visited. Then, recursively try to move to each of its neighbors, marking the path with a <code>'*'</code> character. If you reach the maze exit, then return <code>true</code>. Otherwise, backtrack and try another path. By “backtrack,” we mean that you should remove the <code>'*'</code> character from the path. If you have tried all possible paths from a cell and none of them lead to the exit, then return <code>false</code>.</p>
     </li>
 
-    <li>
+    <!-- <li>
         <p>Design the <code>BfsMazeSolver</code> class, which implements the <code>IMazeSolverStrategy</code> interface using a breadth-first search (BFS) algorithm:</p>
 
         <p>Start at the top-left cell and add it to a queue <code>Q</code>. Then, while <code>Q</code> is not empty, remove the front cell from <code>Q</code> and mark it as visited. If the cell is the exit, then return the solution. Otherwise, add all unvisited neighbors of the current cell to the queue. If you have tried all possible paths and the queue is empty, then return <code>null</code>.</p>
-    </li>
+    </li> -->
 
     <li>
         <p>Now, design the <code>MazeSolver</code> class, which has the following methods:</p>
@@ -317,36 +330,36 @@
         </ol>
     </li>
 </ol>
+<p class="note"><i>Note:</i> You only need to implement the backtracking strategy, but you are free to implement a breadth-first search strategy for fun if you want.</p>
     <u>Files to Submit:</u>
-    <code>IMazeSolverStrategy.java</code>, <code>MazeSolver.java</code>, <code>BacktrackingMazeSolver.java</code>, <code>BfsMazeSolver.java</code>, <code>MazeSolverTest.java</code>
+    <code>IMazeSolverStrategy.java</code>, <code>MazeSolver.java</code>, <code>BacktrackingMazeSolver.java</code>, <code>MazeSolverTest.java</code>
   </p>
 </li>
-
 
           <!-- Problem 5 (SpellChecker). -->
 <li>
+<p><i>(20 points)</i> Design the <code>SpellChecker</code> class, which contain the <code>static void spellCheck(String dict, String in)</code> method. The <code>spellCheck</code> method reads two files: a "dictionary" and a content file. The content file contains a single sentence that may or may not have misspelled words. Your job is to check each word in the file and determine whether or not it is spelled correctly, according to the dictionary of line-separated words. If a word is not spelled correctly, wrap it inside brackets <code>[]</code>.</p>
 
-  <p>
-    <u>Files to Submit:</u>
-    <code>ComplexNumber.java</code>, <code>ComplexNumberTest.java</code>
-  </p>
-</li>
+<p>Output the modified sentence to a file of the same name, just with the <code>out</code> extension. You must remove whatever extension existed previously. You may assume that words are space-separated and that no punctuation exists.</p>
 
+<p>Assuming <code>dictionary.txt</code> contains a list of words, if we invoke the method with <code>spellCheck("dictionary.txt", "file3a.in")</code>, and <code>file3a.in</code> contains the following:</p>
 
-          <!-- Problem 6 (Abstract classes 1). -->
-<li>
+<pre>
+Hi hwo are you donig I am dioing jsut fine if I say so mysefl but I will aslo sya that I 
+am throughlyy misssing puncutiation
+</pre>
 
-  <p>
-    <u>Files to Submit:</u>
-    <code>ComplexNumber.java</code>, <code>ComplexNumberTest.java</code>
-  </p>
-</li>
+<p>Then <code>file3a.out</code> is generated containing the following:</p>
 
+<pre>
+Hi [hwo] are you [donig] I am [dioing] [jsut] fine if I say so [mysefl] but I will [aslo] 
+[sya] that I am [throughlyy] [misssing] [puncutiation]
+</pre>
 
-          <!-- Problem 7 (Abstract classes and interfaces). -->
-<li>
-
-  <p>
+<p class="hint"><i>Hint 1:</i> Use a <code>Set</code>!</p>
+<p class="hint"><i>Hint 2:</i> Words differing only in case should not be considered misspelled; for example, <code>"Hello"</code> is spelled the same as <code>"hello"</code>. How can your program check this?</p>
+  
+<p>
     <u>Files to Submit:</u>
     <code>ComplexNumber.java</code>, <code>ComplexNumberTest.java</code>
   </p>

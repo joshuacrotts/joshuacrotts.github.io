@@ -167,11 +167,30 @@
       <div class="content problems">
         <h2>Problems</h2>
         <ol>
-          <!-- Problem 1 (ApplyOperations). -->
-<li>
+          <li>
+          <!-- Problem 1 (K-Means). -->
+<p><i>(20 points)</i> <em>K-means clustering</em> is a data science technique that clusters a list of data into k-clusters based on similarity.</p>
+
+<p>K-means is an <em>iterative algorithm</em>, which makes an initial guess of the solution and gradually refines the guess over multiple iterations, similar to the square root approximation algorithm. The algorithm is as follows: we're given a list \(L\) of \((x, y)\) points and a number \(k > 0\) of clusters to create.</p>
+
+<ol type="i">
+    <li>Use the first \(k\) points in the list as the initial centroids of the clusters. These serve as the initial guesses for the cluster centers.</li>
+    <li>Clear the list of points in each cluster.</li>
+    <li>For every \(\mathcal{p} \in L\), compute the distance from \(\mathcal{p}\) to each of the \(k\) centroids, and assign \(\mathcal{p}\) to the cluster with the closest centroid.</li>
+    <li>For each cluster, compute a new centroid \(\mathcal{c}'\) by averaging the \((x, y)\) values of the points in the cluster.</li>
+    <li>Repeat steps (ii) through (iv) until all of the centroids do not change from the previous iteration by a threshold amount \(\varepsilon\).</li>
+</ol>
+
+<p>In this exercise you will read data from a file and implement the k-means clustering algorithm to cluster the data.</p>
+
+<ol class="paren-alpha">
+    <li>Design the <code>Point</code> class, which represents a point in the Cartesian plane.</li>
+    <li>Design the <code>Cluster</code> class, which stores a <code>Point</code> as its centroid and also stores a <code>List&lt;Point&gt;</code> representing the points that belong to that cluster.</li>
+    <li>Design the <code>KMeans</code> class, which contains the <code>static List&lt;Cluster&gt; kMeans(String filename, int k, double epsilon)</code> method, which reads a file of line-separated <code>(x, y)</code> points, applies the k-means clustering algorithm to cluster the points into <code>k</code> clusters, and returns the resulting list of clusters.</li>
+</ol>           
   <p>
     <u>Files to Submit:</u>
-    <code>MiniStringBuilder.java</code>, <code>MiniStringBuilderTest.java</code>
+    <code>KMeans.java</code>, <code>Point.java</code>, <code>Cluster.java</code>, <code>KMeansTest.java</code>
   </p>
 </li>
 
@@ -180,16 +199,44 @@
 <li>
   <p>
     <u>Files to Submit:</u>
-    <code>Matrix.java</code>, <code>MatrixTest.java</code>
+    <code>RowNumbering.java</code>, <code>RowNumberingTest.java</code>
   </p>
 </li>
 
 
           <!-- Problem 3 (StackLanguage). -->
 <li>
-  <p>
+  <p><i>(20 points)</i> A <em>stack-based</em> programming language is one that uses a stack to keep track of variables, values, and the results of expressions. These types of languages have existed for several decades, and in this exercise you will implement such a language.</p>
+
+<p>Design the <code>StackLanguage</code> class, whose constructor receives no parameters. The class contains two instance methods: <code>void readFile(String f)</code> and <code>double interpret()</code>.</p>
+
+<ol class="paren-alpha">
+    <li>
+        <p>The <code>readFile</code> method reads a series of “stack commands” from the file. These can be stored however you feel necessary in the class, but you should not interpret anything in this method, nor should you throw any exceptions. You may want to create a private static class to represent commands and their arguments.</p>
+    </li>
+    <li>
+        <p>The <code>interpret</code> method interprets the stored list of instructions. If no instructions have been received by a <code>readFile</code> command, throw an <code>IllegalStateException</code>. Here are the possible instructions:</p>
+
+        <ul>
+            <li><code>DECL v X</code> declares that <code>v</code> is a variable with value <code>X</code>.</li>
+            <li><code>PUSH X</code> pushes a number <code>X</code> to the stack.</li>
+            <li><code>POP v</code> pops the top-most number off the stack and stores it in a variable <code>v</code>. If <code>v</code> has not been declared, an <code>IllegalArgumentException</code> is thrown.</li>
+            <li><code>PEEK v</code> stores the value at the top of the stack in the variable <code>v</code>. If <code>v</code> has not been declared or the stack is empty, an <code>IllegalArgumentException</code> is thrown.</li>
+            <li><code>ADD X</code> adds <code>X</code> to the top-most number on the stack. If the stack is empty, throw an <code>IllegalArgumentException</code>.</li>
+            <li><code>SUB X</code> subtracts <code>X</code> from the top-most number on the stack. If the stack is empty, throw an <code>IllegalArgumentException</code>.</li>
+            <li><code>XCHG v</code> swaps the value on the top of the stack with the value stored in variable <code>v</code>. If <code>v</code> has not been declared as a variable or the stack is empty, an <code>IllegalArgumentException</code> is thrown.</li>
+            <li><code>DUP</code> duplicates the value at the top of the stack.</li>
+        </ul>
+
+        <p>If the command is none of these, then throw an <code>UnsupportedOperationException</code>. You may assume that all commands, otherwise, are well-formed, i.e., all numbers are <code>double</code> values, they contain the correct number of arguments, and the types thereof are correct.</p>
+
+        <p>After interpreting all instructions, the value that is returned is the top-most value on the stack. If there is no such value, throw a <code>NoSuchElementException</code>.</p>
+
+    </li>
+    <p class="hint"><i>Hint:</i> Use a <code>Map</code> to associate variable names to values.</p>
+</ol>
     <u>Files to Submit:</u>
-    <code>Matrix.java</code>, <code>MatrixTest.java</code>
+    <code>StackLanguage.java</code>, <code>StackLanguageTest.java</code>
   </p>
 </li>
 
@@ -197,9 +244,81 @@
 
           <!-- Problem 4 (MazeSolver). -->
 <li>
-  <p>
+<p>A maze is a grid of cells, each of which is either open or blocked. We can move from one free cell to another if they are adjacent and non-diagonal.</p>
+
+<p>The start of the maze is the top-left cell, and the goal is to move to the bottom-right. For example, below is a maze, and below that is an example of a solved maze.</p>
+
+<div style="margin: 0.5em 0 1em 0;">
+    <div style="display: inline-block; vertical-align: top; width: 45%;">
+<pre>
+.########
+........#
+#.###.###
+#...#...#
+###.###.#
+#...#...#
+###.#.###
+#...#...#
+#######..
+</pre>
+    </div>
+    <div style="float: right; width: 12%; margin-left: 2em; text-align: left;">
+<pre>
+*########
+******..#
+#.###*###
+#...#***#
+###.###*#
+#...#***#
+###.#*###
+#...#***#
+#######**
+</pre>
+    </div>
+</div>
+
+<p>In this exercise, you will design a maze-solving program that can solve mazes using different strategies.</p>
+
+<ol class="paren-alpha">
+    <li>
+        <p>Design the <code>IMazeSolverStrategy</code> interface, which contains the <code>char[][] solve(char[][] maze)</code> method. This interface represents a strategy for solving a maze.</p>
+
+        <p>In any implementation, the <code>solve</code> method should return a <code>char[][]</code> that represents the solution to the maze, where the path from the start to the end is marked with <code>'*'</code> characters. This method should not modify the input maze, and should return a new <code>char[][]</code> that contains the solution. If there is no solution, the method should return <code>null</code>.</p>
+    </li>
+
+    <li>
+        <p>Design the <code>BacktrackingMazeSolver</code> class, which implements the <code>IMazeSolverStrategy</code> interface using a backtracking algorithm:</p>
+        <p>Start at a cell and mark it as visited. Then, recursively try to move to each of its neighbors, marking the path with a <code>'*'</code> character. If you reach the maze exit, then return <code>true</code>. Otherwise, backtrack and try another path. By “backtrack,” we mean that you should remove the <code>'*'</code> character from the path. If you have tried all possible paths from a cell and none of them lead to the exit, then return <code>false</code>.</p>
+    </li>
+
+    <li>
+        <p>Design the <code>BfsMazeSolver</code> class, which implements the <code>IMazeSolverStrategy</code> interface using a breadth-first search (BFS) algorithm:</p>
+
+        <p>Start at the top-left cell and add it to a queue <code>Q</code>. Then, while <code>Q</code> is not empty, remove the front cell from <code>Q</code> and mark it as visited. If the cell is the exit, then return the solution. Otherwise, add all unvisited neighbors of the current cell to the queue. If you have tried all possible paths and the queue is empty, then return <code>null</code>.</p>
+    </li>
+
+    <li>
+        <p>Now, design the <code>MazeSolver</code> class, which has the following methods:</p>
+
+        <ol type="i">
+            <li>
+                <p><code>MazeSolver(String fileName)</code> is the constructor, which reads a description of a maze from a file. The file contains a grid of characters, where <code>'.'</code> represents an open cell and <code>'#'</code> represents a blocked cell. The file is formatted such that each line is the same length.</p>
+
+                <p>Read the data into a <code>char[][]</code> instance variable. Assume that the maze dimensions, i.e., the number of rows and the number of columns, are on the first line of the file, separated by a space.</p>
+            </li>
+
+            <li>
+                <p>Design the <code>char[][] solveMaze(IMazeSolverStrategy strategy)</code> method, which takes in a maze-solving strategy and returns the solution to the maze using that strategy. Note that this method should be one line of code: it should call the <code>solve</code> method of the given strategy, passing in the maze instance variable.</p>
+            </li>
+
+            <li>
+                <p><code>void output(String fileName, char[][] soln)</code> outputs the given solution to the maze to a file specified by the parameter. Refer to the above description for the format of the output file and the input <code>char[][]</code> solution. (You should output the number of rows, followed by a space, followed by the number of columns, followed by a new line, then the maze grid with the solution marked.)</p>
+            </li>
+        </ol>
+    </li>
+</ol>
     <u>Files to Submit:</u>
-    <code>Matrix.java</code>, <code>MatrixTest.java</code>
+    <code>IMazeSolverStrategy.java</code>, <code>MazeSolver.java</code>, <code>BacktrackingMazeSolver.java</code>, <code>BfsMazeSolver.java</code>, <code>MazeSolverTest.java</code>
   </p>
 </li>
 

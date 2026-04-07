@@ -102,7 +102,7 @@ The <code>Paddle</code> constructor, however, should only receive two values: th
 For its dimensions, initialize two private, static, and final integers to denote the width and height of the paddle to be 100 by 20 pixels, then pass these values to the superclass constructor. 
 The <code>Paddle</code> class should also store two new fields: <code>velX</code> and <code>velY</code> representing the \(x\) velocity and \(y\) velocity respectively. 
 When you press the left and right arrow keys, the paddle will move to the left and to the right (this behavior is already implemented into the system).
-Lastly, make <code>Paddle</code> implement the <code>ICollidable</code> interface. This will require you to override three methods: <code>isPaddle</code>, <code>isBall</code>, and <code>isBrick</code>. Use common sense to correctly implement these methods.</p>
+Because <code>GameObject</code> implements <code>ICollidable</code>, the <code>Paddle</code> class will inherit the necessary methods for collision handling. This will require you to override three methods: <code>isPaddle</code>, <code>isBall</code>, and <code>isBrick</code>. Use common sense to correctly implement these methods.</p>
 
 <h4><code>Ball</code> Class</h4>
 

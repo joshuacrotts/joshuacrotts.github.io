@@ -398,16 +398,23 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
   In the autograder, you only need to submit the files we list below; not the starter code. Do not modify the starter code.</p>
   <ol class="paren-alpha">
     <li>
-      <p>First, design the <code>ProgramNode</code> class, which allows the user to define a program as a sequence of statements rather than a single expression.</p>
+      <p>First, design the <code>ProgramNode</code> class, which allows the user to define a program as a sequence of statements rather than a single expression.
+        A <code>ProgramNode</code> evaluates all of the statements in order, and returns the result of the last expression.</p>
     </li>
 
     <li>
-      <p>Design the <code>DefNode</code> class, which allows the user to create a global definition. Because we're now working with definitions that do not extend the environment, we should use the set method in environment. When creating a global definition via <code>DefNode</code>, we're expressing the idea that, from that point forward, the (root) environment should contain a binding from the identifier to whatever value it binds.</p>
+      <p>Design the <code>DefNode</code> class, which allows the user to create a global definition. 
+  Because we're now working with definitions that do not extend the environment, we need to directly mutate environments.
+  To be clear, this means that when we create a global definition via <code>DefNode</code>, we're expressing the idea that, from that point forward, the (root) environment should contain a binding from the identifier to whatever value it binds.</p>
+  <p class="note"><i>Note:</i> If your <code>Environment</code> class does not have a <code>set</code> method, you will need to add one.</p>
     </li>
 
     <li>
-      <p>Design the <code>FuncNode</code> node. We will consider a function definition as an abstract tree node that begins with <code>FuncNode</code>. This node has two parameters to its constructor: a list of parameter (string) identifiers, and a single abstract syntax tree node representing the body of the function. We will only consider functions that return values; void functions do not exist in this language.
+      <p>Design the <code>FuncNode</code> node. We will consider a function definition as an abstract tree node that begins with <code>FuncNode</code>. Its constructor has two parameters: a list of formal parameters as strings and the function body as an abstract syntax tree.
       You should override <code>eval</code> by returning the <code>FuncNode</code> itself; do not evaluate the body!</p>
+      <p class="warning"><strong>Warning:</strong> Don't forget to add an accessor for the formal parameters and the function body!</p>
+      <p class="note"><i>Note 1:</i> In this language, all functions resolve to values; we do not support <code>void</code> functions.</p>
+      <p class="note"><i>Note 2:</i> This language supports <i>first-class functions</i>, which means that functions can be passed as arguments to other functions and returned as values from functions, just like data!.</p>
     </li>
 
     <li>

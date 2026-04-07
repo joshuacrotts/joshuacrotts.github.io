@@ -367,6 +367,7 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
     A ticket has a price and a unique ticket identifier.
     Each ticket has a method <code>getPrice</code> that returns the cost of the ticket, and a method <code>getId</code> that returns the ticket's unique identifier.
     The ticket identifier should be incremented via a <code>static</code> variable that is incremented and then assigned to the instance variable.
+    The static variable should be initialized to 0, and the first ticket should have an identifier of 0.
     Override the <code>hashCode</code> and <code>equals</code> methods as appropriate.
     The <code>Ticket</code> class constructor should only receive a ticket cost (in USD).
   </p>
@@ -377,10 +378,6 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
 
   <ul>
     <li>
-      <p><code>StandardTicket</code>, which always returns a fixed price of whatever is passed to the constructor.</p>
-    </li>
-
-    <li>
       <p><code>DiscountTicket</code>, which receives both the price and the discount as parameters. The discount should be a value between 0.0 and 1.0. Apply the discount inside an overridden <code>getPrice</code> method.</p>
     </li>
 
@@ -390,7 +387,7 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
   </ul>
 
     <u>Files to Submit:</u>
-    <code>Ticket.java</code>, <code>StandardTicket.java</code>, <code>DiscountTicket.java</code>, <code>VirtualTicket.java</code>, <code>TicketTest.java</code>
+    <code>Ticket.java</code>, <code>DiscountTicket.java</code>, <code>VirtualTicket.java</code>, <code>TicketTest.java</code>
   </p>
           <!-- Problem 7 (ASPL). -->
 <li>
@@ -408,11 +405,12 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
     </li>
 
     <li>
-      <p>Design the <code>FuncNode</code> node. We will consider a function definition as an abstract tree node that begins with <code>FuncNode</code>. This node has two parameters to its constructor: a list of parameter (string) identifiers, and a single abstract syntax tree node representing the body of the function. We will only consider functions that return values; void functions do not exist in this language.</p>
+      <p>Design the <code>FuncNode</code> node. We will consider a function definition as an abstract tree node that begins with <code>FuncNode</code>. This node has two parameters to its constructor: a list of parameter (string) identifiers, and a single abstract syntax tree node representing the body of the function. We will only consider functions that return values; void functions do not exist in this language.
+      You should override <code>eval</code> by returning the <code>FuncNode</code> itself; do not evaluate the body!</p>
     </li>
 
     <li>
-      <p>Design the <code>ApplyNode</code> class, which applies a function to its arguments. You do not need to consider applications in which the first argument is a non-function.</p>
+      <p>Design the <code>ApplyNode</code> class, which applies a function to its arguments. You do not need to consider applications in which the first argument reduces to a non-function.</p>
 
       <p>Calling/Invoking a function is perhaps the hardest part of this exercise. Here's the idea, which is synonymous and shared with almost all programming languages:</p>
 
@@ -426,11 +424,11 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
         </li>
 
         <li>
-          <p>Evaluate the function abstract syntax tree to get its function definition as an abstract syntax tree.</p>
+          <p>Evaluate the operator/function child of the abstract syntax tree. Cast the result to a <code>FuncNode</code>.</p>
         </li>
 
         <li>
-          <p>Call <code>eval</code> on the function body and pass the new (extended) environment.</p>
+          <p>Call <code>eval</code> on the function body and pass to it the new (extended) environment.</p>
         </li>
       </ol>
 
@@ -449,11 +447,11 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
         new NumNode(1),
         new PrimNode("*", 
           new VarNode("n"), 
-          new ApplyNode("!", 
+          new ApplyNode(new VarNode("!"), 
             new PrimNode("-", 
             new VarNode("n"), 
             new NumNode(1))))))),
-  new ApplyNode("!", new NumNode(5)))</code></pre>
+  new ApplyNode(new VarNode("!"), new NumNode(5)))</code></pre>
     </li>
   </ol>
     

@@ -368,8 +368,9 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
     Each ticket has a method <code>getPrice</code> that returns the cost of the ticket, and a method <code>getId</code> that returns the ticket's unique identifier.
     The ticket identifier should be incremented via a <code>static</code> variable that is incremented and then assigned to the instance variable.
     The static variable should be initialized to 0, and the first ticket should have an identifier of 0.
-    Override the <code>hashCode</code> and <code>equals</code> methods as appropriate.
     The <code>Ticket</code> class constructor should only receive a ticket cost (in USD).
+    Override <code>equals</code> to return whether two tickets are the same, which is determined by whether they have the same ticket identifier. 
+    Override <code>hashCode</code> to return the hash code of the ticket identifier.
   </p>
 
   <p>

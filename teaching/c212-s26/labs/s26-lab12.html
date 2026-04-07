@@ -56,6 +56,7 @@
           <li>Exceptions</li>
           <li>Any other forms of computing object hash codes, e.g., using prime numbers, multiplying by primes, etc.</li>
           <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+          <li><code>ThreadLocalRandom</code> or any other random number generator besides <code>Math.random()</code> or the <code>Random</code> class.</li>
         </ul>
         <p>
           Any violation results in a score of <strong>0</strong> on the lab.
@@ -104,10 +105,14 @@ The <code>Paddle</code> class should also store two new fields: <code>velX</code
 When you press the left and right arrow keys, the paddle will move to the left and to the right (this behavior is already implemented into the system).
 Because <code>GameObject</code> implements <code>ICollidable</code>, the <code>Paddle</code> class will inherit the necessary methods for collision handling. This will require you to override three methods: <code>isPaddle</code>, <code>isBall</code>, and <code>isBrick</code>. Use common sense to correctly implement these methods.</p>
 
+<p class="hint"><i>Hint:</i> Seriously, just use common sense! If the class is <code>Paddle</code>, what should <code>isPaddle</code> return? What about the other two methods?</p>
+
 <h4><code>Ball</code> Class</h4>
 
 <p>Move into the <code>Ball</code> class. You will see that it is almost finished. Change the constructor to initialize the velocity variables to be random <code>double</code> values between -10 and 10 (inclusive or exclusive - doesn't matter) rather than the existing values.</p>
 Then, take a look at the <code>update</code> method. While there is nothing here that we want you to change or add to, take a few minutes to discuss with your partner(s) about the code and how it works.</p>
+
+<p class="warning"><strong>Warning:</strong> Every semester, we see a number of students who, for whatever reason, do not do this step correctly and just arbitrarily pick a number. We don't mean "<i>you</i> pick the number," we mean that you should use <code>Math.random()</code> or the <code>Random</code> class to generate the random values.</p>
 
 <p>Then, look at the <code>handleCollisions</code> method. 
   Inside, we loop through all the entities in the system and check to see if the current ball collides with any of them.

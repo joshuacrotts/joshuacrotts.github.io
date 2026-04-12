@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 12</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 13 - Exceptions and File I/O</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          Design classes with the given specification in each problem, along with the appropriate test suite.
+          Each method in a class, excluding mutators, accessors, and constructors, must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+        </p>
+        <p>
+          <strong>
+          Do not round your solutions. For example, do not use
+          <code>Math.round</code> or float your output to, e.g.,
+          2 decimal places, unless specified.
+          </strong>
+        </p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use anything beyond Chapter 5.2.
+          This includes but is not limited to:
+        </p>
+        <ul>
+          <li>Bitwise operators</li>
+          <li>Regular expressions</li>
+          <li>Reflection and the <code>getClass()</code> method</li>
+          <li><code>Objects.equals</code></li>
+          <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+          <li><strong>Importantly, you are not allowed to use any "modern file I/O" classes, e.g., <code>Files</code>, <code>Paths</code>, <code>Path</code>, <code>Files.newBufferedReader</code>, etc.</strong> Instead, you must use the "legacy file I/O" classes, e.g., <code>File</code>, <code>Scanner</code>, <code>FileReader</code>, <code>BufferedReader</code>, <code>FileWriter</code>, <code>PrintWriter</code>, etc.</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the lab.
+        </p>
+        <!-- <p>Anything that trivializes a problem is disallowed. This lab is designed to get you acclimated with immutable classes and data representation. Therefore, mutation and aliasing are off the table. As such, all <u>instance</u> variables should be declared as <code>final</code>.</p> -->
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Notes and Version Changes:</h2>
+        <p class="warning"><strong>Important Warning 1:</strong> Like Problem Set 12, it's very easy to tell when students are using generative AI to solve these problems, particularly those involving exceptions and I/O. Just work with your classmates and ask the TAs for help if you need it.</p>
+      <p class="warning"><strong>Important Warning 2:</strong> You must catch every possible checked exception in your code. Thus, <i>none</i> of your methods should include a <code>throws</code> clause in the header. If it does, then your code will not compile in the autograder.</p>
+      <p class="note"><strong>Note 1:</strong> You should follow the advice from <a href="https://joshuacrotts.us/teaching/c212-s26/psets/s26-pset12.html">Problem Set 12</a>'s writeup on how to write tests for methods involving exceptions and I/O.</p>
+      </div>
+
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon">
+      <div class="content problems">
+        <h2>Problems</h2>
+        <ol>
+          <li><p><i>(100 points)</i> Design the <code>EchoOdds</code> class, which contains a method called <code>static void echoOdds(String inFile)</code> that reads a file of line-separated integers, and writes only the odd numbers out to a file of the same name, just with the <code>.out</code> extension. If the file contains any non-integer values, throw an <code>InputMismatchException</code>.</p>
+
+<p>For example, if the user types <code>"file1a.in"</code> into the running program, and <code>file1a.in</code> contains the following:</p>
+
+<pre>
+5
+100
+25
+17
+2
+4
+0
+-3848
+13
+</pre>
+
+<p>Then <code>file1a.out</code> is generated containing the following:</p>
+
+<pre>
+5
+25
+17
+13
+</pre>
+
+<p>Another example is, if the user types <code>"file1b.in"</code> into the running program, and <code>file1b.in</code> contains the following:</p>
+
+<pre>
+5
+100
+25
+17
+THIS_IS_NOT_AN_INTEGER!
+4
+0
+-3848
+13
+</pre>
+
+<p>Then the program does not output a file because it throws an exception.</p>
+
+<p class="hint"><em>Hint 1:</em> Don't be so eager to immediately rush into opening an output stream of some kind. 
+Remember that, if there is even a single invalid number in the input file, your code should not produce an output file. 
+Instead, read the input file and, if there is an invalid number, immediately throw the aforementioned exception. Otherwise, <em>only then</em> open the output stream and echo the odd integers. 
+Doing it in this specific order will ensure that an output file is not erroneously created in the event that an invalid number is parsed.</p>
+    <u>Files to Submit:</u>
+    <code>EchoOdds.java</code>, <code>EchoOddsKeyTest.java</code>
+  </p>
+</li>
+</ol>
+      </div>
+    </div>
+  </body>
+</html>

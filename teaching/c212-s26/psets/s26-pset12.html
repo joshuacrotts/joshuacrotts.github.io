@@ -31,7 +31,7 @@
       <div class="content">
         <h2>Problem Set 12 - Exceptions and I/O</h2>
         <p><strong>Assigned:</strong> April 15, 2026</p>
-        <p><strong>Due:</strong> April 22, 2026 at 11:59 PM EST</p>
+        <p><strong>Due:</strong> April 22, 2026 at 11:59 PM EDT</p>
       </div>
     </div>
     <div class="ribbon dark">
@@ -306,26 +306,26 @@
     </li>
 
     <li>
-        <p>Design the <code>BacktrackingMazeSolver</code> class, which implements the <code>IMazeSolverStrategy</code> interface using a backtracking algorithm:</p>
+        <p>Design the <code>BacktrackingMazeStrategy</code> class, which implements the <code>IMazeSolverStrategy</code> interface using a backtracking algorithm:</p>
         <p>Start at a cell and mark it as visited. Then, recursively try to move to each of its neighbors, marking the path with a <code>'*'</code> character. If you reach the maze exit, then return <code>true</code>. Otherwise, backtrack and try another path. By “backtrack,” we mean that you should remove the <code>'*'</code> character from the path. If you have tried all possible paths from a cell and none of them lead to the exit, then return <code>false</code>.</p>
     </li>
 
     <li>
-        <p><i>(20 extra credit points)</i> Design the <code>BfsMazeSolver</code> class, which implements the <code>IMazeSolverStrategy</code> interface using a breadth-first search (BFS) algorithm. 
+        <p><i>(20 extra credit points)</i> Design the <code>BfsMazeStrategy</code> class, which implements the <code>IMazeSolverStrategy</code> interface using a breadth-first search (BFS) algorithm. 
         Unfortunately, a breadth-first search approach is a bit more involved than the backtracking alternative, but where it loses in complexity it makes up for in its benefits: it always finds the shortest path for any maze <i>and</i> it is much, much, much faster!</i></p>
         <p> Here's the algorithm at a high level: instantiate a queue \(Q\), a visited set of positions \(V\), and a map of positions to positions called "pred". 
         Add the starting position, i.e., \((0, 0)\) to both \(Q\) and \(V\). 
         While the \(Q\) is not empty, poll the next-available element off of the queue, which we will call \(e\). 
         We now have a case analysis:</p>
         <ul>
-          <li><p>If \(e\) is not the maze exit, then we compute all four possible free neighbors of \(e\), and for each of the neighbors, if it has not been visited yet, add it to \(V\) and \(Q\). 
-          Additionally, add to the "pred" map \(\langle{V, e\rangle}\). 
+          <li><p>If \(e\) is not the maze exit, then we compute all four possible free neighbors of \(e\), and for each of the neighbors \(v\), if it has not been visited yet, add it to \(V\) and \(Q\). 
+          Additionally, add to the "pred" map \(\langle{v, e\rangle}\). 
           </p>
           </li>
           <li><p>If \(e\) is at the maze exit, then we need to use the predecessor map to build the path. 
           In the backtracking algorithm, we simply visit the path and, if that leads to a dead end, undo the visit. 
           For the BFS algorithm, we have to be a bit smarter by keeping track of what cells, in what order, got us to the exit, hence the "pred" map, which stands for "predecessor."
-          It might be helpful to design the private <code>buildSolutions</code> method, which receives the predecessors map and returns a list of positions, in order, from the starting position to the exit. 
+          It might be helpful to design the private <code>buildSolution</code> method, which receives the predecessors map and returns a list of positions, in order, from the starting position to the exit. 
           Then, use this list to fill in the <code>char[][]</code> for the path.
           </p>
           </li>
@@ -334,7 +334,7 @@
         <p class="note"><i>Note:</i> In CSCI-C 343 (Data Structures), you'll learn more about how breadth-first search works, but at a high level, the idea is that you explore the maze in "layers," where you first explore all cells that are one step away from the starting position, then all cells that are two steps away, and so on.
         We can contrast this with another approach called "depth-first search", which explores the maze by going as deep as possible down one path before backtracking and trying another path.
         Consider the advantages and disadvantages of each approach!</p>
-        <p class="warning"><strong>Warning:</strong> Even if you don't complete the extra credit, you still need to submit a file called <code>BfsMazeSolver.java</code> with the class header. If you don't, your code will not compile in the autograder.</p>
+        <p class="warning"><strong>Warning:</strong> Even if you don't complete the extra credit, you still need to submit a file called <code>BfsMazeStrategy.java</code> with the class header. If you don't, your code will not compile in the autograder.</p>
     </li>
 
     <li>
@@ -359,13 +359,13 @@
 </ol>
 <p class="note"><i>Note:</i> For some added context, in this problem, we leveraged a design pattern called the "Strategy" pattern.</p>
     <u>Files to Submit:</u>
-    <code>IMazeSolverStrategy.java</code>, <code>MazeSolver.java</code>, <code>BacktrackingMazeSolver.java</code>, <code>BfsMazeSolver.java</code> <code>MazeSolverTest.java</code>
+    <code>IMazeSolverStrategy.java</code>, <code>MazeSolver.java</code>, <code>BacktrackingMazeStrategy.java</code>, <code>BfsMazeStrategy.java</code>, <code>MazeSolverTest.java</code>
   </p>
 </li>
 
           <!-- Problem 5 (SpellChecker). -->
 <li>
-<p><i>(20 points)</i> Design the <code>SpellChecker</code> class, which contain the <code>static void spellCheck(String dict, String in)</code> method. The <code>spellCheck</code> method reads two files: a "dictionary" and a content file. The content file contains a single sentence that may or may not have misspelled words. Your job is to check each word in the file and determine whether or not it is spelled correctly, according to the dictionary of line-separated words. If a word is not spelled correctly, wrap it inside brackets <code>[]</code>.</p>
+<p><i>(20 points)</i> Design the <code>SpellChecker</code> class, which contains the <code>static void spellCheck(String dict, String in)</code> method. The <code>spellCheck</code> method reads two files: a "dictionary" and a content file. The content file contains a single sentence that may or may not have misspelled words. Your job is to check each word in the file and determine whether or not it is spelled correctly, according to the dictionary of line-separated words. If a word is not spelled correctly, wrap it inside brackets <code>[]</code>.</p>
 
 <p>Output the modified sentence to a file of the same name, just with the <code>out</code> extension. You must remove whatever extension existed previously. You may assume that words are space-separated and that no punctuation exists.</p>
 

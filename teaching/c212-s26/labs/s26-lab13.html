@@ -56,9 +56,9 @@
           This includes but is not limited to:
         </p>
         <ul>
-          <li>Bitwise operators</li>
+          <li>Bitwise operators (except for the pipe operator with catching multiple exceptions)</li>
           <li>Regular expressions</li>
-          <li>Reflection and the <code>getClass()</code> method</li>
+          <li>getClass()/reflection (except with <code>.class</code> when using <code>assertThrows</code>).</li>
           <li><code>Objects.equals</code></li>
           <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
           <li><strong>Importantly, you are not allowed to use any "modern file I/O" classes, e.g., <code>Files</code>, <code>Paths</code>, <code>Path</code>, <code>Files.newBufferedReader</code>, etc.</strong> Instead, you must use the "legacy file I/O" classes, e.g., <code>File</code>, <code>Scanner</code>, <code>FileReader</code>, <code>BufferedReader</code>, <code>FileWriter</code>, <code>PrintWriter</code>, etc.</li>

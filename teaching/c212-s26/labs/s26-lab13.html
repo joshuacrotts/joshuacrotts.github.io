@@ -133,7 +133,7 @@ THIS_IS_NOT_AN_INTEGER!
 Remember that, if there is even a single invalid number in the input file, your code should not produce an output file. 
 Instead, read the input file and, if there is an invalid number, immediately throw the aforementioned exception. Otherwise, <em>only then</em> open the output stream and echo the odd integers. 
 Doing it in this specific order will ensure that an output file is not erroneously created in the event that an invalid number is parsed.</p>
-<p class="warning"><strong>Warning:</strong> When writing your test cases, you will need at least one case that uses <code>assertThrows</code> to verify that your methods throws the appropriate exception when given an invalid input. If you want, you <em>can</em> check to see that the file was not created using <code>assertFalse(new File("filename").exists())</code>, but this is not required.</p>
+<p class="warning"><strong>Warning:</strong> When writing your test cases, you will need at least one case that uses <code>assertThrows</code> to verify that your method throws the appropriate exception when given an invalid input. If you want, you <em>can</em> check to see that the file was not created using <code>assertFalse(new File("filename").exists())</code>, but this is not required.</p>
     <u>Files to Submit:</u>
     <code>EchoOdds.java</code>, <code>EchoOddsKeyTest.java</code>
   </p>

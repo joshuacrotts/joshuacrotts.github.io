@@ -239,7 +239,7 @@
         <ul>
             <li><code>DECL v X</code> declares that <code>v</code> is a variable with value <code>X</code>.</li>
             <li><code>PUSH X</code> pushes a number <code>X</code> to the stack.</li>
-            <li><code>POP v</code> pops the top-most number off the stack and stores it in a variable <code>v</code>. If <code>v</code> has not been declared, an <code>IllegalArgumentException</code> is thrown.</li>
+            <li><code>POP v</code> pops the top-most number off the stack and stores it in a variable <code>v</code>. If <code>v</code> has not been declared or the stack is empty, an <code>IllegalArgumentException</code> is thrown.</li>
             <li><code>PEEK v</code> stores the value at the top of the stack in the variable <code>v</code>. If <code>v</code> has not been declared or the stack is empty, an <code>IllegalArgumentException</code> is thrown.</li>
             <li><code>ADD X</code> adds <code>X</code> to the top-most number on the stack. If the stack is empty, throw an <code>IllegalArgumentException</code>.</li>
             <li><code>SUB X</code> subtracts <code>X</code> from the top-most number on the stack. If the stack is empty, throw an <code>IllegalArgumentException</code>.</li>
@@ -265,7 +265,7 @@
 <li>
 <p><i>(30 points)</i> A maze is a grid of cells, each of which is either open or blocked. We can move from one free cell to another if they are adjacent and non-diagonal.</p>
 
-<p>The start of the maze is the top-left cell, and the goal is to move to the bottom-right. For example, below is a maze, and below that is an example of a solved maze.</p>
+<p>The start of the maze is the top-left cell, and the goal is to move to the bottom-right. For example, below is a maze, and to its right is an example of a solved maze.</p>
 
 <div style="margin: 0.5em 0 1em 0;">
     <div style="display: inline-block; vertical-align: top; width: 45%;">
@@ -307,7 +307,7 @@
 
     <li>
         <p>Design the <code>BacktrackingMazeStrategy</code> class, which implements the <code>IMazeSolverStrategy</code> interface using a backtracking algorithm:</p>
-        <p>Start at a cell and mark it as visited. Then, recursively try to move to each of its neighbors, marking the path with a <code>'*'</code> character. If you reach the maze exit, then return <code>true</code>. Otherwise, backtrack and try another path. By “backtrack,” we mean that you should remove the <code>'*'</code> character from the path. If you have tried all possible paths from a cell and none of them lead to the exit, then return <code>false</code>.</p>
+        <p>Start at a cell and mark it as visited. Then, recursively try to move to each of its neighbors, marking the path with a <code>'*'</code> character. If you reach the maze exit, then you found the solution. Otherwise, backtrack and try another path. By "backtrack," we mean that you should remove the <code>'*'</code> character from the path.</p>
     </li>
 
     <li>

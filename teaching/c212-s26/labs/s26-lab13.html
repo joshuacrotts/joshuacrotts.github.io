@@ -61,6 +61,7 @@
           <li>getClass()/reflection (except with <code>.class</code> when using <code>assertThrows</code>).</li>
           <li><code>Objects.equals</code></li>
           <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+          <li>Creation of temporary directories using <code>Files.createTempDirectory</code> or similar methods.</li>
           <li><strong>Importantly, you are not allowed to use any "modern file I/O" classes, e.g., <code>Files</code>, <code>Paths</code>, <code>Path</code>, <code>Files.newBufferedReader</code>, etc.</strong> Instead, you must use the "legacy file I/O" classes, e.g., <code>File</code>, <code>Scanner</code>, <code>FileReader</code>, <code>BufferedReader</code>, <code>FileWriter</code>, <code>PrintWriter</code>, etc.</li>
         </ul>
         <p>
@@ -128,10 +129,11 @@ THIS_IS_NOT_AN_INTEGER!
 
 <p>Then the program does not output a file because it throws an exception.</p>
 
-<p class="hint"><em>Hint 1:</em> Don't be so eager to immediately rush into opening an output stream of some kind. 
+<p class="hint"><em>Hint:</em> Don't be so eager to immediately rush into opening an output stream of some kind. 
 Remember that, if there is even a single invalid number in the input file, your code should not produce an output file. 
 Instead, read the input file and, if there is an invalid number, immediately throw the aforementioned exception. Otherwise, <em>only then</em> open the output stream and echo the odd integers. 
 Doing it in this specific order will ensure that an output file is not erroneously created in the event that an invalid number is parsed.</p>
+<p class="warning"><strong>Warning:</strong> When writing your test cases, you will need at least one case that uses <code>assertThrows</code> to verify that your methods throws the appropriate exception when given an invalid input. If you want, you <em>can</em> check to see that the file was not created using <code>assertFalse(new File("filename").exists())</code>, but this is not required.</p>
     <u>Files to Submit:</u>
     <code>EchoOdds.java</code>, <code>EchoOddsKeyTest.java</code>
   </p>

@@ -407,7 +407,10 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
     <li>
       <p>Design the <code>DefNode</code> class, which allows the user to create a global definition. 
   Because we're now working with definitions that do not extend the environment, we need to directly mutate environments.
-  To be clear, this means that when we create a global definition via <code>DefNode</code>, we're expressing the idea that, from that point forward, the (root) environment should contain a binding from the identifier to whatever value it binds.</p>
+  When we create definitions via <code>DefNode</code>, we're expressing the idea that, from that point forward, the environment should (forever) contain a binding from the identifier to whatever value it binds.
+  If we create a global definition, we want to mutate the global environment to contain a new binding.
+</p>
+
   <p class="note"><i>Note:</i> If your <code>Environment</code> class does not have a <code>set</code> method, you will need to add one.</p>
     </li>
 

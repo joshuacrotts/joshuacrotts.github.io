@@ -430,11 +430,11 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
         </li>
 
         <li>
-          <p>We then want to create an environment in which the formal parameters are bound to their arguments. Overload the <code>extend</code> method in <code>Environment</code> to now receive a list of string identifiers and a list of (evaluated) AST arguments. Bind each formal to its corresponding AST, and return the extended environment.</p>
+          <p>Evaluate the operator/function child of the abstract syntax tree. Cast the result to a <code>FuncNode</code>.</p>
         </li>
 
         <li>
-          <p>Evaluate the operator/function child of the abstract syntax tree. Cast the result to a <code>FuncNode</code>.</p>
+          <p>We then want to create an environment in which the formal parameters are bound to their arguments. Use the overloaded <code>extend</code> method in <code>Environment</code> bind each formal to its corresponding AST, and return the extended environment.</p>
         </li>
 
         <li>

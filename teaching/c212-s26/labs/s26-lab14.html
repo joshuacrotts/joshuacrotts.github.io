@@ -45,8 +45,7 @@
       <div class="content">
         <h2>What You <em>Cannot</em> Use</h2>
         <p>
-          You may not use anything beyond Chapter 4.5.
-          This includes but is not limited to:
+          You may not use any of the following in your lab (this list is non-exhaustive):
         </p>
         <ul>
           <li>Bitwise operators</li>
@@ -71,67 +70,35 @@
     <div class="ribbon dark">
       <div class="content problems">
         <h2>Problems</h2>
+        <p>Recall the sorting algorithms from lecture.
+    Those sorting algorithms were all <i>comparison-based</i>, which means that they <i>compare</i> elements to determine the sorting order.
+    Contrastingly, in this lab you will implement a <i>non-comparison-based</i> sorting algorithm called the <i>radix sort</i>.</p>
 
-<p>In this lab you will be working on finishing a breakout/brick breaker/Arkanoid clone. 
-If you have never heard of this game before, please go to <a href="https://www.coolmathgames.com/0-brick-breaker" target="_blank">https://www.coolmathgames.com/0-brick-breaker</a> and play it for a few minutes to get an idea of how the game works. (Note that in this version, the paddle is controlled by the mouse.)</p>
+          <p>All of the code you will write should be inside a class called <code>RadixSort</code>.
+    Your tests should be inside a class called <code>RadixSortTest</code>.
+    In this class, you should exhaustively test all of the below methods, and your grade will primarily come from the exhaustiveness and detail of your tests.</p>
 
-<p>You won't be implementing the entire game, e.g., the graphics or collision detection.
-Instead, your job is to design a few classes that handle the object hierarchy in the system.</p>
+    <ol style="paren-alpha">
+      <li><p>First, design the <code>static Optional&lt;Integer&gt; findMaxDigits(List&lt;Integer&gt; ls)</code> method that, when given a <code>List&lt;Integer&gt;</code> such that each element is strictly greater than 0, returns the number of digits that are in the largest element.
+        If the given list contains no elements, return an empty <code>Optional</code>.</p></li>
+        <li><p>Second, design the <code>static List&lt;Integer&gt; combineBuckets(List&lt;List&lt;Integer&gt;&gt; buckets)</code> method that returns a new <code>List<Integer></code> by combining all of the given elements in the list of lists.
+        For example, <code>[[1, 2], [3], [4, 5]]</code> returns <code>[1, 2, 3, 4, 5]</code>.</p>
+      <p class="warning"><strong>Warning:</strong> This method should <i>not</i> sort anything in and of itself!</p></li>
 
-<p>Download the starter code from Canvas and import it into IntelliJ. 
-Nothing will compile for the time being, because several classes (that you will write) are missing.</p>
+      <li><p>Third, design the <code>static List&lt;List&lt;Integer&gt;&gt; createBuckets(List&lt;Integer&gt; ls, int digitIdx)</code> method that returns a list of "buckets," where each bucket denotes a digit from 0-9.
+        The purpose of this method is to sort the values in <code>ls</code> by the digit value of <code>digitIdx</code>.</p>
 
-<h4><code>GameObject</code> Class</h4>
+        <p>For example, if the given list is <code>[42, 81, 2, 3, 771, 94]</code>, and <code>digitIdx</code> is 0, then we will sort the numbers based on the one's digit.
+        So, we create ten buckets, one for each digit, then place each number into one of the buckets.
+        This example returns the following list of buckets: <code>[[], [81, 771], [42, 2], [3], [94], [], [], [], [], []]</code>.</p>
+        <p class="hint"><i>Hint:</i> Use <code>Math.pow(10, digitIdx)</code> to get the place value of the digit that you're trying to sort by.</p>
+      <p class="warning"><strong>Warning:</strong> This method should also not inherently sort the elements inside the buckets. Elements should be added in the order they are encountered.</p></li>
 
-<p>First, design the abstract <code>GameObject</code> class, whose constructor receives four <code>double</code> values: <code>x</code>, <code>y</code>, <code>width</code>, and <code>height</code>. Store these as instance variables and write the relevant accessor and mutator methods.
-This class represents an <em>entity</em> in the game.</p>
-
-<p>Also, make <code>GameObject</code> implement the <code>ICollidable</code> interface, which describes objects that can collide into one another. Hopefully, you understand why we might want that functionality. An object that responds to collisions with others must override the <code>handleCollisions</code> method. In a future step, we'll see how it works.
-Finally, <code>GameObject</code> should declare the following abstract methods:</p>
-
-<ul>
-    <li><code>abstract void update();</code></li>
-    <li><code>abstract void render(Graphics2D g2d);</code></li>
-</ul>
-
-
-
-<h4><code>Paddle</code> Class</h4>
-
-<p>Next, go into the <code>Paddle</code> class and make it extend <code>GameObject</code>. This will require you to design a constructor that then calls the superclass constructor. 
-The <code>Paddle</code> constructor, however, should only receive two values: the starting x and y coordinates.
-For its dimensions, initialize two private, static, and final integers to denote the width and height of the paddle to be 100 by 20 pixels, then pass these values to the superclass constructor. 
-The <code>Paddle</code> class should also store two new fields: <code>velX</code> and <code>velY</code> representing the \(x\) velocity and \(y\) velocity respectively. 
-When you press the left and right arrow keys, the paddle will move to the left and to the right (this behavior is already implemented into the system).
-Because <code>GameObject</code> implements <code>ICollidable</code>, the <code>Paddle</code> class will inherit the necessary methods for collision handling. This will require you to override three methods: <code>isPaddle</code>, <code>isBall</code>, and <code>isBrick</code>. Use common sense to correctly implement these methods.</p>
-
-<p class="hint"><i>Hint:</i> Seriously, just use common sense! If the class is <code>Paddle</code>, what should <code>isPaddle</code> return? What about the other two methods?</p>
-
-<h4><code>Ball</code> Class</h4>
-
-<p>Move into the <code>Ball</code> class. You will see that it is almost finished. Change the constructor to initialize the velocity variables to be random <code>double</code> values between -10 and 10 (inclusive or exclusive - doesn't matter) rather than the existing values.</p>
-Then, take a look at the <code>update</code> method. While there is nothing here that we want you to change or add to, take a few minutes to discuss with your partner(s) about the code and how it works.</p>
-
-<p class="warning"><strong>Warning:</strong> Every semester, we see a number of students who, for whatever reason, do not do this step correctly and just arbitrarily pick a number. We don't mean "<i>you</i> pick the number," we mean that you should use <code>Math.random()</code> or the <code>Random</code> class to generate the random values.</p>
-
-<p>Then, look at the <code>handleCollisions</code> method. 
-  Inside, we loop through all the entities in the system and check to see if the current ball collides with any of them.
-  If there is a collision with an object, we check to see if that object is either a paddle or a brick.
-  In the former case, we perform some simple vector math to update the ball's velocity. 
-  In the latter case, we remove the brick from the list of entities and reverse the y velocity of the ball. Again, take some time to look through this code and discuss it with your partners.</p>
-
-<h4><code>Brick</code> Class</h4>
-
-<p>Lastly, finish designing the <code>Brick</code> class, which should also extend <code>GameObject</code>. This should be extremely straightforward. Identical to <code>Paddle</code>, its constructor should receive only positional values, but you need to pass to the superclass constructor the dimensions. The brick dimensions should be 50 by 20 pixels.</p>
-
-<h4>Final Thoughts</h4>
-
-<p>After implementing all of the classes, the project should compile without errors. 
-Go into <code>BreakoutRunner</code> and run the program from the <code>main</code> method. Move the paddle around with the left and right arrow keys.</p>
-
-<p>This is a very small lab, but hopefully you now understand the purpose of abstract classes: they serve as models for classes that other classes should extend. Abstract classes, of course, cannot be themselves instantiated, because it is nonsensical to do so. If you wish, you can delve deeper into the details of Java Swing and the other classes used in this lab.</p>
-
-<p>Zip your lab and submit it to Canvas. Let your graders know, then you may leave.</p>
+      <li><p>Finally, design the <code>static List&lt;Integer&gt; radixSort(List&lt;Integer&gt; ls)</code> method that, when given a <code>List&lt;Integer&gt;</code> such that each element is strictly greater than 0, sorts the elements using the radix sort algorithm.
+        The idea of the algorithm, as suggested by the above steps, is to sort based on each place value, starting from the ones and up as far as needed.
+        Each step combines the buckets created into a single list, then sorts that list based on the next-available digit.
+        Your algorithm will require the methods that you designed in parts (a), (b), and (c), so make sure they are fully tested and work prior to starting this part.</p>
+    </ol>
       </div>
     </div>
   </body>

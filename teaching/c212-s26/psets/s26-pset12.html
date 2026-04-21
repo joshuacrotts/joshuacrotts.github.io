@@ -96,6 +96,7 @@
       </p>
       <p>Seriously, just do your work honestly and ask <i>us</i> for help when you need it. You're on the last problem set - why risk it?</p>
       <p>Update 4/21: changed the <code>output</code> method specification to not include the dimensions of the maze.</p>
+      <p>Update 4/21: specified what <code>BfsMazeStrategy.java</code> should contain if the extra credit is not completed.</p>
       </div>
     </div>
     <div class="ribbon dark">
@@ -335,7 +336,7 @@
         <p class="note"><i>Note:</i> In CSCI-C 343 (Data Structures), you'll learn more about how breadth-first search works, but at a high level, the idea is that you explore the maze in "layers," where you first explore all cells that are one step away from the starting position, then all cells that are two steps away, and so on.
         We can contrast this with another approach called "depth-first search", which explores the maze by going as deep as possible down one path before backtracking and trying another path.
         Consider the advantages and disadvantages of each approach!</p>
-        <p class="warning"><strong>Warning:</strong> Even if you don't complete the extra credit, you still need to submit a file called <code>BfsMazeStrategy.java</code> with the class header. If you don't, your code will not compile in the autograder.</p>
+        <p class="warning"><strong>Warning:</strong> Even if you don't complete the extra credit, you still need to submit a file called <code>BfsMazeStrategy.java</code> with the class header. The class should implement the <code>IMazeSolverStrategy</code> interface, override the method, and return <code>null</code>. If you don't, your code will not compile in the autograder.</p>
     </li>
 
     <li>

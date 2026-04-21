@@ -95,6 +95,7 @@
         This is not to deter you from getting help - this is to ensure that you get help from a human, who can guide you through the problem set and help you learn, rather than an LLM, which will just give you the answer.
       </p>
       <p>Seriously, just do your work honestly and ask <i>us</i> for help when you need it. You're on the last problem set - why risk it?</p>
+      <p>Update 4/21: changed the <code>output</code> method specification to not include the dimensions of the maze.</p>
       </div>
     </div>
     <div class="ribbon dark">
@@ -352,7 +353,8 @@
             </li>
 
             <li>
-                <p><code>void output(String fileName, char[][] soln)</code> outputs the given solution to the maze to a file specified by the parameter. Refer to the above description for the format of the output file and the input <code>char[][]</code> solution. (You should output the number of rows, followed by a space, followed by the number of columns, followed by a new line, then the maze grid with the solution marked.)</p>
+                <p><code>void output(String fileName, char[][] soln)</code> outputs the given solution to the maze to a file specified by the parameter. Refer to the above description for the format of the output file and the input <code>char[][]</code> solution. (Output the maze grid with the solution marked.)</p>
+                <p class="warning"><strong>Warning:</strong> Do not output the dimensions of the maze to the file. The output file should only contain the grid of characters.</p>
             </li>
         </ol>
     </li>

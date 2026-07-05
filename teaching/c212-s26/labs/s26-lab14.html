@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../css/pure-min.css" />
+    <link rel="stylesheet" href="../../../css/grids-responsive-min.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/212favicon.ico">
+    <title>C212 – Lab 14</title>
+    <!-- MathJax for formulas -->
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .math-center {
+      text-align: center;
+      margin: 1em 0;
+      }
+      .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <div class="content">
+        <h2>Lab 14 - Searching and Sorting Algorithms</h2>
+      </div>
+    </div>
+    <div class="ribbon dark">
+      <div class="content">
+        <h2>Instructions</h2>
+        <p>
+          Follow each step carefully. Submit your code to the autograder when finished, then let a staff member know that you're done.
+        </p>
+      </div>
+    </div>
+    <div class="ribbon">
+      <div class="content">
+        <h2>What You <em>Cannot</em> Use</h2>
+        <p>
+          You may not use any of the following in your lab (this list is non-exhaustive):
+        </p>
+        <ul>
+          <li>Bitwise operators</li>
+          <li>Regular expressions</li>
+          <li>Reflection and the <code>getClass()</code> method</li>
+          <li><code>Objects.equals</code></li>
+          <li>Exceptions</li>
+          <li>Any other forms of computing object hash codes, e.g., using prime numbers, multiplying by primes, etc.</li>
+          <li>Methods that IntelliJ dubiously suggests, e.g., <code>System.arraycopy</code>, <code>Arrays.copyOf</code>.</li>
+          <li><code>ThreadLocalRandom</code> or any other random number generator besides <code>Math.random()</code> or the <code>Random</code> class.</li>
+        </ul>
+        <p>
+          Any violation results in a score of <strong>0</strong> on the lab.
+        </p>
+        <!-- <p>Anything that trivializes a problem is disallowed. This lab is designed to get you acclimated with immutable classes and data representation. Therefore, mutation and aliasing are off the table. As such, all <u>instance</u> variables should be declared as <code>final</code>.</p> -->
+        <p>
+          Please contact a staff member if you are unsure as to whether you're allowed to use something.
+        </p>
+      </div>
+    </div>
+    <!-- PROBLEMS -->
+    <div class="ribbon dark">
+      <div class="content problems">
+        <h2>Problems</h2>
+        <p>Recall the sorting algorithms from lecture.
+    Those sorting algorithms were all <i>comparison-based</i>, which means that they <i>compare</i> elements to determine the sorting order.
+    Contrastingly, in this lab you will implement a <i>non-comparison-based</i> sorting algorithm called the <i>radix sort</i>.</p>
+
+          <p>All of the code you will write should be inside a class called <code>RadixSort</code>.
+    Your tests should be inside a class called <code>RadixSortTest</code>.
+    In this class, you should exhaustively test all of the below methods, and your grade will primarily come from the exhaustiveness and detail of your tests.</p>
+
+    <ol class="paren-alpha">
+      <li><p>First, design the <code>static Optional&lt;Integer&gt; findMaxDigits(List&lt;Integer&gt; ls)</code> method that, when given a <code>List&lt;Integer&gt;</code> such that each element is strictly greater than 0, returns the number of digits that are in the largest element.
+        If the given list contains no elements, return an empty <code>Optional</code>.</p></li>
+        <li><p>Second, design the <code>static List&lt;Integer&gt; combineBuckets(List&lt;List&lt;Integer&gt;&gt; buckets)</code> method that returns a new <code>List&lt;Integer&gt;</code> by combining all of the given elements in the list of lists.
+        For example, <code>[[1, 2], [3], [4, 5]]</code> returns <code>[1, 2, 3, 4, 5]</code>.</p>
+      <p class="warning"><strong>Warning:</strong> This method should <i>not</i> sort anything in and of itself!</p></li>
+
+      <li><p>Third, design the <code>static List&lt;List&lt;Integer&gt;&gt; createBuckets(List&lt;Integer&gt; ls, int digitIdx)</code> method that returns a list of "buckets," where each bucket denotes a digit from 0-9.
+        The purpose of this method is to sort the values in <code>ls</code> by the digit value of <code>digitIdx</code>.</p>
+
+        <p>For example, if the given list is <code>[42, 81, 2, 3, 771, 94]</code>, and <code>digitIdx</code> is 0, then we will sort the numbers based on the one's digit.
+        So, we create ten buckets, one for each digit, then place each number into one of the buckets.
+        This example returns the following list of buckets: <code>[[], [81, 771], [42, 2], [3], [94], [], [], [], [], []]</code>.</p>
+        <p class="hint"><i>Hint:</i> Use <code>Math.pow(10, digitIdx)</code> to get the place value of the digit that you're trying to sort by.</p>
+      <p class="warning"><strong>Warning:</strong> This method should also not inherently sort the elements inside the buckets. Elements should be added in the order they are encountered.</p></li>
+
+      <li><p>Finally, design the <code>static List&lt;Integer&gt; radixSort(List&lt;Integer&gt; ls)</code> method that, when given a <code>List&lt;Integer&gt;</code> such that each element is strictly greater than 0, sorts the elements using the radix sort algorithm.
+        The idea of the algorithm, as suggested by the above steps, is to sort based on each place value, starting from the ones and up as far as needed.
+        Each step combines the buckets created into a single list, then sorts that list based on the next-available digit.
+        Your algorithm will require the methods that you designed in parts (a), (b), and (c), so make sure they are fully tested and work prior to starting this part.</p>
+    </ol>
+    <p><u>Files to Submit:</u>
+    <code>RadixSort.java</code>, <code>RadixSortTest.java</code>
+  </p>
+      </div>
+    </div>
+  </body>
+</html>

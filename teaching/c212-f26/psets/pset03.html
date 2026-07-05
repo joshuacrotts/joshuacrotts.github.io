@@ -275,41 +275,74 @@
   </li>
 
   <li>
-    <p>Consider the following data definitions:</p>
-    <pre>
-      A BooleanLiteral is one of:
-        - "T"
-        - "F"
+  <p>Consider the following data definitions of a stringified boolean expression:</p>
+  <pre>
+    A BooleanLiteral is one of:
+      - "T"
+      - "F"
 
-      A BooleanLiteralAtom is one of:
-        - BooleanLiteral
-        - "!" + BooleanLiteral
+    A BooleanLiteralAtom is one of:
+      - BooleanLiteral
+      - "!" + BooleanLiteral
 
-      A BooleanExpression is one of:
-        - BooleanLiteralAtom
-        - BooleanExpression + "&amp;" + BooleanExpression
-        - BooleanExpression + "|" + BooleanExpression
-    </pre>
-    <p>We evaluate a <code>BooleanExpression</code> as follows: when we encounter a <code>"!"</code>, flip the immediately-following boolean value.
-    When we encounter a <code>"&amp;"</code>, take the left boolean value and recurse on the right side, then return the logical AND of the two values.
-    When we encounter a <code>"|"</code>, take the left boolean value and recurse on the right side, then return the logical OR of the two values.
+    A BooleanExpression is one of:
+      - BooleanLiteralAtom
+      - "(" + BooleanExpression + "&amp;" + BooleanExpression + ")"
+      - "(" + BooleanExpression + "|" + BooleanExpression + ")"
+  </pre>
+
+  <p>
+    We evaluate a <code>BooleanExpression</code> as follows: when we encounter a
+    <code>"!"</code>, flip the immediately-following boolean value.
+    When we encounter a <code>"&amp;"</code> or a <code>"|"</code>, recurse on the
+    left and right sides, then return the logical AND or OR of the two values,
+    respectively.
   </p>
-    <p>For example, evaluating <code>"!T&F|T"</code> means we first negate <code>T</code> to get <code>F</code>, then we encounter <code>&amp;</code>, so we recurse on the rest of the string to evaluate <code>"F|T"</code>. We encounter <code>|</code>, so we recurse on the rest of the string to evaluate <code>"T"</code>, which resolves to <code>true</code>. As the recursion unwinds, we evaluate <code>false || true</code> to get <code>true</code>, then <code>false &amp;&amp; true</code> to get <code>false</code>.</p>
-    <p>This order of evaluation is right-associative, i.e., it's as if <code>"!T&F|T"</code> has implicit parentheses as <code>("!T")&("F"|("T"))</code>.</p>
-      <p>
-          Design the standard recursive
-          <code>boolean evaluateBooleanExpression(String expr)</code> method that evaluates a
-          given boolean expression according to the above data definition.
-          Therefore, you may assume that the input is always a valid <code>BooleanExpression</code>.
-      </p>
-      <p><i>Hint 1:</i> this problem is pretty difficult to solve, and we would strongly recommend you not wait until the last minute to start working on it.</p>
-      <p><i>Hint 2:</i> consider this a case analysis on the length of the string: if the string is length 1, what do you know about it? If it is length 2, what do you know about it? If it has more than 2 characters, what do you know about it?</p>
-      <p><i>Hint 3:</i> obviously, the hardest part of this problem is handling the case where there are more than 2 characters, e.g., with a binary operator, because there's the inherent possibility of a negated <code>BooleanLiteral</code>, which must be handled prior to the binary operator evaluation.</p>
 
-      <p><u>Files to Submit:</u> <code>Problem7.java</code>, <code>Problem7Test.java</code></p>
-  </li>
+  <p>
+    For example, evaluating <code>"(!T&amp;(F|T))"</code> means we recurse into the
+    two operands <code>"!T"</code> and <code>"(F|T)"</code>, recursively evaluate
+    them, then return the logical AND of the two results.
+  </p>
+
+  <ol type="a">
+    <li>
+      <p>
+        Design the <code>String removeOuterParentheses(String expr)</code> method
+        that removes the outer parentheses from a given
+        <code>BooleanExpression</code>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the <code>String mainOperator(String expr)</code> method that
+        returns the main operator of a given <code>BooleanExpression</code>.
+        We can compute the main operator by counting the number of open and
+        closed parentheses in the string.
+        When we encounter a <code>"("</code>, we increment a counter, and when we
+        encounter a <code>")"</code>, we decrement the counter.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Design the standard recursive <code>boolean eval(String expr)</code>
+        method that evaluates a given <code>BooleanExpression</code> according
+        to the above data definition.
+      </p>
+    </li>
+    <li>
+      <p>
+        Design the <code>int countDepth(String expr)</code> method that counts the depth of a given <code>BooleanExpression</code>.
+        The depth of a <code>BooleanExpression</code> is defined as the maximum number of recursive calls needed to reach the base case of a <code>BooleanLiteral</code> or <code>BooleanLiteralAtom</code>.
+        For example, <code>countDepth("(!T&amp;(F|T))")</code> returns 2, <code>countDepth("!!!!!!!!F")</code> returns 9, and <code>countDepth("T")</code> returns 0.
+      </p>
+    </li>
 </ol>
 
+        <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
+</li>
   </div>
 </div>
 

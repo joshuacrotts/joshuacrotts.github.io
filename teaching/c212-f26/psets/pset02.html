@@ -111,7 +111,7 @@
 <!-- PROBLEMS -->
 
 <div class="ribbon dark">
-  <div class="content">
+  <div class="content problems">
       <h2>Problems</h2>
 
 <ol>
@@ -169,11 +169,11 @@
       assigned to <code>true</code>, is equivalent to:
     </p>
 
-    <pre>static final boolean P = false;
-static final boolean Q = true;
-static final boolean R = false;
+    <pre>static final boolean a = false;
+static final boolean b = true;
+static final boolean c = false;
 
-cond(P, not(bicond(Q, not(R))))</pre>
+cond(a, not(bicond(b, not(c))))</pre>
 
     <p>
       The presented schema resolves to <code>true</code>. Design methods for the five connectives
@@ -298,7 +298,7 @@ fitCandy(7, 1, 13)     =&gt; -1</pre>
       <code>substring</code>, and <code>indexOf</code>.
     </p>
 
-    <p>
+    <p class="warning">
       <strong>Warning:</strong> Again, you <strong>cannot</strong> use, e.g., arrays, loops, or regular
       expressions to solve this problem, and if you do, you will receive a 0 on the entire problem
       set.

@@ -29,10 +29,58 @@
       margin-left: auto;
       margin-right: auto;
     }
+    
+  .svg-figure {
+    max-width: 640px;
+    margin: 1.5em auto;
+    text-align: center;
+  }
+
+  .svg-figure svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .svg-axis {
+    stroke: black;
+    stroke-width: 2.5;
+    fill: none;
+  }
+
+  .svg-tick {
+    stroke: #999;
+    stroke-width: 1;
+  }
+
+  .svg-curve {
+    stroke: black;
+    stroke-width: 3.5;
+    fill: none;
+  }
+
+  .svg-bar {
+    fill: #add8ff;
+    stroke: #0aa7e8;
+    stroke-width: 1.25;
+    fill-opacity: 0.85;
+  }
+
+  .svg-label {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+  }
+
+  .svg-axis-label {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: bold;
+  }
   </style>
 </head>
 
-<body>
+<body class="under-development">
 
 <div class="ribbon">
   <div class="content">
@@ -159,8 +207,163 @@ Design the <code>String collectParenthesizedStringsLoop(String s)</code> method,
   </li>
 
 <li>
+<p><i>(12 points)</i>
+    For this set of exercises, you will write methods that imitate Java's bitwise operators,
+    acting over binary numbers, henceforth abbreviated as BNs. Write all methods inside the
+    <code>Problem6</code> class. You are not allowed to use Java's built-in bitwise operators,
+    because that would defeat the purpose of the exercise!
+  </p>
 
-  <p><i>(20 points)</i> The C programming language contains the <code>atoi</code> "ascii-to-integer" function, which receives a string and, if the string represents some integer, returns the number converted to an integer.
+  <p>
+    To be clear, in this course, we will not use bitwise operators very often. I include them
+    in this problem set for two reasons: (1) you will have seen them before encountering them
+    in later computer science courses, and (2) I can rely on this knowledge in future problem sets.
+  </p>
+
+  <p>
+    Let's refresh ourselves on what BNs are. Take the number 42 in base 10, also called decimal.
+    In binary, or base 2, we represent \(42_{10}\) (meaning 42 in decimal) as \(101010_2\) (meaning 101010 in binary). To represent any non-negative
+    decimal integer in binary, we compute the sum of \(b_i \cdot 2^i\), where
+    \(0 \leq i &lt; \texttt{numBinaryDigits}\), and \(b_i\) is the bit in position \(i\),
+    counting from right to left. For instance,
+  </p>
+
+  <p class="math-center">
+    \[
+    \begin{align*}
+      42_{10} &=
+      (1 \cdot 2^5) +
+      (0 \cdot 2^4) +
+      (1 \cdot 2^3) +
+      (0 \cdot 2^2) +
+      (1 \cdot 2^1) +
+      (0 \cdot 2^0)\\
+      &= 32 + 0 + 8 + 0 + 2 + 0\\
+      &= 101010_2
+      \end{align*}
+    \]
+  </p>
+
+  <ol class="paren-alpha">
+    <li>
+      <p>
+        Begin by writing the <code>int toDecimal(String binary)</code> method that converts
+        a BN, represented as a string, into its decimal integer counterpart.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Now, let's talk about some <strong><em>bitwise operations</em></strong>, or operations
+        that act over the individual bits of BNs. We compute the bitwise AND of two BNs \((A\mathbin{\&}B)\) by comparing their bits one position at a time. In each
+        position, the resulting bit is 1 if both corresponding bits are 1. Otherwise, the
+        resulting bit is 0. For example,
+      </p>
+
+\[
+  \begin{align*}
+1010_2 \mathbin{\&} 1100_2 &\Rightarrow 1000_2\\
+11100_2 \mathbin{\&} 01_2 &\Rightarrow 0_2
+  \end{align*}
+\]
+
+      <p>
+        If one BN has fewer bits than the other, pretend that the shorter BN has extra
+        leading zeroes.
+      </p>
+
+      <p>
+        Design the <code>String bitwiseAnd(String a, String b)</code> method that computes
+        the bitwise AND of two BNs represented as strings.
+        You should trim as many leading zeroes as possible from the result, but if the result is 0, return <code>"0"</code>. (See the second example.)
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Bitwise OR and XOR are similar. The bitwise OR \((A \mathbin{\mid} B)\) of two BNs places a 1 in each position
+        where at least one of the two corresponding bits is 1. The bitwise XOR, or exclusive OR, (\(A \mathbin{\oplus} B\))
+        places a 1 in each position where exactly one of the two corresponding bits is 1.
+        For example,
+      </p>
+
+\[
+  \begin{align*}
+1010_2 \mathbin{\mid} 1100_2 &\Rightarrow 1110_2\\
+1010_2 \mathbin{\oplus} 1100_2 &\Rightarrow 0110_2
+  \end{align*}
+\]
+
+      <p>
+        Design the <code>String bitwiseOr(String a, String b)</code> and
+        <code>String bitwiseXor(String a, String b)</code> methods that implement bitwise OR
+        and XOR, like you did for bitwise AND. Use the same rules for trimming leading zeroes as in the previous part.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        A simple bitwise operator over only one BN is bitwise NOT, which flips all the bits
+        of a BN. That is, every 0 becomes a 1, and every 1 becomes a 0. For example,
+      </p>
+
+\[
+  \begin{align*}
+    \mathord{\sim}1010_2 &\Rightarrow 0101_2
+  \end{align*}
+\]
+
+      <p>
+        Design the <code>String bitwiseNot(String a)</code> method that implements bitwise NOT
+        for a given BN represented as a string.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Finally, we can <em>shift</em> a BN \(n\) bits to the left or right via the bitwise
+        left-shift and right-shift operations. Shifting a BN left means adding \(n\) zeroes to
+        the right-hand side. For example,
+      </p>
+
+\[
+1010_2 \ll 3 \Rightarrow 1010000_2
+\]
+
+      <p>
+        Shifting a BN right means removing \(n\) bits from the right-hand side. For example,
+      </p>
+
+\[
+1010_2 \gg 2 \Rightarrow 10_2
+\]
+
+      <p>
+        Attempting to shift right by more bits than the BN has produces <code>0</code>.
+      </p>
+
+      <p>
+        Design the <code>String shiftLeft(String bn, int n)</code> and
+        <code>String shiftRight(String bn, int n)</code> methods that implement bitwise
+        left-shift and right-shift.
+      </p>
+    </li>
+  </ol>
+
+  <p class="warning">
+    <strong>Warning:</strong> you are not allowed to use Java's built-in bitwise operators
+    such as <code>&amp;</code>, <code>|</code>, <code>^</code>, <code>~</code>,
+    <code>&lt;&lt;</code>, or <code>&gt;&gt;</code>.
+  </p>
+
+  <p>
+    <u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code>
+  </p>
+</li>
+
+<li>
+
+  <p><i>(12 points)</i> The C programming language contains the <code>atoi</code> "ascii-to-integer" function, which receives a string and, if the string represents some integer, returns the number converted to an integer.
 Design the <code>int atoi(String s)</code> method that, when given a string \(s\), returns its value as an integer if it can be parsed as an integer, using the following rules:
 <ul>
   <li><p>Ignore all leading zeroes and leading non-digits.</p></li>
@@ -199,7 +402,7 @@ atoi("8080*8080")      => 8080
 <p class="warning"><strong>Warning 2:</strong> we do not provide all of the test cases you need to pass the autograder tests. If you do not write your own <i>in addition to the ones we provide</i>, you will lose a substantial fraction of your unit test points.</p>
 
 <p class="hint"><i>Hint:</i> to convert a character into its integer counterpart, use the <code>Character.getNumericValue</code> method.</p>
-    <p><u>Files to Submit:</u> <code>Problem6.java</code>, <code>Problem6Test.java</code></p>
+    <p><u>Files to Submit:</u> <code>Problem7.java</code>, <code>Problem7Test.java</code></p>
 </li>
 
 <li>
@@ -242,7 +445,7 @@ guessWord("PLANS", "SNLPA") => "*****"
 
   <p>
     <u>Files to Submit:</u>
-    <code>Problem7.java</code>, <code>Problem7Test.java</code>
+    <code>Problem8.java</code>, <code>Problem8Test.java</code>
   </p>
 </li>
 
@@ -260,7 +463,7 @@ guessWord("PLANS", "SNLPA") => "*****"
 
   <p>
     <u>Files to Submit:</u>
-    <code>Problem8.java</code>, <code>Problem8Test.java</code>
+    <code>Problem9.java</code>, <code>Problem9Test.java</code>
   </p>
 </li>
 
@@ -297,19 +500,31 @@ compareFiles("Docs.txt", "Files.png")    => -1
 
   <p>
     <u>Files to Submit:</u>
-    <code>Problem9.java</code>, <code>Problem9Test.java</code>
+    <code>Problem10.java</code>, <code>Problem10Test.java</code>
   </p>
 </li>
 
 <li>
-  <p><i>(16 points)</i>
+  <p><i>(12 points)</i>
     The <em>definite integral</em> of a function \(f\), defined as \(\int_{a}^{b} f(x)\;\text{d}x\), produces the area under the curve of \(f\) on the interval \([a, b]\). The thing is, though, integrals are defined in terms of <em>Riemann summations</em>, which provide estimations on the area under a curve.
     Riemann sums approximate the area by creating rectangles of a fixed width \(\Delta\), as shown in Figure&nbsp;1 for an arbitrary function \(f\). Left-Riemann, right-Riemann, and midpoint-Riemann approximations define the focal point, i.e., the height, of the rectangle. Notice that, in Figure&nbsp;1, we use a midpoint-Riemann sum with \(\Delta = 0.2\), in which the collective sum of all the rectangle areas is the Riemann approximation. Your job is to use this idea to approximate the area of a circle.
   </p>
 
-<div class="figure">
+<!-- <div class="figure">
   <img src="../../../img/midpoint-riemann.png"
        alt="Figure 1: Midpoint-Riemann Approximation of a Function" />
+  <p class="caption">
+    Figure 1: Midpoint-Riemann Approximation of a Function
+  </p>
+</div> -->
+
+<div class="figure svg-figure">
+  <svg id="midpoint-riemann-svg"
+       viewBox="0 0 640 420"
+       role="img"
+       aria-label="Midpoint-Riemann approximation of a function">
+  </svg>
+
   <p class="caption">
     Figure 1: Midpoint-Riemann Approximation of a Function
   </p>
@@ -320,11 +535,15 @@ compareFiles("Docs.txt", "Files.png")    => -1
     Design the <code>double circleArea(double r, double delta)</code> method, which receives a radius \(r\) and a delta \(\Delta\). It computes (and returns) a <u><strong>left</strong></u>-Riemann approximation of the area of a circle. To solve this problem, compute the <u><strong>left</strong></u>-Riemann approximation of quadrant 1, and multiply the area by 4. We illustrate this in Figure&nbsp;2 where \(\Delta=0.5\) and its radius \(r=2\). <span style="color:red;">Further note that no calculus knowledge is necessary to solve this exercise.</span>
   </p>
 
-<div class="figure">
-  <img src="../../../img/right-riemann.png"
-       alt="Figure 2: Left-Riemann Approximation of a Function" />
+<div class="figure svg-figure">
+  <svg id="circle-riemann-svg"
+       viewBox="0 0 520 520"
+       role="img"
+       aria-label="Left-Riemann approximation of the first quadrant of a circle">
+  </svg>
+
   <p class="caption">
-    Figure 2: Left-Riemann Approximation of a Function
+    Figure 2: Left-Riemann Approximation of a Circle
   </p>
 </div>
 
@@ -332,7 +551,7 @@ compareFiles("Docs.txt", "Files.png")    => -1
 
   <p>
     <u>Files to Submit:</u>
-    <code>Problem10.java</code>, <code>Problem10Test.java</code>
+    <code>Problem11.java</code>, <code>Problem11Test.java</code>
   </p>
 </li>
 
@@ -343,4 +562,241 @@ compareFiles("Docs.txt", "Files.png")    => -1
 </div>
 
 </body>
+<script>
+  function svgEl(name, attrs = {}) {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", name);
+  for (const [k, v] of Object.entries(attrs)) {
+    el.setAttribute(k, v);
+  }
+  return el;
+}
+
+function addText(svg, text, x, y, cls = "svg-label", anchor = "middle") {
+  const t = svgEl("text", {
+    x,
+    y,
+    class: cls,
+    "text-anchor": anchor,
+    "dominant-baseline": "middle"
+  });
+  t.textContent = text;
+  svg.appendChild(t);
+  return t;
+}
+
+function addArrowMarker(svg) {
+  const defs = svgEl("defs");
+  const marker = svgEl("marker", {
+    id: svg.id + "-arrow",
+    viewBox: "0 0 10 10",
+    refX: "9",
+    refY: "5",
+    markerWidth: "6",
+    markerHeight: "6",
+    orient: "auto-start-reverse"
+  });
+
+  marker.appendChild(svgEl("path", {
+    d: "M 0 0 L 10 5 L 0 10 z",
+    fill: "black"
+  }));
+
+  defs.appendChild(marker);
+  svg.appendChild(defs);
+
+  return `url(#${svg.id}-arrow)`;
+}
+
+function drawMidpointRiemann() {
+  const svg = document.getElementById("midpoint-riemann-svg");
+  const arrow = addArrowMarker(svg);
+
+  const W = 640;
+  const H = 420;
+  const margin = { left: 70, right: 35, top: 25, bottom: 60 };
+
+  const xMin = 0;
+  const xMax = 2.5;
+  const yMin = 0;
+  const yMax = 4;
+
+  function sx(x) {
+    return margin.left + (x - xMin) / (xMax - xMin) * (W - margin.left - margin.right);
+  }
+
+  function sy(y) {
+    return H - margin.bottom - (y - yMin) / (yMax - yMin) * (H - margin.top - margin.bottom);
+  }
+
+  function f(x) {
+    return 2.08
+      + 0.15 * Math.sin(2.6 * Math.PI * x + 0.4)
+      + 1.38 * Math.exp(-Math.pow((x - 2.05) / 0.63, 2));
+  }
+
+  // Axes.
+  svg.appendChild(svgEl("line", {
+    x1: sx(0),
+    y1: sy(0),
+    x2: sx(2.5),
+    y2: sy(0),
+    class: "svg-axis",
+    "marker-end": arrow
+  }));
+
+  svg.appendChild(svgEl("line", {
+    x1: sx(0),
+    y1: sy(0),
+    x2: sx(0),
+    y2: sy(4),
+    class: "svg-axis",
+    "marker-end": arrow
+  }));
+
+  // Ticks and labels.
+  for (const x of [0.5, 1, 1.5, 2, 2.5]) {
+    svg.appendChild(svgEl("line", {
+      x1: sx(x),
+      y1: sy(0) - 5,
+      x2: sx(x),
+      y2: sy(0) + 5,
+      class: "svg-tick"
+    }));
+    addText(svg, String(x), sx(x), sy(0) + 28);
+  }
+
+  for (const y of [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]) {
+    svg.appendChild(svgEl("line", {
+      x1: sx(0) - 5,
+      y1: sy(y),
+      x2: sx(0) + 5,
+      y2: sy(y),
+      class: "svg-tick"
+    }));
+    addText(svg, String(y), sx(0) - 25, sy(y), "svg-label", "end");
+  }
+
+  addText(svg, "x", sx(1.35), H - 22, "svg-axis-label");
+  addText(svg, "y", 22, sy(2.25), "svg-axis-label");
+
+  // Midpoint rectangles.
+  const delta = 0.125;
+  for (let x = 0; x < 2.5 - 1e-9; x += delta) {
+    const mid = x + delta / 2;
+    const h = f(mid);
+
+    svg.appendChild(svgEl("rect", {
+      x: sx(x),
+      y: sy(h),
+      width: sx(x + delta) - sx(x),
+      height: sy(0) - sy(h),
+      class: "svg-bar"
+    }));
+  }
+
+  // Curve.
+  let d = "";
+  const steps = 180;
+  for (let i = 0; i <= steps; i++) {
+    const x = xMin + (xMax - xMin) * i / steps;
+    const y = f(x);
+    d += `${i === 0 ? "M" : "L"} ${sx(x)} ${sy(y)} `;
+  }
+
+  svg.appendChild(svgEl("path", {
+    d,
+    class: "svg-curve"
+  }));
+}
+
+function drawCircleRiemann() {
+  const svg = document.getElementById("circle-riemann-svg");
+  const arrow = addArrowMarker(svg);
+
+  const W = 520;
+  const H = 520;
+  const cx = W / 2;
+  const cy = H / 2;
+  const scale = 95;
+
+  function sx(x) {
+    return cx + x * scale;
+  }
+
+  function sy(y) {
+    return cy - y * scale;
+  }
+
+  function circleY(x) {
+    return Math.sqrt(4 - x * x);
+  }
+
+  // Axes.
+  svg.appendChild(svgEl("line", {
+    x1: sx(-2.5),
+    y1: sy(0),
+    x2: sx(2.5),
+    y2: sy(0),
+    class: "svg-axis",
+    "marker-end": arrow
+  }));
+
+  svg.appendChild(svgEl("line", {
+    x1: sx(0),
+    y1: sy(-2.3),
+    x2: sx(0),
+    y2: sy(2.45),
+    class: "svg-axis",
+    "marker-end": arrow
+  }));
+
+  // Ticks.
+  for (const x of [-2, -1, 1, 2]) {
+    svg.appendChild(svgEl("line", {
+      x1: sx(x),
+      y1: sy(0) - 7,
+      x2: sx(x),
+      y2: sy(0) + 7,
+      class: "svg-tick"
+    }));
+    addText(svg, String(x).replace("-", "−"), sx(x), sy(0) + 35);
+  }
+
+  for (const y of [-2, -1, 1, 2]) {
+    svg.appendChild(svgEl("line", {
+      x1: sx(0) - 7,
+      y1: sy(y),
+      x2: sx(0) + 7,
+      y2: sy(y),
+      class: "svg-tick"
+    }));
+    addText(svg, String(y).replace("-", "−"), sx(0) - 25, sy(y), "svg-label", "end");
+  }
+
+  // Left-Riemann rectangles on quadrant I, r = 2, delta = 0.5.
+  const delta = 0.5;
+  for (let x = 0; x < 2 - 1e-9; x += delta) {
+    const h = circleY(x);
+
+    svg.appendChild(svgEl("rect", {
+      x: sx(x),
+      y: sy(h),
+      width: delta * scale,
+      height: sy(0) - sy(h),
+      class: "svg-bar"
+    }));
+  }
+
+  // Circle.
+  svg.appendChild(svgEl("circle", {
+    cx,
+    cy,
+    r: 2 * scale,
+    class: "svg-curve"
+  }));
+}
+
+drawMidpointRiemann();
+drawCircleRiemann();
+</script>
 </html>

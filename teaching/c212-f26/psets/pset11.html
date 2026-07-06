@@ -97,103 +97,7 @@
       <div class="content problems">
         <h2>Problems</h2>
         <ol>
-          <!-- Problem 1 (BigInt). -->
-<li>
-  <p><i>(32 points)</i> In this series of problems, you will design a class and several methods that act on arbitrarily large or small <em>integers</em>, resembling the <code>BigInteger</code> class. You <em><strong>cannot</strong></em> use any methods from <code>BigInteger</code>, or the <code>BigInteger</code> class itself.
-  </p>
-  <p class="warning"><strong>Warning:</strong> This problem is complicated and takes some time to think through. It shouldn't be completed in one sitting! Remember to ask us for help if you get stuck, and to break it down into smaller pieces. We have provided you with a lot of helper methods to make your life easier, so make sure to use them! Most important: follow the directions!</p>
-<ol class="paren-alpha">
-    <li>
-      <p>Design the <code>BigInt</code> class, which has a constructor that receives a string. The <code>BigInt</code> class stores a <code>List&lt;Integer&gt;</code> as an instance variable, as well as a boolean for keeping track of whether it is negative. You will need to convert the given string into said list of digits. Store the digits in reverse order, i.e., the least-significant digit (the ones digit) of the number is the first element of the list. Leading zeroes should be omitted from the representation.</p>
-      <p>The possible values for the parameter are an optional sign (either positive <strong>or</strong> negative), followed by one or more digits.</p>
-
-      <p>Below are some example inputs.</p>
-
-      <pre><code>new BigInt("42")         =&gt; [2, 4], isNegative = false
-new BigInt("0420")       =&gt; [0, 2, 4], isNegative = false
-new BigInt("-42")        =&gt; [2, 4], isNegative = true
-new BigInt("0000420000") =&gt; [0, 0, 0, 0, 2, 4], isNegative = false
-new BigInt("+42")        =&gt; [2, 4], isNegative = false;</code></pre>
-    </li>
-
-    <p class="warning"><strong>Warning:</strong> One thing that a lot of students will do, showcasing a misunderstanding of the problem, is store the value as an integer after parsing it using <code>Integer.parseInt</code>. This will not work, and there is a very simple counterexample to show why.</p>
-
-    <li>
-      <p>Override the <code>equals</code> method to return whether <code>this</code> instance represents the same integer as the parameter. If <code>o</code> is not an instance of <code>BigInt</code>, return <code>false</code>.</p>
-
-      <pre><code>new BigInt("42").equals(new BigInt("42"))      =&gt; true
-new BigInt("00042").equals(new BigInt("0042")) =&gt; true
-new BigInt("+42").equals(new BigInt("42"))     =&gt; true
-new BigInt("42").equals(new BigInt("-42"))     =&gt; false
-new BigInt("-42").equals(new BigInt("42"))     =&gt; false
-new BigInt("422").equals(new BigInt("420"))    =&gt; false</code></pre>
-    </li>
-
-    <li>
-      <p>Override the <code>hashCode</code> method to return the hash code of the number. The hash code is defined as the hash code, using <code>Objects.hash</code> of its list of digits and the sign (i.e., whether it is positive or negative).</p>
-    </li>
-
-    <li>
-      <p>Override the <code>toString</code> method to return a stringified version of the number. Remember to include the negative sign where appropriate. If the number is positive, do not include a sign.</p>
-    </li>
-
-    <li>
-      <p>Implement the <code>Comparable&lt;BigInt&gt;</code> interface and override the method it provides, namely <code>public int compareTo(BigInt b2)</code>. Return the result of comparing <code>this</code> instance with the parameter. That is, if \(a &lt; b\), return \(-1\), if \(a &gt; b\), return \(1\), and otherwise return \(0\), where \(a\) is <code>this</code> and \(b\) is <code>b2</code>.</p>
-    </li>
-
-    <li>
-      <p>Design the <code>BigInt copy()</code> method, which returns a (deep)-copy of <code>this</code> instance representing the same integer. Do <em>not</em> simply copy the reference to the list of digits over to the new <code>BigInt</code> (this violates the aliasing principle that we have repeatedly discussed and can be the cause of relentless debugging).</p>
-    </li>
-
-    <li>
-      <p>Design the <code>BigInt negate()</code> method, which returns a copy of <code>this</code> instance of <code>BigInt</code>, but negated. Do <em>not</em> modify <code>this</code> instance.</p>
-    </li>
-
-    <li>
-      <p>Design the <code>private boolean areDifferentSigns(BigInt b)</code> method, which returns whether <code>this</code> instance and <code>b</code> have different signs. That is, if one is positive and one is negative, <code>areDifferentSigns</code> returns <code>true</code>, and false otherwise.</p>
-    </li>
-
-    <li>
-      <p>Design the <code>private BigInt addPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the sum of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative. We will use \(A \oplus B\) to symbolically represent this version of addition.</p>
-    </li>
-
-    <li>
-      <p>Design the <code>private BigInt subPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the difference of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative, and the minuend (the left-hand operand) is greater than or equal to the subtrahend (the right-hand operand). We will use \(A ∸ B\) to symbolically represent this version of subtraction.</p>
-    </li>
-
-    <li>
-      <p>Design the <code>private BigInt mulPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the product of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative.</p>
-    </li>
-
-    <li>
-      <p>Design the <code>BigInt add(BigInt b)</code> and <code>BigInt sub(BigInt b)</code> methods that returns the sum/difference of <code>this</code> and <code>b</code> respectively. Note that these methods should be a case analysis of the signs of the operands. Use the following equivalences to guide your design. Do <em>not</em> over-complicate these methods. Importantly, <code>sub</code> can be written in exactly one line!</p>
-
-      <p>\[
-      A - B = A + (-B)
-      \]</p>
-
-      <p>\[
-      (-A) + (-B) = -(A \oplus B).
-      \]</p>
-
-      <p>\[
-      A + (-B) = A ∸ B \text{ if } |A| \geq |B|. \text{ Otherwise, } -(B ∸ A).
-      \]</p>
-
-      <p>\[
-      (-A) + B = B + (-A).
-      \]</p>
-    </li>
-
-    <li>
-      <p>Design the <code>BigInt mul(BigInt b)</code> method, which returns the product of <code>this</code> and <code>b</code>. The product of two negative integers is a positive integer, and the product of exactly one positive and exactly one negative is a negative integer.</p>
-    </li>
-  </ol>
-    <u>Files to Submit:</u>
-    <code>BigInt.java</code>, <code>BigIntTest.java</code>
-  </p>
-</li>
-
+          
 
           <!-- Problem 2 (Streams). -->
 <li>
@@ -472,6 +376,153 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
     <code>ProgramNode.java</code>, <code>DefNode.java</code>, <code>FuncNode</code>, <code>ApplyNode.java</code>, <code>Environment.java</code>, <code>AsplTest.java</code>
   </p>
 </li>
+
+<!-- Bloom filter -->
+<!-- <li>
+<p>A <i>bloom filter</i> is a probabilistic set-based data structure. 
+  It supports two operations: <code>add(T t)</code> and <code>contains(T t)</code>. 
+  That is, we can add elements to a bloom filter and query for element existence. 
+  The difference between a bloom filter and other set-based data structures is that bloom filters can report false positives; if <code>contains(x)</code> returns true, the element may or may not be in the bloom filter. 
+  Conversely, it does <i>not</i> report false negatives; if <code>contains(x)</code> returns false, then <code>x</code> definitively does not exist in the bloom filter.</p>
+<p>
+  In this exercise, you will implement a simplified bloom filter, with opportunities for extra credit along the way.
+</p>
+<p>
+  The first thing we need is to explain how a bloom filter works. 
+  A bloom filter contains a "bit set,"" which is an array of bits (or 0s and 1s) to designate element presence. 
+</p>
+<p>
+  When an element \(e\) is added, we run \(e\) through \(k\) hash functions modulo the size of the bit set, producing \(k\) indices into the bit set. 
+  We then enable the bits at those indices, i.e., set them to 1. 
+</p>
+<p>
+  When we want to query a bloom filter for whether an element \(e\) exists, we once again run \(e\) through \(k\) hash functions modulo the size of the bit set. 
+  The difference here is that, if one of the hashed indices produces a 0, we immediately know that \(e\) is not in the bloom filter, because if it were, that bit would have been enabled.
+</p>
+<p>
+  Inherently, the larger the underlying bit set (and the more hash functions used), the fewer false positives.
+  Larger bit sets and more hash functions, however, are computationally expensive, both space and time-wise.
+</p>
+  <ol class="paren-alpha">
+    <li>
+      <p>Design the <code>BloomFilter</code> class, which has a constructor that receives an integer <code>size</code>. 
+        The constructor should initialize a boolean array of length <code>size</code>, which will be used to store the bits of the bloom filter. 
+        The constructor should also initialize two hash functions, which will be used to compute the indices of the boolean array for each element added to the bloom filter.
+      </p>
+    </li>
+
+    <li>
+      <p>Implement the <code>add(T t)</code> method, which adds an element to the bloom filter. 
+        This method should compute the indices of the boolean array using the two hash functions and set the corresponding bits to true.
+      </p>
+    </li>
+
+    <li>
+      <p>Implement the <code>contains(T t)</code> method, which checks if an element is in the bloom filter. 
+        This method should compute the indices of the boolean array using the two hash functions and check if both corresponding bits are true. 
+        If both bits are true, return true; otherwise, return false.
+      </p>
+    </li>
+
+</li> -->
+
+<!-- Problem 1 (BigInt). -->
+<li>
+  <p><i>(32 points)</i> In this series of problems, you will design a class and several methods that act on arbitrarily large or small <em>integers</em>, resembling the <code>BigInteger</code> class. You <em><strong>cannot</strong></em> use any methods from <code>BigInteger</code>, or the <code>BigInteger</code> class itself.
+  </p>
+  <p class="warning"><strong>Warning:</strong> This problem is complicated and takes some time to think through. It shouldn't be completed in one sitting! Remember to ask us for help if you get stuck, and to break it down into smaller pieces. We have provided you with a lot of helper methods to make your life easier, so make sure to use them! Most important: follow the directions!</p>
+<ol class="paren-alpha">
+    <li>
+      <p>Design the <code>BigInt</code> class, which has a constructor that receives a string. The <code>BigInt</code> class stores a <code>List&lt;Integer&gt;</code> as an instance variable, as well as a boolean for keeping track of whether it is negative. You will need to convert the given string into said list of digits. Store the digits in reverse order, i.e., the least-significant digit (the ones digit) of the number is the first element of the list. Leading zeroes should be omitted from the representation.</p>
+      <p>The possible values for the parameter are an optional sign (either positive <strong>or</strong> negative), followed by one or more digits.</p>
+
+      <p>Below are some example inputs.</p>
+
+      <pre><code>new BigInt("42")         =&gt; [2, 4], isNegative = false
+new BigInt("0420")       =&gt; [0, 2, 4], isNegative = false
+new BigInt("-42")        =&gt; [2, 4], isNegative = true
+new BigInt("0000420000") =&gt; [0, 0, 0, 0, 2, 4], isNegative = false
+new BigInt("+42")        =&gt; [2, 4], isNegative = false;</code></pre>
+    </li>
+
+    <p class="warning"><strong>Warning:</strong> One thing that a lot of students will do, showcasing a misunderstanding of the problem, is store the value as an integer after parsing it using <code>Integer.parseInt</code>. This will not work, and there is a very simple counterexample to show why.</p>
+
+    <li>
+      <p>Override the <code>equals</code> method to return whether <code>this</code> instance represents the same integer as the parameter. If <code>o</code> is not an instance of <code>BigInt</code>, return <code>false</code>.</p>
+
+      <pre><code>new BigInt("42").equals(new BigInt("42"))      =&gt; true
+new BigInt("00042").equals(new BigInt("0042")) =&gt; true
+new BigInt("+42").equals(new BigInt("42"))     =&gt; true
+new BigInt("42").equals(new BigInt("-42"))     =&gt; false
+new BigInt("-42").equals(new BigInt("42"))     =&gt; false
+new BigInt("422").equals(new BigInt("420"))    =&gt; false</code></pre>
+    </li>
+
+    <li>
+      <p>Override the <code>hashCode</code> method to return the hash code of the number. The hash code is defined as the hash code, using <code>Objects.hash</code> of its list of digits and the sign (i.e., whether it is positive or negative).</p>
+    </li>
+
+    <li>
+      <p>Override the <code>toString</code> method to return a stringified version of the number. Remember to include the negative sign where appropriate. If the number is positive, do not include a sign.</p>
+    </li>
+
+    <li>
+      <p>Implement the <code>Comparable&lt;BigInt&gt;</code> interface and override the method it provides, namely <code>public int compareTo(BigInt b2)</code>. Return the result of comparing <code>this</code> instance with the parameter. That is, if \(a &lt; b\), return \(-1\), if \(a &gt; b\), return \(1\), and otherwise return \(0\), where \(a\) is <code>this</code> and \(b\) is <code>b2</code>.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>BigInt copy()</code> method, which returns a (deep)-copy of <code>this</code> instance representing the same integer. Do <em>not</em> simply copy the reference to the list of digits over to the new <code>BigInt</code> (this violates the aliasing principle that we have repeatedly discussed and can be the cause of relentless debugging).</p>
+    </li>
+
+    <li>
+      <p>Design the <code>BigInt negate()</code> method, which returns a copy of <code>this</code> instance of <code>BigInt</code>, but negated. Do <em>not</em> modify <code>this</code> instance.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private boolean areDifferentSigns(BigInt b)</code> method, which returns whether <code>this</code> instance and <code>b</code> have different signs. That is, if one is positive and one is negative, <code>areDifferentSigns</code> returns <code>true</code>, and false otherwise.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private BigInt addPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the sum of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative. We will use \(A \oplus B\) to symbolically represent this version of addition.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private BigInt subPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the difference of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative, and the minuend (the left-hand operand) is greater than or equal to the subtrahend (the right-hand operand). We will use \(A ∸ B\) to symbolically represent this version of subtraction.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>private BigInt mulPositive(BigInt b)</code> method, which returns a <code>BigInt</code> instance that is the product of <code>this</code> and <code>b</code> under the assumption that <code>this</code> and <code>b</code> are non-negative.</p>
+    </li>
+
+    <li>
+      <p>Design the <code>BigInt add(BigInt b)</code> and <code>BigInt sub(BigInt b)</code> methods that returns the sum/difference of <code>this</code> and <code>b</code> respectively. Note that these methods should be a case analysis of the signs of the operands. Use the following equivalences to guide your design. Do <em>not</em> over-complicate these methods. Importantly, <code>sub</code> can be written in exactly one line!</p>
+
+      <p>\[
+      A - B = A + (-B)
+      \]</p>
+
+      <p>\[
+      (-A) + (-B) = -(A \oplus B).
+      \]</p>
+
+      <p>\[
+      A + (-B) = A ∸ B \text{ if } |A| \geq |B|. \text{ Otherwise, } -(B ∸ A).
+      \]</p>
+
+      <p>\[
+      (-A) + B = B + (-A).
+      \]</p>
+    </li>
+
+    <li>
+      <p>Design the <code>BigInt mul(BigInt b)</code> method, which returns the product of <code>this</code> and <code>b</code>. The product of two negative integers is a positive integer, and the product of exactly one positive and exactly one negative is a negative integer.</p>
+    </li>
+  </ol>
+    <u>Files to Submit:</u>
+    <code>BigInt.java</code>, <code>BigIntTest.java</code>
+  </p>
+</li>
+
 
         </ol>
       </div>

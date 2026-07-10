@@ -32,7 +32,7 @@
   </style>
 </head>
 
-<body class="under-development">
+<body>
 
 <div class="ribbon">
   <div class="content">
@@ -108,11 +108,7 @@
     <div class="content">
     <h2>Notes and Version Changes:</h2>
     
-    <p><b>Note 1 (01/28):</b> You <i>are</i> allowed to use methods from the <code>Character</code> and <code>Math</code> classes.</p>
-
-    <p><b>Note 2 (01/28):</b> Clarification on Problem 5a: when collecting parenthesized strings, do not include any delimiters between the collected strings.</p>
-
-    <p><b>Note 3 (01/28):</b> Removal of the tail recursive requirement from Problem 8. Fix to method name in autograder.</p>
+    <p><b>Note 1:</b> You <i>are</i> allowed to use methods from the <code>Character</code> and <code>Math</code> classes.</p>
 </div>
 </div>
 
@@ -130,7 +126,7 @@
       forwards (e.g., "racecar"). 
       
       </p>
-      <p><strong>Warning:</strong> Do not use a (character) array,
+      <p class="warning"><strong>Warning:</strong> Do not use a (character) array,
       <code>StringBuilder</code>, <code>StringBuffer</code>, or similar, to solve this problem. It
       <em>must</em> be naturally recursive.
     </p>
@@ -190,7 +186,7 @@
         </p>
       </li>
     </ol>
-    <p><i>Hint:</i> if you are getting stuck with the tail recursive version, refer back to the Fibonacci tail recursive method from the textbook!</p>
+    <p class="hint"><i>Hint:</i> If you are getting stuck with the tail recursive version, refer back to the Fibonacci tail recursive method from the textbook!</p>
   
     <p><u>Files to Submit:</u> <code>Problem3.java</code>, <code>Problem3Test.java</code></p>
   </li>
@@ -241,6 +237,7 @@
     <p>
       Assume there are no nested parentheses, all parentheses are balanced, and each parenthesized
       string contains at least one character.
+      When collecting strings, do not include any delimiters between the collected strings.
     </p>
 
     <ol type="a">

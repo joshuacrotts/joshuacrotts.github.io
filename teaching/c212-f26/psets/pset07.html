@@ -32,7 +32,7 @@
   </style>
 </head>
 
-<body class="under-development">
+<body>
 
 <div class="ribbon">
   <div class="content">
@@ -155,8 +155,11 @@ peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
     \(s\) and a <code>char</code> delimiter \(d\), returns an <code>ArrayList</code> of tokens split at
     the delimiter.
   </p>
+  <p>Delimiters can be <i>escaped</i> with the backslash character. For example, if the delimiter is a comma (<code>','</code>), then the string 
+      <code>"Hello\,world,how,are,you"</code> should be tokenized into <code>["Hello,world", "how", "are", "you"]</code>.</p>
   <p>You may assume that delimiters are not side-by-side, that there is at least one delimiter in the
     string, and it is neither at the beginning nor the end of the string.</p>
+    
 
 <p class="warning"><strong>Warning 1:</strong> For this problem, you must parse the input by hand; you <strong>cannot</strong> call any <code>String</code>
     methods (except <code>.length</code> and <code>.charAt</code>).

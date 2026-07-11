@@ -26,7 +26,7 @@
       }
     </style>
   </head>
-  <body class="under-development">
+  <body>
     <div class="ribbon">
       <div class="content">
         <h2>Problem Set 8 - Generics and Streams</h2>
@@ -172,30 +172,45 @@ interleave(List.of("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
           <!-- Problem 5. -->
           <li>
             <p><i>(8 points)</i>
-              Design the <code>boolean containsHigh(List&lt;List&lt;Integer&gt;&gt; lop)</code> method that, when given a list of lists of two-element values representing \( x, y \) coordinate pairs, returns whether or not any of the \( y \)-coordinates are greater than \( 450 \). <strong>You must use only the Stream API.</strong>
+              Design the <code>boolean containsHigh(List&lt;List&lt;Integer&gt;&gt; lop)</code> method that, when given a list of lists of two-element values representing \( x, y \) coordinate pairs, returns whether or not any of the \( y \)-coordinates are greater than \( 450 \).
+            </p>
+                        <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
             </p>
             <p>
               <u>Files to Submit:</u>
               <code>Problem5.java</code>, <code>Problem5Test.java</code>
+            </p>
           </li>
           <li>
             <p><i>(8 points)</i>
-              Design the <code>List&lt;Integer&gt; sqAddFiveOmit(List&lt;Integer&gt; lon)</code> that receives a list of numbers, returns a list of those numbers squared and adds five to the result, omitting any of the resulting numbers that end in \( 5 \) or \( 6 \). <strong>You must use only the Stream API.</strong>
+              Design the <code>List&lt;Integer&gt; sqAddFiveOmit(List&lt;Integer&gt; lon)</code> that receives a list of numbers, returns a list of those numbers squared and adds five to the result, omitting any of the resulting numbers that end in \( 6 \) or \( 7 \). 
             </p>
+            <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
+            </p>
+            <p class="note"><i>Note:</i> Let's see how long this joke lasts...</p>
             <p>
               <u>Files to Submit:</u>
               <code>Problem6.java</code>, <code>Problem6Test.java</code>
+            </p>
           </li>
           <li>
             <p><i>(8 points)</i>
-              Design the <code>List&lt;String&gt; removeLonger(List&lt;String&gt; los, int n)</code> method that receives a list of strings, and removes all strings that contain more characters than a given integer \( n \geq 0\). Return this result as a list. <strong>You must use only the Stream API.</strong>
+              Design the <code>List&lt;String&gt; removeLonger(List&lt;String&gt; los, int n)</code> method that receives a list of strings, and removes all strings that contain more characters than a given integer \( n \geq 0\). Return this result as a list.
+            </p>
+            <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
             </p>
             <u>Files to Submit:</u>
             <code>Problem7.java</code>, <code>Problem7Test.java</code>
           </li>
           <li>
             <p><i>(8 points)</i>
-              Design the <code>int filterSumChars(String s)</code> method that, when given a string \( s \), removes all non-alphanumeric characters, converts all letters to uppercase, and computes the sum of the ASCII values of the letters. Digits should also be added, but use the digit itself and not its ASCII value. <strong>You must use only the Stream API.</strong>
+              Design the <code>int filterSumChars(String s)</code> method that, when given a string \( s \), removes all non-alphanumeric characters, converts all letters to uppercase, and computes the sum of the ASCII values of the letters. Digits should also be added, but use the digit itself and not its ASCII value.
+            </p>
+                        <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
             </p>
             <p>
               <u>Files to Submit:</u>
@@ -207,7 +222,9 @@ interleave(List.of("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
               Design the <code>int productOdds(int n)</code> method that returns the product of all of the odd integers from \( 1 \) to \( n \), inclusive.
               Assume \( n \geq 1 \).
               You should use an <code>IntStream</code> to generate the appropriate range.
-              <strong>You must use only the Stream API.</strong>
+            </p>
+                        <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
             </p>
             <p>
               <u>Files to Submit:</u>
@@ -217,7 +234,9 @@ interleave(List.of("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
           <li>
             <p><i>(8 points)</i>
               Design the <code>int keyLength(Map&lt;String, Set&lt;String&gt;&gt; M, int n)</code> that, when given a map \( M \) of strings to sets of strings and a length \( n \), returns the total length of the keys that map to a set of size at most \( n \). 
-              <strong>You must use only the Stream API.</strong>
+            </p>
+                        <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
             </p>
             <p>
               <u>Files to Submit:</u>

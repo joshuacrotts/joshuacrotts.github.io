@@ -145,12 +145,12 @@ peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
   <p>
     <u>Files to Submit:</u>
     <code>Problem1.java</code>, <code>Problem1Test.java</code>
+  </p>
 </li>
-  </li>
 
   <!-- Problem 2. -->
    <li>
-  <p><i>(16 points)</i>
+  <p><i>(14 points)</i>
     Design the <code>List&lt;String&gt; tokenize(String s, char d)</code> method that, when given a string
     \(s\) and a <code>char</code> delimiter \(d\), returns an <code>ArrayList</code> of tokens split at
     the delimiter.
@@ -167,17 +167,18 @@ peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
     <p class="warning"><strong>Warning 2:</strong> You also cannot use methods that do the "heavy lifting" for you, e.g., <code>String.split</code>, <code>StringTokenizer</code>, or regular expressions.</p>
 
   <p class="note">
-    <i>Note:</i> Because of the above criteria, we guarantee that the length of the input string is at least 3.</p>
+    <i>Note:</i> Because of the above criteria, we guarantee that the length of the input string is at least 3.
   </p>
 
   <p>
     <u>Files to Submit:</u>
     <code>Problem2.java</code>, <code>Problem2Test.java</code>
+  </p>
 </li>
 
   <!-- Problem 3. -->
 <li>
-  <p><i>(16 points)</i>
+  <p><i>(12 points)</i>
     Design the <code>Map&lt;String, Integer&gt; wordCount(String s)</code> method that, when given a string \(s\),
     counts the number of words in the list, then stores the resulting frequencies in a
     <code>HashMap&lt;String, Integer&gt;</code>.</p>
@@ -214,11 +215,12 @@ wordCount(s) =&gt; [&lt;"hello" : 1&gt;, &lt;"world" : 3&gt;, &lt;"the" : 2&gt;
   <p>
     <u>Files to Submit:</u>
     <code>Problem3.java</code>, <code>Problem3Test.java</code>
+  </p>
 </li>
 
    <!-- Problem 4. -->
 <li>
-  <p><i>(16 points)</i>
+  <p><i>(14 points)</i>
     Design the <code>double postfixEvaluator(List&lt;String&gt; l)</code> method that, when given a list of binary
     operators and numeric operands represents as strings, returns the result of evaluating the postfix-notation
     expression.
@@ -248,7 +250,7 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
 
    <!-- Problem 5. -->
 <li>
-  <p><i>(12 points)</i>
+  <p><i>(10 points)</i>
     The <em>substitution cipher</em> is a text cipher that encodes an alphabet string \(A\)
     (also called the <em>plain-text alphabet</em>) with a key string \(K\)
     (also called the <em>cipher-text alphabet</em>). The \(A\) string is defined as
@@ -270,11 +272,12 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
   <p>
     <u>Files to Submit:</u>
     <code>Problem5.java</code>, <code>Problem5Test.java</code>
+  </p>
 </li>
 
 
 <li>
-  <p><i>(16 points)</i>
+  <p><i>(14 points)</i>
     Design the <code>List&lt;List&lt;String&gt;&gt; lex(String e)</code> method that, when given an expression written
     in prefix fashion, returns a list of <em>tokens</em> and their identifiers.
   </p>
@@ -320,10 +323,54 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
   <p>
      <u>Files to Submit:</u>
     <code>Problem6.java</code>, <code>Problem6Test.java</code>
+  </p>
 </li>
 
 <li>
   <p><i>(14 points)</i>
+<em>String interpolation</em> is a mechanism provided by many programming languages, allowing the programmer to embed variables and expressions within a string without the headache of endless concatenations. For example, Python provides <em>f-strings</em>, or format strings, which look like:
+  </p>
+
+  <pre>
+x = 6
+y = 7
+str = f"{x} + {y} is {x + y}!"
+  </pre>
+
+  <p>
+In which the resulting value of <code>str</code> is <code>"6 + 7 is 13!"</code>. 
+In this exercise, you will implement a simplified version of string interpolation, only permitting variables in the string. 
+Our format indicators will be preceded by a dollar sign and similarly enclosed by braces rather than a stray <code>f</code> character. 
+For example, if we define <code>name</code> as <code>"Joshua"</code>, we can create a format string as <code>"Hello ${name}, how are you today?"</code>, which resolves to <code>"Hello Joshua, how are you today?"</code>.
+  </p>
+
+  <p>
+  Design the <code>List&lt;String> stringInterpolate(Map&lt;String, String&gt; M, List&lt;String&gt; los)</code> method, which receives a map of identifiers to values and a list of strings. 
+  Return a new list after applying the string interpolation operation to each string in the list. 
+  Assume that each format indicator has a string with a valid pairing in \(M\). 
+  We can encode the earlier example as a test case:
+  </p>
+
+  <pre>
+stringInterpolate(Map.of("name", "Joshua"), List.of("Hello ${name}, how are you today?")) =>
+  "Hello Joshua, how are you today?"
+  </pre>
+  <p class="warning"><strong>Warning:</strong> Like in Problems 2, 3, and 6, you are not allowed to use built-in mechanisms for splitting your string.</p>
+  <p class="note">
+    <i>Note:</i> By the restrictions of this problem, you may observe that the user cannot embed the characters <code>"${"</code> or <code>"}"</code> in their strings, as they are reserved for format indicators.
+    In "real" programming languages, these are preserved by escaping them with a backslash, like you did in Problem 2.
+    <br/>
+    <br/>
+    To be clear, you do not need to handle escaping the characters <code>"${"</code> or <code>"}"</code> in this problem.
+  </p>
+  <p>
+    <u>Files to Submit:</u>
+    <code>Problem7.java</code>, <code>Problem7Test.java</code>
+  </p>
+</li>
+
+<li>
+  <p><i>(12 points)</i>
     Design the <code>Set&lt;List&lt;Integer&gt;&gt; selectPairs(int[] A, int t)</code> method that, when given an array
     of integers \(A\) and a target \(t\), returns all possible pairs of numbers in \(A\) that sum to \(t\). For example,
     if \(A=\{2, 2, 4, 10, 6, -2\}\) and \(t=4\), we return a set containing two two-element lists: \(\{2, 2\}\) and
@@ -379,7 +426,8 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
   </ul>
   <p>
      <u>Files to Submit:</u>
-    <code>Problem7.java</code>, <code>Problem7Test.java</code>
+    <code>Problem8.java</code>, <code>Problem8Test.java</code>
+  </p>
 </li>
 
 <li>
@@ -607,7 +655,6 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
     We reserve the right to question the validity of your solution to this problem, and we will only give you credit if we are convinced that you wrote your own solution. (Therefore, don't ChatGPT the solution and expect to get away with it!)
   </li>
 
-</ol>
   </ol>
 
   </div>

@@ -120,10 +120,10 @@ framework.</li>
     Joe the mountain climber has come across a large mountain range. He wants to climb only the tallest
     mountains in the range. Design the <code>int[] peakFinder(int[] H)</code> method that returns an
     array \(H'\) of all the peaks in an <code>int[]</code> of mountain heights \(H\). A peak \(p\) is
-    defined as an element of \(h\) at index \(i\) such that \(p[i - 1] &lt; p[i]\) and
+    defined as an element of \(H\) at index \(i\) such that \(p[i - 1] &lt; p[i]\) and
     \(p[i] &gt; p[i + 1]\). If \(i = 0\) or \(i = |H| - 1\), Joe will not climb \(p[i]\). Joe doesn't
     want to climb a mountain of the same height more than once, so you should not add any peaks that
-    have already been added to \(H'\). We present some test cases below.
+    have already been added to \(H'\). The peaks should be returned in the order they appear in \(H\). We present some test cases below.
   </p>
 
   <pre>
@@ -180,7 +180,7 @@ peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
 <li>
   <p><i>(12 points)</i>
     Design the <code>Map&lt;String, Integer&gt; wordCount(String s)</code> method that, when given a string \(s\),
-    counts the number of words in the list, then stores the resulting frequencies in a
+    counts the occurrences of each word in the string, then stores the resulting frequencies in a
     <code>HashMap&lt;String, Integer&gt;</code>.</p>
     
     <p>Assume that \(s\) is not cleaned. That is, you should first
@@ -239,7 +239,7 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
     into steps. First, write a method that determines if a given string is one of the four binary operators:
     <code>"+"</code>, <code>"-"</code>, <code>"*"</code>, or <code>"/"</code>. You may assume that any inputs that
     are not binary operators are operands, i.e., numbers. Then, write a method that applies a given binary operator
-    to a list of operands, i.e., an <code>ArrayList&lt;Double&gt;</code>.</p>
+    to a collection of operands.</p>
   <p class="hint"><i>Hint 2:</i> What particular data structure would be helpful in solving this problem?</p>
 
   <p>
@@ -286,8 +286,8 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
     The <code>lex</code> method returns a list of two-element lists. The first is the “tag” of the token, and the
     second is the token itself. Tokens in this language are <code>"L_PAREN"</code>, <code>"R_PAREN"</code>,
     <code>"NUMBER"</code>, and <code>"SYMBOL"</code>. Left and right parentheses are straightforward, as are numbers
-    (you may assume that all numbers are positive integers). Anything else should be regarded as a symbol. Note that
-    symbols are to be considered space-separated, e.g., <code>"HELLO"</code> is one <code>"SYMBOL"</code>; not five.
+    (you may assume that all numbers are non-negative integers). Anything else should be regarded as a symbol. 
+    Note that symbols are to be considered space-separated, e.g., <code>"HELLO"</code> is one <code>"SYMBOL"</code>; not five.
     <!-- Whitespaces are ignored. -->
   </p>
 
@@ -304,14 +304,14 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
  ["NUMBER", "43"],
  ["NUMBER", "5"],
  ["R_PAREN", ")"],
- ["NUMBER", "42"]
+ ["NUMBER", "42"],
  ["R_PAREN", ")"]
 ]
   </pre>
 
   <p class="warning"><strong>Warning:</strong> Like in Problems 2 and 3, you are not allowed to use built-in mechanisms for splitting your string.</p>
 
-<p class="note"><i>Note:</i> In some contexts, this method could <em>also</em> be called “tokenize,” but that method name has a particular meaning with respect to the problem set.</p>
+<p class="note"><i>Note:</i> In some contexts, this method could <em>also</em> be called "tokenize," but that method name has a particular meaning with respect to the problem set.</p>
 
   <p class="hint"><i>Hint 1:</i> You <i>are</i> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem6</code> file or call it directly.</p>
 
@@ -345,7 +345,7 @@ For example, if we define <code>name</code> as <code>"Joshua"</code>, we can cre
   </p>
 
   <p>
-  Design the <code>List&lt;String> stringInterpolate(Map&lt;String, String&gt; M, List&lt;String&gt; los)</code> method, which receives a map of identifiers to values and a list of strings. 
+  Design the <code>List&lt;String&gt; stringInterpolate(Map&lt;String, String&gt; M, List&lt;String&gt; los)</code> method, which receives a map of identifiers to values and a list of strings. 
   Return a new list after applying the string interpolation operation to each string in the list. 
   Assume that each format indicator has a string with a valid pairing in \(M\). 
   We can encode the earlier example as a test case:
@@ -353,7 +353,7 @@ For example, if we define <code>name</code> as <code>"Joshua"</code>, we can cre
 
   <pre>
 stringInterpolate(Map.of("name", "Joshua"), List.of("Hello ${name}, how are you today?")) =>
-  "Hello Joshua, how are you today?"
+  List.of("Hello Joshua, how are you today?")
   </pre>
   <p class="warning"><strong>Warning:</strong> Like in Problems 2, 3, and 6, you are not allowed to use built-in mechanisms for splitting your string.</p>
   <p class="note">
@@ -374,15 +374,15 @@ stringInterpolate(Map.of("name", "Joshua"), List.of("Hello ${name}, how are you 
     Design the <code>Set&lt;List&lt;Integer&gt;&gt; selectPairs(int[] A, int t)</code> method that, when given an array
     of integers \(A\) and a target \(t\), returns all possible pairs of numbers in \(A\) that sum to \(t\). For example,
     if \(A=\{2, 2, 4, 10, 6, -2\}\) and \(t=4\), we return a set containing two two-element lists: \(\{2, 2\}\) and
-    \(\{6, -2\}\). Do not add a pair that already exists in the set or a pair that, by reversing the pair, we get a pair
-    in the existing set. E.g., \(\{-2, 6\}\) should not be added to the set.
+    \(\{-2, 6\}\).
+    Store the smaller number in the first index of the two-element list, and the larger number in the second index.
   </p>
 
   <p>
     There is a simple brute-force algorithm to solve this problem via two loops, but by incorporating a second set for
     lookups, we can do much better: for every number \(n\) in \(A\), add \(n\) to a set \(S\), and if \(t-n=m\) for
     some \(m\in S\), then we know that \(m+n\) must equal \(t\), therefore we add \(\{n, m\}\) to the resulting set of
-    integer arrays.
+    integer lists.
     Walking through this with the example from before, we get the following sequence of actions:
   </p>
 
@@ -394,7 +394,7 @@ stringInterpolate(Map.of("name", "Joshua"), List.of("Hello ${name}, how are you 
     </li>
     <li>
       <p>
-        We add \(2\) to \(S\). \(S=\{2\}\).
+        We add \(2\) to \(S\). So, \(S=\{2\}\).
       </p>
     </li>
     <li>
@@ -490,7 +490,7 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
   </p>
 </li>
 
-
+<template>
   <li>
 <p><strong>Extra Credit (10 points)</strong>
   Reversi is a “pebble-based,” grid-style, turn-based, two-player game where the goal is to have as many pebbles of your color on the board as possible. If you're unfamiliar with the game,
@@ -656,6 +656,7 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
   </li>
 
   </ol>
+</template>
 
   </div>
 </div>

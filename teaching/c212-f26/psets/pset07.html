@@ -121,9 +121,8 @@ framework.</li>
     mountains in the range. Design the <code>int[] peakFinder(int[] H)</code> method that returns an
     array \(H'\) of all the peaks in an <code>int[]</code> of mountain heights \(H\). A peak \(p\) is
     defined as an element of \(H\) at index \(i\) such that \(p[i - 1] &lt; p[i]\) and
-    \(p[i] &gt; p[i + 1]\). If \(i = 0\) or \(i = |H| - 1\), Joe will not climb \(p[i]\). Joe doesn't
-    want to climb a mountain of the same height more than once, so you should not add any peaks that
-    have already been added to \(H'\). The peaks should be returned in the order they appear in \(H\). We present some test cases below.
+    \(p[i] &gt; p[i + 1]\). Joe will not climb \(p[i]\) if \(i = 0\) or \(i = |H| - 1\). 
+    Joe doesn't want to climb a mountain of the same height more than once, so you should not add any peaks that have already been added to \(H'\). The peaks should be returned in the order they appear in \(H\). We present some test cases below.
   </p>
 
   <pre>
@@ -156,7 +155,7 @@ peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
     the delimiter.
   </p>
   <p>Delimiters can be <i>escaped</i> with the backslash character. For example, if the delimiter is a comma (<code>','</code>), then the string 
-      <code>"Hello\,world,how,are,you"</code> should be tokenized into <code>["Hello,world", "how", "are", "you"]</code>.</p>
+      <code>"Hello\\,world,how,are,you"</code> should be tokenized into <code>["Hello,world", "how", "are", "you"]</code>.</p>
   <p>You may assume that delimiters are not side-by-side, that there is at least one delimiter in the
     string, and it is neither at the beginning nor the end of the string.</p>
     
@@ -208,7 +207,7 @@ wordCount(s) =&gt; [&lt;"hello" : 1&gt;, &lt;"world" : 3&gt;, &lt;"the" : 2&gt;
   <p class="warning"><strong>Warning:</strong> Like in Problem 2, you are not allowed to use built-in mechanisms for splitting your string.</p>
 
   <p class="note"><i>Note:</i> Only the punctuation listed above should be filtered out.
-    Do not use a blanket ``punctuation'' filter.</p>
+    Do not use a blanket "punctuation" filter.</p>
 
   <p class="hint"><i>Hint:</i> You <i>are</i> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem3</code> file or call it directly.</p>
 

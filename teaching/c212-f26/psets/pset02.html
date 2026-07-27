@@ -29,6 +29,20 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+  .truth-table-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.truth-table {
+  flex: 0 0 auto;
+}
+
   </style>
 </head>
 
@@ -122,6 +136,12 @@
       <code>X</code>.
     </p>
 
+    <p class="note">
+      <i>Note:</i>
+      Remember the precondition of this method; we will always provide a valid email address of the form <code>X@Y.Z</code>.
+      Therefore, you should assume this when writing your tests and, importantly, <em>not</em> test inputs that don't obey the precondition!
+    </p>
+
     <p><u>Files to Submit:</u> <code>Problem1.java</code>, <code>Problem1Test.java</code></p>
   </li>
 
@@ -162,10 +182,10 @@
   <li>
     <p>
       In propositional logic, there are several <em>connectives</em> that act on boolean truth values.
-      These include logical conjunction \(\land\), disjunction \(\lor\), conditional \(\to\),
-      biconditional \(\leftrightarrow\), and negation \(\lnot\). We can represent <em>schemata</em> as
+      These include logical conjunction \(\land\), disjunction \(\lor\), conditional \(\supset\),
+      biconditional \(\equiv\), negation \(\lnot\), exclusive or \(\oplus\), as well as the <i>functionally complete</i> operator NAND \(\uparrow\). We can represent <em>schemata</em> as
       a series of composed method calls. For example, an evaluation of
-      \(P \to \lnot (Q \leftrightarrow \lnot R)\) are assigned to <code>false</code> and \(\texttt{Q}\) is
+      \(P \supset \lnot (Q \equiv \lnot R)\) are assigned to <code>false</code> and \(\texttt{Q}\) is
       assigned to <code>true</code>, is equivalent to:
     </p>
 
@@ -176,74 +196,115 @@ static final boolean c = false;
 cond(a, not(bicond(b, not(c))))</pre>
 
     <p>
-      The presented schema resolves to <code>true</code>. Design methods for the five connectives
+      The presented schema resolves to <code>true</code>. Design methods for the seven connectives
       according to the following truth tables. These methods should be called <code>cond</code>,
-      <code>bicond</code>, <code>and</code>, <code>or</code>, and <code>not</code>. Assume that
+      <code>bicond</code>, <code>and</code>, <code>or</code>, <code>xor</code>, <code>nand</code>, and <code>not</code>. Assume that
       \(\mathrm{T}\) is <code>true</code> and \(\mathrm{F}\) is <code>false</code>.
     </p>
 
- <!-- Negation: its own row -->
-<p>
-\[
-\begin{array}{c|c}
-P & \lnot P \\
-\hline
-\mathrm{T} & \mathrm{F} \\
-\mathrm{F} & \mathrm{T}
-\end{array}
-\]
+<div class="truth-table-row"> <div class="truth-table"> \[ \begin{array}{c|c} P & \lnot P \\ \hline \mathrm{T} & \mathrm{F} \\ \mathrm{F} & \mathrm{T} \end{array} \] </div> </div>
+
+<div class="truth-table-row">
+  <div class="truth-table">
+    \[
+    \begin{array}{cc|c}
+    P & Q & P \land Q \\
+    \hline
+    \mathrm{T} & \mathrm{T} & \mathrm{T} \\
+    \mathrm{T} & \mathrm{F} & \mathrm{F} \\
+    \mathrm{F} & \mathrm{T} & \mathrm{F} \\
+    \mathrm{F} & \mathrm{F} & \mathrm{F}
+    \end{array}
+    \]
+  </div>
+
+  <div class="truth-table">
+    \[
+    \begin{array}{cc|c}
+    P & Q & P \lor Q \\
+    \hline
+    \mathrm{T} & \mathrm{T} & \mathrm{T} \\
+    \mathrm{T} & \mathrm{F} & \mathrm{T} \\
+    \mathrm{F} & \mathrm{T} & \mathrm{T} \\
+    \mathrm{F} & \mathrm{F} & \mathrm{F}
+    \end{array}
+    \]
+  </div>
+
+  <div class="truth-table">
+    \[
+    \begin{array}{cc|c}
+    P & Q & P \oplus Q \\
+    \hline
+    \mathrm{T} & \mathrm{T} & \mathrm{F} \\
+    \mathrm{T} & \mathrm{F} & \mathrm{T} \\
+    \mathrm{F} & \mathrm{T} & \mathrm{T} \\
+    \mathrm{F} & \mathrm{F} & \mathrm{F}
+    \end{array}
+    \]
+  </div>
+</div>
+
+<div class="truth-table-row">
+  <div class="truth-table">
+    \[
+    \begin{array}{cc|c}
+    P & Q & P \supset Q \\
+    \hline
+    \mathrm{T} & \mathrm{T} & \mathrm{T} \\
+    \mathrm{T} & \mathrm{F} & \mathrm{F} \\
+    \mathrm{F} & \mathrm{T} & \mathrm{T} \\
+    \mathrm{F} & \mathrm{F} & \mathrm{T}
+    \end{array}
+    \]
+  </div>
+
+  <div class="truth-table">
+    \[
+    \begin{array}{cc|c}
+    P & Q & P \equiv Q \\
+    \hline
+    \mathrm{T} & \mathrm{T} & \mathrm{T} \\
+    \mathrm{T} & \mathrm{F} & \mathrm{F} \\
+    \mathrm{F} & \mathrm{T} & \mathrm{F} \\
+    \mathrm{F} & \mathrm{F} & \mathrm{T}
+    \end{array}
+    \]
+  </div>
+
+  <div class="truth-table">
+    \[
+    \begin{array}{cc|c}
+    P & Q & P \uparrow Q \\
+    \hline
+    \mathrm{T} & \mathrm{T} & \mathrm{F} \\
+    \mathrm{T} & \mathrm{F} & \mathrm{T} \\
+    \mathrm{F} & \mathrm{T} & \mathrm{T} \\
+    \mathrm{F} & \mathrm{F} & \mathrm{T}
+    \end{array}
+    \]
+  </div>
+</div>
+
+
+
+<p class="warning">
+  <strong>Warning:</strong>
+  A lot of students conflate the use of <i>metavariables</i>, e.g., \(P\) and \(Q\), with the use of <i>variables</i>, e.g., <code>a</code>, <code>b</code>, and <code>c</code>.
+  We use metavariables in the truth tables to represent <i>arbitrary</i> boolean value, but the variables in the code are <i>specific</i> boolean values.
+  To be specific, asking "what is the value of \(P \supset Q\)?" is meaningless, but asking "what is the value of <code>and(a, b)</code>?" is meaningful.
 </p>
 
-<!-- Others: rows of 2, spaced out -->
-<p>
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{cc|c}
-P & Q & P \land Q \\
-\hline
-\mathrm{T} & \mathrm{T} & \mathrm{T} \\
-\mathrm{T} & \mathrm{F} & \mathrm{F} \\
-\mathrm{F} & \mathrm{T} & \mathrm{F} \\
-\mathrm{F} & \mathrm{F} & \mathrm{F}
-\end{array}
-&
-\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
-\begin{array}{cc|c}
-P & Q & P \lor Q \\
-\hline
-\mathrm{T} & \mathrm{T} & \mathrm{T} \\
-\mathrm{T} & \mathrm{F} & \mathrm{T} \\
-\mathrm{F} & \mathrm{T} & \mathrm{T} \\
-\mathrm{F} & \mathrm{F} & \mathrm{F}
-\end{array}
-\end{array}
-\]
+<p class="hint">
+  <i>Hint:</i>
+  Don't overcomplicate this method!
 </p>
 
-<p>
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{cc|c}
-P & Q & P \to Q \\
-\hline
-\mathrm{T} & \mathrm{T} & \mathrm{T} \\
-\mathrm{T} & \mathrm{F} & \mathrm{F} \\
-\mathrm{F} & \mathrm{T} & \mathrm{T} \\
-\mathrm{F} & \mathrm{F} & \mathrm{T}
-\end{array}
-&
-\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
-\begin{array}{cc|c}
-P & Q & P \leftrightarrow Q \\
-\hline
-\mathrm{T} & \mathrm{T} & \mathrm{T} \\
-\mathrm{T} & \mathrm{F} & \mathrm{F} \\
-\mathrm{F} & \mathrm{T} & \mathrm{F} \\
-\mathrm{F} & \mathrm{F} & \mathrm{T}
-\end{array}
-\end{array}
-\]
+<p class="note">
+  <i>Note:</i>
+  A <i>functionally complete</i> operator, which you'll learn about in CSCI-C 241, is one that can be used to express all other operators. For example, the NAND operator can be used to express AND, OR, NOT, and so on.
 </p>
+
 <p><u>Files to Submit:</u> <code>Problem5.java</code>, <code>Problem5Test.java</code></p>
   </li>
 
@@ -266,9 +327,7 @@ P & Q & P \leftrightarrow Q \\
       of small bars \(s\), large bars \(l\), and maximum weight \(w\), determines the number of small
       candy bars he can fit in the box. Large bars weigh five kilograms, and small bars weigh one
       kilogram. Note that Carlo always tries to fit large candies first before small. Return
-      <code>-1</code> if it is impossible to fill the box with the given criteria. Below are some
-      test examples. You cannot use loops, recursion, or data structures to solve this problem. Hint:
-      consider this as an analysis of three cases.
+      <code>-1</code> if it is impossible to fill the box with the given criteria. Below are some test examples. 
     </p>
     <pre>fitCandy(4, 1, 9)      =&gt; 4
 fitCandy(4, 1, 4)      =&gt; 4
@@ -277,6 +336,16 @@ fitCandy(6, 1, 13)     =&gt; -1
 fitCandy(60, 100, 550) =&gt; 50
 fitCandy(7, 1, 12)     =&gt; 7
 fitCandy(7, 1, 13)     =&gt; -1</pre>
+
+<p class="warning">
+  <strong>Warning:</strong>
+  You cannot use loops, recursion, or data structures to solve this problem.
+</p>
+
+<p class="hint">
+  <i>Hint:</i>
+  Consider this as an analysis of three cases.
+</p>
 
 <p><u>Files to Submit:</u> <code>Problem7.java</code>, <code>Problem7Test.java</code></p>
   </li>
@@ -294,15 +363,9 @@ fitCandy(7, 1, 13)     =&gt; -1</pre>
     <p>Below the examples is a helper method, <code>isNumeric</code>, which returns whether or not a
       string is "numeric," i.e., if the string represents an integer. 
       Understanding <em>how</em> this helper method works is unimportant for the
-      time being. You <textit>will</textit> need to use <code>Integer.parseInt</code>,
-      <code>substring</code>, and <code>indexOf</code>.
+      time being.
     </p>
 
-    <p class="warning">
-      <strong>Warning:</strong> Again, you <strong>cannot</strong> use, e.g., arrays, loops, or regular
-      expressions to solve this problem, and if you do, you will receive a 0 on the entire problem
-      set.
-    </p>
 
     <pre>isValidIpv4("192.168.1.244")    =&gt; true
 isValidIpv4("149.165.192.52")   =&gt; true
@@ -326,6 +389,22 @@ static boolean isNumeric(String n) {
     return false;
   }
 }</code></pre>
+
+
+    <p class="warning">
+      <strong>Warning:</strong> Again, you <strong>cannot</strong> use, e.g., arrays, loops, or regular
+      expressions to solve this problem, and if you do, you will receive a 0 on the entire problem
+      set.
+    </p>
+
+    <p class="hint">
+      <i>Hint 1:</i> think of this as a series of steps, asking relevant questions along the way? (1) Does the string have exactly three dots? (2) Are the four substrings between those dots numeric? (3) Are all four substrings between 0 and 255 inclusive?
+    </p>
+
+    <p class="hint">
+      <i>Hint 2:</i> You <em>will</em> need to use <code>Integer.parseInt</code>,
+      <code>substring</code>, and <code>indexOf</code>.
+    </p>
 
 <p><u>Files to Submit:</u> <code>Problem8.java</code>, <code>Problem8Test.java</code></p>
   </li>

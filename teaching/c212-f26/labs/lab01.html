@@ -147,7 +147,7 @@
     </div>
     <!-- PROBLEMS -->
     <div class="ribbon dark">
-      <div class="content">
+      <div class="content problems">
         <h2>Problems</h2>
         <ol>
           <li>
@@ -163,7 +163,9 @@
               The first parameter <code>a</code> is the ten's digit and the second parameter <code>b</code>
               is the one's digit. For example, <code>combineDigits(4, 5)</code> returns <code>45</code>.
               If <code>a</code> is <code>0</code>, then it's acceptable for the resulting value to be only one digit.
-              <strong>Do not simply use string concatenation.</strong>
+            </p>
+            <p class="warning">
+              <strong>Warning:</strong> Do not simply use string concatenation.
             </p>
             <p><u>Files to Submit:</u> <code>Problem2.java</code>, <code>Problem2Test.java</code></p>
           </li>
@@ -197,17 +199,25 @@
               \]
             </p>
             <p>Below are some test cases.</p>
-              
-            <p><i>Hint 1: when testing this method, you may want to use the
-              <code>delta</code> parameter of <code>assertEquals</code>!</i></p>
-              <p>
-              <i>Hint 2: you may want to leverage the <code>logBase</code> method that you wrote in the previous problem!</i></p>
             <pre><code>crazyMath(0)      =&gt; NaN 
 crazyMath(1)      =&gt; Infinity
 crazyMath(2)      =&gt; 21.52368973013284
 crazyMath(3)      =&gt; 14.692493055407942
 crazyMath(10)     =&gt; 9.574086130947974
 crazyMath(100000) =&gt; 86.49768321282015</code></pre>
+              
+            <p class="hint">
+              <i>Hint 1:</i> When testing this method, you may want to use the <code>delta</code> parameter of <code>assertEquals</code>!
+            </p>
+
+              <p class="hint">
+                <i>Hint 2:</i> You may want to leverage the <code>logBase</code> method that you wrote in the previous problem!
+              </p>
+
+              <p class="hint">
+                <i>Hint 3:</i> To represent NaN and Infinity, use the constants <code>Double.NaN</code> and <code>Double.POSITIVE_INFINITY</code>, respectively.
+              </p>
+
             <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
           </li>
         </ol>

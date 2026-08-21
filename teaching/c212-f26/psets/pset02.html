@@ -203,13 +203,13 @@ cond(a, not(bicond(b, not(c))))</pre>
       \(\mathrm{T}\) is <code>true</code> and \(\mathrm{F}\) is <code>false</code>.
     </p>
 
-<div class="truth-table-row"> <div class="truth-table"> \[ \begin{array}{c|c} P & \lnot P \\ \hline \mathrm{T} & \mathrm{F} \\ \mathrm{F} & \mathrm{T} \end{array} \] </div> </div>
+<div class="truth-table-row"> <div class="truth-table"> \[ \begin{array}{c|c} P & \lnot P\;(\texttt{not}) \\ \hline \mathrm{T} & \mathrm{F} \\ \mathrm{F} & \mathrm{T} \end{array} \] </div> </div>
 
 <div class="truth-table-row">
   <div class="truth-table">
     \[
     \begin{array}{cc|c}
-    P & Q & P \land Q \\
+    P & Q & P \land Q \;(\texttt{and}) \\
     \hline
     \mathrm{T} & \mathrm{T} & \mathrm{T} \\
     \mathrm{T} & \mathrm{F} & \mathrm{F} \\
@@ -222,7 +222,7 @@ cond(a, not(bicond(b, not(c))))</pre>
   <div class="truth-table">
     \[
     \begin{array}{cc|c}
-    P & Q & P \lor Q \\
+    P & Q & P \lor Q \;(\texttt{or}) \\
     \hline
     \mathrm{T} & \mathrm{T} & \mathrm{T} \\
     \mathrm{T} & \mathrm{F} & \mathrm{T} \\
@@ -235,7 +235,7 @@ cond(a, not(bicond(b, not(c))))</pre>
   <div class="truth-table">
     \[
     \begin{array}{cc|c}
-    P & Q & P \oplus Q \\
+    P & Q & P \oplus Q \;(\texttt{xor}) \\
     \hline
     \mathrm{T} & \mathrm{T} & \mathrm{F} \\
     \mathrm{T} & \mathrm{F} & \mathrm{T} \\
@@ -250,7 +250,7 @@ cond(a, not(bicond(b, not(c))))</pre>
   <div class="truth-table">
     \[
     \begin{array}{cc|c}
-    P & Q & P \supset Q \\
+    P & Q & P \supset Q \;(\texttt{cond}) \\
     \hline
     \mathrm{T} & \mathrm{T} & \mathrm{T} \\
     \mathrm{T} & \mathrm{F} & \mathrm{F} \\
@@ -263,7 +263,7 @@ cond(a, not(bicond(b, not(c))))</pre>
   <div class="truth-table">
     \[
     \begin{array}{cc|c}
-    P & Q & P \equiv Q \\
+    P & Q & P \equiv Q \;(\texttt{bicond}) \\
     \hline
     \mathrm{T} & \mathrm{T} & \mathrm{T} \\
     \mathrm{T} & \mathrm{F} & \mathrm{F} \\
@@ -276,7 +276,7 @@ cond(a, not(bicond(b, not(c))))</pre>
   <div class="truth-table">
     \[
     \begin{array}{cc|c}
-    P & Q & P \uparrow Q \\
+    P & Q & P \uparrow Q \;(\texttt{nand}) \\
     \hline
     \mathrm{T} & \mathrm{T} & \mathrm{F} \\
     \mathrm{T} & \mathrm{F} & \mathrm{T} \\
@@ -293,7 +293,7 @@ cond(a, not(bicond(b, not(c))))</pre>
   <strong>Warning:</strong>
   A lot of students conflate the use of <i>metavariables</i>, e.g., \(P\) and \(Q\), with the use of <i>variables</i>, e.g., <code>a</code>, <code>b</code>, and <code>c</code>.
   We use metavariables in the truth tables to represent <i>arbitrary</i> boolean value, but the variables in the code are <i>specific</i> boolean values.
-  To be specific, asking "what is the value of \(P \supset Q\)?" is meaningless, but asking "what is the value of <code>and(a, b)</code>?" is meaningful.
+  To be specific, asking "what is the value of \(P \supset Q\)?" is meaningless, but asking "what is the value of <code>cond(a, b)</code>, where, for example, <code>a</code> is <code>true</code> and <code> b</code> is <code>false</code>?" is meaningful. (The answer would be <code>false</code>.)
 </p>
 
 <p class="hint">
@@ -405,6 +405,10 @@ static boolean isNumeric(String n) {
     <p class="hint">
       <i>Hint 2:</i> You <em>will</em> need to use <code>Integer.parseInt</code>,
       <code>substring</code>, and <code>indexOf</code>.
+    </p>
+
+    <p class="note">
+      <i>Note:</i> You don't need to write test cases for the <code>isNumeric</code> method, but you must write (different!) test cases for the <code>isValidIpv4</code> method.
     </p>
 
 <p><u>Files to Submit:</u> <code>Problem8.java</code>, <code>Problem8Test.java</code></p>

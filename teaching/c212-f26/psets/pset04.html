@@ -234,6 +234,14 @@ Design the <code>String collectParenthesizedStringsLoop(String s)</code> method,
     in later computer science courses, and (2) I can rely on this knowledge in future problem sets.
   </p>
 
+  <code>
+A BinaryNumber (BN) is one of:
+- "0"
+- "1"
+- BinaryNumber + "0"
+- BinaryNumber + "1"
+  </code>
+
   <p>
     Let's refresh ourselves on what BNs are. Take the number 42 in base 10, also called decimal.
     In binary, or base 2, we represent \(42_{10}\) (meaning 42 in decimal) as \(101010_2\) (meaning 101010 in binary). To represent any non-negative
@@ -323,7 +331,8 @@ Design the <code>String collectParenthesizedStringsLoop(String s)</code> method,
 
 \[
   \begin{align*}
-    \mathord{\sim}1010_2 &\Rightarrow 0101_2
+    \mathord{\sim}1010_2 &\Rightarrow 101_2
+    \mathord{\sim}011010_2 &\Rightarrow 100101_2
   \end{align*}
 \]
 

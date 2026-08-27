@@ -390,6 +390,53 @@ Hi [hwo] are you [donig] I am [dioing] [jsut] fine if I say so [mysefl] but I wi
     <code>SpellChecker.java</code>, <code>SpellCheckerTest.java</code>
   </p>
 </li>
+
+<!-- Problem (CsvFilter). -->
+<li>
+
+  <p>
+    Design the <code>CsvFilter</code> class, containing the static
+    <code>void filter(String header, String value, String csvFile, String outputFile)</code>
+    method, which receives a comma-separated value file and writes a new file containing only
+    those rows whose value under the given header is equal to <code>value</code>. The header row
+    should always be written to the output file.
+  </p>
+
+  <p>
+    As an example, suppose <code>people.csv</code> contains the following:
+  </p>
+
+<pre>
+id,name,state
+1,Laura,TN
+2,Gilmore,IN
+3,Kiarra,TN
+4,Joshua,NC
+5,Peter,IN
+</pre>
+
+  <p>
+    Then, invoking
+    <code>CsvFilter.filter("state", "IN", "people.csv", "output.csv")</code>
+    should produce <code>output.csv</code> with the following contents:
+  </p>
+
+<pre>
+id,name,state
+2,Gilmore,IN
+5,Peter,IN
+</pre>
+
+  <p>
+    You may assume that the given header exists in the file and that no field contains a comma.
+  </p>
+
+  <p>
+    <u>Files to Submit:</u>
+    <code>CsvFilter.java</code>, <code>CsvFilterTest.java</code>
+  </p>
+
+</li>
         </ol>
       </div>
     </div>

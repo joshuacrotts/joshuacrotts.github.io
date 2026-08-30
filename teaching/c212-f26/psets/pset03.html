@@ -278,7 +278,7 @@
 
     A BooleanLiteralAtom is one of:
       - BooleanLiteral
-      - "!" + BooleanLiteral
+      - "!" + BooleanLiteralAtom
 
     A BooleanExpression is one of:
       - BooleanLiteralAtom
@@ -331,7 +331,7 @@
       <p>
         Design the <code>int countDepth(String expr)</code> method that counts the depth of a given <code>BooleanExpression</code>.
         The depth of a <code>BooleanExpression</code> is defined as the maximum number of recursive calls needed to reach the base case of a <code>BooleanLiteral</code> or <code>BooleanLiteralAtom</code>.
-        For example, <code>countDepth("(!T&amp;(F|T))")</code> returns 2, <code>countDepth("!!!!!!!!F")</code> returns 9, and <code>countDepth("T")</code> returns 0.
+        For example, <code>countDepth("(!T&amp;(F|T))")</code> returns 2, <code>countDepth("!!!!!!!!F")</code> returns 8, and <code>countDepth("T")</code> returns 0.
       </p>
     </li>
 </ol>

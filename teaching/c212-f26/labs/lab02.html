@@ -26,7 +26,7 @@
       }
     </style>
   </head>
-  <body class="under-development">
+  <body>
     <div class="ribbon">
       <div class="content">
         <h2>Lab 02 - Strings &amp; Conditionals</h2>
@@ -73,15 +73,11 @@
     <div class="ribbon dark">
       <div class="content">
         <h2>Notes and Version Changes:</h2>
-        <p>
-          <b>Note 1:</b> Updated description to talk about handling edge cases.
-          <!-- <b>Note 1:</b> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best "check" for this is to look at question 4 below - you should see a formula with a giant radicand (square root). If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts (or use a different browser...). -->
-        </p>
       </div>
     </div>
     <!-- PROBLEMS -->
     <div class="ribbon">
-      <div class="content">
+      <div class="content problems">
         <h2>Problems</h2>
         <ol>
           <li>
@@ -122,9 +118,13 @@ userId("Fred", "Fu", 1957)           =&gt; "FuF57"</pre>
 
       <p>Design the <code>String middleString(String a, String b, String c)</code> method, which receives three strings <code>a</code>, <code>b</code>, and <code>c</code>, and returns the string that is "in between" the others in terms of their lexicographical content. You cannot sort the strings or use an array. You may assume that <code>a</code>, <code>b</code>, and <code>c</code> are all distinct strings.</p>
 
-      <p>Note: the given strings can be in any arbitrary order; it is your job to determine which string is in the middle lexicographically.</p>
+      <p class="note">
+        <i>Note:</i> The given strings can be in any arbitrary order; it is your job to determine which string is in the middle lexicographically.
+      </p>
 
-      <p>Hint: use <code>compareTo</code>.</p>
+      <p class="hint">
+        <i>Hint:</i> Use <code>compareTo</code>.
+      </p>
       <p><u>Files to Submit:</u> <code>Problem4.java</code>, <code>Problem4Test.java</code></p>
     </li>
         </ol>

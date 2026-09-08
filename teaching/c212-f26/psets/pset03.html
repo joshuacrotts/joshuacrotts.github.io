@@ -310,10 +310,16 @@
       <p>
         Design the <code>String mainOperator(String expr)</code> method that
         returns the main operator of a given <code>BooleanExpression</code>.
-        We can compute the main operator by counting the number of open and
+        You should case analyze on the structure of a <code>BooleanExpression</code>. 
+        If the method receives <code>"T"</code> or <code>"F"</code>, there is no main operator, so return the empty string. 
+        Otherwise, the main operator is always either <code>"!"</code>, <code>"&amp;"</code>, or <code>"|"</code>, according to the data definition.
+      </p>
+      <p class="hint">
+        <i>Hint:</i> We can compute the main operator (when it should be a binary operator) by counting the number of open and
         closed parentheses in the string.
         When we encounter a <code>"("</code>, we increment a counter, and when we
         encounter a <code>")"</code>, we decrement the counter.
+        When the counter is 0, we have found the main operator.
       </p>
     </li>
 

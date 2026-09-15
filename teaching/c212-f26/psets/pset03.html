@@ -107,6 +107,8 @@
     <h2>Notes and Version Changes:</h2>
     
     <p><b>Note 1:</b> You <i>are</i> allowed to use methods from the <code>Character</code> and <code>Math</code> classes.</p>
+
+    <p><b>Update 1:</b> Updated possible values for problems 2 and 3. Added information about how to handle expressions that do not have parentheses in <code>removeOuterParentheses</code>.</p>
 </div>
 </div>
 
@@ -139,7 +141,7 @@
           The <em>hyperfactorial</em> of a number, namely \(H(n)\), is the value of
           \(1^1 \cdot 2^2 \cdot \ldots \cdot n^n\). Because the resulting values are outrageously large,
           use the <code>long</code> datatype. Design the standard recursive
-          <code>long hyperfactorial(long n)</code> method, which receives a long integer \(n\) and returns its
+          <code>long hyperfactorial(long n)</code> method, which receives a long integer \(n \geq 0\) and returns its
           hyperfactorial.
         </p>
       </li>
@@ -174,7 +176,7 @@
         </p>
         <p>
           Design the standard recursive <code>long subfactorial(long n)</code> method, which receives a long
-          integer \(n\) and returns its subfactorial. We once again use the <code>long</code> datatype instead of <code>int</code> to handle larger values.
+          integer \(n \geq 0\) and returns its subfactorial. We once again use the <code>long</code> datatype instead of <code>int</code> to handle larger values.
         </p>
       </li>
       <li>
@@ -303,6 +305,7 @@
         Design the <code>String removeOuterParentheses(String expr)</code> method
         that removes the outer parentheses from a given
         <code>BooleanExpression</code>.
+        If the expression does not have outer parentheses, return the expression as is.
       </p>
     </li>
 

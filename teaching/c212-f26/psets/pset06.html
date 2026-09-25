@@ -192,7 +192,7 @@ and written exams.) Please don't jeopardize your academic future.</p>
 
     <li>
       <p>
-    Design the <code>List&lt;List&lt;Integer&gt;&gt; getValidNeighbors(char[][] board, int row, int col)</code> method that receives a board and
+    Design the <code>List&lt;int[]&gt; getValidNeighbors(char[][] board, int row, int col)</code> method that receives a board and
     a move position, and returns a list of all the immediate neighbors to the cell <em>(row, col)</em>.
     Each element of the list is a two-element integer array containing the row and column pairs of the neighbors.
     Consider the diagram below, where <em>(0, 0)</em> is the move position, and the surrounding cells are its neighbors,
@@ -249,14 +249,14 @@ and written exams.) Please don't jeopardize your academic future.</p>
 
     <li>
       <p>
-        Design the <code>List&lt;List&lt;Integer&gt;&gt; getNonMineNeighbors(char[][] board, int row, int col)</code> method that receives a board and a move position, and returns a list of all the neighbors to the cell \((\mathit{row}, \mathit{col})\) that are not mines.
+        Design the <code>List&lt;int[]&gt; getNonMineNeighbors(char[][] board, int row, int col)</code> method that receives a board and a move position, and returns a list of all the neighbors to the cell \((\mathit{row}, \mathit{col})\) that are not mines.
         A non-mine neighbor is denoted by the character literal <code>'-'</code>.</p>
         <p class="warning"><strong>Warning:</strong> You <em>must</em> use <code>getValidNeighbors</code> in your definition.</p>
     </li>
 
     <li>
       <p>
-        Design the <code>List&lt;List&lt;Integer&gt;&gt; getMineNeighbors(char[][] board, int row, int col)</code> method that receives a board and a move position, and returns a list of all the neighbors to the cell \((\mathit{row}, \mathit{col})\) that are mines.
+        Design the <code>List&lt;int[]&gt; getMineNeighbors(char[][] board, int row, int col)</code> method that receives a board and a move position, and returns a list of all the neighbors to the cell \((\mathit{row}, \mathit{col})\) that are mines.
         Mines are denoted by the character literal <code>'B'</code>.
         <p class="warning"><strong>Warning:</strong> You <em>must</em> use <code>getValidNeighbors</code> in your definition.</p>
       </p>
@@ -297,7 +297,8 @@ and written exams.) Please don't jeopardize your academic future.</p>
       <p>
         Minesweeper board generation is an algorithmic problem in and of itself, and as such our implementation will be simple.
         Design the <code>char[][] makeBoard(int N, int M, int B)</code> method that receives a board size of \(N\) rows, \(M\) columns, and \(B\) mines to place.
-        To randomly place mines, create a <code>List&lt;List&lt;Integer&gt;&gt;</code> of all the possible cells on the board, shuffle the list, retrieve the first \(B\) cells, and assign the character literal <code>'B'</code> to them. 
+        Design the <code>char[][] makeBoard(int N, int M, int B)</code> method that receives a board size of \(N\) rows, \(M\) columns, and \(B\) mines to place.
+        To randomly place mines, create a <code>List&lt;int[]&gt;</code> of all the possible cells on the board, shuffle the list, retrieve the first \(B\) cells, and assign the character literal <code>'B'</code> to them. 
         Assign the character literal <code>'-'</code> to all other cells.
       </p>
       <p class="hint"><i>Hint:</i> You can either shuffle the list yourself or use <code>Collections.shuffle</code>.</p>

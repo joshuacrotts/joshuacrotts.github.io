@@ -26,7 +26,7 @@
       }
     </style>
   </head>
-  <body class="under-development">
+  <body>
     <div class="ribbon">
       <div class="content">
         <h2>Lab 07 - The Collections Framework</h2>
@@ -41,7 +41,7 @@
           (e.g., <code>Problem1.java</code>).
           Write corresponding JUnit test classes named
           <code>ProblemXTest</code>. 
-          All methods (yes, <i>including helpers</i>) must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
+          All methods (yes, <em>including helpers</em>) must include proper Javadoc comments describing the (1) purpose of the method, (2) parameters, and (3) return value.
           Helper methods should be marked as <code>private</code>.
           You do not need to write explicit tests for helper methods because they will be indirectly tested through the driver methods.
         </p>
@@ -82,14 +82,14 @@
         <ol>
           <!-- Problem 1. -->
           <li>
-            <p><i>(40 points)</i>
+            <p><em>(40 points)</em>
   Design the <code>Set&lt;Integer&gt; moreThanN(int[] A, int n)</code> method, which receives an
-  <code>int[]</code> <em>A</em> and an integer <em>n</em> &ge; 1 and returns a new
-  <code>Set&lt;Integer&gt;</code> of values containing those values from <em>A</em>
-  that occur strictly more than <em>n</em> times.
+  <code>int[]</code> \(A\) and an integer \(n \geq 1\) and returns a new
+  <code>Set&lt;Integer&gt;</code> of values containing those values from \(A\)
+  that occur strictly more than \(n\) times.
 </p>
 <p class="note">
-<i>Note:</i> The output order does not matter.
+<em>Note:</em> The output order does not matter.
 </p>
             <p>
               <u>Files to Submit:</u>
@@ -97,7 +97,7 @@
             </p>
           </li>
         <li>
-  <p><i>(60 points)</i> <em>Anagrams</em> are strings that are formed by rearranging the letters of another string.
+  <p><em>(60 points)</em> <em>Anagrams</em> are strings that are formed by rearranging the letters of another string.
   For example, "plea" is an anagram for "leap", but we consider an <em>alphabetized anagram</em>
   to be the alphabetized arrangement of letters for an anagram.
   As an example, "aelrst" is the alphabetized anagram for "alerts", "alters", "slater", and "staler".
@@ -138,12 +138,12 @@ alphaAnagramGroups(los)
      }
 </code></pre>
 
-<p class="hint"><i>Hint:</i> You will need to design a method that creates an "ordered version" of a given string.
+<p class="hint"><em>Hint:</em> You will need to design a method that creates an "ordered version" of a given string.
 
 </p>
 <p class="warning"><strong>Warning 1:</strong> To create the ordered string, you cannot use any Java sorting methods to do this, e.g., <code>Arrays.sort</code>, <code>Collections.sort</code>, and so forth.
 Think about how you can leverage a <code>PriorityQueue</code>!</p>
-<p class="warning"><strong>Warning 2:</strong> If you only use the test that we give, your "Student Tests" score will be very low.</p>
+<p class="warning"><strong>Warning 2:</strong> If you use <em>only</em> the test that we provide, your "Student Tests" score will be very low.</p>
 
             <p>
               <u>Files to Submit:</u>

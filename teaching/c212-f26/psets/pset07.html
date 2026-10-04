@@ -114,7 +114,7 @@ framework.</li>
 <ol>
   <!-- Problem 1. -->
 <li>
-  <p><i>(10 points)</i>
+  <p>&#11088;&#11088;
     Joe the mountain climber has come across a large mountain range. He wants to climb only the tallest
     mountains in the range. Design the <code>int[] peakFinder(int[] H)</code> method that returns an
     array \(H'\) of all the peaks in an <code>int[]</code> of mountain heights \(H\). A peak \(p\) is
@@ -147,12 +147,12 @@ peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
 
   <!-- Problem 2. -->
    <li>
-  <p><i>(14 points)</i>
+  <p>&#11088;&#11088;
     Design the <code>List&lt;String&gt; tokenize(String s, char d)</code> method that, when given a string
     \(s\) and a <code>char</code> delimiter \(d\), returns an <code>ArrayList</code> of tokens split at
     the delimiter.
   </p>
-  <p>Delimiters can be <i>escaped</i> with the backslash character. For example, if the delimiter is a comma (<code>','</code>), then the string 
+  <p>Delimiters can be <em>escaped</em> with the backslash character. For example, if the delimiter is a comma (<code>','</code>), then the string 
       <code>"Hello\\,world,how,are,you"</code> should be tokenized into <code>["Hello,world", "how", "are", "you"]</code>.</p>
   <p>You may assume that delimiters are not side-by-side, that there is at least one delimiter in the
     string, and it is neither at the beginning nor the end of the string.</p>
@@ -164,7 +164,7 @@ peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
     <p class="warning"><strong>Warning 2:</strong> You also cannot use methods that do the "heavy lifting" for you, e.g., <code>String.split</code>, <code>StringTokenizer</code>, or regular expressions.</p>
 
   <p class="note">
-    <i>Note:</i> Because of the above criteria, we guarantee that the length of the input string is at least 3.
+    <em>Note:</em> Because of the above criteria, we guarantee that the length of the input string is at least 3.
   </p>
 
   <p>
@@ -175,7 +175,7 @@ peakFinder({1, 2, 3, 2, 1})                         =&gt; {3}
 
   <!-- Problem 3. -->
 <li>
-  <p><i>(12 points)</i>
+  <p>&#11088;&#11088;
     Design the <code>Map&lt;String, Integer&gt; wordCount(String s)</code> method that, when given a string \(s\),
     counts the occurrences of each word in the string, then stores the resulting frequencies in a
     <code>HashMap&lt;String, Integer&gt;</code>.</p>
@@ -204,10 +204,10 @@ wordCount(s) =&gt; [&lt;"hello" : 1&gt;, &lt;"world" : 3&gt;, &lt;"the" : 2&gt;
 
   <p class="warning"><strong>Warning:</strong> Like in Problem 2, you are not allowed to use built-in mechanisms for splitting your string.</p>
 
-  <p class="note"><i>Note:</i> Only the punctuation listed above should be filtered out.
+  <p class="note"><em>Note:</em> Only the punctuation listed above should be filtered out.
     Do not use a blanket "punctuation" filter.</p>
 
-  <p class="hint"><i>Hint:</i> You <i>are</i> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem3</code> file or call it directly.</p>
+  <p class="hint"><em>Hint:</em> You <em>are</em> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem3</code> file or call it directly.</p>
 
   <p>
     <u>Files to Submit:</u>
@@ -217,7 +217,7 @@ wordCount(s) =&gt; [&lt;"hello" : 1&gt;, &lt;"world" : 3&gt;, &lt;"the" : 2&gt;
 
    <!-- Problem 4. -->
 <li>
-  <p><i>(14 points)</i>
+  <p>&#11088;
     Design the <code>double postfixEvaluator(List&lt;String&gt; l)</code> method that, when given a list of binary
     operators and numeric operands represents as strings, returns the result of evaluating the postfix-notation
     expression.
@@ -225,19 +225,19 @@ wordCount(s) =&gt; [&lt;"hello" : 1&gt;, &lt;"world" : 3&gt;, &lt;"the" : 2&gt;
   </p> 
 
   <pre>
-postfixEvaluator({"5", "2", "*", "5", "+", "2", "+"}) =&gt; 17
-postfixEvaluator({"1", "2", "3", "4", "+", "+", "+"}) =&gt; 10
-postfixEvaluator({"12", "3", "/"})                    =&gt; 4
+postfixEvaluator({"5", "2", "*", "5", "+", "2", "+"}) =&gt; 17.0
+postfixEvaluator({"1", "2", "3", "4", "+", "+", "+"}) =&gt; 10.0
+postfixEvaluator({"12", "3", "/"})                    =&gt; 4.0
 postfixEvaluator({"2.5", "3", "*", "1", "-"})         =&gt; 6.5
-postfixEvaluator({"3", "4", "-"})                     =&gt; -1
+postfixEvaluator({"3", "4", "-"})                     =&gt; -1.0
   </pre>
 
-  <p class="hint"><i>Hint 1:</i> You will need to write a few helper methods to solve this problem, and it is best to break it down
+  <p class="hint"><em>Hint 1:</em> You will need to write a few helper methods to solve this problem, and it is best to break it down
     into steps. First, write a method that determines if a given string is one of the four binary operators:
     <code>"+"</code>, <code>"-"</code>, <code>"*"</code>, or <code>"/"</code>. You may assume that any inputs that
     are not binary operators are operands, i.e., numbers. Then, write a method that applies a given binary operator
     to a collection of operands.</p>
-  <p class="hint"><i>Hint 2:</i> What particular data structure would be helpful in solving this problem?</p>
+  <p class="hint"><em>Hint 2:</em> What particular data structure would be helpful in solving this problem?</p>
 
   <p>
     <u>Files to Submit:</u>
@@ -247,7 +247,7 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
 
    <!-- Problem 5. -->
 <li>
-  <p><i>(10 points)</i>
+  <p>&#11088;
     The <em>substitution cipher</em> is a text cipher that encodes an alphabet string \(A\)
     (also called the <em>plain-text alphabet</em>) with a key string \(K\)
     (also called the <em>cipher-text alphabet</em>). The \(A\) string is defined as
@@ -274,7 +274,7 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
 
 
 <li>
-  <p><i>(14 points)</i>
+  <p>&#11088;&#11088;
     Design the <code>List&lt;List&lt;String&gt;&gt; lex(String e)</code> method that, when given an expression written
     in prefix fashion, returns a list of <em>tokens</em> and their identifiers.
   </p>
@@ -308,11 +308,11 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
 
   <p class="warning"><strong>Warning:</strong> Like in Problems 2 and 3, you are not allowed to use built-in mechanisms for splitting your string.</p>
 
-<p class="note"><i>Note:</i> In some contexts, this method could <em>also</em> be called "tokenize," but that method name has a particular meaning with respect to the problem set.</p>
+<p class="note"><em>Note:</em> In some contexts, this method could <em>also</em> be called "tokenize," but that method name has a particular meaning with respect to the problem set.</p>
 
-  <p class="hint"><i>Hint 1:</i> You <i>are</i> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem6</code> file or call it directly.</p>
+  <p class="hint"><em>Hint 1:</em> You <em>are</em> allowed to use the <code>tokenize</code> method that you designed in Problem 2 to help you with this problem. If you do use it, either copy and paste it into the <code>Problem6</code> file or call it directly.</p>
 
-  <p class="hint"><i>Hint 2:</i> It might be a good idea to write a helper method that receives the input string and adds exactly one space between each of the "tokens," and then tokenize that string.</p>
+  <p class="hint"><em>Hint 2:</em> It might be a good idea to write a helper method that receives the input string and adds exactly one space between each of the "tokens," and then tokenize that string.</p>
 
 
 
@@ -324,7 +324,7 @@ postfixEvaluator({"3", "4", "-"})                     =&gt; -1
 </li>
 
 <li>
-  <p><i>(14 points)</i>
+  <p>&#11088;
 <em>String interpolation</em> is a mechanism provided by many programming languages, allowing the programmer to embed variables and expressions within a string without the headache of endless concatenations. For example, Python provides <em>f-strings</em>, or format strings, which look like:
   </p>
 
@@ -354,7 +354,7 @@ stringInterpolate(Map.of("name", "Joshua"), List.of("Hello ${name}, how are you 
   </pre>
   <p class="warning"><strong>Warning:</strong> Like in Problems 2, 3, and 6, you are not allowed to use built-in mechanisms for splitting your string.</p>
   <p class="note">
-    <i>Note:</i> By the restrictions of this problem, you may observe that the user cannot embed the characters <code>"${"</code> or <code>"}"</code> in their strings, as they are reserved for format indicators.
+    <em>Note:</em> By the restrictions of this problem, you may observe that the user cannot embed the characters <code>"${"</code> or <code>"}"</code> in their strings, as they are reserved for format indicators.
     In "real" programming languages, these are preserved by escaping them with a backslash, like you did in Problem 2.
     <br/>
     <br/>
@@ -367,7 +367,7 @@ stringInterpolate(Map.of("name", "Joshua"), List.of("Hello ${name}, how are you 
 </li>
 
 <li>
-  <p><i>(12 points)</i>
+  <p>&#11088;&#11088;
     Design the <code>Set&lt;List&lt;Integer&gt;&gt; selectPairs(int[] A, int t)</code> method that, when given an array
     of integers \(A\) and a target \(t\), returns all possible pairs of numbers in \(A\) that sum to \(t\). For example,
     if \(A=\{2, 2, 4, 10, 6, -2\}\) and \(t=4\), we return a set containing two two-element lists: \(\{2, 2\}\) and
@@ -421,6 +421,9 @@ stringInterpolate(Map.of("name", "Joshua"), List.of("Hello ${name}, how are you 
       </p>
     </li>
   </ul>
+  <p class="note"> 
+    <em>Note:</em> The order in which you add elements to the resulting set or intermediate lists does not matter for purposes of the autograder; we will handle the ordering automatically. <em>Your</em> tests will need to take list element order into account!
+  </p>
   <p>
      <u>Files to Submit:</u>
     <code>Problem8.java</code>, <code>Problem8Test.java</code>
@@ -428,7 +431,7 @@ stringInterpolate(Map.of("name", "Joshua"), List.of("Hello ${name}, how are you 
 </li>
 
 <li>
-  <p><strong>Extra Credit (10 points)</strong>
+  <p><strong>Extra Credit (10 points)</strong> &#11088; &#11088;&#11088;&#11088;
     You are designing a system with querying functionality similar to a database language such as SQL. In particular,
     we have a 2D array of strings whose first row contains column headers to a database. Examples of such columns may be
     <code>"ID"</code>, <code>"Name"</code>, <code>"Age"</code>, <code>"Salary"</code>, and so forth.
@@ -461,7 +464,7 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
   <p>
     Headers are one of the column headers of the database, and comparators are either <code>=</code>, <code>!=</code>,
     <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, or <code>&gt;=</code>, or <code>LIKE</code>. Values are
-    either numbers, floats, or strings, and are <i>always</i>enclosed by single quotes.
+    either numbers, floats, or strings, and are <em>always</em>enclosed by single quotes.
   </p>
 
   <p>
@@ -484,6 +487,10 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
   <p>
     You may assume all commands are well-formed. However, it is possible that a command returns no results, e.g.,
     <code>SELECT * Name WHERE Salary &gt;= '10000000'</code>
+  </p>
+
+  <p class="note"> 
+    <em>Note:</em> You <em>are</em> allowed to use built-in functions for splitting strings, e.g., <code>.split</code> to help you solve this problem. 
   </p>
 </li>
 
@@ -623,7 +630,7 @@ A Predicate is "&lt;header&gt; &lt;comparator&gt; &lt;value&gt;"
   <li>
     <p>Design the <code>Set&lt;List&lt;Integer&gt;&gt; getValidMovesForPebble(char[][] B, int r, int c)</code> method that returns all valid moves from the pebble located at <em>(r, c)</em>.
     Follow the rules from above.</p>
-    <p class="hint"><i>Hint:</i> It may be helpful to have an array of the eight directional offsets (similar to the Minesweeper presentation), and expand outward.
+    <p class="hint"><em>Hint:</em> It may be helpful to have an array of the eight directional offsets (similar to the Minesweeper presentation), and expand outward.
   </li>
 
   <li>

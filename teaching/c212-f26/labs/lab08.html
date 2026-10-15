@@ -83,7 +83,10 @@
           <!-- Problem 1. -->
           <li>
             <p><i>(30 points)</i>
-              Design the <code>List&lt;Integer&gt; remvDups(List&lt;Integer&gt; lon)</code> method, which receives a list of integers and removes all duplicate integers. Return this result as a new list. <strong>You must use only the Stream API.</strong>
+              Design the <code>List&lt;Integer&gt; remvDups(List&lt;Integer&gt; lon)</code> method, which receives a list of integers and removes all duplicate integers. Return this result as a new list.
+            </p>
+                        <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
             </p>
             <p class="hint"><i>Hint:</i> There is a method in the <code>Stream</code> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html">API</a> that can help! Go explore it.</p>
             <p>
@@ -93,7 +96,10 @@
           </li>
           <li>
             <p><i>(30 points)</i> 
-              Design the <code>List&lt;Double&gt; filterThenSquare(List&lt;Double&gt; lon)</code> method, which receives a list of doubles, removes all numbers that are multiples of seven, and squares the remaining values. Return this result as a new list. <strong>You must use only the Stream API.</strong>
+              Design the <code>List&lt;Double&gt; filterThenSquare(List&lt;Double&gt; lon)</code> method, which receives a list of doubles, removes all numbers that are multiples of seven, and squares the remaining values. Return this result as a new list.
+            </p>
+                        <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
             </p>
             <p>
               <u>Files to Submit:</u>
@@ -102,7 +108,10 @@
           </li>
           <li>
             <p><i>(40 points)</i> 
-              Design the <code>Optional&lt;Integer&gt; maximum(List&lt;Integer&gt; lon)</code> method that, when given a list of integers, returns the maximum value in the list as an <code>Optional&lt;Integer&gt;</code>. If there are no values in the given list, return <code>Optional.empty()</code>. <strong>You must use only the Stream API.</strong>
+              Design the <code>Optional&lt;Integer&gt; maximum(List&lt;Integer&gt; lon)</code> method that, when given a list of integers, returns the maximum value in the list as an <code>Optional&lt;Integer&gt;</code>. If there are no values in the given list, return <code>Optional.empty()</code>.
+            </p>
+                        <p class="warning">
+              <strong>Warning:</strong> You must use only the Stream API.
             </p>
             <p class="note"><i>Note:</i> With this problem, don't cheese <strong>(i.e., you're not allowed to)</strong> it by calling the <code>IntStream</code> <code>max</code> method. Figure out how to solve it with <code>reduce</code> or <code>collect</code>! As a hint, think about how you would find the maximum number in a list of numbers using recursion.</p>
             <p class="hint"><i>Hint:</i> There are two versions of <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#reduce-T-java.util.function.BinaryOperator-">reduce</a></code> that you can call...</p>

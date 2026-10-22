@@ -129,6 +129,14 @@
         <code>boolean isGrayscale()</code>, which returns whether <code>this</code> color is grayscale, i.e., whether all three of the channels are the same.
       </p>
     </li>
+
+  <li>
+    <p>Override the <code>equals</code> method to return whether a given <code>RgbColor</code> object represents the same color as <code>this</code> instance.</p>
+  </li>
+
+  <li>
+    <p>Override the <code>hashCode</code> method to return a hash code for <code>this</code> color. The hash code is defined as <code>Objects.hash(red, green, blue)</code>.</p>
+  </li>
   </ol>
 
   <p>

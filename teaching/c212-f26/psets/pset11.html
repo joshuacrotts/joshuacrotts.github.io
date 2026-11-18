@@ -99,7 +99,7 @@
 
           <!-- Problem 2 (Streams). -->
 <li>
-  <p><i>(8 points)</i> An <em>infinite stream</em> is one that, in theory, produces infinite results!
+  <p>&#11088; An <em>infinite stream</em> is one that, in theory, produces infinite results!
     We have illustrated this with Java's <code>Stream</code> API, but now we're going to design our own.
     Consider the <code>IStream</code> interface below:
   </p>
@@ -149,7 +149,7 @@
   }
 }</code></pre>
 
-  <p>
+  <p>&#11088;
     Design the <code>FibonacciStream</code> class, which implements <code>IStream&lt;Integer&gt;</code> and correctly overrides <code>next</code> to produce Fibonacci sequence values.
     You code should <em>not</em> use any loops or recursion.
     Recall that the Fibonacci sequence is defined as \(f(n) = f(n - 1) + f(n - 2)\) for all \(n \geq 2\).
@@ -177,7 +177,7 @@
 
           <!-- Problem 3 (FunctionalStream). -->
 <li>
-  <p><i>(8 points)</i> Java's functional API allows us to pass lambda expressions as arguments to other methods, as well as method references (as we saw in Chapter 3).
+  <p>&#11088; Java's functional API allows us to pass lambda expressions as arguments to other methods, as well as method references (as we saw in Chapter 3).
     Design the generic <code>FunctionalStream</code> class to implement <code>IStream</code>, whose constructor receives a unary function <code>Function&lt;T, T&gt; f</code> and an initial value <code>T t</code>.
     Then, override the <code>next</code> method to invoke \(f\) on the current element of the stream and return the previous.
     For example, the following test case shows the expected results when creating a stream of infinite positive multiples of three.
@@ -209,7 +209,7 @@
 
           <!-- Problem 4 (StreamTake). -->
 <li>
-  <p><i>(8 points)</i> Design the <code>StreamTake</code> class.
+  <p>&#11088; Design the <code>StreamTake</code> class.
     Its constructor should receive an <code>IStream</code> and an integer \(n\) denoting how many elements to take, as parameters.
     Then, write a <code>List&lt;T&gt; getList()</code> method, which returns a <code>List&lt;T&gt;</code> of \(n\) elements from the given stream.
   </p>
@@ -235,7 +235,7 @@
           <!-- Problem 5 (NumberFormat). -->
 <li>
 
-  <p><i>(8 points)</i> In this exercise, you will design an interface and classes that format numbers in different ways.
+  <p>&#11088; In this exercise, you will design an interface and classes that format numbers in different ways.
   </p>
 
   <ol class="paren-alpha">
@@ -261,7 +261,7 @@
 </li>
 
 <li>
-  <p><i>(8 points)</i>
+  <p>&#11088;&#11088;
     
   </ul>
 Design the abstract <code>Ticket</code> class, which represents a ticket that can be purchased.
@@ -297,7 +297,7 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
           <!-- Problem 7 (ASPL). -->
 <li>
 
-  <p><i>(28 points)</i> This exercise is based on the ASPL interpreter that we wrote in the textbook. 
+  <p>&#11088;&#11088;&#11088;&#11088; This exercise is based on the ASPL interpreter that we wrote in the textbook. 
   A copy of the starter code is listed in Canvas.
   In the autograder, you only need to submit the files we list below; not the starter code. Do not modify the starter code.</p>
   <ol class="paren-alpha">
@@ -426,7 +426,7 @@ Design the abstract <code>Ticket</code> class, which represents a ticket that ca
 
 <!-- Problem 1 (BigInt). -->
 <li>
-  <p><i>(32 points)</i> In this series of problems, you will design a class and several methods that act on arbitrarily large or small <em>integers</em>, resembling the <code>BigInteger</code> class. You <em><strong>cannot</strong></em> use any methods from <code>BigInteger</code>, or the <code>BigInteger</code> class itself.
+  <p>&#11088;&#11088;&#11088;&#11088; In this series of problems, you will design a class and several methods that act on arbitrarily large or small <em>integers</em>, resembling the <code>BigInteger</code> class. You <em><strong>cannot</strong></em> use any methods from <code>BigInteger</code>, or the <code>BigInteger</code> class itself.
   </p>
   <p class="warning"><strong>Warning:</strong> This problem is complicated and takes some time to think through. It shouldn't be completed in one sitting! Remember to ask us for help if you get stuck, and to break it down into smaller pieces. We have provided you with a lot of helper methods to make your life easier, so make sure to use them! Most important: follow the directions!</p>
 <ol class="paren-alpha">
